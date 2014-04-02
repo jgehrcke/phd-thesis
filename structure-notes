@@ -1,0 +1,75 @@
+* Introduction
+    - Relevance of IL-10 in immune regulation
+    - Vision: gain control over IL-10 in artificial extracellular matrices
+    - Bio-relevant IL-10-GAG interaction? Motivated by Salek ardakini.
+    - Motivation and goal: investigate IL-10-GAG system with computational
+      methods
+
+
+* IL-10: biology, structure, structure-function, GAG interaction
+    - Biology summary
+        in closing remarks, relate to extracellular matrix
+
+    - Structure description
+        exists mainly as homodimer [
+            biochemistry, 1998, 37, 16943-16951, zdanov 1995]
+
+    - IL-10 and its receptors
+        - what is known in literature
+            R1+IL-10 structure
+            R2 structure
+            ternary complex binding models
+            what is required for signaling? literature overview
+        - a critical review: monomer
+            minimal unit required for signaling (monomer)
+        - IL-10 + R1 + R2 structure model from IL20 ternary complex
+
+    - IL-10-GAG interaction
+        - Salek ardakini summary
+        - A critical view on consensus sequences
+            weintraub sequence and sequences of others
+            relate sequence to structure, see that there is no point.
+        - arginin patch [zdanov, 1995]
+        - the fact that it is a cytokine
+        - sulfate groups in the crystal structure
+
+
+* In-silico: protein-GAG docking methods
+    - A docking methods primer
+    - methods applied in literature: a mini review
+    - Problems of different complexity: local vs. global docking.
+
+
+* A simple method for predicting protein-GAG binding sites
+
+
+* Interpreting docking results: docking ensemble clustering\
+
+    - Significance of clustering: mini review
+        clustering in general
+        clustering in docking: most probable state
+
+    - A meaningful distance metric: RMSatd
+
+    - Clustering methods overview
+        hierarchical clustering implemented in AutoDockTools
+            badly implemented, due to N^2 dependence very long runtimes
+        other methods, quick
+        DBSCAN, explain why it makes sense for molecular structures
+        cite cpptraj, which also started implementing it
+
+    - Custom implementation of the DBSCAN algorithm
+        - architecture and project overview
+            command line tool, simple PDB parser files
+            distance matrix calculation on multiple cores via Unix fork()
+        - examples
+            http://scikit-learn.org/stable/modules/clustering.html
+            http://bit.ly/1pKNv7v
+        - RMSatd in numpy
+        - DBSCAN in numpy
+        - parameter optimization (parameter space transformation)
+        - input and output example
+            input: structure ensemble, DBSCANopt parameters
+            output: structure files, stat summary
+
+*
