@@ -1,3 +1,6 @@
+* Abstract
+
+
 * Introduction
     - Relevance of IL-10 in immune regulation
     - Vision: gain control over IL-10 in artificial extracellular matrices
@@ -36,18 +39,27 @@
 
 * In-silico: protein-GAG docking methods
     - A docking methods primer
-    - methods applied in literature: a mini review
+    - Methods applied in literature: a mini review
+        AutoDock3 stands out, just by experience, not by concept
     - Problems of different complexity: local vs. global docking.
 
 
 * A simple method for predicting protein-GAG binding sites
+    - Rational
+    - Method
+        PBE via AmberTools PBSA (related bugs fixed, see appendix)
+        storage to DX file
+        visualization via VMD
+        video creation
+    - Validation study
+    - Application to IL-10
 
 
-* Interpreting docking results: docking ensemble clustering\
+* Interpreting docking results: docking ensemble clustering
 
     - Significance of clustering: mini review
         clustering in general
-        clustering in docking: most probable state
+        clustering applied to docking ensemble: most probable state
 
     - A meaningful distance metric: RMSatd
 
@@ -72,4 +84,90 @@
             input: structure ensemble, DBSCANopt parameters
             output: structure files, stat summary
 
-*
+
+* Development of an MD-based docking method: DMD
+    - Rational
+        MD often applied *after* docking, for evaluation/analysis of poses
+        protein and sugar force fields are established, and reliable
+        valid for protein-GAG systems by design
+        local "docking" (i.e. pose generation) via MD? tMD
+
+    - Method description
+        - DMD workflow
+
+        - Analysis
+            MMPB(GB)SA
+            Movement
+            H-bonding
+            ...
+
+    - Implementation for this project
+        - MD
+            Amber 12
+            ff12SB
+            GLYCAM06 g + sulfate charges
+        - Analysis
+            AmberTools 13
+            cpptraj
+            MMPBSA.py, MMPBSA with defaults, MMGBSA SRED with defaults
+        - Architecture:
+            shell scripts, file system for study organization
+            Python/numpy/scipy/matplotlib for analysis
+            code on bitbucket
+        - Computing resources
+            - Establishment of GPU infrastructure
+                - Software: compilation of Amber 12 against ...
+                - built up group-internal GPU cluster:
+                    4 machines, this hardware, PBS schedular with Python wrapper
+                - ZIH resources
+
+    - Validation study
+        - Test data set and method
+        - Results and Discussion
+            good sampling
+            reproducibility
+            significant SRED + Hbonding data
+
+
+* IL-10-GAG interaction insights via NMR measurements
+    - Location
+    - heparin conformation w/ and w/o presence of IL-10
+
+
+* DMD applied to the IL-10-GAG system
+    - Study design / overview
+        - iterative approach
+            1st round, collect experience
+            2nd round, start with most probable region
+        - GAG ligand selection
+    - Results
+        - 1st round
+        - 2nd round
+    - Discussion
+
+
+* Bringing it all together: IL-10-GAG interaction insights
+
+
+* Conclusions
+    - Methodological development
+        - Binding site prediction
+        - Clustering
+        - DMD
+        - Experimental setup: HPC, ZIH and group-internal
+    - Insights for IL-10-GAG system
+        - binding site
+        - binding behavior (heparin, N sulfate, conformation, important residue)
+
+
+* Outlook
+
+
+* Appendix
+    - Open source software contributions
+        - contributions to AmberTools:
+            PBSA, ... check notes (i did this somewhere)
+        - DBSCAN, RMSatd, ...
+
+
+* References
