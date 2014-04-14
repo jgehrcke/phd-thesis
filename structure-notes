@@ -40,7 +40,7 @@ Investigation of the interleukin-10-GAG interaction using molecular simulation m
         - sulfate groups in the crystal structure
 
 
-* In-silico: protein-GAG docking methods
+* In-silico methods for protein-GAG docking
     - A primer on docking methods
     - Methods applied in literature: a mini review
         AutoDock3 stands out, just by experience, not by concept
