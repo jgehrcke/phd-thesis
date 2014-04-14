@@ -1,16 +1,19 @@
+Investigation of the interleukin-10-GAG interaction using molecular simulation methods
+
+
 * Abstract
 
 
 * Introduction
     - Relevance of IL-10 in immune regulation
-    - Vision: gain control over IL-10 in artificial extracellular matrices
     - Bio-relevant IL-10-GAG interaction? Motivated by Salek ardakini.
+    - Vision: gaining control over IL-10 function in artificial extracellular matrices
     - Motivation and goal: investigate IL-10-GAG system with computational
-      methods
+      methods, in collaboration with...
 
 
-* IL-10: biology, structure, structure-function, GAG interaction
-    - Biology summary
+* Structure and biology of the IL-10 system
+    - Biology summary (not too extensive)
         in closing remarks, relate to extracellular matrix
 
     - Structure description
@@ -18,7 +21,7 @@
             biochemistry, 1998, 37, 16943-16951, zdanov 1995]
 
     - IL-10 and its receptors
-        - what is known in literature
+        - what is known in literature (current state of knowlege)
             R1+IL-10 structure
             R2 structure
             ternary complex binding models
@@ -38,10 +41,12 @@
 
 
 * In-silico: protein-GAG docking methods
-    - A docking methods primer
+    - A primer on docking methods
     - Methods applied in literature: a mini review
         AutoDock3 stands out, just by experience, not by concept
     - Problems of different complexity: local vs. global docking.
+    - (AutoDock 3 protein-GAG blind docking validation study,
+        Method, results, discussion, conclusion)
 
 
 * A simple method for predicting protein-GAG binding sites
@@ -85,7 +90,7 @@
             output: structure files, stat summary
 
 
-* Development of an MD-based docking method: DMD
+* Development and validation of an MD-based docking method: DMD
     - Rational
         MD often applied *after* docking, for evaluation/analysis of poses
         protein and sugar force fields are established, and reliable
@@ -129,11 +134,6 @@
             significant SRED + Hbonding data
 
 
-* IL-10-GAG interaction insights via NMR measurements
-    - Location
-    - heparin conformation w/ and w/o presence of IL-10
-
-
 * DMD applied to the IL-10-GAG system
     - Study design / overview
         - iterative approach
@@ -146,7 +146,18 @@
     - Discussion
 
 
+* IL-10-GAG interaction: evaluation of NMR data
+    - Heparin structure model creation: conformation w/ and w/o presence of IL-10
+    - Binding site determination via Pseudo Contact Shift measurements
+
+
 * Bringing it all together: IL-10-GAG interaction insights
+    - Binding region/site
+    - Binding features
+    - Variation of behavior among GAG types
+    - Implications on biology: interference with R2, agglomeration of IL-10
+    - Other hypotheses
+        - Binding overlaps with R1
 
 
 * Conclusions
@@ -158,6 +169,7 @@
     - Insights for IL-10-GAG system
         - binding site
         - binding behavior (heparin, N sulfate, conformation, important residue)
+        - binding implications
 
 
 * Outlook
