@@ -57,6 +57,7 @@ Investigation of the interleukin-10-GAG interaction using molecular simulation m
         visualization via VMD
         video creation
     - Validation study
+    - published in DMD paper
     - Application to IL-10
 
 
@@ -91,11 +92,12 @@ Investigation of the interleukin-10-GAG interaction using molecular simulation m
 
 
 * Development and validation of an MD-based docking method: DMD
-    - Rational
-        MD often applied *after* docking, for evaluation/analysis of poses
-        protein and sugar force fields are established, and reliable
-        valid for protein-GAG systems by design
-        local "docking" (i.e. pose generation) via MD? tMD
+    - Rationale
+        - short introduction to MD in general (cite, cite, cite)
+        - MD often applied *after* docking, for evaluation/analysis of poses
+        - protein and sugar force fields are established, and reliable
+        - valid for protein-GAG systems by design
+        - local "docking" (i.e. pose generation) via MD? tMD
 
     - Method description
         - DMD workflow
