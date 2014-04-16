@@ -1,66 +1,31 @@
 \input{preamble.tex}
 
-
 \begin{document}
 
 % Include title page, created externally.
 
 \frontmatter
-
 \include{abstract}
+
 \pagestyle{Ruled}
 \tableofcontents*
 
-
 \mainmatter
-\chapter{Introduction}
-\lipsum[1-10]
-
-\chapter{Structure and biology of the IL-10 system}
-\lipsum[1-10]
-
-\chapter{In-silico methods for protein-GAG docking}
-\lipsum[1-10]
-
-\chapter{A simple method for predicting protein-GAG binding sites}
-\lipsum[1-10]
-
-\chapter{Interpreting docking results: docking ensemble clustering}
-\lipsum[1-10]
-
-
-\chapter{Development and validation of a molecular dynamics-based docking method (DMD)}
-\section{Rational}
-\lipsum[1-5]
-\section{General method description}
-\lipsum[1-5]
-\section{Implementation for this project}
-\lipsum[1-5]
-\section{Validation study}
-\lipsum[1-5]
-
-
-\chapter{DMD applied to the IL-10-GAG system}
-\lipsum[1-10]
-
-\chapter{IL-10-GAG interaction: evaluation of NMR data}
-\lipsum[1-10]
-
-\chapter{Bringing it all together: IL-10-GAG interaction insights}
-\lipsum[1-10]
-
-\chapter{Conclusions}
-\lipsum[1-10]
-
-\chapter{Outlook}
-\lipsum[1-10]
-
+\include{01_introduction}
+\include{02_structure_biology_il10}
+\include{03_insilico_protein_gag_docking}
+\include{04_protein_gag_binding_site_prediction}
+\include{05_interpreting_docking_results}
+\include{06_dmd}
+\include{07_dmd_il10}
+\include{08_il10gags_nmr}
+\include{09_bringing_all_together}
+\include{10_conclusions}
+\include{11_outlook}
 \backmatter
 
 %\bibliographystyle{plainnat}
 \bibliography{}
 
-
-\chapter{Appendix}
-
+\include{appendix}
 \end{document}
