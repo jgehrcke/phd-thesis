@@ -1,13 +1,69 @@
+% Copyright 2014 Jan-Philip Gehrcke
+
+% http://www.howtotex.com/packages/the-nag-package-warns-you-for-incorrect-latex-usage/
+\RequirePackage[l2tabu, orthodox]{nag}
 \documentclass[a4paper,12pt,onecolumn,twoside,openright]{memoir}
+
 %\usepackage{lmodern}
+%\usepackage{charter}
+%\usepackage[osf,sc]{mathpazo}
 \usepackage{libertine}
 \usepackage{fontspec}
 
+% Improve typography. Must be loaded after any font.
+\usepackage{microtype}
+
 \usepackage[english]{babel}
-\usepackage{geometry}
-\usepackage{hyperref}
 \usepackage{lipsum}
 
+% Properly typeset numbers with units.
+% http://www.howtotex.com/packages/beautiful-fractions-and-units-with-the-unit-package/
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+% From my master thesis, will I use those?
+%\usepackage{booktabs}
+%\usepackage{stmaryrd}
+%\usepackage{url}
+% \usepackage{geometry}  % Should be loaded after hyperref!
+%\usepackage{longtable}
+%\usepackage[figuresright]{rotating}
+% e.g. \textmu
+%\usepackage{textcomp}
+%\usepackage[babel]{csquotes}
+% captions (for figures etc)
+%\DisemulatePackage{ccaption}
+%\usepackage[margin=5pt,font=small,labelfont=bf]{caption}
+
+% Configure footnotes: counter reset every page etc.
+\usepackage[perpage,hang,splitrule]{footmisc}
+\usepackage{color}
+
+
+% Should be included as late as possible.
+\usepackage{hyperref}
+
+% See: Which packages should be loaded after hyperref instead of before?
+% http://tex.stackexchange.com/q/1863
+
+% This package introduces the \cref command. When using this command to make
+% cross-references, instead of \ref or \eqref, a word is placed in front of the
+% reference according to the type of reference: fig. for figures, eq. for
+% equations.
+\usepackage{cleveref}
+
+
+%        colorlinks=true,%
+        % linkcolor=sepia,%
+        % citecolor=sepia,%
+        % filecolor=maroon,%
+        % %pagecolor=red,%
+        % urlcolor=sepia,%
+        % pdftex,%
+        % unicode]{hyperref}
+
+\definecolor{sepia}{cmyk}{0, 0.83, 1, 0.70}
 \hypersetup{
     pdfauthor={Jan-Philip Gehrcke},
     pdftitle={Investigation of the interleukin-10-GAG interaction using molecular
@@ -15,15 +71,93 @@
     pdfsubject={PhD thesis, computational biophysics},
     pdfkeywords={one, two},
     colorlinks=true,
+    linkcolor=sepia,
+    citecolor=sepia,
+    urlcolor=sepia
 }
+
+%\renewcommand{\unspace}{\relax}
+\usepackage[
+    citestyle=numeric,
+    bibstyle=numeric,
+    hyperref=true,
+    backref=true,
+    sorting=none,
+    indexing=true]{biblatex}
+
+\bibliography{literature}
+{\small\bibliography{literature.bib}}
+
+
+% Footnote layout config
+\addtolength{\footskip}{0.5cm}
+\setlength{\footnotemargin}{0.2cm}
+\setlength{\footnotesep}{0.4cm}
+\makeatletter
+\let\splitfootnoterule=\pagefootnoterule
+\makeatother
 
 
 % Memoir page layout options
 \settypeblocksize{*}{\lxvchars}{1.618}
 % First field: space between top page border and text.
 \setulmargins{5cm}{*}{*}
+
+
+% "inner margin" (gibt die horizontale position des textblocks auf der seite vor)
+%\setlrmargins{5cm}{*}{*}
 \setlrmargins{*}{*}{1.618}
+
+\setheadfoot{\onelineskip}{3\onelineskip}
 % Second field: space between text and header.
-\setheaderspaces{*}{2.5cm}{*}
+%\setheaderspaces{*}{2.5cm}{*}
+\setheaderspaces{*}{2\onelineskip}{*}
 \checkandfixthelayout
 
+
+% *************** Chapter and section and head style ***************
+%\chapterstyle{southall}
+%\chapterstyle{veelo}
+%\chapterstyle{bianchi}
+
+% \setsecheadstyle{\Large\sffamily\bfseries}
+% \setsubsecheadstyle{\large\sffamily\bfseries}
+% \setsubsubsecheadstyle{\normalfont\sffamily\bfseries}
+% \setparaheadstyle{\normalfont\sffamily}
+
+% *************** Table of contents style ***************
+\settocdepth{section}
+\setsecnumdepth{subsection}
+\maxsecnumdepth{subsection}
+\maxtocdepth{subsection}
+
+
+
+% % ********** Commands for epigraphs **********
+% \setlength{\epigraphwidth}{0.57\textwidth}
+% \setlength{\epigraphrule}{0pt}
+% \setlength{\beforeepigraphskip}{1\baselineskip}
+% \setlength{\afterepigraphskip}{2\baselineskip}
+
+% \newcommand{\epitext}{\sffamily\itshape}
+% \newcommand{\epiauthor}{\sffamily\scshape ---~}
+% \newcommand{\epititle}{\sffamily\itshape}
+% \newcommand{\epidate}{\sffamily\scshape}
+% \newcommand{\episkip}{\medskip}
+
+% % temporal margin change
+% % usage: \begin{changemargin}{-1cm}{-1cm}
+% \newenvironment{changemargin}[2]{%
+%  \begin{list}{}{%
+%   \setlength{\topsep}{0pt}%
+%   \setlength{\leftmargin}{#1}%
+%   \setlength{\rightmargin}{#2}%
+%   \setlength{\listparindent}{\parindent}%
+%   \setlength{\itemindent}{\parindent}%
+%   \setlength{\parsep}{\parskip}%
+%  }%
+% \item[]}{\end{list}}
+
+% special hyphenation
+% \hyphenation{na-no-par-ti-cles pe-rio-di-ci-ty T-pe-rio-di-ci-ty Lange-vin}
+% \setlength{\emergencystretch}{1em}
