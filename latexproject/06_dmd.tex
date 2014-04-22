@@ -1,8 +1,206 @@
 \chapter{Development and validation of a molecular dynamics-based docking method (DMD)}
 \section{Rational}
-\lipsum[1-5]
+A particularly challenging class of ligands for which docking performance is
+especially limited by the above-mentioned issues are glycosaminoglycans
+(GAGs), which are periodic negatively charged linear polysaccharides mainly located
+in the extracellular matrix. Through interaction with their protein targets
+they participate
+in a number of key processes involved in cell regeneration and proliferation,
+angiogenesis, metastasis and lipid metabolism \cite{hynes_extracellular_2009,
+macri_growth_2007, barbero_chembiochem_2013}. Due to the occurrence of
+numerous sulfate and carboxyl groups, GAGs have a high
+charge density, rendering long-range Coulomb interactions to
+be crucial for binding to proteins \cite{mulloy_specificity_2005}. The
+significance of electrostatic interactions underlines the importance
+of taking explicit solvent molecules as binding mediators into account when GAGs
+are used as ligands in molecular docking \cite{samsonov_docking_2011}. Moreover,
+the orientation and conformation of long side chains of charged protein residues
+may be greatly influenced by interaction with a GAG ligand. In consequence, flexible
+treatment of the receptor during GAG-docking is of special relevance.
+In addition, a similar spatial distribution of functional groups in GAGs independent of the
+reducing/non-reducing end orientation \cite{forster_computational_2006} as well as their
+high flexibility \cite{bitomsky_docking_1999} substantially contribute to
+the challenges in protein-GAG docking. Overall, the prediction of protein-GAG complexes
+via molecular docking comprises a good example of some of the current limitations
+in the field of classical molecular docking.
+
+Classical docking approaches are generally optimized for having relatively modest computational
+requirements and therefore enable the quick
+investigation of single complexes as well as the execution of large-scale
+studies involving a large number of different complexes. Taking into account
+ligand and receptor flexibility as well as treating solvent explicitly clearly
+increases the computational complexity of docking approaches. However, in view of the
+ever-increasing computing power, a new generation of docking methods should
+evolve, which though being computationally more demanding, aims to deal
+with the above-mentioned challenges.
+
+Molecular dynamics (MD) techniques are established for rigorous studies of intermolecular interactions\cite{karplus_molecular_2005}.
+Beyond that, MD methods have already been used in docking approaches
+for overcoming the challenges of both ligand and receptor flexibility\cite{chaudhuri_application_2012, antes_dynadock_2010}.
+Furthermore, standard MD methods
+allow for the inclusion of explicit solvent via well-established water models.
+The application of MD techniques is limited by high computational cost, which previously
+has hindered their usage in high-throughput approaches for drug discovery.
+However, nowadays, advanced computational resources are
+available and specialized hardware (such as graphics processing units, GPUs) can
+be used to dramatically increase the performance of MD simulations, making the
+establishment of MD in the field of docking gradually feasible.
+
+
+We propose Dynamic Molecular Docking (DMD), a combination of established MD-based
+methods specifically designed for tackling the above-mentioned challenges in protein-GAG
+docking.
+DMD is a targeted MD-based approach where the ligand, which is initially
+placed at a distance from the receptor so that their interaction is negligible,
+is slowly pulled towards a receptor target region by applying a
+time-dependent distance restraint. During this process, both receptor
+and ligand are treated as entirely flexible in explicit solvent. The time-dependent distance
+restraint applied in DMD is usually used in steered molecular dynamics
+simulations, which are performed for studying the energetics of
+processes that generally happen on timescales too large for being treated by
+classical MD simulations \cite{xiong_free_2006}, such as protein folding, ligand
+unbinding and large-scale conformational alteration. In DMD, once the ligand reaches
+the receptor, the distance restraint is switched off and a long free MD simulation is carried out,
+allowing for the mutual adjustment of receptor residues and GAG as well as for
+extensive GAG-internal degree of freedom sampling.
+The obtained trajectory data are then used for extracting a
+docking solution (the coordinates) and for its characterization
+(binding energy estimate and other quantities).
+Binding pose search as
+well as binding pose scoring are consistent in terms of using the same potential
+as given by the MD force field and the parameterization of the molecular system.
+
+In this validation study, we applied DMD to a set of reference systems and compared its
+performance to a classical docking approach, AutoDock 3 (AD3), which has successfully been applied to protein-GAG systems before {\cite{japan_docking_ad3_clustering, samsonov_docking_2011,
+pichert_characterization_2012}}. The results obtained for our test data set comprised of
+five protein-GAG complexes, one protein-peptide and one protein-small molecule complex show
+that DMD has high predictive significance
+while performing best when complex formation is driven by strong electrostatic
+interaction. Detailed analysis of the electrostatic potential of the
+corresponding binding sites, of the spatial distribution of docking solutions, and
+per-residue binding free energy decomposition support the promising potential of
+the DMD approach when used for docking in highly flexible and electrostatics-driven
+systems.
 \section{General method description}
-\lipsum[1-5]
+\subsection{Dynamic Molecular Docking protocol}
+For each complex in the TDS, DMD was carried out in the following way.
+Starting with randomly oriented ligand molecules placed at a distance from the receptor
+(ligand re-oriented models, LROMs), 100 independent DMD runs were performed.
+The first step of a DMD run is a targeted molecular dynamics (tMD) simulation in which
+the ligand is pulled towards a pre-defined target region on the receptor via a time-dependent decrease of the
+distance $d(t)$ between one central atom in the ligand and one core atom in the
+protein receptor. Among DMD run repetitions, most of the ligand trajectories
+lie within a certain \enquote{entry lane} which is focused on a
+point near the receptor surface, the focus point $\bm{F}$, and therefore
+defining the target region (Figure 1).
+All final tMD states have the central ligand atom positioned on the surface of a sphere defined by
+the protein core atom (the center of the sphere) and the final distance $D$ of the
+tMD pulling process (the radius of the sphere).
+Based on the final state of each
+tMD simulation, the second step of a DMD run relaxes the system via a free MD
+ simulation. Geometrical definitions, system preparation, and details about tMD
+and free MD parameterization as well as subsequent trajectory data analysis
+methods are provided in the following sections.
+
+
+\subsubsection{Preparation of ligand-reoriented models (LROMs)}
+An LROM contains the receptor as well as the ligand placed in a distal, re-oriented position.
+Per TDS complex, ten LROMs have been created,
+differing only in ligand orientation around its central atom. For a given complex, LROM creation requires the
+selection of a \textit{central ligand atom}, definition of a \textit{focus point} $\bm{F}$ near the
+surface of the receptor within the anticipated binding region, definition of a
+\textit{ligand displacement length} $s$ and selection of a \textit{core atom} at point $\bm{C}$ within the
+receptor. The distance between focus point and core atom defines the final
+distance $D$ of the tMD pulling process, i.e.\  $d(T) \equiv D \equiv  \lVert \bm{F}-\bm{C} \rVert$.
+Initially, at time $t_0$, the ligand is placed distal from the receptor with its central atom lying
+on the axis defined by $\bm{F}-\bm{C}$ (Figure 1b). The starting coordinate for the central
+ligand atom is defined as
+
+\begin{equation}
+\bm{L}(t_0) = \bm{F} + s \frac{\bm{F}-\bm{C}}{D}.
+\end{equation}
+
+For each TDS complex, ten LROMs were prepared as follows. First, the structure of the biological unit of
+the protein receptor was
+taken from the corresponding experimental data source. The coordinates of a
+central atom in the ligand as found in the experimentally determined structure
+were used as focus point. The core atom in the receptor was selected fulfilling
+three criteria: \textit{i)} it is a backbone atom within a helix or beta sheet in the
+protein core, \textit{ii)} the line connecting core atom and $\bm{F}$ (defining the orientation of
+the ``entry lane'' is roughly perpendicular to the surface comprising the
+anticipated binding region, and \textit{iii)} the
+surface of the sphere around the core atom with radius $D$ has significant overlap
+with the molecular receptor surface in the receptor target region. Distal
+ligand placement was followed by ten random ligand rotations uniformly
+distributed in 3D space with $\bm{L}(t_0)$ being the rotation center. From each
+rotational ligand state one LROM was built.
+
+
+\subsubsection{Molecular dynamics protocol}
+All molecular dynamics simulations were set up, performed, and analyzed
+using Amber 11 and AmberTools 12 \cite{case_amber_11}. The FF99SB force field was used for
+parameterization of the peptidic parts in the TDS complexes. Hyaluronan, chondroitin
+sulfate and heparin monosaccharide force field parameters were created based on
+GLYCAM 06 version g \cite{kirschner_glycam06:_2008} and sulfate partial
+charges obtained by RESP fitting calculations at the level of 6-31(d)G for
+methylsulfate.
+The trypsin inhibitor was parameterized using the GAFF force field via
+AmberTools' antechamber program. All systems were solvated in a box of TIP3P
+water with a minimum of $8\,\angstrom$ distance between solute and box boundaries. The
+systems were neutralized by adding Na$^{+}$ or Cl$^{-}$ counterions. During MD, lengths of
+bonds including hydrogen atoms were constrained by SHAKE. The time integration
+step was set to $2\,\mathrm{fs}$. Non-bonded interactions were cut off for distances larger
+than $8\,\angstrom$. The Particle Mesh Ewald method was used for treating long-range
+electrostatic interactions.
+
+
+Each simulated system went through minimization, heat up, equilibration, and
+production steps. During the first stage of minimization, only the solvent was
+relaxed. During the second stage, the entire system was minimized without
+restraints. System heat up to $300\,\mathrm{K}$ was performed within $20\,\mathrm{ps}$ in the canonical
+ensemble (NVT) using the Langevin thermostate and periodic boundary conditions.
+Subsequently, $500\,\mathrm{ps}$ of MD in the isothermal-isobaric ensemble (NPT) with
+Langevin thermostate and Berendsen barostat under periodic boundary conditions
+were carried out for system equilibration. The following production stage of
+duration $T$ was performed in the NVT ensemble with the Berendsen thermostat and
+periodic boundary conditions.
+
+For the complexes involving FGF2 and heparin, weak torsional restraints were applied in order to keep the
+pyranose rings of IdoA(2S) in the $^{1}C_4$ conformation. This conformation has been shown to be one
+of the two predominantly populated ones{\cite{almond_jacs_2010}}
+and was observed experimentally in the structure of the FGF2-HP complex in our test data set (PDB ID 1BFB).
+The applied restraints enable to define and control the specific conformation of each IdoA(2S) ring
+throughout the entire DMD study, since its natural ring conformer population is not properly
+reproduced by GLYCAM 06{\cite{gandhi_idoa2s_2010}}.
+
+
+
+
+
+{\sffamily \small Targeted and free molecular dynamics.}
+The LROMs were prepared for MD and time-evolved following the general MD
+protocol as described above. During the tMD production stage, core
+atom and ligand center atom were exposed to an additional time-dependent
+harmonic potential
+\begin{equation}
+U(t) = \frac{1}{2} k \left( d(t)-d(t_0) + vt   \right)^2
+\end{equation}
+with force constant $k=200\,\mathrm{kcal\,mol^{-1}\,A^{-2}}$, pulling velocity
+$ v = s/T$ and
+\begin{equation}
+d(t) = \lVert \bm{L}(t)-\bm{C}(t) \rVert.
+\end{equation}
+This potential enforces the distance between the selected ligand center atom and
+the protein core atom to linearly decrease with time $t$ in the interval from $D+s$ to $D$
+(Figure 1c).
+
+For all tMD simulations, we used a pulling velocity of $s=30\,\angstrom$ per $T=4\,\mathrm{ns}$.
+The tMD pulling process was repeated ten times with different
+random seeds for each of the ten LROMs per complex, yielding 100 independent tMD
+simulations for each TDS complex. Based on the final state of receptor and
+ligand in each tMD trajectory, an MD simulation with
+$T=10\,\mathrm{ns}$ without restraints was performed according to the protocol described
+above, hereafter referred to as free MD.
 \section{Implementation for this project}
 \lipsum[1-5]
 \section{Validation study}
