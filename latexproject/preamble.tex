@@ -19,6 +19,8 @@
 % http://www.howtotex.com/packages/beautiful-fractions-and-units-with-the-unit-package/
 \usepackage{siunitx}
 \usepackage{amsmath}
+% Bold math symbols.
+\usepackage{bm}
 \usepackage{graphicx}
 
 % From my master thesis, will I use those?
@@ -38,6 +40,10 @@
 % Configure footnotes: counter reset every page etc.
 \usepackage[perpage,hang,splitrule]{footmisc}
 \usepackage{color}
+
+% Add bibliography to ToC.
+% http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
+%\usepackage[nottoc]{tocbibind}
 
 
 % Should be included as late as possible.
@@ -75,8 +81,9 @@
     sorting=none,
     indexing=true]{biblatex}
 
-\bibliography{literature}
-{\small\bibliography{literature.bib}}
+\addbibresource{literature.bib}
+%\bibliography{literature}
+%{\small\bibliography{literature.bib}}
 
 
 % Footnote layout config
@@ -153,3 +160,5 @@
 % special hyphenation
 % \hyphenation{na-no-par-ti-cles pe-rio-di-ci-ty T-pe-rio-di-ci-ty Lange-vin}
 % \setlength{\emergencystretch}{1em}
+
+\newcommand{\angstrom}{\textup{\AA}}
