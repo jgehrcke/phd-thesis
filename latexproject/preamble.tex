@@ -5,7 +5,6 @@
 \documentclass[a4paper,12pt,onecolumn,twoside,openright]{memoir}
 
 %\usepackage{lmodern}
-%\usepackage{charter}
 %\usepackage[osf,sc]{mathpazo}
 \usepackage{libertine}
 \usepackage{fontspec}
@@ -31,7 +30,7 @@
 %\usepackage[figuresright]{rotating}
 % e.g. \textmu
 %\usepackage{textcomp}
-%\usepackage[babel]{csquotes}
+\usepackage[babel]{csquotes}
 % captions (for figures etc)
 %\DisemulatePackage{ccaption}
 %\usepackage[margin=5pt,font=small,labelfont=bf]{caption}
@@ -78,6 +77,7 @@
 
 %\renewcommand{\unspace}{\relax}
 \usepackage[
+    backend=biber,
     citestyle=numeric,
     bibstyle=numeric,
     hyperref=true,
@@ -90,28 +90,31 @@
 
 
 % Footnote layout config
-\addtolength{\footskip}{0.5cm}
-\setlength{\footnotemargin}{0.2cm}
-\setlength{\footnotesep}{0.4cm}
-\makeatletter
-\let\splitfootnoterule=\pagefootnoterule
-\makeatother
+%\addtolength{\footskip}{0.5cm}
+%\setlength{\footnotemargin}{0.2cm}
+%\setlength{\footnotesep}{0.4cm}
+%\makeatletter
+%\let\splitfootnoterule=\pagefootnoterule
+%\makeatother
 
 
-% Memoir page layout options
+% *************** Memoir page layout options ***************
 \settypeblocksize{*}{\lxvchars}{1.618}
 % First field: space between top page border and text.
 \setulmargins{5cm}{*}{*}
 
+% First field is "inner margin", defining the horizontal position of text block.
+\setlrmargins{5cm}{*}{*}
+%\setlrmargins{*}{*}{1.618}
 
-% "inner margin" (gibt die horizontale position des textblocks auf der seite vor)
-%\setlrmargins{5cm}{*}{*}
-\setlrmargins{*}{*}{1.618}
+%\setheadfoot{headheight}{footskip}
+% footskip: text bottom to footer bottom
+% headheight: height of header block
+\setheadfoot{2\onelineskip}{2\onelineskip}
 
-\setheadfoot{\onelineskip}{3\onelineskip}
 % Second field: space between text and header.
 %\setheaderspaces{*}{2.5cm}{*}
-\setheaderspaces{*}{2\onelineskip}{*}
+\setheaderspaces{*}{4\onelineskip}{*}
 \checkandfixthelayout
 
 
@@ -130,7 +133,6 @@
 \setsecnumdepth{subsection}
 \maxsecnumdepth{subsection}
 \maxtocdepth{subsection}
-
 
 
 % % ********** Commands for epigraphs **********
