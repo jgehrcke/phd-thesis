@@ -7,11 +7,11 @@
 
 \frontmatter
 \include{abstract}
-
-\pagestyle{Ruled}
 \tableofcontents
 
 \mainmatter
+\pagestyle{Ruled}
+\makeoddhead{Ruled}{}{}{\small\sffamily\bfseries\rightmark}
 \include{01_introduction}
 \include{02_structure_biology_il10}
 \include{03_insilico_protein_gag_docking}
@@ -23,9 +23,24 @@
 \include{09_bringing_all_together}
 \include{10_conclusions}
 \include{11_outlook}
+
 \backmatter
-
+\SingleSpacing
 \printbibliography
+\OnehalfSpacing
 
+\appendixpage*
+\addappheadtotoc
 \include{appendix}
+
+%\normalfont
+%\clearpage
+%\input{symbols.tex}
+%\clearpage
+%\listoffigures
+%\clearpage
+%\listoftables
+%\footnotesize
+%\printindex
+
 \end{document}
