@@ -72,14 +72,24 @@
 }
 
 %\renewcommand{\unspace}{\relax}
+% For styles, see
+% ftp://ftp.rrzn.uni-hannover.de/pub/mirror/tex-archive/macros/latex/contrib/biblatex-contrib/
 \usepackage[
     backend=biber,
     citestyle=numeric,
-    bibstyle=numeric,
+    %bibstyle=numeric,
+    bibstyle=ieee,
+    %citestyle=authoryear,
+    %bibstyle=authoryear,
     hyperref=true,
     backref=true,
     sorting=none,
-    indexing=true]{biblatex}
+    indexing=true,
+    url=false,
+    isbn=true,
+    eprint=false,
+    doi=true,
+    ]{biblatex}
 
 \addbibresource{literature.bib}
 %\bibliography{literature}
@@ -161,4 +171,8 @@
 % \hyphenation{na-no-par-ti-cles pe-rio-di-ci-ty T-pe-rio-di-ci-ty Lange-vin}
 % \setlength{\emergencystretch}{1em}
 
+% Define Angstrom command.
 \newcommand{\angstrom}{\textup{\AA}}
+
+% Set smaller font size in bibliography.
+\renewcommand*{\bibfont}{\small}
