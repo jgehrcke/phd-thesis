@@ -442,6 +442,22 @@ receptor, and -- with that -- to deviate from the shortest path towards the
 receptor (an extreme scenario with translation along the initially defined
 displacement axis only).
 
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{gfx/dmd/figure_2_freedom_over_time_100samples_avg_stddev_randomone_pub_003.pdf}
+\caption[]{
+Translational and rotational freedom of a heparin tetramer
+while approaching FGF2 during the tMD pulling process with $s=30\,\angstrom$ and
+$T=4\,\mathrm{ns}$. For each point in time during tMD, the structural difference between the
+current and initial ligand configuration was calculated via classical $RMSd$ and
+averaged over 100 independent pulling processes. The variation in ligand
+movement among different ligand trajectories is visualized in terms of the standard
+deviation (grey background).
+}
+\label{fig:dmd:sampling}
+\end{figure}
+
+
 For the FGF2-HP complex, we compared tMD runs with different pulling velocities
 with the goal to find a moderate velocity which still allows significant
 translational and rotational ligand movement. In such a case, entirely different
@@ -469,20 +485,21 @@ analyzed the deviation of the ligand from the shortest path for an ensemble of
 100 independent tMD runs. To this end, the structural difference between current
 and initial ligand configuration was calculated as described above and then
 averaged over all 100 independent pulling processes for each point in time
-during tMD, leading to $\langle RMSd_{\mathrm{rot,trans,int}}\rangle(t)$ (Figure
-2). The average extent of ligand translation and rotation in space turned out to
-have its maximum at an $RMSd$ value of about $20\,\angstrom$. The path variation
-among ligand trajectories (the standard deviation of the averaged data) is about
-$\pm10\,\angstrom$ $RMSd$. The data suggest that with $s=30\,\angstrom$ and
-$T=4\,\mathrm{ns}$ enough translational and rotational freedom are provided to
-the ligand during tMD in order to be applicable in a local docking method. This
-also verifies that the extend of sampling of all ligand DOFs is determined and
-can be adjusted by the number of tMD repetitions $N$.
+during tMD, leading to $\langle RMSd_{\mathrm{rot,trans,int}}\rangle(t)$
+(\cref{fig:dmd:sampling}). The average extent of ligand translation and rotation
+in space turned out to have its maximum at an $RMSd$ value of about
+$20\,\angstrom$. The path variation among ligand trajectories (the standard
+deviation of the averaged data) is about $\pm10\,\angstrom$ $RMSd$. The data
+suggest that with $s=30\,\angstrom$ and $T=4\,\mathrm{ns}$ enough translational
+and rotational freedom are provided to the ligand during tMD in order to be
+applicable in a local docking method. This also verifies that the extend of
+sampling of all ligand DOFs is determined and can be adjusted by the number of
+tMD repetitions $N$.
 
 $\langle RMSd_{\mathrm{rot,trans,int}}\rangle$ increases slower after about
-$t=2\,\mathrm{ns}$ (Figure 2), which is probably caused by the electrostatic
-potential of the receptor prevailing against thermally driven ligand movement.
-Having this transition included in the $\langle
+$t=2\,\mathrm{ns}$ (\cref{fig:dmd:sampling}), which is probably caused by the
+electrostatic potential of the receptor prevailing against thermally driven
+ligand movement. Having this transition included in the $\langle
 RMSd_{\mathrm{rot,trans,int}}\rangle(t)$ curve is a good indication for a
 properly (long enough) selected initial displacement length $s$. As a general
 rule, $s$ should be chosen in a way that no atoms from the initially placed
@@ -543,28 +560,10 @@ point of the method is not centered on but only in the vicinity of a real
 binding site, the latter most likely stands out during data analysis.
 
 
-\subsubsection{Electrostatic potential analysis in protein-GAG systems}
+\subsubsection{Binding site prediction via electrostatic potential analysis}
 
-The electrostatic potential often dominates protein-GAG interaction
-\cite{gandhi_structure_2008}. In this section, we discuss the electrostatic
-properties of the receptors in the TDS with the goal to determine how these
-properties could assist defining a receptor target region for DMD and also to be
-able to relate docking performance to electrostatic characteristics of the
-receptor.
-
-
-Poisson-Boltzmann-based numeric calculations of the electrostatic potential of
-molecules are most error-prone near the dielectric boundary, i.e.\ on the
-molecular surface. We therefore did not simply map the potential on the
-molecular surface but analyzed the topology of the potential with an isosurface
-representation while varying the isosurface value. This allows for an
-understanding  of the distribution of the potential in space and how strongly it
-would affect a ligand. Figure 3 shows an isosurface of the Coulomb potential of
-SDF-1. Supplementary Figure 1 shows analogous isosurface representations of the
-electrostatic potential for the other TDS complexes. For this type of
-visualization, the isovalue selection was done individually for each receptor in
-the TDS such that only a small part of the isosurface is protruding into space
-further than the molecular surface of the receptor.
+\hl{Refer back to generic estatic binding site prediction section, explain usage for
+DMD. The following paragraphs are duplicates.}
 
 Regarding the SDF-1-HP complex, our electrostatic potential evaluation procedure
 unambiguously identifies the GAG binding site as determined experimentally. With
