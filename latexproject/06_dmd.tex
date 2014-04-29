@@ -596,34 +596,66 @@ region.
 \subsubsection{DMD performance}
 
 {\sffamily Spatial distribution of docking solutions.}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{gfx/dmd/figure_4_clustering_dmd_vs_ad3_plots_pub_004.pdf}
+\caption[]{
+Mean structural distance $\langle \delta \rangle$ between all members of the
+most populated cluster and the experimentally determined ligand for all
+investigated complexes with both docking methods. The error bars show the
+standard deviation of the mean.
+}
+\label{fig:dmd:clus_dmd_vs_ad3}
+\end{figure}
+
+
 We compared the performance of DMD with the performance of the well-established
 AD3 docking approach, which was used for other molecular systems including GAGs.
 We applied DMD and AD3 to all TDS complexes and analyzed the spatial
 distribution of docking results via clustering (clustering parameters listed in
 Supplementary Table 3). For each complex, we compared the mean structural
 distance $\langle \delta \rangle$ between the experimentally determined ligand
-position and all members of the most populated cluster (Figure 4). In terms of
-the capability to produce solutions structurally close to the experimentally
-determined ones, both docking methods perform comparably well. However,
-interesting differences are observable. AD3 generally yields smaller spatial
-scattering of solutions as given by the standard deviation of data points in
-Figure 4. This can be attributed to the static treatment of the receptor by AD3.
-Notably, we can generally conclude that DMD performed better than AD3 for the
-complexes with strongest electrostatic attraction, namely SDF-1-HP and FGF2-HP.
-For the FGF2-HP complex, the most populated cluster from DMD reproduces the
-experimentally determined HP binding pose, while the most populated cluster from
-AD3 docking only partially overlaps with this pose (Figure 5A). In fact, DMD was
-able to identify the \enquote{higher affinity} binding site for heparin (as
-denoted in the original publication of the FGF2-HP crystal structure), while AD3
-identified the \enquote{lower affinity} site, which becomes occupied upon
-heparin hexasaccharide binding \cite{faham_heparin_1996}. In addition, DMD was
-able to properly predict the positioning of the two sulfate groups making
-specific high-affinity contact to FGF2 (Figure 5B). These two sulfate groups
+position and all members of the most populated cluster
+(\cref{fig:dmd:clus_dmd_vs_ad3}). In terms of the capability to produce
+solutions structurally close to the experimentally determined ones, both docking
+methods perform comparably well. However, interesting differences are
+observable. AD3 generally yields smaller spatial scattering of solutions as
+given by the standard deviation of data points in
+\cref{fig:dmd:clus_dmd_vs_ad3}. This can be attributed to the static treatment
+of the receptor by AD3. Notably, we can generally conclude that DMD performed
+better than AD3 for the complexes with strongest electrostatic attraction,
+namely SDF-1-HP and FGF2-HP. For the FGF2-HP complex, the most populated cluster
+from DMD reproduces the experimentally determined HP binding pose, while the
+most populated cluster from AD3 docking only partially overlaps with this pose
+(\cref{fig:dmd:fgf2zoom}a). In fact, DMD was able to identify the
+\enquote{higher affinity} binding site for heparin (as denoted in the original
+publication of the FGF2-HP crystal structure), while AD3 identified the
+\enquote{lower affinity} site, which becomes occupied upon heparin
+hexasaccharide binding \cite{faham_heparin_1996}. In addition, DMD was able to
+properly predict the positioning of the two sulfate groups making specific high-
+affinity contact to FGF2 (\cref{fig:dmd:fgf2zoom}b). These two sulfate groups
 form seven of the nine polar contacts between FGF2 and HP and therefore are
 important anchoring groups for the molecular recognition
 \cite{faham_heparin_1996}. The fact that DMD was able to reproduce this key
 feature as opposed to AD3 most probably reflects the crucial role of receptor
 flexibility considered in the docking simulation.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{gfx/dmd/fgf2_topclusters_dmd_vs_ad3_receptorribbon_normal_and_zoom_jcc_004.png}
+\caption[]{
+Docking results from DMD and AD3 for FGF2 (grey cartoon representation) and HP.
+\textbf{a}: ligand from crystal structure in green sticks. Most populated
+cluster of DMD solutions in magenta. Most populated cluster of AD3 solutions in
+cyan. \textbf{b}: zoom on two sulfate groups making specific high-affinity
+contact to FGF2 \cite{faham_heparin_1996} (as marked in \textbf{a} via dashed
+line). Ligand from crystal structure with C atoms in green (thick sticks). Most
+populated DMD cluster with C atoms in magenta (thin sticks).
+}
+\label{fig:dmd:fgf2zoom}
+\end{figure}
+
 
 In order to assess the ability of DMD to predict consistent binding poses for
 GAGs differing in length, we carried out additional DMD studies for SDF-1 as
