@@ -632,18 +632,60 @@ standard deviation of the mean.
 \end{figure}
 
 
+
+\begin{table}
+\tiny
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}lcccc@{}}
+\multicolumn{5}{c}{\textbf{DMD}} \\
+\midrule
+Complex & $\epsilon$ / \angstrom & members & $\delta$ / \angstrom (mean) &  $\delta$ / \angstrom (std. dev.) \\
+\midrule
+CathKmut + CS4 & 3.0 & 6   & 5.1 & 0.4 \\
+CathK + CS4    & 3.0 & 4   & 5.8 & 1.1 \\
+SDF1 + HE      & 2.2 & 8   & 3.6 & 0.5 \\
+CD44 + HA      & 3.2 & 5   & 8.7 & 0.9 \\
+SH3 + p41      & 2.6 & 8   & 2.3 & 0.4 \\
+FGF + HE       & 2.5 & 6   & 3.2 & 0.4 \\
+Trypsin + Ihb. & 1.0 & 9   & 2.3 & 0.2 \\
+\midrule
+& & & & \\
+\multicolumn{5}{c}{\textbf{AD3}} \\
+\midrule
+Complex & $\epsilon$ / \angstrom & members & $\delta$ / \angstrom (mean) &  $\delta$ / \angstrom (std. dev.) \\
+\midrule
+CathKmut + CS4  & 2.5 & 6   & 4.3 & 0.2 \\
+CathK + CS4     & 2.0 & 9   & 5.0 & 0.4 \\
+SDF1 + HE       & 1.2 & 19  & 4.4 & 0.2 \\
+CD44 + HA       & 2.5 & 8   & 7.0 & 0.6 \\
+SH3 + p41       & 1.8 & 10  & 2.8 & 0.2 \\
+FGF + HE        & 1.6 & 10  & 5.1 & 0.3 \\
+Trypsin + Ihb.  & 0.1 & 100 & 4.1 & 0.0 \\
+\midrule
+\end{tabular}
+\caption{
+Clustering parameters of the most populated cluster for docking solution
+ensembles obtained via DMD and AD3. $\epsilon$ is the neighborhood search radius
+as used for DBSCAN clustering, $\delta$ measures the structural difference
+between two molecules (see Methods).
+}
+\label{tab:dmd:clustering_parameters}
+\end{table}
+
+
 We compared the performance of DMD with the performance of the well-established
 AD3 docking approach, which was used for other molecular systems including GAGs.
 We applied DMD and AD3 to all TDS complexes and analyzed the spatial
-distribution of docking results via clustering (\hl{clustering parameters listed in
-Supplementary Table 3, just remove?}). For each complex, we compared the mean structural
-distance $\langle \delta \rangle$ between the experimentally determined ligand
-position and all members of the most populated cluster
-(\cref{fig:dmd:clus_dmd_vs_ad3}). In terms of the capability to produce
-solutions structurally close to the experimentally determined ones, both docking
-methods perform comparably well. However, interesting differences are
-observable. AD3 generally yields smaller spatial scattering of solutions as
-given by the standard deviation of data points in
+distribution of docking results via clustering
+(\cref{tab:dmd:clustering_parameters} \hl{remove this table?}). For each
+complex, we compared the mean structural distance $\langle \delta \rangle$
+between the experimentally determined ligand position and all members of the
+most populated cluster (\cref{fig:dmd:clus_dmd_vs_ad3}). In terms of the
+capability to produce solutions structurally close to the experimentally
+determined ones, both docking methods perform comparably well. However,
+interesting differences are observable. AD3 generally yields smaller spatial
+scattering of solutions as given by the standard deviation of data points in
 \cref{fig:dmd:clus_dmd_vs_ad3}. This can be attributed to the static treatment
 of the receptor by AD3. Notably, we can generally conclude that DMD performed
 better than AD3 for the complexes with strongest electrostatic attraction,
@@ -755,11 +797,43 @@ changed the receptor side chains in the binding region by a heavy atom $RMSd$ of
 $(1.0\pm0.4)\,\angstrom$ (mean value and standard deviation derived from all TDS
 complexes) when compared to the experimentally determined receptor structure.
 The solutions from DMD display a mean binding region alteration of
-$(2.3\pm0.6)\,\angstrom$ (corresponding raw data is shown in Supplementary Table
-4). The larger the binding site alteration, the more error-prone the comparison
-between docked solution and experimentally determined ligand becomes. Under the
-assumption that this error systematically increases the structural difference,
-DMD might have performed better compared to AD3 than shown in Figure 4.
+$(2.3\pm0.6)\,\angstrom$ (corresponding raw data is shown in
+\cref{tab:dmd:binding_site_rmsd}). The larger the binding site
+alteration, the more error-prone the comparison between docked solution and
+experimentally determined ligand becomes. Under the assumption that this error
+systematically increases the structural difference, DMD might have performed
+better compared to AD3 than shown in Figure 4.
+
+
+% http://www.inf.ethz.ch/personal/markusp/teaching/guides/guide-tables.pdf
+\begin{table}
+\tiny
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+& \multicolumn{2}{c}{\textbf{DMD (after free MD)}} & \multicolumn{2}{c}{\textbf{AD3}} \\
+Complex & Entire receptor & Binding site &  Entire receptor & Binding site \\
+\midrule
+SDF-1 + HP & 3.6 $\pm$ 0.5 & 2.3 $\pm$ 0.5 &  0.4 & 0.2 \\
+CathK + CS4 & 1.8 $\pm$ 0.2 & 2.0 $\pm$ 0.3 & 1.1 & 1.2 \\
+CathKmut + CS4 & 1.8 $\pm$ 0.2 & 1.9 $\pm$ 0.4 & 1.1 & 1.4 \\
+FGF2 + HP & 3.4 $\pm$ 0.1 & 3.6 $\pm$ 0.1 & 1.3 & 1.1 \\
+SH3 + p41 & 2.2 $\pm$ 0.2&  2.4 $\pm$ 0.4 &  1.3 & 1.4 \\
+Trypsin + Ihb. & 1.6 $\pm$ 0.1 & 1.5 $\pm$ 0.4 & 0.9 & 0.7 \\
+CD44 + HA & 2.2 $\pm$ 0.3 & 2.5 $\pm$ 0.5 & 0.9 & 0.7 \\
+\bottomrule
+\end{tabular}
+\caption{
+Heavy atom RMSd between experimentally determined structure of the receptors and
+the receptor structures corresponding to the docking solutions. Differences were
+obtained for \textit{i} the entire receptor and \textit{ii)} the binding site
+only as determined by the MOE \enquote{pocket} feature. In case of DMD, mean
+distances $\pm$ standard deviation were obtained from 100 independent free MD
+runs per complex. Numbers are given in ångströms.
+}
+\label{tab:dmd:binding_site_rmsd}
+\end{table}
 
 
 {\sffamily Energetic evaluation of docking results}
@@ -897,16 +971,40 @@ focus point, core atom, and target distance $D$, one needs to ensure that after
 the pulling process, the ligand is able to establish short-range interactions
 within the receptor binding region but is not forced into clashes with the
 receptor. In our study, we selected the focus point based on the experimentally
-determined ligand position (Supplementary Table 1). In practice, when the
-structure of the bound ligand is unknown, the focus point has to be defined
-based on the residues comprising the putative binding region. Via analysis of
-the atomic coordinates of ten protein-GAG complexes (PDB IDs 1BFB, 1G5N, 1GMO,
-1RID, 1T8U, 2BRS, 2HYU, 2JQR, 3C9E, 1XMN, including GAGs comprised of two to
-seven monosaccharide units), we found that the distance as well as the direction
-from the center of mass of the receptor residues comprising the putative binding
-site to the ligand center is consistent within these complexes (Supplementary
-Table 2). This relationship can be used to derive a focus point from the
-residues constituting the receptor binding region.
+determined ligand position (\cref{tab:dmd:tds_target_distances}). \hl{In practice,
+when the structure of the bound ligand is unknown, the focus point has to be
+defined based on the residues comprising the putative binding region. Via
+analysis of the atomic coordinates of ten protein-GAG complexes (PDB IDs 1BFB,
+1G5N, 1GMO, 1RID, 1T8U, 2BRS, 2HYU, 2JQR, 3C9E, 1XMN, including GAGs comprised
+of two to seven monosaccharide units), we found that the distance as well as the
+direction from the center of mass of the receptor residues comprising the
+putative binding site to the ligand center is consistent within these complexes
+(Supplementary Table 2). This relationship can be used to derive a focus point
+from the residues constituting the receptor binding region.\textbf{REMOVE?}}
+
+\begin{table}
+\scriptsize
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}lr@{}}
+\toprule
+Complex & $D$ / \angstrom \\
+\midrule
+SDF-1 + HP & 10.6 \\
+CathK + CS4 & 19.2 \\
+CathKmut + CS4 & 20.9 \\
+FGF2 + HP & 25.0 \\
+SH3 + p41 & 7.7 \\
+Trypsin + Ihb. & 12.1 \\
+CD44 + HA & 15.3 \\
+\bottomrule
+\end{tabular}
+\caption{
+Target distance $D$ as applied during the tMD simulations for any given TDS complex.
+}
+\label{tab:dmd:tds_target_distances}
+\end{table}
+
 
 One of the main concepts of DMD is that pulling process and subsequent free MD
 are repeated many times in independent simulations. This allows for the creation
