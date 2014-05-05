@@ -786,6 +786,19 @@ reproduce the reference ranking quite well (SDF-1-HP, FGF2-HP, Trypsin-Ihb). For
 the CathK-CS4 and CathKmut-CS4 complexes the anchoring residue ranking was not
 reproduced.
 
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{gfx/dmd/figure_6_receptor_top7_residues_of_top_40percent_dmd_runs.pdf}
+\caption[]{
+FGF2 amino acid residues identified by DMD as having the greatest impact on
+FGF2-HP binding. Results are shown for both heparin tetra- and hexasaccharide
+ligands as retrieved from two independent DMD studies. For each residue, an
+average energy ($\pm$ standard error of the mean) for the interaction with the
+ligand is shown as obtained from 40 independent free MD simulations.
+}
+\label{fig:dmd:sred_fgf2}
+\end{figure}
+
 Based on the obtained results, we can conclude that for systems dominated by
 electrostatic attraction such as protein-GAG systems, DMD is capable of
 correctly identifying those amino acid residues responsible for forming key
@@ -795,15 +808,15 @@ identify the same chemical groups in the GAG molecule being key for binding.
 Moreover, using SRED data, we were able to demonstrate that the identified key
 amino acid residues as well as their energy ranking are identical when comparing
 heparin tetra- and hexasaccharide docking performed in independent DMD studies
-(see Figure 6). This observation supports the idea that, regardless of their
-length, GAG fragments preserve their key interactions with certain protein amino
-acid residues. The set of FGF2 key amino acid residues as identified by SRED
-contains all residues that were crystallographically characterized as most
-important for binding (R121, K126, N28, Q135){\cite{faham_heparin_1996}}. Based
-on our data we can additionally state that also residue K120 is of major
-importance, since it acts as hydrogen bond donor in a similar way as K126 does.
-The latter observation is in agreement with previous calorimetry studies
-pointing out the importance of K120 in the FGF2-HP
+(see \cref{fig:dmd:sred_fgf2}). This observation supports the idea that,
+regardless of their length, GAG fragments preserve their key interactions with
+certain protein amino acid residues. The set of FGF2 key amino acid residues as
+identified by SRED contains all residues that were crystallographically
+characterized as most important for binding (R121, K126, N28,
+Q135){\cite{faham_heparin_1996}}. Based on our data we can additionally state
+that also residue K120 is of major importance, since it acts as hydrogen bond
+donor in a similar way as K126 does. The latter observation is in agreement with
+previous calorimetry studies pointing out the importance of K120 in the FGF2-HP
 system{\cite{thompson_1994_fgf2_heparin}}. These findings motivate the
 application of DMD to systems in which a detailed and appropriate description of
 GAG recognition is required.
