@@ -182,7 +182,9 @@
 % \setlength{\emergencystretch}{1em}
 
 % Define Angstrom command.
-\newcommand{\angstrom}{\textup{\AA}\xspace}
+%\newcommand{\angstrom}{\textup{\AA}\xspace}
+% http://tex.stackexchange.com/a/24282/11816
+\sisetup{text-angstrom={Å},math-angstrom={\text{Å}}}
 
 % Set smaller font size in bibliography.
 \renewcommand*{\bibfont}{\small}
