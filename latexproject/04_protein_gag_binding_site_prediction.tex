@@ -20,20 +20,23 @@ molecular surface but analyzed the topology of the potential with an isosurface
 representation while varying the isosurface value. This allows for an
 understanding  of the distribution of the potential in space and how strongly it
 would affect a ligand. \cref{fig:bspred:sdf1_estatic} shows an isosurface of the
-Coulomb potential of SDF-1. \hl{Supplementary Figure 1} shows analogous
+Coulomb potential of SDF-1. \cref{fig:bspred:various_estatic} shows analogous
 isosurface representations of the electrostatic potential for the other TDS
 complexes. For this type of visualization, the isovalue selection was done
 individually for each receptor in the TDS such that only a small part of the
 isosurface is protruding into space further than the molecular surface of the
 receptor.
 
+
+
 \begin{figure}
 \centering
-\includegraphics[width=0.9\textwidth]{gfx/bspred/figure_3_sdf1_isopot_8_5_view1_rotated_pub_001.pdf}
+\includegraphics[width=0.9\textwidth]{gfx/bspred/sdf1_isopot_8_5_view1_rotated_jcc_pub_001.jpg}
 \caption[]{
-Isosurface representation of SDF-1's electrostatic potential with the isovalue $\Phi = 8.5\,\mathrm{kcal\,mol^{-1}\,e^{-1}}$ (blue). The molecular surface of the SDF-1 dimer is
-shown in grey, the heparin ligand as determined experimentally (PDB ID 2NWG) is shown as sticks
-with C atoms in orange.
+Isosurface representation of SDF-1's electrostatic potential with the isovalue
+$\Phi = 8.5\,\mathrm{kcal\,mol^{-1}\,e^{-1}}$ (blue). The molecular surface of
+the SDF-1 dimer is shown in grey, the heparin ligand as determined
+experimentally (PDB ID 2NWG) is shown as sticks with C atoms in orange.
 }
 \label{fig:bspred:sdf1_estatic}
 \end{figure}
@@ -42,7 +45,7 @@ Regarding the SDF-1-HP complex, our electrostatic potential evaluation procedure
 unambiguously identifies the GAG binding site as determined experimentally. With
 $8.5\,\mathrm{kcal\,mol^{-1}\,e^{-1}}$, the isovalue chosen is the largest among
 the TDS complexes, indicating that SDF-1 has the strongest electrostatic
-attraction to its ligand. In case of FGF2-HP (\hl{Supplementary Figure 1}), the
+attraction to its ligand. In case of FGF2-HP (\cref{fig:bspred:various_estatic}), the
 binding site is also unambiguously defined by the electrostatic potential. For
 CD44-HA, the net electrostatic interaction between both molecules is slightly
 repulsive. There is no obvious relation between the electrostatic properties of
@@ -59,6 +62,23 @@ negatively charged ligands. Furthermore, this analysis shows that knowledge
 about the electrostatic potential distribution in space can be used to choose a
 reasonable ligand \enquote{entry lane} orientation for the tMD pulling process.
 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{gfx/bspred/suppl_figure_estatic_distributions_004_1200.png}
+\caption[]{
+Visualization of the electrostatic potential of the receptors from the TDS
+(molecular surfaces in gray) with their ligands as experimentally determined
+(shown as sticks with C atoms in orange). Blue/red: Isosurface representation of
+the receptor's electrostatic potential with isovalue Ф (attractive/repulsive for
+negatively charged molecules, respectively).
+}
+\label{fig:bspred:various_estatic}
+\end{figure}
+
+
+\hl{Create more convincing Figure than bspred:variousestatic.
+Include more interesting complexes, remove uninteresting ones.}
 
 The SH3-p41 complex is dominated by non-polar interactions, rendering the
 Coulomb potential analysis inconclusive. Recognition of the Trypsin inhibitor in
