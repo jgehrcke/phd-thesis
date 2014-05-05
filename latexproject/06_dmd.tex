@@ -458,6 +458,7 @@ deviation (grey background).
 \end{figure}
 
 
+
 For the FGF2-HP complex, we compared tMD runs with different pulling velocities
 with the goal to find a moderate velocity which still allows significant
 translational and rotational ligand movement. In such a case, entirely different
@@ -525,18 +526,38 @@ glycosidic linkage torsional potential{\cite{kirschner_glycam06:_2008}}, we
 extracted the distribution of equivalent torsion angles from an independently
 performed 760 ns MD simulation of the same heparin molecule free in solution for
 reference. We compared both distributions and observed high similarity between
-them (Supplementary Figure 3). In particular, the distribution as observed for
-the GAG-only simulation is entirely included in the distribution as observed
-from the DMD MD simulations where the GAG is in contact with its protein
-receptor. In the latter case, some additional conformers seem to be accessible
-to the ligand when compared to the GAG-only simulation, which is to be expected
-due to its interaction with the receptor. For further characterization of the
-sampling, we extracted glycosidic linkage angle values from 12 PDB entries
-containing free heparin as well as heparin-protein complexes (1AXM, 1BFB, 1BFC,
-1E0O, 1FQ9, 1G5N, 1GMN, 1HPN, 1QQP, 2AXM, 2HYU, 2HYV) and observed that this
-range of experimentally determined angles is included within the glycosidic
-torsion angle distribution as sampled by our MD simulations (also shown in
-Supplementary Figure 3).
+them (\cref{fig:dmd:glycolinkage_sampling}). In particular, the distribution as
+observed for the GAG-only simulation is entirely included in the distribution as
+observed from the DMD MD simulations where the GAG is in contact with its
+protein receptor. In the latter case, some additional conformers seem to be
+accessible to the ligand when compared to the GAG-only simulation, which is to
+be expected due to its interaction with the receptor. For further
+characterization of the sampling, we extracted glycosidic linkage angle values
+from 12 PDB entries containing free heparin as well as heparin-protein complexes
+(1AXM, 1BFB, 1BFC, 1E0O, 1FQ9, 1G5N, 1GMN, 1HPN, 1QQP, 2AXM, 2HYU, 2HYV) and
+observed that this range of experimentally determined angles is included within
+the glycosidic torsion angle distribution as sampled by our MD simulations (also
+shown in \cref{fig:dmd:glycolinkage_sampling}).
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{gfx/dmd/suppl/suppl_glyco_linkage_torsion_maps_03.png}
+\caption[]{
+Conformational sampling of the glycosidic linkage dihedrals of a free (unbound)
+heparin hexasaccharide extracted from 760 ns MD (B, D) compared to the sampling
+in all free MD simulations in the DMD study of FGF2-HP (A, C). The torsion
+angles are defined as follows: Φ is composed of the atomic chain H1-C1-O4-C4, Ψ
+is composed of C1-O4-C4-H4, both in direction from the non-reducing end to the
+reducing end of the GAG. All frequency distributions are shown in logarithmic
+grey scale. The blue data points in panels B and D additionally show the
+distribution of glycosidic linkage dihedral values of heparin as extracted from
+the PDB entries 1AXM, 1BFB, 1BFC, 1E0O, 1FQ9, 1G5N, 1GMN, 1HPN, 1QQP, 2AXM,
+2HYU, 2HYV (containing unbound as well as bound heparin molecules of different
+lengths, the three outliers correspond to terminal sugar monomers).
+}
+\label{fig:dmd:glycolinkage_sampling}
+\end{figure}
 
 
 Most important, we have observed that due to the long free MD stage and a large
@@ -569,22 +590,23 @@ Regarding the SDF-1-HP complex, our electrostatic potential evaluation procedure
 unambiguously identifies the GAG binding site as determined experimentally. With
 $8.5\,\mathrm{kcal\,mol^{-1}\,e^{-1}}$, the isovalue chosen is the largest among
 the TDS complexes, indicating that SDF-1 has the strongest electrostatic
-attraction to its ligand. In case of FGF2-HP (Supplementary Figure 1), the
-binding site is also unambiguously defined by the electrostatic potential. For
-CD44-HA, the net electrostatic interaction between both molecules is slightly
-repulsive. There is no obvious relation between the electrostatic properties of
-the receptor and the binding site location. CathK and CathKmut exhibit
-electrostatic attraction for negatively charged molecules in the experimentally
-observed ligand binding site as well as in an adjacent region. We observe that
-electrostatic potential analysis provides a clear idea whether GAG-binding to a
-given receptor is mainly driven by Coulomb interaction. If a protein is known to
-bind GAGs, and the electrostatic potential topology is as unambiguous as in case
-of SDF-1 or FGF2, a GAG binding site prediction based on the presented procedure
-is reliable. Visualization of the electrostatic potential can also be helpful to
-\textit{a priori} exclude regions of the receptor surface when repulsive to
-negatively charged ligands. Furthermore, this analysis shows that knowledge
-about the electrostatic potential distribution in space can be used to choose a
-reasonable ligand \enquote{entry lane} orientation for the tMD pulling process.
+attraction to its ligand. In case of FGF2-HP
+(\cref{fig:bspred:various_estatic}), the binding site is also unambiguously
+defined by the electrostatic potential. For CD44-HA, the net electrostatic
+interaction between both molecules is slightly repulsive. There is no obvious
+relation between the electrostatic properties of the receptor and the binding
+site location. CathK and CathKmut exhibit electrostatic attraction for
+negatively charged molecules in the experimentally observed ligand binding site
+as well as in an adjacent region. We observe that electrostatic potential
+analysis provides a clear idea whether GAG-binding to a given receptor is mainly
+driven by Coulomb interaction. If a protein is known to bind GAGs, and the
+electrostatic potential topology is as unambiguous as in case of SDF-1 or FGF2,
+a GAG binding site prediction based on the presented procedure is reliable.
+Visualization of the electrostatic potential can also be helpful to \textit{a
+priori} exclude regions of the receptor surface when repulsive to negatively
+charged ligands. Furthermore, this analysis shows that knowledge about the
+electrostatic potential distribution in space can be used to choose a reasonable
+ligand \enquote{entry lane} orientation for the tMD pulling process.
 
 
 The SH3-p41 complex is dominated by non-polar interactions, rendering the
@@ -613,8 +635,8 @@ standard deviation of the mean.
 We compared the performance of DMD with the performance of the well-established
 AD3 docking approach, which was used for other molecular systems including GAGs.
 We applied DMD and AD3 to all TDS complexes and analyzed the spatial
-distribution of docking results via clustering (clustering parameters listed in
-Supplementary Table 3). For each complex, we compared the mean structural
+distribution of docking results via clustering (\hl{clustering parameters listed in
+Supplementary Table 3, just remove?}). For each complex, we compared the mean structural
 distance $\langle \delta \rangle$ between the experimentally determined ligand
 position and all members of the most populated cluster
 (\cref{fig:dmd:clus_dmd_vs_ad3}). In terms of the capability to produce
@@ -671,6 +693,8 @@ all obtained poses overlap regardless of GAG length (Supplementary Figures 4 and
 5). A direct visual comparison between the crystal structure of FGF2 with a
 heparin hexasaccharide{\cite{faham_heparin_1996}} and the corresponding DMD
 result can be seen in Supplementary Figure 5.
+
+
 
 As has been conceptually described for the FGF2-HP complex, also regarding the
 SH3-p41 and Trypsin-inhibitor complexes, DMD provided solutions closer to the
