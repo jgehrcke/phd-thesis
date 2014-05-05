@@ -30,7 +30,7 @@
 \usepackage[strict]{changepage}
 
 % From my master thesis, will I use those?
-%\usepackage{booktabs}
+\usepackage{booktabs}
 %\usepackage{stmaryrd}
 %\usepackage{url}
 % \usepackage{geometry}  % Should be loaded after hyperref!
@@ -46,6 +46,10 @@
 % Configure footnotes: counter reset every page etc.
 \usepackage[perpage,hang,splitrule]{footmisc}
 \usepackage{color}
+
+% Intelligent space after "commands".
+% http://tex.stackexchange.com/a/17873/11816
+\usepackage{xspace}
 
 % Add bibliography to ToC.
 % http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
@@ -178,7 +182,7 @@
 % \setlength{\emergencystretch}{1em}
 
 % Define Angstrom command.
-\newcommand{\angstrom}{\textup{\AA}}
+\newcommand{\angstrom}{\textup{\AA}\xspace}
 
 % Set smaller font size in bibliography.
 \renewcommand*{\bibfont}{\small}
