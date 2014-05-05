@@ -184,7 +184,12 @@
 % Define Angstrom command.
 %\newcommand{\angstrom}{\textup{\AA}\xspace}
 % http://tex.stackexchange.com/a/24282/11816
-\sisetup{per-mode=symbol,text-angstrom={Å},math-angstrom={\text{Å}}}
+\sisetup{
+    per-mode=symbol,
+    text-angstrom={Å},
+    math-angstrom={\text{Å}},
+    separate-uncertainty
+    }
 \DeclareSIUnit\calory{cal}
 
 % Set smaller font size in bibliography.

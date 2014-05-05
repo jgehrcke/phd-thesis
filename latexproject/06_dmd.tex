@@ -259,7 +259,7 @@ production steps. During the first stage of minimization, only the solvent was
 relaxed. During the second stage, the entire system was minimized without
 restraints. System heat up to \SI{300}{\kelvin} was performed within
 \SI{20}{\pico\second} in the canonical ensemble (NVT) using the Langevin thermostate
-and periodic boundary conditions. Subsequently, $500\,\mathrm{ps}$ of MD in the
+and periodic boundary conditions. Subsequently, \SI{500}{\pico\second} of MD in the
 isothermal-isobaric ensemble (NPT) with Langevin thermostate and Berendsen
 barostat under periodic boundary conditions were carried out for system density
 equilibration. The following production stage of duration $T$ was performed in
@@ -295,13 +295,13 @@ d(t) = \lVert \bm{L}(t)-\bm{C}(t) \rVert.
 This potential enforces the distance between the selected ligand center atom and
 the protein core atom to linearly decrease with time $t$ in the interval from
 $D+s$ to $D$ (\cref{fig:dmd:geometry_scheme}b). For all tMD simulations, we used
-a pulling velocity of $s=\SI{30}{\angstrom}$ per $T=4\,\mathrm{ns}$.
+a pulling velocity of $s=\SI{30}{\angstrom}$ per $T=\SI{4}{\nano\second}$.
 
 For each DMD study, we prepared ten LROMs. Within such a study, we usually
 repreated the tMD pulling process 10 to 30 times for each of the LROMs, using a
 different random seed for each MD simulation. In total, this yields 100 to 300
 independent tMD simulations per DMD study. Based on the final state of receptor
-and ligand of each tMD trajectory, an MD simulation with $T=10\,\mathrm{ns}$
+and ligand of each tMD trajectory, an MD simulation with \SI{10}{\nano\second}
 without restraints was performed according to the protocol described above,
 hereafter referred to as \textit{free MD}.
 
@@ -320,13 +320,13 @@ In order to identify the receptor residues mostly contributing to the binding
 from all 100 DMD runs corresponding to one TDS complex, the SRED data of all
 free MD trajectories were filtered and merged: we excluded DMD runs resulting in
 weakly bound docking solutions (MM-PBSA $\Delta G >
--1\,\mathrm{kcal\,mol^{-1}}$) and averaged the SRED-energy $\Delta G_R$ for each
-receptor residue over the remaining independent DMD runs. We discarded all
+\SI{-1}{\kilo\calory\per\mole} $) and averaged the SRED-energy $\Delta G_R$ for
+each receptor residue over the remaining independent DMD runs. We discarded all
 receptor residues with an average SRED-energy $\langle\Delta G_R\rangle \ge
-0\,\mathrm{kcal\,mol^{-1}}$ and ranked the remaining ones by $\langle\Delta
+\SI{0}{\kilo\calory\per\mole}$ and ranked the remaining ones by $\langle\Delta
 G_R\rangle$. For each TDS complex, we extracted the 10 top-ranked residues,
 referred to as the set of receptor \textit{anchoring residues}. For reference,
-we set up an identical MD simulation ($T=10\,\mathrm{ns}$) of each
+we set up an identical MD simulation ($T=\SI{10}{\nano\second}$) of each
 experimentally determined TDS complex and used SRED to obtain a set of reference
 anchoring residues for comparison.
 
@@ -453,7 +453,7 @@ displacement axis only).
 \caption[]{
 Translational and rotational freedom of a heparin tetramer while approaching
 FGF2 during the tMD pulling process with $s=\SI{30}{\angstrom}$ and
-$T=4\,\mathrm{ns}$. For each point in time during tMD, the structural difference
+\SI{4}{\nano\second}. For each point in time during tMD, the structural difference
 between the current and initial ligand configuration was calculated via
 classical $RMSd$ and averaged over 100 independent pulling processes. The
 variation in ligand movement among different ligand trajectories is visualized
@@ -478,15 +478,15 @@ structural difference denoted as $RMSd_{\mathrm{rot,trans,int}}(t)$.  The
 difference $RMSd_{\mathrm{rot,trans,int}}(t) - ts/T$ describes the extent of
 ligand translation and rotation in space compared to the shortest-path scenario.
 
-For single test cases with $T=4\,\mathrm{ns}$ we observed a quickly fluctuating
+For single test cases with $T=\SI{4}{\nano\second}$ we observed a quickly fluctuating
 $RMSd_{\mathrm{rot,trans,int}}(t)$ curve with ligand displacements from the
 shortest path between 5 and \SI{40}{\angstrom} $RMSd$. In contrast, when using
-$T=0.5\,\mathrm{ns}$, the displacement varied in the range between 0 and
+$T=\SI{0.5}{\nano\second}$, the displacement varied in the range between 0 and
 \SI{10}{\angstrom} $RMSd$. From these data, we could already conclude that when
-using $T=4\,\mathrm{ns}$, the limiting factor for translational and rotational
+using $T=\SI{4}{\nano\second}$, the limiting factor for translational and rotational
 ligand sampling is the number of tMD repetitions rather than the pulling
 velocity. To further quantify the translational and rotational freedom of the
-ligand during tMD with $s=\SI{30}{\angstrom}$ and $T=4\,\mathrm{ns}$ in detail, we
+ligand during tMD with $s=\SI{30}{\angstrom}$ and $T=\SI{4}{\nano\second}$ in detail, we
 analyzed the deviation of the ligand from the shortest path for an ensemble of
 100 independent tMD runs. To this end, the structural difference between current
 and initial ligand configuration was calculated as described above and then
@@ -496,14 +496,14 @@ during tMD, leading to $\langle RMSd_{\mathrm{rot,trans,int}}\rangle(t)$
 in space turned out to have its maximum at an $RMSd$ value of about
 \SI{20}{\angstrom}. The path variation among ligand trajectories (the standard
 deviation of the averaged data) is about $\pm\SI{10}{\angstrom}$ $RMSd$. The data
-suggest that with $s=\SI{30}{\angstrom}$ and $T=4\,\mathrm{ns}$ enough translational
+suggest that with $s=\SI{30}{\angstrom}$ and $T=\SI{4}{\nano\second}$ enough translational
 and rotational freedom are provided to the ligand during tMD in order to be
 applicable in a local docking method. This also verifies that the extend of
 sampling of all ligand DOFs is determined and can be adjusted by the number of
 tMD repetitions $N$.
 
 $\langle RMSd_{\mathrm{rot,trans,int}}\rangle$ increases slower after about
-$t=2\,\mathrm{ns}$ (\cref{fig:dmd:sampling}), which is probably caused by the
+$t=\SI{2}{\nano\second}$ (\cref{fig:dmd:sampling}), which is probably caused by the
 electrostatic potential of the receptor prevailing against thermally driven
 ligand movement. Having this transition included in the $\langle
 RMSd_{\mathrm{rot,trans,int}}\rangle(t)$ curve is a good indication for a
@@ -521,7 +521,7 @@ receptor surface and ligand during the pulling process.
 In the current setup, we have compensated for the spherical – and therefore
 limited – distribution of tMD final ligand states via careful selection of the
 core atom, of $D$, and via a long free MD simulation stage with
-$T=10\,\mathrm{ns}$. This allows for significant ligand refinement according to
+$T=\SI{10}{\nano\second}$. This allows for significant ligand refinement according to
 the characteristics of the receptor surface as well as for an exhaustive
 sampling of the internal DOFs of the ligand. We have quantified the extent of
 glycosidic linkage sampling by analyzing the distribution of glycosidic linkage
@@ -593,9 +593,9 @@ DMD. The following paragraphs are duplicates.}
 
 Regarding the SDF-1-HP complex, our electrostatic potential evaluation procedure
 unambiguously identifies the GAG binding site as determined experimentally. With
-$8.5\,\mathrm{kcal\,mol^{-1}\,e^{-1}}$, the isovalue chosen is the largest among
-the TDS complexes, indicating that SDF-1 has the strongest electrostatic
-attraction to its ligand. In case of FGF2-HP
+\SI{8.5}{\kilo\calory\per\mole\per\elementarycharge}, the isovalue chosen is the
+largest among the TDS complexes, indicating that SDF-1 has the strongest
+electrostatic attraction to its ligand. In case of FGF2-HP
 (\cref{fig:bspred:various_estatic}), the binding site is also unambiguously
 defined by the electrostatic potential. For CD44-HA, the net electrostatic
 interaction between both molecules is slightly repulsive. There is no obvious
@@ -799,10 +799,10 @@ The presented structural difference comparison between DMD and AD3-based docking
 solutions and the corresponding experimentally determined ligand coordinates is
 subject to a systematic error. Structural relaxation prior to docking with AD3
 changed the receptor side chains in the binding region by a heavy atom $RMSd$ of
-$(1.0\pm0.4)\,\si{\angstrom}$ (mean value and standard deviation derived from all TDS
+\SI{1.0 +- 0.4}{\angstrom} (mean value and standard deviation derived from all TDS
 complexes) when compared to the experimentally determined receptor structure.
 The solutions from DMD display a mean binding region alteration of
-$(2.3\pm0.6)\,\si{\angstrom}$ (corresponding raw data is shown in
+\SI{2.3 +- 0.6}{\angstrom} (corresponding raw data is shown in
 \cref{tab:dmd:binding_site_rmsd}). The larger the binding site
 alteration, the more error-prone the comparison between docked solution and
 experimentally determined ligand becomes. Under the assumption that this error
