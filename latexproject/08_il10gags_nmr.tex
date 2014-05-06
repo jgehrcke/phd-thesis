@@ -1,9 +1,35 @@
 \chapter{IL-10-GAG interaction: evaluation of NMR data}
+
+Our collaboration partners in Prof. Huster's laboratory at the Universität
+Leipzip investigate the IL-10-GAG system with experimental methods based on
+nuclear magnetic resonance (NMR). The combination of insights gained via
+\textit{in silico} methods and experimentally obtained data has led to an
+improved understanding of the molecular recognition principles governing the
+IL-10-GAG system. This chapter presents the main studies and outcomes of this
+collaborative effort.
+
+
 \section{Heparin structure in dependence of the presence of IL-10}
-\subsection{Introduction}
+
+Our collaborators performed nuclear Overhauser effect Spectroscopy for measuring
+heparin-internal hydrogen-hydrogen distances for a heparin tetrasaccharide (HP
+dp4) in solution, once with and once without presence of IL-10. The geometry
+information in this data can be used for creating HP dp4 structure models for
+what we call the \enquote{bound} and \enquote{unbound} state. Creating structure
+models from this data is an optimization problem with the goal of finding the
+heparin structure fulfilling the experimentally obtained distance constraints as
+good as possible. We have approached this optimization problem with simulated
+annealing molecular dynamics simulations.
+
+The following parts skip details regarding the NMR experiments and rather
+describe and discuss the evaluation of distance data. For particular method
+details and further discussion we kindly refer the reader to the manuscript
+corresponding to this study which, at the time of writing this thesis, has been
+submitted for publication.
+
 \subsection{Methods}
 
-\hl{NMR methods reference or comment}. ${}^1$H-${}^1$H distances were calculated
+HP dp4-internal ${}^1$H-${}^1$H distances were calculated
 from experimentally obtained NOE intensities assuming a $1/r^6$ distance
 dependence between interacting protons. Calibration was based on the H2-H4 and
 H3-H5 proton pairs of the GlcNS,6S ring with a known distance of
@@ -13,8 +39,7 @@ interval of $\pm \SI{0.3}{\angstrom}$, $\pm \SI{0.6}{\angstrom}$ and $\pm
 between \num{2.0} and $\SI{4.0}{\angstrom}$, and $> \SI{4.0}{\angstrom}$,
 respectively.
 
-
-The distance restraints obtained experimentally were used for GAG structure
+The experimentally obtained  distance restraints were used for GAG structure
 determination using MD simulations employing Amber 12 \cite{case_amber_12}. Atom
 types of the GLYCAM 06g force field \cite{kirschner_glycam06:_2008} were used to
 build the heparin tetrasaccharide $\Delta$UA,2S-GlcNS,6S-IdoA,2S-GlcNS,6S,
