@@ -15,47 +15,47 @@ respectively.
 
 
 The distance restraints obtained experimentally were used for GAG structure
-determination using MD simulations employing Amber 12 (Case et al. 2012). Atom
-types of the GLYCAM 06g force field (Kirschner et al. 2008) were used to build
-the heparin tetrasaccharide $\Delta$UA,2S-GlcNS,6S-IdoA,2S-GlcNS,6S, referred to
-as rings A, B, C, D, respectively. Sulfate partial charges were obtained from
-RESP calculations for methylsulfate at the 6-31(d)G level of theory. The first
-structure optimization stage was a simulated annealing protocol using a simple
-implicit solvent model with a 1/r distance dependency of the dielectric
-constant. The protocol contained the following steps: \textit{i)} steepest
-descent and conjugate gradient minimization without restraints, \textit{ii)} 100
-ps MD with tight coupling to a \SI{600}{\kelvin} heat bath and gradual
-activation of NMR distance restraints, \textit{iii)} \SI{300}{\pico\second} MD
-with restraints, gradual temperature change from \SI{600}{\kelvin} to
-\SI{10}{\kelvin}, and normal coupling to heat bath, \textit{iv)} short MD with
-gradual cooling to \SI{0}{\kelvin} and tight coupling to heat bath. The MD time
-step for this protocol was set to \SI{1}{\femto\second}. The second optimization
-stage was performed with periodic boundary conditions in TIP3P explicit solvent
-(with at least \SI{8}{\angstrom} from all solute atoms to the box boundary),
-with Na+ ions for system neutralization, using SHAKE, and with an MD time step
-of \SI{2}{\femto\second}. The following steps were performed: \textit{i)}
-solvent minimization with constrained solute, \textit{ii)} \SI{20}{\pico\second}
-heat up MD to \SI{300}{\kelvin} in NVT ensemble with strong positional
-restraints on solute atoms, \textit{iii)} \SI{200}{\pico\second} equilibration
-MD in NPT with weak positional restraints on solute atoms and NMR distance
-restraints, \textit{iv)} \SI{200}{\pico\second} MD in NPT with NMR distance
-restraints and a gradual cooling to \SI{250}{\kelvin}, \textit{v)}
-\SI{400}{\pico\second} MD in NPT with NMR distance restraints and a gradual
-cooling to \SI{0}{\kelvin}. Beyond the tolerance interval, each NMR distance
-restraint was implemented with a harmonic potential with a force constant of
-\SI{20}{\kilo\calory\per\mole\per\angstrom}. Since GLYCAM does not contain
-proper parameters for 4,5-unsaturated uronic acid, NOE signals involving
-hydrogens of ring A other than H1 were not applied as restraints in the
-simulations.The two stages of structure optimization were repeated 100 times in
-independent simulations with different random seeds. All optimized structures
-were aligned to each other. Structure alignment was based on all ring atoms of
-rings B, C, D, and all glycosidic linkage oxygens. The root mean square distance
-(RMSD) among these atoms was calculated to obtain the structural distance
-between any two given structures. The structural diversity within the ensemble
-was quantified by calculating the mean pairwise structural distance among all
-aligned structures. The structure having the lowest mean structural distance to
-all other structures in the ensemble was selected as the representative of the
-ensemble.
+determination using MD simulations employing Amber 12 \cite{case_amber_12}. Atom
+types of the GLYCAM 06g force field \cite{kirschner_glycam06:_2008} were used to
+build the heparin tetrasaccharide $\Delta$UA,2S-GlcNS,6S-IdoA,2S-GlcNS,6S,
+referred to as rings A, B, C, D, respectively. Sulfate partial charges were
+obtained from RESP calculations for methylsulfate at the 6-31(d)G level of
+theory. The first structure optimization stage was a simulated annealing
+protocol using a simple implicit solvent model with a 1/r distance dependency of
+the dielectric constant. The protocol contained the following steps: \textit{i)}
+steepest descent and conjugate gradient minimization without restraints,
+\textit{ii)} 100 ps MD with tight coupling to a \SI{600}{\kelvin} heat bath and
+gradual activation of NMR distance restraints, \textit{iii)}
+\SI{300}{\pico\second} MD with restraints, gradual temperature change from
+\SI{600}{\kelvin} to \SI{10}{\kelvin}, and normal coupling to heat bath,
+\textit{iv)} short MD with gradual cooling to \SI{0}{\kelvin} and tight coupling
+to heat bath. The MD time step for this protocol was set to
+\SI{1}{\femto\second}. The second optimization stage was performed with periodic
+boundary conditions in TIP3P explicit solvent (with at least \SI{8}{\angstrom}
+from all solute atoms to the box boundary), with Na+ ions for system
+neutralization, using SHAKE, and with an MD time step of \SI{2}{\femto\second}.
+The following steps were performed: \textit{i)} solvent minimization with
+constrained solute, \textit{ii)} \SI{20}{\pico\second} heat up MD to
+\SI{300}{\kelvin} in NVT ensemble with strong positional restraints on solute
+atoms, \textit{iii)} \SI{200}{\pico\second} equilibration MD in NPT with weak
+positional restraints on solute atoms and NMR distance restraints, \textit{iv)}
+\SI{200}{\pico\second} MD in NPT with NMR distance restraints and a gradual
+cooling to \SI{250}{\kelvin}, \textit{v)} \SI{400}{\pico\second} MD in NPT with
+NMR distance restraints and a gradual cooling to \SI{0}{\kelvin}. Beyond the
+tolerance interval, each NMR distance restraint was implemented with a harmonic
+potential with a force constant of \SI{20}{\kilo\calory\per\mole\per\angstrom}.
+Since GLYCAM does not contain proper parameters for 4,5-unsaturated uronic acid,
+NOE signals involving hydrogens of ring A other than H1 were not applied as
+restraints in the simulations.The two stages of structure optimization were
+repeated 100 times in independent simulations with different random seeds. All
+optimized structures were aligned to each other. Structure alignment was based
+on all ring atoms of rings B, C, D, and all glycosidic linkage oxygens. The root
+mean square distance (RMSD) among these atoms was calculated to obtain the
+structural distance between any two given structures. The structural diversity
+within the ensemble was quantified by calculating the mean pairwise structural
+distance among all aligned structures. The structure having the lowest mean
+structural distance to all other structures in the ensemble was selected as the
+representative of the ensemble.
 
 For structure characterization, the distribution of various dihedral angles was
 evaluated for all structures in an ensemble. For analyzing the GAG backbone
@@ -117,14 +117,14 @@ than H1 due to inaccurate parameterization of the GLYCAM force field for the
 originates from preparation of the tetrasaccharide by lyase digestion it plays
 no functional role for the biology of heparin or heparan sulfate and,
 consequently, we do not discuss structural details of this ring --- an approach
-which has also been taken in (Jin et al. 2009). Hence, functional groups of ring
-A are not shown in \cref{fig:nmr:hp_ensembles_representatives}. We quantified
-the difference in the GAG backbone structure for the bound and unbound case by
-evaluating the distribution of glycosidic linkage torsional angles in both
-ensembles (\cref{fig:nmr:hp_glyco_dihedral_distributions}). A significant change
-in the Φ distribution of linkage A→B, a shift in the Ψ distribution of linkage
-B→C, and a significant shift in the Φ distribution of linkage C→D was
-observed.
+which has also been taken in \cite{jin_heparin_2009}. Hence, functional groups
+of ring A are not shown in \cref{fig:nmr:hp_ensembles_representatives}. We
+quantified the difference in the GAG backbone structure for the bound and
+unbound case by evaluating the distribution of glycosidic linkage torsional
+angles in both ensembles (\cref{fig:nmr:hp_glyco_dihedral_distributions}). A
+significant change in the Φ distribution of linkage A→B, a shift in the Ψ
+distribution of linkage B→C, and a significant shift in the Φ distribution of
+linkage C→D was observed.
 
 
 \begin{figure}
@@ -180,26 +180,26 @@ glycosidic bond angles between the free and bound state do vary between
 \SI{10}{\degree} and \SI{30}{\degree} for linkages A→B and C→D, the overall
 tetrasaccharide conformation is maintained and is consistent with the helical
 structure of the heparin dodecasaccharide previously observed by NMR and
-modelling (Mulloy et al. 1993). Also in the high affinity complex between bFGF
-and a heparin tetrasaccharide (Faham et al. 1996; Mikhailov et al. 1996) the
-backbone differences relative to the unbound GAG are rather small and provide no
-indication about the interaction strength. Furthermore, according to our heparin
-structure models, the orientation of most functional groups of rings B, C, and D
-is conserved among the bound and unbound MD ensembles. Notable exceptions are
-the positions of the 6-O-sulfate groups of ring B and D. In ring B the
-6-O-sulfate is only in \textit{gauche-gauche}, but there is a slight shift by
-about \SI{-10}{\degree} of the rotamer distribution in the bound heparin
-structure. In ring C an additional fraction of the \textit{gauche-trans}
-conformer in the presence of IL-10 is observed. The observation of the
-6-O-sulfate being mostly in \textit{gauche-gauche} orientation is in
-contradiction to our \hl{3J} coupling analysis. The latter estimated the C5-C6
-bond in both glucosamine residues to have \SI{70}{\percent} \textit{gauche-
-gauche} and \SI{30}{\percent} \textit{gauche-trans} character as found for other
-D-glucopyranoses (Nishida et al. 1988). The described contradiction suggests
-that the sulfate rotamer distribution as yielded by our MD structure
-optimization protocol is over- sensitive to small variations in single distance
-restraints and that the interpretation of the 3J coupling data should take
-precedence.
+modelling \cite{foster_mulloy_1993}. Also in the high affinity complex between
+bFGF and a heparin tetrasaccharide
+\cite{faham_heparin_1996,mikhailov_hp_tetra_1996} the backbone differences
+relative to the unbound GAG are rather small and provide no indication about the
+interaction strength. Furthermore, according to our heparin structure models,
+the orientation of most functional groups of rings B, C, and D is conserved
+among the bound and unbound MD ensembles. Notable exceptions are the positions
+of the 6-O-sulfate groups of ring B and D. In ring B the 6-O-sulfate is only in
+\textit{gauche-gauche}, but there is a slight shift by about \SI{-10}{\degree}
+of the rotamer distribution in the bound heparin structure. In ring C an
+additional fraction of the \textit {gauche-trans} conformer in the presence of
+IL-10 is observed. The observation of the 6-O-sulfate being mostly in \textit
+{gauche-gauche} orientation is in contradiction to our \hl{3J} coupling
+analysis. The latter estimated the C5-C6 bond in both glucosamine residues to
+have \SI{70}{\percent} \textit{gauche- gauche} and \SI{30}{\percent} \textit
+{gauche-trans} character as found for other D-glucopyranoses (Nishida et al.
+1988). The described contradiction suggests that the sulfate rotamer
+distribution as yielded by our MD structure optimization protocol is over-
+sensitive to small variations in single distance restraints and that the
+interpretation of the 3J coupling data should take precedence.
 
 
 \hl{Discuss what this HEPARIN STRUCTURE now brings us for clarifying atomic
