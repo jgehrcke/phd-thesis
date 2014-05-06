@@ -9,6 +9,8 @@
 \usepackage{libertine}
 \usepackage{fontspec}
 
+
+
 % Improve typography. Must be loaded after any font.
 \usepackage{microtype}
 
@@ -19,6 +21,12 @@
 % http://www.howtotex.com/packages/beautiful-fractions-and-units-with-the-unit-package/
 \usepackage{siunitx}
 \usepackage{amsmath}
+
+% The math font in text looks a bit crappy at the moment. Try things out later:
+%\usepackage{unicode-math}
+%\setmathfont[version=cambria]{Cambria Math}
+%\setmathfont{Asana-math.otf}
+
 % Bold math symbols.
 \usepackage{bm}
 \usepackage{graphicx}
@@ -188,7 +196,7 @@
     per-mode=symbol,
     text-angstrom={Å},
     math-angstrom={\text{Å}},
-    separate-uncertainty
+    separate-uncertainty,
     }
 \DeclareSIUnit\calory{cal}
 
