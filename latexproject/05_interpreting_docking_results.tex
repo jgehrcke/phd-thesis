@@ -63,16 +63,16 @@ In conclusion, the most probable ligand molecule placement as predicted by a
 certain docking method can be found by \textit{meaningful} clustering of the
 converged ensemble of docking solutions. Meaningful clustering can be achieved
 by selecting a problem-adjusted clustering method, whereas any data clustering
-method has only two major ingredients:
+method has only two major components:
 
 \begin{itemize}
 \item the \textit{distance metric}, quantifying the similarity between any two
 given objects.
-\item a \textit{clustering algorithm}, classifying the objects into groups,
-based on their mutual similarity (i.e.\ distance).
+\item a \textit{clustering algorithm}, classifying the objects into groups
+(clusters), based on their mutual similarity (i.e.\ distance).
 \end{itemize}
 
-It is important to appreciate that both ingredients must be adjusted to the
+It is important to appreciate that both components must be adjusted to the
 scientific question, otherwise the result of docking solution clustering might
 be meaningless and/or incomparable to other docking studies. Within the next
 sections, we introduce a distance metric optimized for GAG molecules and
@@ -81,7 +81,21 @@ ensembles in general.
 
 
 \section{A meaningful distance metric for GAG molecules}
-RMSatd
+
+As clarified above, spatial clustering evaluates distances between data points
+rather than data points themselves and the distance metric used for calculation
+of the similarity between two molecular structures must be properly adjusted to
+the scientific aim.
+
+The two standard choices, classical $RMSd$ (root mean square deviation with identity-based atomic matching) as distance metric
+
+
+Thus, we define a distance metric $\delta$ as the root mean
+square of pairwise atomic distances while pairing up spatially closest atoms of
+the same type. This distance metric accounts for periodicity of functional
+groups in GAGs and considers two GAGs shifted by $n$ periodic units as
+structurally similar, while classical $RMSd$ with identity-based matching
+ignores this characteristic.
 
 \lipsum[1-2]
 
@@ -90,7 +104,25 @@ RMSatd
 
 \lipsum[1-2]
 
+From literature, I identified the DBSCAN algorithm \cite{dbscanref} to be
+appropriate for clustering molecular structures. In contrast to the otherwise
+well-established hierarchical clustering, it does not depend on an arbitrarily
+defined inter-cluster distance.
+
+At the time of developing the method, according to literature, we were the first
+ones implementing DBSCAN for clustering molecular structures. In the meantime,
+DBSCAN has also been implemented in cpptraj, a general purpose tool for
+analyzing molecular dynamics trajectories.
+
 \subsection{Clustering method overview}
+
+Compared to standard clustering methods, these ingredients significantly
+increase the interpretability of GAG docking results and enhance their
+comparability. I implemented DBSCAN as well as the optimized distance metric
+using linear algebra methods and multi-core software technology. The improved
+approach has become standard procedure in the Pisabarro research group and was
+used in published work \cite{franz_cathepsin_2013}.
+
 
     - Clustering methods overview
         hierarchical clustering implemented in AutoDockTools
