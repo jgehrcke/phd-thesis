@@ -106,11 +106,14 @@ structure.
 \centering
 \includegraphics[width=0.7\textwidth]{gfx/clust/RMSd_vs_RMSatd_scheme_03.png}
 \caption[]{
-FGF2 amino acid residues identified by DMD as having the greatest impact on
-FGF2-HP binding. Results are shown for both heparin tetra- and hexasaccharide
-ligands as retrieved from two independent DMD studies. For each residue, an
-average energy ($\pm$ standard error of the mean) for the interaction with the
-ligand is shown as obtained from 40 independent free MD simulations.
+Schematic comparison of identity-based atom matching (classical $RMSd$)
+\textit{vs.} type-based atom matching ($RMSatd$) by means of an extreme case,
+where a linear molecule is compared to itself, after slight vertical shifting
+and end-to-end inversion. All atoms (blue) are of the same type. Thick lines
+indicate atomic bonds, $1 \dots N$ indicate atom identity. Dashed lines and
+$d_i$ indicate pairwise distances used for building the $RMSd$ / $RMSatd$. Top
+($RMSd$): atoms of same identity are paired up.  Bottom ($RMSatd$): spatially
+closest atoms of the same type are paired up.
 }
 \label{fig:clust:rmsd_vs_rmsatd}
 \end{figure}
