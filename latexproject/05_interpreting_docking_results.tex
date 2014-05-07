@@ -1,5 +1,49 @@
-\chapter{Interpreting docking results: docking ensemble clustering}
-\section{Relevance of clustering}
+\chapter{Interpreting docking results: docking solution ensemble clustering}
+\section{Relevance of docking solution clustering}
+
+\hl{A few words on the fact that the importance of clustering usually is
+neglected.}
+
+In the framework of this thesis the term \enquote{docking solution} shall be
+understood as a set of ligand atom coordinates, i.e. the spatial arrangement of
+ligand atoms in the reference coordinate system as defined by the receptor
+molecule. As a result of the statistical nature of the docking problem and the
+use of pseudo random numbers in implementations of common docking search
+algorithms, independent runs of the same docking method are expected to produce
+different docking solutions. That is why a molecular docking method should be
+applied repetitively, resulting in an ensemble of docking solutions.
+
+The spatial distribution of docking solutions in that ensemble is governed by a
+certain previously unknown probability distribution, which itself is determined
+by the molecular interaction model and search algorithm implemented in the
+docking method. Given that we trust the molecular interaction model, the
+ultimate goal of a docking study is to obtain the maxima of the named
+probability distribution. Concept-wise, this is equivalent to searching the
+state with highest probability, i.e. lowest energy. When applying a docking
+method, one should be interested in seeing convergence in the spatial
+distribution of the docking solutions, because only then named probability
+distribution has been sampled sufficiently and the ensemble reflects the
+molecular interaction model as implemented by the docking method.
+
+If convergence is observed, the next step is to identify the maxima in the
+spatial probability distribution. This problem can be re-formulated in terms of
+density, i.e. as finding the densest agglomerations of docking solutions in the
+ensemble. However, a simple evaluation of the density distribution by atoms per
+volume or molecules per volume would not be a useful approach, because a ligand
+molecule usually is comprised of atoms of various type and property, has a
+special shape, and sometimes a clear directionality. Freely spoken, we are
+looking for a way to find agglomerations of docking solutions that are highly
+\textit{similar} to each other. Hence, a promising approach is to evaluate the
+density in terms of \textit{similarity} between any two given docking solutions
+in the ensemble.
+
+
+
+
+, and  whereas density is defined as
+
+
+
 
 
     -  mini review
@@ -7,15 +51,19 @@
         clustering applied to docking ensemble: most probable state
 
 
-Any docking method creates an ensemble of docking solutions.
+
 
 docking solution ensemble governed by probability distribution
 
-searching the state with highest probability
 
-find the densest agglomeration of docking solutions in the ensemble
+
+
 
 whereas density is defined as
+
+
+
+\cite{tan_data_mining}
 
 
 \section{A meaningful distance metric: RMSatd}
