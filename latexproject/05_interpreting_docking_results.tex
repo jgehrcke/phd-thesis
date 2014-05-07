@@ -80,29 +80,85 @@ describe a clustering algorithm appropriate for clustering molecular structure
 ensembles in general.
 
 
-\section{A meaningful distance metric for GAG molecules}
+\section{A meaningful distance metric for GAG molecules: RMSatd}
 
-As clarified above, spatial clustering evaluates distances between data points
-rather than data points themselves and the distance metric used for calculation
-of the similarity between two molecular structures must be properly adjusted to
-the scientific aim.
+As stated above, spatial clustering evaluates distances between data points
+rather than data points themselves. No other information is available to the
+clustering algorithm, so the distance metric alone must properly reflect the
+similarity between two molecular structures, whereas a large similarity
+obviously must correspond to a small distance.
 
-The two standard choices, classical $RMSd$ (root mean square deviation with identity-based atomic matching) as distance metric
+The established way for measuring a structural distance between two molecules
+that have an equivalent atomic configuration but different atomic coordinates is
+to calculate the root mean square distance ($RMSd$) while pairing up atoms of
+same identity:
 
+\begin{equation}
+RMSd = \sqrt{\frac{1}{N}\sum{{d_i}^2}}
+\end{equation}
 
-Thus, we define a distance metric $\delta$ as the root mean
-square of pairwise atomic distances while pairing up spatially closest atoms of
-the same type. This distance metric accounts for periodicity of functional
-groups in GAGs and considers two GAGs shifted by $n$ periodic units as
-structurally similar, while classical $RMSd$ with identity-based matching
-ignores this characteristic.
+Here, each of the $N$ atoms has its own identity and is unambiguously defined by
+a unique identifier $i$. $d_i$ is the euclidean distance between two atoms of
+the same identity, one in the first structure and the other in the second
+structure.
 
-\lipsum[1-2]
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{gfx/clust/RMSd_vs_RMSatd_scheme_03.png}
+\caption[]{
+FGF2 amino acid residues identified by DMD as having the greatest impact on
+FGF2-HP binding. Results are shown for both heparin tetra- and hexasaccharide
+ligands as retrieved from two independent DMD studies. For each residue, an
+average energy ($\pm$ standard error of the mean) for the interaction with the
+ligand is shown as obtained from 40 independent free MD simulations.
+}
+\label{fig:clust:rmsd_vs_rmsatd}
+\end{figure}
+
+While the comparison by atom identity makes sense for large molecules such as
+proteins, in more simple cases the classical $RMSd$ distance metric might not
+properly reflect molecular similarity. This shall be demonstrated by means of an
+extreme example, as indicated in the top panel of
+\cref{fig:clust:rmsd_vs_rmsatd}. There, a molecule is comprised of linearly
+chained atoms of the same type. That molecule exhibits a 2-fold rotational
+symmetry: the atomic properties are invariant under the corresponding symmetry
+operation (rotation by \SI{180}{\degree}, i.e.\ reversed directionality).
+Although the two molecules are positioned almost equivalently, the classical
+RMSd measures quite a large distance, i.e.\ low similarity. Assuming bond
+lengths and a vertical displacement between both molecules of \SI{1}{\angstrom},
+the classical $RMSd$ in that situation would be \SI{3}{\angstrom}.
+
+We propose what we call the root mean square \textit{atom type} distance
+$RMSatd$, which works just as the classical $RMSd$, but pairs up spatially
+closest atoms of the same type (\cref{fig:clust:rmsd_vs_rmsatd}, bottom panel).
+In case of the example situation discussed above, the $RMSatd$ would be
+\SI{1}{\angstrom}, i.e.\ more realistically reflects the actual distance between
+both molecules than the classical $RMSd$. While GAGs do not have a strict 2-fold
+rotational symmetry, they are still highly similar when just reversed along
+their end-to-end direction. As demonstrated, this effect is accounted for by the
+$RMSatd$ metric. Furthermore, GAGs usually are modeled as strictly periodic
+molecules. The $RMSatd$ accounts for this periodicity and considers two GAGs
+shifted by $n$ periodic units as structurally similar, while classical $RMSd$
+with identity-based matching ignores this characteristic.
+
+Overall, in many cases the $RMSatd$ yields a more intuitive and larger
+structural similarity than the classical $RMSd$ metric would. In practice, this
+is especially relevant when two GAG structures are slightly displaced relative
+to each other along the direction of their longest extent or when comparing two
+GAGs with inverted end-to-end directions. On the other hand, for larger
+distances between two molecules, the $RMSatd$ converges towards the classical
+$RMSd$.
 
 
 \section{Algorithm of choice: DBSCAN}
 
 \lipsum[1-2]
+
+ As for the
+clustering algorithm, we implemented DBSCAN \cite{dbscanref}. It distinguishes
+regions of high density from noise which fits the problem of evaluating docking
+solution ensembles very well. The described methodology is implemented and
+provided as standard software.
 
 From literature, I identified the DBSCAN algorithm \cite{dbscanref} to be
 appropriate for clustering molecular structures. In contrast to the otherwise
@@ -167,5 +223,14 @@ used in published work \cite{franz_cathepsin_2013}.
 
 
             open source at bitbucket..
+
+
+\textbf{
+This problem-oriented approach significantly increases the
+interpretability of GAG docking results and enhances their comparability. By
+now, this methodology is applied in the context of several projects in the
+Pisabarro research group.
+}
+
 
 
