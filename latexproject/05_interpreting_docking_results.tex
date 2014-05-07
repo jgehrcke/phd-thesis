@@ -1,2 +1,71 @@
 \chapter{Interpreting docking results: docking ensemble clustering}
-\lipsum[1-10]
+\section{Relevance of clustering}
+
+
+    -  mini review
+        clustering in general
+        clustering applied to docking ensemble: most probable state
+
+
+Any docking method creates an ensemble of docking solutions.
+
+docking solution ensemble governed by probability distribution
+
+searching the state with highest probability
+
+find the densest agglomeration of docking solutions in the ensemble
+
+whereas density is defined as
+
+
+\section{A meaningful distance metric: RMSatd}
+
+\section{Algorithm of choice: DBSCAN}
+
+\subsection{Clustering method overview}
+
+    - Clustering methods overview
+        hierarchical clustering implemented in AutoDockTools
+            badly implemented, due to N^2 dependence very long runtimes
+        other methods, quick
+        DBSCAN, explain why it makes sense for molecular structures
+        cite cpptraj, which also started implementing it
+
+\subsection{DBSCAN parameter optimization}
+
+    - change criteria from eps/minp to N clusters / members
+    - reproducibility!
+    - comparability among studies
+    - characterization of a cluster via eps
+
+
+\section{Clustering method implementation}
+
+\subsection{Efficient implementation of DBSCAN for numpy}
+
+        - Custom implementation of the DBSCAN algorithm
+
+\subsection{Efficient implementation of RMSatd for numpy}
+
+        - Custom implementation of the DBSCAN algorithm
+        - examples
+            http://scikit-learn.org/stable/modules/clustering.html
+            http://bit.ly/1pKNv7v
+
+
+\subsection{Parameter optimization}
+
+        - brute force plus local optimization
+
+\subsection{Architecture of cluster-pdb-structures}
+
+            command line tool, simple PDB parser files
+            distance matrix calculation on multiple cores via Unix fork()
+
+            input: structure ensemble, DBSCANopt parameters
+            output: structure files, stat summary
+
+
+            open source at bitbucket..
+
+
