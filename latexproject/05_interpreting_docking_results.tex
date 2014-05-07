@@ -1,9 +1,16 @@
 \chapter{Interpreting docking results: docking solution ensemble clustering}
+
+In this chapter we describe why the conduction of a meaningful docking study
+requires proper creation and analysis of an ensemble of docking solutions and
+explain why clustering is an essential step for making reasonable predictions
+about where and how a ligand binds to its receptor. This topic is unfortunately
+not well discussed in current molecular docking literature, and existing
+technical implementations for the clustering of docking solutions often do not
+fit the scientific question and therefore may produce misleading results. Here,
+we present a method optimized for clustering docking solution ensembles of GAG
+molecules.
+
 \section{Relevance of docking solution clustering}
-
-\hl{A few words on the fact that the importance of clustering usually is
-neglected.}
-
 In the framework of this thesis the term \enquote{docking solution} shall be
 understood as a set of ligand atom coordinates, i.e. the spatial arrangement of
 ligand atoms in the reference coordinate system as defined by the receptor
@@ -14,59 +21,65 @@ different docking solutions. That is why a molecular docking method should be
 applied repetitively, resulting in an ensemble of docking solutions.
 
 The spatial distribution of docking solutions in that ensemble is governed by a
-certain previously unknown probability distribution, which itself is determined
-by the molecular interaction model and search algorithm implemented in the
-docking method. Given that we trust the molecular interaction model, the
-ultimate goal of a docking study is to obtain the maxima of the named
-probability distribution. Concept-wise, this is equivalent to searching the
-state with highest probability, i.e. lowest energy. When applying a docking
-method, one should be interested in seeing convergence in the spatial
-distribution of the docking solutions, because only then named probability
-distribution has been sampled sufficiently and the ensemble reflects the
-molecular interaction model as implemented by the docking method.
+certain previously unknown probability distribution, which itself is implicitly
+determined by the molecular interaction model and search algorithm implemented
+in the docking method. Given that we trust the molecular interaction model, the
+ultimate goal of a docking study is to obtain the global maximum (and/or some
+local maxima) of the named probability distribution. Concept-wise, this is
+equivalent to searching the state with highest probability, i.e. lowest energy.
+Obtaining local maxima requires complete sampling of that unknown probability
+distribution. That is why a docking method must be repeated until convergence
+in the spatial distribution of the docking solutions is achieved. Only then the
+ensemble reproduces the previously unknown probability distribution and reflects
+the molecular interaction model as implemented by the docking method.
 
-If convergence is observed, the next step is to identify the maxima in the
-spatial probability distribution. This problem can be re-formulated in terms of
-density, i.e. as finding the densest agglomerations of docking solutions in the
-ensemble. However, a simple evaluation of the density distribution by atoms per
-volume or molecules per volume would not be a useful approach, because a ligand
-molecule usually is comprised of atoms of various type and property, has a
-special shape, and sometimes a clear directionality. Freely spoken, we are
-looking for a way to find agglomerations of docking solutions that are highly
-\textit{similar} to each other. Hence, a promising approach is to evaluate the
-density in terms of \textit{similarity} between any two given docking solutions
-in the ensemble.
+If convergence is observed, the next step is to identify the local maxima in the
+spatial probability distribution of docking solutions. This problem can be
+reformulated in terms of density, i.e. as finding the densest agglomerations of
+docking solutions in the ensemble. However, a simple evaluation of the
+distribution of atoms or molecules per volume would not provide useful results,
+because a ligand molecule is comprised of multiple different atoms and has
+various asymmetries with respect to shape and property. Spoken freely, the task
+is to find agglomerations of docking solutions that are highly \textit{similar}
+to each other. Hence, a promising approach is to evaluate the density in terms
+of the \textit{similarity} between any two given docking solutions in the
+ensemble, subject to the condition that a meaningful molecular similarity
+measure can be found. In an abstract sense, the task is to identify groups of
+highly similar docking solutions and separate them from the bulk. This task fits
+the general description of \textit{data clustering} as found in
+\cite{tan_data_mining}:
+
+\begin{adjustwidth}{1cm}{1cm}
+\textit{
+The goal is that the objects within a group be similar to one another and
+different from the objects in other groups. The greater the similarity (or
+homogeneity) within a group and the greater the difference between groups, the
+better or more distinct the clustering.
+}
+\end{adjustwidth}
+
+Any data clustering method has only two major ingredients:
+\begin{itemize}
+\item the \textit{distance metric}, quantifying the similarity between any two
+given objects.
+\item a \textit{clustering algorithm}, classifying the objects into groups,
+based on their mutual similarity.
+\end{itemize}
+
+In conclusion, the most probable ligand molecule placement as predicted by a
+certain docking method can be found by clustering the (converged) ensemble of
+docking solutions, using a meaningful distance metric and a clustering algorithm
+that fits the problem. It is important to appreciate that both ingredients must
+be adjusted to the scientific question, otherwise the result of docking solution
+clustering might be meaningless and/or incomparable to other docking studies.
+Within the next sections, we introduce a distance metric optimized for GAG
+molecules and describe a clustering algorithm appropriate for clustering
+molecular structure ensembles in general.
 
 
+\section{A meaningful distance metric for GAG molecules}
+RMSatd
 
-
-, and  whereas density is defined as
-
-
-
-
-
-    -  mini review
-        clustering in general
-        clustering applied to docking ensemble: most probable state
-
-
-
-
-docking solution ensemble governed by probability distribution
-
-
-
-
-
-whereas density is defined as
-
-
-
-\cite{tan_data_mining}
-
-
-\section{A meaningful distance metric: RMSatd}
 
 \section{Algorithm of choice: DBSCAN}
 
