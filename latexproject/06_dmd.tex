@@ -116,6 +116,30 @@ and other quantities). Binding pose search as well as binding pose scoring are
 consistent in terms of using the same potential as given by the MD force field
 and the parameterization of the molecular system.
 
+
+\hl{THIS COMES LATER, TOO. MOVE HERE I WOULD SAY!.... One of the
+main concepts of DMD is that pulling process and subsequent free MD are repeated
+many times in independent simulations. This allows for the creation and
+evaluation of an ensemble of docking solutions rather than the interpretation of
+single trajectories. In this ensemble, the energetically more favorable states
+are the more likely ones. Spatial clustering of this docking solution ensemble
+identifies those docking solutions that appeared with highest probability and,
+therefore, lowest energy.}
+
+\hl{INCORPORATE: There is no general dependence of
+the DMD protocol on the confidence in the binding region assumption. Like any
+other local docking method, DMD allows for searching within a limited region of
+the receptor surface. It therefore requires an a priori definition/assumption of
+the ligand binding region. To further improve the explanation of this point, we
+added the following clarification to page 21 of the revised manuscript: “DMD is
+a local docking method focused towards a certain region on the receptor surface.
+If the confidence in the binding region assumption is to be increased, one could
+repeat the DMD study while varying the focus point for covering a larger search
+space. There is no general dependence of the DMD protocol on the confidence in
+the binding region assumption (however, the conclusiveness of the DMD results
+clearly depends on the validity of this assumption).” }
+
+
 In this validation study, we applied DMD to a set of reference systems and
 compared its performance to a classical docking approach, AutoDock 3 (AD3),
 which has successfully been applied to protein-GAG systems before
@@ -355,6 +379,23 @@ for such hardware \cite{amber_gpu_2012}.
 
 
 \section{Validation study}
+
+We have applied DMD to several previously literature reported protein-GAG
+systems. We directly compared our results to the corresponding references: i.e.
+docking solutions to experimentally obtained structures; computationally
+described key binding residues to those previously annotated in literature.
+Furthermore, we compared DMD to AutoDock 3 (AD3), which has been previously
+applied for investigating protein-GAG systems (references \hl{ 26, 38, 39 20,
+27, 28}). In our previous work (reference 20), AD3 performed best for protein-
+GAG systems in direct comparison to eHITs, MOE, and FlexX.
+
+In these lines, we cover two major components any meaningful
+validation study for a new approach needs to provide: i) application of the new
+method to previously characterized reference systems, as well as ii) comparison
+of the method to other available methods.
+
+
+
 \subsection{Methods}
 \subsubsection{Test data set}
 
