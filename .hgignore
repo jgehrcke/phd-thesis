@@ -2,6 +2,9 @@
 syntax: glob
 
 MScthesis/*
+figure_creation/*
+
+*.bcf
 
 *.aux
 *.glo
