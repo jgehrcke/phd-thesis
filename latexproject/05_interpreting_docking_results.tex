@@ -188,15 +188,16 @@ Those objects that are not assigned to any cluster usually represent noise,
 outliers or \enquote{uninteresting background} \cite{tan_data_mining}. Given the
 statistical nature of docking methods (implicating noise and outliers), the
 clustering method of choice should be partial and properly detect outliers. One
-of the oldest and most widely used partial clustering algorithms, K-means,
-cannot handle well clusters of different sizes and densities, and has trouble
-clustering data that contains outliers \cite{tan_data_mining}.
+of the oldest and most widely used partial clustering algorithms, K-means, is
+not an appropriate solution, because it cannot handle well clusters of
+different sizes and densities, and has trouble clustering data that contains
+outliers \cite{tan_data_mining}.
 
-Clustering aims to find a useful grouping of objects, whereas the common
-challenge shared by all kinds of clustering analyses is that there are no
-obviously correct or incorrect approaches. \enquote{Usefulness} is defined by
-the type of data and the goals of the analysis. Here, the question we need to
-answer is:
+For finding a method appropriate for our scientific aim, we need to appreciate
+that there are no obviously correct or incorrect approaches. Clustering aims to
+find a useful grouping of objects, whereas the common challenge shared by all
+kinds of clustering analyses is that \enquote{usefulness} is defined by the type
+of data and the goals of the analysis. Here, the question we need to answer is:
 
 \begin{adjustwidth}{1.5cm}{1.5cm}
 \textit{What are the characteristics of a useful grouping of
@@ -208,34 +209,35 @@ clusters are often observed in real-world data. \cite{tan_data_mining} attempts
 to generically describe a few common scenarios. In regard of that listing, it
 becomes clear that our task best fits a \textit{density-based} clustering,
 rather than a \textit{well-separated}, \textit{prototype-based}, \textit{graph-
-based} or \textit{shared-property} clustering. Generally spoken, in density-
-based clustering a cluster is a dense region of objects that is surrounded by a
-region of low density --- a quite intuitive description of how we can try to
-identify \enquote{the densest agglomerations of docking solutions in the
-ensemble}, as formulated in \cref{relevance_of_clustering}.
+based} or \textit{shared-property} clustering. Generally spoken, in
+density-based clustering a cluster is a dense region of objects that is
+surrounded by a region of low density --- a quite intuitive description of how
+we can try to identify \enquote{the densest agglomerations of docking solutions
+in the ensemble}, as formulated in \cref{relevance_of_clustering}.
 
 As of the above considerations, we have decided to use the clustering algorithm
 DBSCAN. It is a simple and yet effective partitional, partial, and density-based
 clustering algorithm, introduced in 1996 \cite{dbscan_ester1996} for the general
-\enquote{task of class identification in spatial databases} . It distinguishes
+\enquote{task of class identification in spatial databases}. It distinguishes
 regions of high density from noise. To that end, the definition of a cluster is
 based on the notion of \textit{density reachability}, whereas all objects in a
 cluster are required to be mutually \textit{density-connected}. Generally
 spoken, this means that within a cluster the local density never is  lower than
 a certain threshold, as defined by two parameters: $\epsilon$, the search radius
-defining the neighborhood of any object and $m$, the minimum number of objects
+defining the neighborhood of any object, and $m$, the minimum number of objects
 that is required to be within that neighborhood in order do form a dense region.
 DBSCAN is resistant to noise, and can handle clusters of arbitrary shapes and
 sizes \cite{dbscan_ester1996}.
 
-To our knowledge, DBSCAN used in the context of molecular structure clustering
-is so far unfortunately not established, and has only been mentioned once in
-literature in year 2010 \cite{dbscan_usage_proteinstructures_2010} before we
-implemented and used it. There, protein structures are clustered by means of
-DBSCAN and a simple angle-based distance metric. Subsequently, DBSCAN has also
-been implemented in AmberTools 13's cpptraj program \cite{cpptraj_2013}, a
-general purpose tool for analyzing molecular dynamics trajectories, although
-without thorough documentation and reasoning.
+To our knowledge, the application of DBSCAN in the context of molecular
+structure clustering is so far not established, and has only been mentioned once
+in literature in year 2010 \cite{dbscan_usage_proteinstructures_2010} before we
+implemented and used it. There, distances between protein structures are
+described by a simple angle-based distance metric, followed by clustering via
+DBSCAN. Subsequently, DBSCAN has also been implemented in AmberTools 13's
+cpptraj program \cite{cpptraj_2013}, a general purpose tool for analyzing
+molecular dynamics trajectories, although without thorough documentation and
+reasoning.
 
 
 \subsection{Clustering method for GAGs: implementation overview}
