@@ -55,6 +55,7 @@
 \usepackage[perpage,hang,splitrule]{footmisc}
 \usepackage{color}
 \usepackage{fancyvrb}
+\usepackage{float}
 
 
 % Intelligent space after "commands".
@@ -204,6 +205,10 @@
 
 % Set smaller font size in bibliography.
 \renewcommand*{\bibfont}{\small}
+
+
+\newfloat{listing}{tbph}{lop}[chapter]
+\floatname{listing}{Listing}
 
 % Python code highlight.
 % $ pygmentize -f latex -S default
