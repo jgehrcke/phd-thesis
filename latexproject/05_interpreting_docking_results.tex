@@ -11,6 +11,7 @@ we present a method optimized for clustering docking solution ensembles of GAG
 molecules.
 
 \section{Relevance of docking solution clustering}
+\label{relevance_of_clustering}
 
 In the framework of this thesis the term \enquote{docking solution} shall be
 understood as a set of ligand atom coordinates, i.e.\ the spatial arrangement of
@@ -166,32 +167,36 @@ decisive: calculation of the proximity between two clusters is the key operation
 in hierarchical clustering. Obviously, there are various ways to define this
 inter-group distance, and it is difficult to come up with one that has an
 intuitive meaning with respect to molecular structures. In consequence,
-selecting a method for measuring inter- group distance as well as choosing an
+selecting a method for measuring inter-group distance as well as choosing an
 inter-group distance cutoff value required for obtaining a definite set of
-clusters adds unnecessary complexity for the creation of clusters. During
+clusters adds unnecessary complexity for the creation of clusters: during
 interpretation of a molecular structure clustering result, we are usually not
 interested in the hierarchy at all (while for certain other data types the
-hierarchy information for sure is essential).
+hierarchy information for sure would be essential).
 
 Clustering algorithms can generally be classified as either
 \textit{hierarchical} or \textit{partitional}, whereas partitional clustering
-simply is the division of all data objects into non-overlapping subsets, the
+simply means the division of data objects into non-overlapping subsets, the
 clusters \cite{tan_data_mining}. As of the reasoning in the paragraph above, a
-molecular structure clustering should in our opinion be from the class of the
-partitional clustering algorithms. Conceptually, clustering algorithms can
-further be classified as either \textit{complete} or \textit{partial}. In a
-complete clustering, each data object is guaranteed to be assigned to one
-cluster. Partial clustering on the other hand accounts for a situation where not
-all objects in a data set belong to well-defined groups. Those objects that are
-not assigned to any cluster usually represent noise, outliers or
-\enquote{uninteresting background} \cite{tan_data_mining}.
+docking solution clustering should in our opinion be from the class of
+partitional rather than hierarchical clustering algorithms. Conceptually,
+clustering algorithms can further be classified as either \textit{complete} or
+\textit{partial}. In a complete clustering, each data object is guaranteed to be
+assigned to one cluster. Partial clustering on the other hand accounts for a
+situation where not all objects in a data set belong to well-defined groups.
+Those objects that are not assigned to any cluster usually represent noise,
+outliers or \enquote{uninteresting background} \cite{tan_data_mining}. Given the
+statistical nature of docking methods (implicating noise and outliers), the
+clustering method of choice should be partial and properly detect outliers. One
+of the oldest and most widely used partial clustering algorithms, K-means,
+cannot handle well clusters of different sizes and densities, and has trouble
+clustering data that contains outliers \cite{tan_data_mining}.
 
 Clustering aims to find a useful grouping of objects, whereas the common
-challenge shared by all kinds of clustering analyses is that
-\enquote{usefulness} is defined by the type of data and the goals of the
-analysis, and that there is no correct or incorrect approach. Here, the question
-we need to answer is:
-
+challenge shared by all kinds of clustering analyses is that there are no
+obviously correct or incorrect approaches. \enquote{Usefulness} is defined by
+the type of data and the goals of the analysis. Here, the question we need to
+answer is:
 
 \begin{adjustwidth}{1.5cm}{1.5cm}
 \textit{What are the characteristics of a useful grouping of
@@ -200,53 +205,44 @@ molecular structures in a docking solution ensemble?}
 
 In order to answer this question, it is helpful to know what different types of
 clusters are often observed in real-world data. \cite{tan_data_mining} attempts
-to generically describe a few common scenarios. Here, it becomes clear that our
-task best fits a density-based clustering, rather than a well-separated,
-prototype-based, graph-based or shared-property clustering. Generally spoken, in
-\textit{density-based} clustering a cluster is a dense region of objects that is
-surrounded by a region of low density.
+to generically describe a few common scenarios. In regard of that listing, it
+becomes clear that our task best fits a \textit{density-based} clustering,
+rather than a \textit{well-separated}, \textit{prototype-based}, \textit{graph-
+based} or \textit{shared-property} clustering. Generally spoken, in density-
+based clustering a cluster is a dense region of objects that is surrounded by a
+region of low density --- a quite intuitive description of how we can try to
+identify \enquote{the densest agglomerations of docking solutions in the
+ensemble}, as formulated in \cref{relevance_of_clustering}.
+
+As of the above considerations, we have decided to use the clustering algorithm
+DBSCAN. It is a simple and yet effective partitional, partial, and density-based
+clustering algorithm, introduced in 1996 \cite{dbscan_ester1996} for the general
+\enquote{task of class identification in spatial databases} . It distinguishes
+regions of high density from noise. To that end, the definition of a cluster is
+based on the notion of \textit{density reachability}, whereas all objects in a
+cluster are required to be mutually \textit{density-connected}. Generally
+spoken, this means that within a cluster the local density never is  lower than
+a certain threshold, as defined by two parameters: $\epsilon$, the search radius
+defining the neighborhood of any object and $m$, the minimum number of objects
+that is required to be within that neighborhood in order do form a dense region.
+DBSCAN is resistant to noise, and can handle clusters of arbitrary shapes and
+sizes \cite{dbscan_ester1996}.
+
+To our knowledge, DBSCAN used in the context of molecular structure clustering
+is so far unfortunately not established, and has only been mentioned once in
+literature in year 2010 \cite{dbscan_usage_proteinstructures_2010} before we
+implemented and used it. There, protein structures are clustered by means of
+DBSCAN and a simple angle-based distance metric. Subsequently, DBSCAN has also
+been implemented in AmberTools 13's cpptraj program \cite{cpptraj_2013}, a
+general purpose tool for analyzing molecular dynamics trajectories, although
+without thorough documentation and reasoning.
 
 
-
-whereas it becomes clear that
-and is Cluster definition
-
-
-is essential for data
-interpretation, Hierarchy information is not and interpretation of a set of
-clusters.
-
-is a non-intuitive numerical value that
-
-
-
-
-
-groups\textit{hierarchical
-
-\lipsum[1-2]
-
- As for the
-clustering algorithm, we implemented DBSCAN \cite{dbscan_ester1996}. It distinguishes
-regions of high density from noise which fits the problem of evaluating docking
-solution ensembles very well.
-
-
+\subsection{Clustering method for GAGs: implementation overview}
 
 The described methodology is implemented and
 provided as standard software.
 
-From literature, I identified the DBSCAN algorithm \cite{dbscan_ester1996} to be
-appropriate for clustering molecular structures. In contrast to the otherwise
-well-established hierarchical clustering, it does not depend on an arbitrarily
-defined inter-cluster distance.
-
-At the time of developing the method, according to literature, we were the first
-ones implementing DBSCAN for clustering molecular structures. In the meantime,
-DBSCAN has also been implemented in cpptraj, a general purpose tool for
-analyzing molecular dynamics trajectories.
-
-\subsection{Clustering method overview}
 
 Compared to standard clustering methods, these ingredients significantly
 increase the interpretability of GAG docking results and enhance their
