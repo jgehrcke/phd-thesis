@@ -241,9 +241,14 @@ reasoning.
 
 \section{Clustering method for GAGs: implementation details}
 
-We have implemented a DBSCAN- and $RMSatd$-based clustering methodology using
-modern software architecture and provide it as open source software. This part
-described further methodological and well as implementation details.
+We have implemented a clustering method optimized for GAG docking solution
+ensemble clustering. According to the considerations above, we chose DBSCAN as
+clustering algorithm, which is appropriate for molecular structure clustering in
+general, and the $RMSatd$ distance metric, which is optimized for quantifying
+the positional similarity between any two given GAG molecules. We implemented
+the clustering method using modern software architecture and provide it as open
+source software. This part describes methodological and well as implementation
+details.
 
 
 Compared to standard clustering methods, these ingredients significantly
@@ -263,18 +268,106 @@ used in published work \cite{franz_cathepsin_2013}.
 
 
 
+\subsection{Architecture of cluster-pdb-structures}
+
+The software \enquote{cluster-pdb-structures} is a cross-platform command line
+program written for CPython 2.6 and 2.7.
+
+
+command line program written for CPython 2.6 and 2.7
+
+            command line tool, simple PDB parser files
+            distance matrix calculation on multiple cores via Unix fork()
+
+            input: structure ensemble, DBSCANopt parameters
+            output: structure files, stat summary
 
 
 \subsection{Efficient implementation of DBSCAN for numpy}
 
-        - Custom implementation of the DBSCAN algorithm
+
+- Custom implementation of the DBSCAN algorithm
+- examples
+    http://scikit-learn.org/stable/modules/clustering.html
+    http://bit.ly/1pKNv7v
+
+
+- Custom implementation of the DBSCAN algorithm
 
 \subsection{Efficient implementation of RMSatd for numpy}
 
-        - Custom implementation of the DBSCAN algorithm
-        - examples
-            http://scikit-learn.org/stable/modules/clustering.html
-            http://bit.ly/1pKNv7v
+Prior to clustering, the distance matrix has to be built, i.e.\ all pairwise
+distances need to be calculated for the molecular structures in the ensemble.
+Naturally, the runtime complexity of this operation is $\mathcal{O}(n^2)$ with
+$n$ being the number of structures in the ensemble. For common ensemble sizes of
+\num{e2} or \num{e3} the distance matrix calculation takes significantly more
+time than the subsequent clustering, subject to the condition that the
+clustering algorithm is implemented efficiently. Since the distance matrix
+calculation is the bottleneck of the entire clustering analysis, we developed an
+algorithm that calculates the $RMSatd$ metric using linear algebra methods, and
+therefore takes advantage of the heavily optimized Basic Linear Algebra
+Subprograms (BLAS) / Linear Algebra Package (LAPACK) math operations, as
+provided for example by the Intel Math Kernel Library \cite{intel_mkl_2014}. The
+corresponding code is shown in Listing \ref{listing:rmsatd}.
+
+\begin{listing}
+\begin{Verbatim}[fontsize=\tiny,commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{rmsatd\PYZus{}precalc\PYZus{}bottleneck}\PY{p}{(}\PY{p}{(}\PY{n}{sa}\PY{p}{,} \PY{n}{sb}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Build RMSatd metric for structure A (`sa`) and B (`sb`).}
+\PY{l+s+sd}{    }
+\PY{l+s+sd}{    Each structure object has an `atoms` attribute, storing a}
+\PY{l+s+sd}{    list of atoms, whereas each atom has a `coords` attribute,}
+\PY{l+s+sd}{    storing a 1x3 numpy array with X,Y,Z coordinates.}
+\PY{l+s+sd}{    Furthermore, each structure has a `numpy\PYZus{}element\PYZus{}array`}
+\PY{l+s+sd}{    attribute, storing a 1xN numpy array encoding atom types as}
+\PY{l+s+sd}{    integer value, in order of the `atoms` list.}
+\PY{l+s+sd}{    }
+\PY{l+s+sd}{    References:}
+\PY{l+s+sd}{    http://stackoverflow.com/q/5954603/145400}
+\PY{l+s+sd}{    http://stackoverflow.com/a/1582742/145400}
+\PY{l+s+sd}{    http://stackoverflow.com/q/5480694/145400}
+\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{c}{\PYZsh{} Pre\PYZhy{}calculate Euclidean distance squares (all atoms in A}
+    \PY{c}{\PYZsh{} paired with all atoms in B).}
+    \PY{n}{distmatrix\PYZus{}squared} \PY{o}{=} \PY{n}{scipy}\PY{o}{.}\PY{n}{spatial}\PY{o}{.}\PY{n}{distance}\PY{o}{.}\PY{n}{cdist}\PY{p}{(}
+        \PY{p}{[}\PY{n}{a}\PY{o}{.}\PY{n}{coords} \PY{k}{for} \PY{n}{a} \PY{o+ow}{in} \PY{n}{sa}\PY{o}{.}\PY{n}{atoms}\PY{p}{]}\PY{p}{,}
+        \PY{p}{[}\PY{n}{a}\PY{o}{.}\PY{n}{coords} \PY{k}{for} \PY{n}{a} \PY{o+ow}{in} \PY{n}{sb}\PY{o}{.}\PY{n}{atoms}\PY{p}{]}\PY{p}{,}
+        \PY{l+s}{\PYZsq{}}\PY{l+s}{sqeuclidean}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{c}{\PYZsh{} Transpose element type array of A (make column vector),}
+    \PY{c}{\PYZsh{} repeat n times to the right (n = number of atoms in B).}
+    \PY{n}{Atypes2d} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{tile}\PY{p}{(}
+        \PY{n}{sa}\PY{o}{.}\PY{n}{numpy\PYZus{}element\PYZus{}array}\PY{p}{[}\PY{n}{numpy}\PY{o}{.}\PY{n}{newaxis}\PY{p}{]}\PY{o}{.}\PY{n}{T}\PY{p}{,}
+        \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{sb}\PY{o}{.}\PY{n}{atoms}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+    \PY{c}{\PYZsh{} Repeat element type array of structure B (row vector) to}
+    \PY{c}{\PYZsh{} the bottom (n = number of atoms in structure A).}
+    \PY{n}{Btypes2d} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{tile}\PY{p}{(}
+        \PY{n}{sb}\PY{o}{.}\PY{n}{numpy\PYZus{}element\PYZus{}array}\PY{p}{,} \PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{sa}\PY{o}{.}\PY{n}{atoms}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+    \PY{c}{\PYZsh{} Create bool matrix (True: non\PYZhy{}matching type).}
+    \PY{n}{type\PYZus{}matching\PYZus{}matrix} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{not\PYZus{}equal}\PY{p}{(}\PY{n}{Atypes2d}\PY{p}{,} \PY{n}{Btypes2d}\PY{p}{)}
+    \PY{c}{\PYZsh{} Overwrite distance values with NaN for non\PYZhy{}matching types.}
+    \PY{n}{distmatrix\PYZus{}squared}\PY{p}{[}\PY{n}{type\PYZus{}matching\PYZus{}matrix}\PY{p}{]} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{nan}
+    \PY{c}{\PYZsh{} Find minimal type\PYZhy{}matching distance in each column, i.e.}
+    \PY{c}{\PYZsh{} for each atom in structure A.}
+    \PY{n}{min\PYZus{}distances} \PY{o}{=} \PY{n}{bottleneck}\PY{o}{.}\PY{n}{nanmin}\PY{p}{(}\PY{n}{distmatrix\PYZus{}squared}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+    \PY{k}{if} \PY{o+ow}{not} \PY{n}{bottleneck}\PY{o}{.}\PY{n}{allnan}\PY{p}{(}\PY{n}{min\PYZus{}distances}\PY{p}{)}\PY{p}{:}
+        \PY{c}{\PYZsh{} Return root mean of squares.}
+        \PY{k}{return} \PY{n}{numpy}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{bottleneck}\PY{o}{.}\PY{n}{nanmean}\PY{p}{(}\PY{n}{min\PYZus{}distances}\PY{p}{)}\PY{p}{)}
+    \PY{c}{\PYZsh{} No match (impossible if A, B have equal configuration.)}
+    \PY{k}{return} \PY{n+nb+bp}{None}
+\end{Verbatim}
+\caption{$RMSatd$ distance metric implementation for Python using linear algebra
+methods as provided by SciPy, NumPy, and bottleneck, i.e.\ using heavily
+optimized native code and the BLAS/LAPACK system libraries whenever possible.}
+\label{listing:rmsatd}
+\end{listing}
+
+It is a Python function using the linear algebra application programming
+interface of SciPy and NumPy \cite{scipy_numpy}, as well as optimized matrix
+manipulation functions provided by the bottleneck project \cite{py_bottleneck}.
+BLAS/LAPACK are automatically used by the code below when SciPy and NumPy are
+built against the corresponding libraries. Since the main math operations are
+outsourced to optimized libraries, the current implementation is close to the
+optimum achievable on any given system.
 
 
 \subsection{Parameter optimization}
@@ -287,16 +380,12 @@ used in published work \cite{franz_cathepsin_2013}.
 
         - brute force plus local optimization
 
-\subsection{Architecture of cluster-pdb-structures}
 
-            command line tool, simple PDB parser files
-            distance matrix calculation on multiple cores via Unix fork()
 
-            input: structure ensemble, DBSCANopt parameters
-            output: structure files, stat summary
-
+\subsection{Availability}
 
             open source at bitbucket..
+Apache License, Version 2.0
 
 
 \textbf{
