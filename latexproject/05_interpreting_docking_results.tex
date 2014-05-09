@@ -100,7 +100,8 @@ RMSd = \sqrt{\frac{1}{N}\sum{{d_i}^2}}
 Here, each of the $N$ atoms has its own identity and is unambiguously defined by
 a unique identifier $i$. $d_i$ is the euclidean distance between two atoms of
 the same identity, one in the first structure and the other in the second
-structure.
+structure. This classical $RMSd$ distance metric is for example used in
+AutoDockTools \cite{autodock4_adt_2009} for docking solution clustering.
 
 \begin{figure}
 \centering
@@ -112,7 +113,7 @@ where a linear molecule is compared to itself, after slight vertical shifting
 and end-to-end inversion. All atoms (blue) are of the same type. Thick lines
 indicate atomic bonds, $1 \dots N$ indicate atom identity. Dashed lines and
 $d_i$ indicate pairwise distances used for building the $RMSd$ / $RMSatd$. Top
-($RMSd$): atoms of same identity are paired up.  Bottom ($RMSatd$): spatially
+($RMSd$): atoms of same identity are paired up. Bottom ($RMSatd$): spatially
 closest atoms of the same type are paired up.
 }
 \label{fig:clust:rmsd_vs_rmsatd}
@@ -121,13 +122,13 @@ closest atoms of the same type are paired up.
 While the comparison by atom identity makes sense for large molecules such as
 proteins, in more simple cases the classical $RMSd$ distance metric might not
 properly reflect molecular similarity. This shall be demonstrated by means of an
-extreme example, as indicated in the top panel of
+extreme case, as indicated in the top panel of
 \cref{fig:clust:rmsd_vs_rmsatd}. There, a molecule is comprised of linearly
 chained atoms of the same type. That molecule exhibits a 2-fold rotational
 symmetry: the atomic properties are invariant under the corresponding symmetry
 operation (rotation by \SI{180}{\degree}, i.e.\ reversed directionality).
 Although the two molecules are positioned almost equivalently, the classical
-RMSd measures quite a large distance, i.e.\ low similarity. Assuming bond
+$RMSd$ measures quite a large distance, i.e.\ low similarity. Assuming bond
 lengths and a vertical displacement between both molecules of \SI{1}{\angstrom},
 the classical $RMSd$ in that situation would be \SI{3}{\angstrom}.
 
@@ -155,15 +156,87 @@ $RMSd$.
 
 \section{Algorithm of choice: DBSCAN}
 
+One of the of the most popular classes of clustering algorithms is called
+\textit{hierarchical clustering}, which is also used for docking solution
+clustering in AutoDockTools \cite{autodock4_adt_2009}. Hierarchical clustering
+creates a tree-like nested set of groups, i.e.\ a hierarchical grouping, whereas
+the actual inter-object distance is evaluated only for the leaf nodes of the
+tree. Beyond that, the distance between nodes (groups / clusters) becomes
+decisive: calculation of the proximity between two clusters is the key operation
+in hierarchical clustering. Obviously, there are various ways to define this
+inter-group distance, and it is difficult to come up with one that has an
+intuitive meaning with respect to molecular structures. In consequence,
+selecting a method for measuring inter- group distance as well as choosing an
+inter-group distance cutoff value required for obtaining a definite set of
+clusters adds unnecessary complexity for the creation of clusters. During
+interpretation of a molecular structure clustering result, we are usually not
+interested in the hierarchy at all (while for certain other data types the
+hierarchy information for sure is essential).
+
+Clustering algorithms can generally be classified as either
+\textit{hierarchical} or \textit{partitional}, whereas partitional clustering
+simply is the division of all data objects into non-overlapping subsets, the
+clusters \cite{tan_data_mining}. As of the reasoning in the paragraph above, a
+molecular structure clustering should in our opinion be from the class of the
+partitional clustering algorithms. Conceptually, clustering algorithms can
+further be classified as either \textit{complete} or \textit{partial}. In a
+complete clustering, each data object is guaranteed to be assigned to one
+cluster. Partial clustering on the other hand accounts for a situation where not
+all objects in a data set belong to well-defined groups. Those objects that are
+not assigned to any cluster usually represent noise, outliers or
+\enquote{uninteresting background} \cite{tan_data_mining}.
+
+Clustering aims to find a useful grouping of objects, whereas the common
+challenge shared by all kinds of clustering analyses is that
+\enquote{usefulness} is defined by the type of data and the goals of the
+analysis, and that there is no correct or incorrect approach. Here, the question
+we need to answer is:
+
+
+\begin{adjustwidth}{1.5cm}{1.5cm}
+\textit{What are the characteristics of a useful grouping of
+molecular structures in a docking solution ensemble?}
+\end{adjustwidth}
+
+In order to answer this question, it is helpful to know what different types of
+clusters are often observed in real-world data. \cite{tan_data_mining} attempts
+to generically describe a few common scenarios. Here, it becomes clear that our
+task best fits a density-based clustering, rather than a well-separated,
+prototype-based, graph-based or shared-property clustering. Generally spoken, in
+\textit{density-based} clustering a cluster is a dense region of objects that is
+surrounded by a region of low density.
+
+
+
+whereas it becomes clear that
+and is Cluster definition
+
+
+is essential for data
+interpretation, Hierarchy information is not and interpretation of a set of
+clusters.
+
+is a non-intuitive numerical value that
+
+
+
+
+
+groups\textit{hierarchical
+
 \lipsum[1-2]
 
  As for the
-clustering algorithm, we implemented DBSCAN \cite{dbscanref}. It distinguishes
+clustering algorithm, we implemented DBSCAN \cite{dbscan_ester1996}. It distinguishes
 regions of high density from noise which fits the problem of evaluating docking
-solution ensembles very well. The described methodology is implemented and
+solution ensembles very well.
+
+
+
+The described methodology is implemented and
 provided as standard software.
 
-From literature, I identified the DBSCAN algorithm \cite{dbscanref} to be
+From literature, I identified the DBSCAN algorithm \cite{dbscan_ester1996} to be
 appropriate for clustering molecular structures. In contrast to the otherwise
 well-established hierarchical clustering, it does not depend on an arbitrarily
 defined inter-cluster distance.
