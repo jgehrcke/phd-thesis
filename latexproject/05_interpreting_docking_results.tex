@@ -81,7 +81,7 @@ describe a clustering algorithm appropriate for clustering molecular structure
 ensembles in general.
 
 
-\section{A meaningful distance metric for GAG molecules: RMSatd}
+\section{A meaningful distance metric for GAGs: RMSatd}
 
 As stated above, spatial clustering evaluates distances between data points
 rather than data points themselves. No other information is available to the
@@ -155,7 +155,7 @@ distances between two molecules, the $RMSatd$ converges towards the classical
 $RMSd$.
 
 
-\section{Algorithm of choice: DBSCAN}
+\section{A meaningful algorithm for clustering molecular structures: DBSCAN}
 
 One of the of the most popular classes of clustering algorithms is called
 \textit{hierarchical clustering}, which is also used for docking solution
@@ -239,11 +239,11 @@ cpptraj program \cite{cpptraj_2013}, a general purpose tool for analyzing
 molecular dynamics trajectories, although without thorough documentation and
 reasoning.
 
+\section{Clustering method for GAGs: implementation details}
 
-\subsection{Clustering method for GAGs: implementation overview}
-
-The described methodology is implemented and
-provided as standard software.
+We have implemented a DBSCAN- and $RMSatd$-based clustering methodology using
+modern software architecture and provide it as open source software. This part
+described further methodological and well as implementation details.
 
 
 Compared to standard clustering methods, these ingredients significantly
@@ -261,15 +261,9 @@ used in published work \cite{franz_cathepsin_2013}.
         DBSCAN, explain why it makes sense for molecular structures
         cite cpptraj, which also started implementing it
 
-\subsection{DBSCAN parameter optimization}
-
-    - change criteria from eps/minp to N clusters / members
-    - reproducibility!
-    - comparability among studies
-    - characterization of a cluster via eps
 
 
-\section{Clustering method implementation}
+
 
 \subsection{Efficient implementation of DBSCAN for numpy}
 
@@ -284,6 +278,12 @@ used in published work \cite{franz_cathepsin_2013}.
 
 
 \subsection{Parameter optimization}
+
+
+        - change criteria from eps/minp to N clusters / members
+        - reproducibility!
+        - comparability among studies
+        - characterization of a cluster via eps
 
         - brute force plus local optimization
 
