@@ -53,9 +53,9 @@ fits the general description of \textit{data clustering} as found in
 \cite{tan_data_mining}:
 
 \begin{adjustwidth}{1.5cm}{1.5cm}
-\textit{\enquote{
-The goal is that the objects within a group be similar to one another and
-different from the objects in other groups. The greater the similarity (or
+\textit{%
+\enquote{The goal is that the objects within a group be similar to one another
+and different from the objects in other groups. The greater the similarity (or
 homogeneity) within a group and the greater the difference between groups, the
 better or more distinct the clustering.}}
 \end{adjustwidth}
@@ -78,7 +78,7 @@ scientific question, otherwise the result of docking solution clustering might
 be meaningless and/or incomparable to other docking studies. Within the next
 sections, we introduce a distance metric optimized for GAG molecules and
 describe a clustering algorithm appropriate for clustering molecular structure
-ensembles in general.
+ensembles.
 
 
 \section{A meaningful distance metric for GAGs: RMSatd}
@@ -155,7 +155,7 @@ distances between two molecules, the $RMSatd$ converges towards the classical
 $RMSd$.
 
 
-\section{An algorithm for meaningful clustering molecular structures: DBSCAN}
+\section{An algorithm for molecular structure clustering: DBSCAN}
 
 One of the of the most popular classes of clustering algorithms is called
 \textit{hierarchical clustering}, which is also used for docking solution
@@ -222,12 +222,12 @@ clustering algorithm, introduced in 1996 \cite{dbscan_ester1996} for the general
 regions of high density from noise. To that end, the definition of a cluster is
 based on the notion of \textit{density reachability}, whereas all objects in a
 cluster are required to be mutually \textit{density-connected}. Generally
-spoken, this means that within a cluster the local density never is  lower than
-a certain threshold, as defined by two parameters: $\epsilon$, the search radius
-defining the neighborhood of any object, and $m$, the minimum number of objects
-that is required to be within that neighborhood in order do form a dense region.
-DBSCAN is resistant to noise, and can handle clusters of arbitrary shapes and
-sizes \cite{dbscan_ester1996}.
+spoken, this means that within a cluster the local density is never lower than a
+certain threshold, as defined by two parameters: $\epsilon$, the neighborhood
+search radius of an object, and $m$, the minimum number of objects that is
+required to be within that neighborhood in order do form a dense region. DBSCAN
+is resistant to noise, and can handle clusters of arbitrary shapes and sizes
+\cite{dbscan_ester1996}.
 
 To our knowledge, the application of DBSCAN in the context of molecular
 structure clustering is so far not established, and has only been mentioned once
@@ -283,18 +283,7 @@ command line program written for CPython 2.6 and 2.7
             output: structure files, stat summary
 
 
-\subsection{Implementation of DBSCAN for numpy}
-
-
-- Custom implementation of the DBSCAN algorithm
-- examples
-    http://scikit-learn.org/stable/modules/clustering.html
-    http://bit.ly/1pKNv7v
-
-
-- Custom implementation of the DBSCAN algorithm
-
-\subsection{Implementation of RMSatd for numpy}
+\subsection{Implementation of RMSatd}
 
 Prior to clustering, the distance matrix has to be built, i.e.\ all pairwise
 distances need to be calculated for the molecular structures in the ensemble.
@@ -368,6 +357,79 @@ BLAS/LAPACK are automatically used by the code below when SciPy and NumPy are
 built against the corresponding libraries. Since the main math operations are
 outsourced to optimized libraries, the current implementation is close to the
 optimum achievable on any given system.
+
+\subsection{Implementation of DBSCAN}
+
+
+- Custom implementation of the DBSCAN algorithm
+- examples
+    http://scikit-learn.org/stable/modules/clustering.html
+    http://bit.ly/1pKNv7v
+
+
+- Custom implementation of the DBSCAN algorithm
+
+\begin{listing}
+\begin{Verbatim}[fontsize=\tiny,commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{dbscan}\PY{p}{(}\PY{n}{distmat}\PY{p}{,} \PY{n}{epsilon}\PY{p}{,} \PY{n}{minpoints}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Cluster objects whose pairwise distances are stored in}
+\PY{l+s+sd}{    `distmat` via DBSCAN algorithm, with parameters `epsilon`}
+\PY{l+s+sd}{    and `minpoints`.}
+\PY{l+s+sd}{    }
+\PY{l+s+sd}{    `distmat` is expected to be of shape N x N.}
+\PY{l+s+sd}{    }
+\PY{l+s+sd}{    Return list containing one cluster label (int) per object.}
+\PY{l+s+sd}{    Label 0 corresponds to noise.}
+\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{n}{objs\PYZus{}indices} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n}{distmat}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+    \PY{n}{objs\PYZus{}clusterlabels} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{n}{distmat}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+    \PY{n}{objs\PYZus{}visited} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{n}{distmat}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{bool}\PY{p}{)}
+
+    \PY{n}{distmask} \PY{o}{=} \PY{p}{(}\PY{n}{distmat} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{distmat} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{epsilon}\PY{p}{)}
+    \PY{n}{neighbors} \PY{o}{=} \PY{p}{[}\PY{n}{distmask}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{o}{.}\PY{n}{nonzero}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{objs\PYZus{}indices}\PY{p}{]}
+    \PY{n}{neighborhood\PYZus{}size} \PY{o}{=} \PY{p}{[}\PY{n+nb}{len}\PY{p}{(}\PY{n}{n}\PY{p}{)} \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n}{neighbors}\PY{p}{]}
+
+    \PY{c}{\PYZsh{} Iterate through objs in random order.}
+    \PY{n}{numpy}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{shuffle}\PY{p}{(}\PY{n}{objs\PYZus{}indices}\PY{p}{)}
+    \PY{k}{for} \PY{n}{neighbor\PYZus{}index\PYZus{}array} \PY{o+ow}{in} \PY{n}{neighbors}\PY{p}{:}
+        \PY{n}{numpy}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{shuffle}\PY{p}{(}\PY{n}{neighbor\PYZus{}index\PYZus{}array}\PY{p}{)}
+
+    \PY{n}{clustercount} \PY{o}{=} \PY{l+m+mi}{0}
+    \PY{k}{for} \PY{n}{objidx} \PY{o+ow}{in} \PY{n}{objs\PYZus{}indices}\PY{p}{:}
+        \PY{k}{if} \PY{n}{objs\PYZus{}visited}\PY{p}{[}\PY{n}{objidx}\PY{p}{]}\PY{p}{:}
+            \PY{k}{continue}
+        \PY{n}{objs\PYZus{}visited}\PY{p}{[}\PY{n}{objidx}\PY{p}{]} \PY{o}{=} \PY{n+nb+bp}{True}
+        \PY{k}{if} \PY{n}{neighborhood\PYZus{}size}\PY{p}{[}\PY{n}{objidx}\PY{p}{]} \PY{o}{\PYZlt{}} \PY{n}{minpoints}\PY{p}{:}
+            \PY{k}{continue}
+        \PY{c}{\PYZsh{} The sample with current `objidx` is core point}
+        \PY{c}{\PYZsh{} of a new cluster. Label it with cluster \PYZsq{}id\PYZsq{}.}
+        \PY{n}{clustercount} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+        \PY{n}{objs\PYZus{}clusterlabels}\PY{p}{[}\PY{n}{objidx}\PY{p}{]} \PY{o}{=} \PY{n}{clustercount}
+        \PY{c}{\PYZsh{} Go through neighborhood of the identified core point.}
+        \PY{n}{clustermember\PYZus{}indices} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n}{neighbors}\PY{p}{[}\PY{n}{objidx}\PY{p}{]}\PY{p}{)}
+        \PY{k}{for} \PY{n}{member\PYZus{}index} \PY{o+ow}{in} \PY{n}{clustermember\PYZus{}indices}\PY{p}{:}
+            \PY{c}{\PYZsh{} If not in any cluster so far, add it to current:}
+            \PY{k}{if} \PY{o+ow}{not} \PY{n}{objs\PYZus{}clusterlabels}\PY{p}{[}\PY{n}{member\PYZus{}index}\PY{p}{]}\PY{p}{:}
+                \PY{n}{objs\PYZus{}clusterlabels}\PY{p}{[}\PY{n}{member\PYZus{}index}\PY{p}{]} \PY{o}{=} \PY{n}{clustercount}
+            \PY{k}{if} \PY{n}{objs\PYZus{}visited}\PY{p}{[}\PY{n}{member\PYZus{}index}\PY{p}{]}\PY{p}{:}
+                \PY{k}{continue}
+            \PY{n}{objs\PYZus{}visited}\PY{p}{[}\PY{n}{member\PYZus{}index}\PY{p}{]} \PY{o}{=} \PY{n+nb+bp}{True}
+            \PY{k}{if} \PY{n}{neighborhood\PYZus{}size}\PY{p}{[}\PY{n}{objidx}\PY{p}{]} \PY{o}{\PYZlt{}} \PY{n}{minpoints}\PY{p}{:}
+                \PY{k}{continue}
+            \PY{c}{\PYZsh{} Object with current `member\PYZus{}index` is core point.}
+            \PY{c}{\PYZsh{} Add full neighborhood to `clustermember\PYZus{}indices`.}
+            \PY{n}{clustermember\PYZus{}indices}\PY{o}{.}\PY{n}{extend}\PY{p}{(}
+                \PY{n+nb}{list}\PY{p}{(}\PY{n}{neighbors}\PY{p}{[}\PY{n}{member\PYZus{}index}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+    \PY{k}{return} \PY{n}{objs\PYZus{}clusterlabels}
+\end{Verbatim}
+\caption{
+Python DBSCAN implementation. Object neighborhood discovery is done via bool
+masking on a two-dimensional NumPy array, i.e.\ using heavily optimized native
+code.
+}
+\label{listing:dbscan}
+\end{listing}
+
 
 
 \subsection{Parameter optimization}
