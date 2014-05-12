@@ -239,6 +239,20 @@ cpptraj program \cite{cpptraj_2013}, a general purpose tool for analyzing
 molecular dynamics trajectories, although without thorough documentation and
 reasoning.
 
+
+\section{Clustering reproducibility and comparability}
+
+- change criteria from eps/minp to N clusters / members
+- reproducibility!
+- comparability among studies
+- characterization of a cluster via eps
+- brute force plus local optimization
+
+Compared to standard clustering methods, these ingredients significantly
+increase the interpretability of GAG docking results and enhance their
+comparability.
+
+
 \section{Clustering method for GAGs: implementation details}
 
 We have implemented a clustering method optimized for GAG docking solution
@@ -250,40 +264,34 @@ the clustering method using modern software architecture and provide it as open
 source software. This part describes methodological and well as implementation
 details.
 
-
-Compared to standard clustering methods, these ingredients significantly
-increase the interpretability of GAG docking results and enhance their
-comparability. I implemented DBSCAN as well as the optimized distance metric
-using linear algebra methods and multi-core software technology. The improved
-approach has become standard procedure in the Pisabarro research group and was
-used in published work \cite{franz_cathepsin_2013}.
-
-
-    - Clustering methods overview
-        hierarchical clustering implemented in AutoDockTools
-            badly implemented, due to $N^2$ dependence very long runtimes
-        other methods, quick
-        DBSCAN, explain why it makes sense for molecular structures
-        cite cpptraj, which also started implementing it
-
-
-
 \subsection{Architecture of cluster-pdb-structures}
 
 The software \enquote{cluster-pdb-structures} is a cross-platform command line
-program written for CPython 2.6 and 2.7.
+program written for CPython 2.6 and 2.7, and provides the following features:
 
+\begin{itemize}
+\item PDB file parser with atom type filter
+\item Agglomerative hierarchical clustering (dendrogram display supported)
+\item DBSCAN clustering and parameter optimization
+\item $RMSatd$ distance metric calculation
+\item Automatic cluster statistics, various sort options
+\item Comprehensive output: cluster information as JSON data, molecular
+structures as PDB files in a meaningful directory structure
+\item well-documented command line interface
+\end{itemize}
 
-command line program written for CPython 2.6 and 2.7
-
-            command line tool, simple PDB parser files
-            distance matrix calculation on multiple cores via Unix fork()
-
-            input: structure ensemble, DBSCANopt parameters
-            output: structure files, stat summary
+The major bottleneck for the runtime of the clustering analysis is the $RMSatd$
+distance matrix calculation. In order to keep the runtime for common clustering
+scenarios in the order of seconds instead of hours, we efficiently distribute
+the distance matrix calculation over multiple CPU cores (input: shared read-only
+memory on POSIX-compliant systems after fork(), output collected with a queue).
+Furthermore, the individual $RMSatd$ metric calculation as well as the DBSCAN
+implementation are heavily optimized, as described in sections \ref{impl_rmsatd}
+and \ref{impl_dbscan}.
 
 
 \subsection{Implementation of RMSatd}
+\label{impl_rmsatd}
 
 Prior to clustering, the distance matrix has to be built, i.e.\ all pairwise
 distances need to be calculated for the molecular structures in the ensemble.
@@ -296,8 +304,7 @@ calculation is the bottleneck of the entire clustering analysis, we developed an
 algorithm that calculates the $RMSatd$ metric using linear algebra methods, and
 therefore takes advantage of the heavily optimized Basic Linear Algebra
 Subprograms (BLAS) / Linear Algebra Package (LAPACK) math operations, as
-provided for example by the Intel Math Kernel Library \cite{intel_mkl_2014}. The
-corresponding code is shown in Listing \ref{listing:rmsatd}.
+provided for example by the Intel Math Kernel Library \cite{intel_mkl_2014}.
 
 \begin{listing}
 \begin{Verbatim}[fontsize=\tiny,commandchars=\\\{\}]
@@ -350,24 +357,26 @@ optimized native code and the BLAS/LAPACK system libraries whenever possible.}
 \label{listing:rmsatd}
 \end{listing}
 
-It is a Python function using the linear algebra application programming
-interface of SciPy and NumPy \cite{scipy_numpy}, as well as optimized matrix
-manipulation functions provided by the bottleneck project \cite{py_bottleneck}.
-BLAS/LAPACK are automatically used by the code below when SciPy and NumPy are
-built against the corresponding libraries. Since the main math operations are
-outsourced to optimized libraries, the current implementation is close to the
-optimum achievable on any given system.
+The corresponding code is shown in Listing \ref{listing:rmsatd}. It is a Python
+function using the linear algebra application programming interface of SciPy and
+NumPy \cite{scipy_numpy}, as well as optimized matrix manipulation functions
+provided by the bottleneck project \cite{py_bottleneck}. BLAS/LAPACK are
+automatically used by the code below when SciPy and NumPy are built against the
+corresponding libraries. Since the main math operations are outsourced to
+optimized libraries, the current implementation is close to the optimum
+achievable on any given system.
+
 
 \subsection{Implementation of DBSCAN}
+\label{impl_dbscan}
 
-
-- Custom implementation of the DBSCAN algorithm
-- examples
-    http://scikit-learn.org/stable/modules/clustering.html
-    http://bit.ly/1pKNv7v
-
-
-- Custom implementation of the DBSCAN algorithm
+At the time of prototyping cluster-pdb-structures, there has only been one open
+source Python implementation of the DBSCAN algorithm \cite{scikit_learn}. Since
+that code was rather inefficient, we created a custom implementation where we
+used NumPy for efficiently implementing the neighborhood discovery. The
+corresponding code is shown in Listing \ref{listing:dbscan}. It is a Python
+function using the linear algebra application programming interface of NumPy
+\cite{scipy_numpy}.
 
 \begin{listing}
 \begin{Verbatim}[fontsize=\tiny,commandchars=\\\{\}]
@@ -448,6 +457,11 @@ code.
 
             open source at bitbucket..
 Apache License, Version 2.0
+
+
+The described clustering approach has become standard procedure in the Pisabarro
+research group. It has been used in the context of published work various times,
+such as \cite{franz_cathepsin_2013} and \cite{dmd_samsonov_gehrcke_2014}.
 
 
 \textbf{
