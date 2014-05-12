@@ -241,6 +241,7 @@ reasoning.
 
 
 \section{Clustering reproducibility and comparability}
+\label{clustering_param_opt}
 
 - change criteria from eps/minp to N clusters / members
 - reproducibility!
@@ -274,7 +275,7 @@ program written for CPython 2.6 and 2.7, and provides the following features:
 \item Agglomerative hierarchical clustering (dendrogram display supported)
 \item DBSCAN clustering and parameter optimization
 \item $RMSatd$ distance metric calculation
-\item Automatic cluster statistics, various sort options
+\item Automatic cluster statistics, various options for sorting
 \item Comprehensive output: cluster information as JSON data, molecular
 structures as PDB files in a meaningful directory structure
 \item well-documented command line interface
@@ -286,8 +287,8 @@ scenarios in the order of seconds instead of hours, we efficiently distribute
 the distance matrix calculation over multiple CPU cores (input: shared read-only
 memory on POSIX-compliant systems after fork(), output collected with a queue).
 Furthermore, the individual $RMSatd$ metric calculation as well as the DBSCAN
-implementation are heavily optimized, as described in sections \ref{impl_rmsatd}
-and \ref{impl_dbscan}.
+implementation are heavily optimized, as described in the following sections
+\ref{impl_rmsatd} and \ref{impl_dbscan}.
 
 
 \subsection{Implementation of RMSatd}
@@ -361,10 +362,10 @@ The corresponding code is shown in Listing \ref{listing:rmsatd}. It is a Python
 function using the linear algebra application programming interface of SciPy and
 NumPy \cite{scipy_numpy}, as well as optimized matrix manipulation functions
 provided by the bottleneck project \cite{py_bottleneck}. BLAS/LAPACK are
-automatically used by the code below when SciPy and NumPy are built against the
+automatically used by the code shown when SciPy and NumPy are built against the
 corresponding libraries. Since the main math operations are outsourced to
 optimized libraries, the current implementation is close to the optimum
-achievable on any given system.
+achievable on any given classical computing system.
 
 
 \subsection{Implementation of DBSCAN}
@@ -373,19 +374,17 @@ achievable on any given system.
 At the time of prototyping cluster-pdb-structures, there has only been one open
 source Python implementation of the DBSCAN algorithm \cite{scikit_learn}. Since
 that code was rather inefficient, we created a custom implementation where we
-used NumPy for efficiently implementing the neighborhood discovery. The
-corresponding code is shown in Listing \ref{listing:dbscan}. It is a Python
-function using the linear algebra application programming interface of NumPy
-\cite{scipy_numpy}.
+used NumPy \cite{scipy_numpy} for efficiently implementing the object
+neighborhood discovery. The corresponding code is shown in Listing
+\ref{listing:dbscan}
 
 \begin{listing}
 \begin{Verbatim}[fontsize=\tiny,commandchars=\\\{\}]
 \PY{k}{def} \PY{n+nf}{dbscan}\PY{p}{(}\PY{n}{distmat}\PY{p}{,} \PY{n}{epsilon}\PY{p}{,} \PY{n}{minpoints}\PY{p}{)}\PY{p}{:}
-    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Cluster objects whose pairwise distances are stored in}
-\PY{l+s+sd}{    `distmat` via DBSCAN algorithm, with parameters `epsilon`}
-\PY{l+s+sd}{    and `minpoints`.}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Cluster objects via DBSCAN algorithm.}
 \PY{l+s+sd}{    }
-\PY{l+s+sd}{    `distmat` is expected to be of shape N x N.}
+\PY{l+s+sd}{    Object pairwise distances are stored in `distmat`, which}
+\PY{l+s+sd}{    must be an N x N NumPy array for N objects.}
 \PY{l+s+sd}{    }
 \PY{l+s+sd}{    Return list containing one cluster label (int) per object.}
 \PY{l+s+sd}{    Label 0 corresponds to noise.}
@@ -439,37 +438,38 @@ code.
 \label{listing:dbscan}
 \end{listing}
 
-
-
 \subsection{Parameter optimization}
 
-
-        - change criteria from eps/minp to N clusters / members
-        - reproducibility!
-        - comparability among studies
-        - characterization of a cluster via eps
-
-        - brute force plus local optimization
-
+The parameter optimization as motivated in section \ref{clustering_param_opt}
+has been implemented as a two-step minimization protocol: a global minimization
+of the target function with a brute force method is followed by a local
+minimization. On a pre-defined grid of about \num{e3} $\epsilon$, $m$ parameter
+value pairs, the brute force minimization finds the ideal value pair. For
+further parameter optimization the Nelder-Mead simplex algorithm
+\cite{nelder_mead} is used, which is optimized for locally minimizing a function
+of multiple variables. Thanks to an efficient DBSCAN implementation, a typical
+GAG cluster analysis can be performed within seconds, although the parameter
+optimization involves about \num{e3} invocations of the DBSCAN algorithm.
 
 
 \subsection{Availability}
 
-            open source at bitbucket..
-Apache License, Version 2.0
+The code discussed above is released under the Apache License, Version 2.0
+\cite{apache_license_2} and available in a Mercurial repository under
+\url{http://bit.ly/phd-python-clustering}. Please note that this is a
+development version without any guarantees regarding behavior and correctness.
 
 
-The described clustering approach has become standard procedure in the Pisabarro
-research group. It has been used in the context of published work various times,
-such as \cite{franz_cathepsin_2013} and \cite{dmd_samsonov_gehrcke_2014}.
+\section{Conclusions}
 
+The clustering methodology described in this chapter conceptually ensures the
+interpretability of GAG docking results. The DBSCAN parameter optimization
+allows for a reproducible clustering analysis and enables systematic comparisons
+of different docking studies. The described clustering approach has become
+standard procedure in the Pisabarro research group. It has been used in the
+context of published work various times, such as in \cite{franz_cathepsin_2013}
+and \cite{dmd_samsonov_gehrcke_2014}.
 
-\textbf{
-This problem-oriented approach significantly increases the
-interpretability of GAG docking results and enhances their comparability. By
-now, this methodology is applied in the context of several projects in the
-Pisabarro research group.
-}
 
 
 
