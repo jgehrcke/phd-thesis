@@ -243,6 +243,93 @@ reasoning.
 \section{Clustering reproducibility and comparability}
 \label{clustering_param_opt}
 
+The superordinate goal in docking ensemble clustering is to be able to compare
+multiple docking studies, i.e.\ to compare the clustering results of various
+docking solution ensembles. Obviously, the clustering analysis outcome (i.e.\
+the grouping of objects) depends on the parameterization of the clustering
+algorithm. In case of DBSCAN, the parameters $\epsilon$ and $m$ determine the
+output. More specifically, a certain $\epsilon$, $m$ parameter value pair
+determines the minimal \enquote{density} of structures in a cluster. Hence, a
+certain DBSCAN parameterization contains assumptions about the data group
+properties (no clusters are found if the actual density is never greater than
+the minimum as defined by $\epsilon$ and $m$). That is why in a naive manual
+clustering analysis one would run DBSCAN multiple times, with varying
+$\epsilon$, $m$ parameter value pairs and see how the output changes, in order
+to iteratively \textit{learn} about the group properties. Unfortunately, such a
+manual procedure is not reproducible, and therefore does not allow for
+comparability among docking studies.
+
+One could argue that simply using the same $\epsilon$, $m$ parameter value pairs
+for all data sets (docking solution ensembles) would ensure comparability. While
+this is true in general, such an approach would render clustering analysis less
+valuable than it could be: ideal clustering parameters very well describe group
+properties. Hence, it must be the goal to \textit{reproducibly} derive the
+\textit{ideal} clustering parameters for a certain data set -- then the
+clustering outcomes for the different data sets can be compared by the grouping
+itself, as well as by the clustering parameters that describe group properties.
+
+Obviously, some boundary conditions must be provided by the user in order to
+guide an automated, reproducible procedure for ideal clustering parameter
+determination. That is why we have decided to transform the $\epsilon$, $m$
+parameter space to a $N_{min}$, $M_{min}$ parameters pace, whereas $N_{min}$
+determines the minimal number of clusters that must be found, and $M_{min}$
+defines the minimal number of members within each cluster found. The meaning of
+these two parameters is quite easy to grasp and, most importantly, it is
+reasonable to keep these parameters constant among different clustering
+analyses --- which ensures comparability.
+
+Transformation from the simplified parameter space to the $\epsilon$, $m$ space
+requires parameter optimization via multiple DBSCAN invocations with the goal to
+minimize a certain target function. We built a simple target function that
+ensures maximum expressiveness of the $\epsilon$ and $m$ parameters:
+
+\begin{equation}
+F = N + epsilon - minpoints
+\end{equation}
+
+
+, this approach would still have a significant disadvantage: proper
+selection of the clustering parameters
+
+
+ In clustering analysis, we
+are interested in how objects are grouped by the algorithm as well as in the
+properties of the groups.
+always using the
+
+Unfortunately
+
+
+
+ Proper
+selection of clustering parameters is an essential step, although there are no
+standard procedures that could help in this regard.Hence, a method is required for the reproducible
+determination of
+
+
+
+More specifically, a
+certain $\epsilon$, $m$ parameter value pair determines the minimal
+\enquote{density} of structures in a cluster.
+
+
+
+
+
+Since  determines the properties of the groups that
+can be found,
+
+
+he grouping of objects and the properties of the groups
+
+
+
+Naturally, a distance
+cutoff such as $\epsilon$
+
+
+
+
 - change criteria from eps/minp to N clusters / members
 - reproducibility!
 - comparability among studies
