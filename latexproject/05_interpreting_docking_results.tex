@@ -243,102 +243,75 @@ reasoning.
 \section{Clustering reproducibility and comparability}
 \label{clustering_param_opt}
 
-The superordinate goal in docking ensemble clustering is to be able to compare
-multiple docking studies, i.e.\ to compare the clustering results of various
-docking solution ensembles. Obviously, the clustering analysis outcome (i.e.\
-the grouping of objects) depends on the parameterization of the clustering
-algorithm. In case of DBSCAN, the parameters $\epsilon$ and $m$ determine the
-output. More specifically, a certain $\epsilon$, $m$ parameter value pair
-determines the minimal \enquote{density} of structures in a cluster. Hence, a
-certain DBSCAN parameterization contains assumptions about the data group
-properties (no clusters are found if the actual density is never greater than
-the minimum as defined by $\epsilon$ and $m$). That is why in a naive manual
-clustering analysis one would run DBSCAN multiple times, with varying
-$\epsilon$, $m$ parameter value pairs and see how the output changes, in order
-to iteratively \textit{learn} about the group properties. Unfortunately, such a
-manual procedure is not reproducible, and therefore does not allow for
-comparability among docking studies.
+One of the superordinate goals of docking solution ensemble clustering is to
+make a systematic comparison among multiple docking studies possible, i.e.\ to
+allow for comparing the properties of docking solution ensembles of different
+docking studies. Comparability of clustering results on the other hand
+necessitates a \textit{reproducible} clustering method.
+
+Obviously, the clustering analysis outcome (i.e.\ the grouping of objects)
+depends on the parameterization of the clustering algorithm. In case of DBSCAN,
+the parameters $\epsilon$ and $m$ determine the output. More specifically, a
+certain $\epsilon$, $m$ parameter value pair determines the minimal
+\enquote{density} of structures in a cluster. Hence, a certain DBSCAN
+parameterization embodies an assumption about the characteristics of the data:
+no clusters are found if the actual density is nowhere greater than the minimum
+as defined by $\epsilon$ and $m$. That is why in a manual clustering analysis
+one would run DBSCAN multiple times with varying $\epsilon$, $m$ parameter value
+pairs and see how the output changes, in order to iteratively \textit{learn}
+about the data characteristics. Unfortunately, such a manual procedure is not
+reproducible, and therefore does not allow for comparability among docking
+studies.
 
 One could argue that simply using the same $\epsilon$, $m$ parameter value pairs
 for all data sets (docking solution ensembles) would ensure comparability. While
 this is true in general, such an approach would render clustering analysis less
-valuable than it could be: ideal clustering parameters very well describe group
-properties. Hence, it must be the goal to \textit{reproducibly} derive the
-\textit{ideal} clustering parameters for a certain data set -- then the
-clustering outcomes for the different data sets can be compared by the grouping
-itself, as well as by the clustering parameters that describe group properties.
+valuable than it could be. In clustering, we are interested in how objects are
+grouped by the algorithm as well as in the properties of the groups.
+\enquote{Ideal} DBSCAN clustering parameters very well describe the density of
+objects in a cluster and can therefore be a useful measure. The more the
+clustering parameters deviate from ideal ones, the less they represent cluster
+properties. Most importantly however, the classification in groups (clusters)
+becomes less and less clear for non-ideal parameters. Hence, the goal is to
+\textit{reproducibly} derive \textit{ideal} clustering parameters for a certain
+data set. Then the clustering results for different data sets can be compared
+\textit{i)} via the grouping itself and \textit{ii)} via the clustering
+parameters that describe group properties.
 
-Obviously, some boundary conditions must be provided by the user in order to
+Naturally, some boundary conditions must be provided by the user in order to
 guide an automated, reproducible procedure for ideal clustering parameter
-determination. That is why we have decided to transform the $\epsilon$, $m$
-parameter space to a $N_{min}$, $M_{min}$ parameters pace, whereas $N_{min}$
-determines the minimal number of clusters that must be found, and $M_{min}$
-defines the minimal number of members within each cluster found. The meaning of
-these two parameters is quite easy to grasp and, most importantly, it is
-reasonable to keep these parameters constant among different clustering
-analyses --- which ensures comparability.
+determination. That is why we have decided to transform the standard $\epsilon$,
+$m$ DBSCAN parameter space to an advanced $N_{min}$, $M_{min}$ parameters space,
+whereas $N_{min}$ determines the minimal number of clusters that must be found,
+and $M_{min}$ defines the minimal number of members within each cluster to be
+found. The meaning of these two parameters is simple to grasp and, most
+importantly, it is reasonable to keep these parameters constant among different
+clustering analyses --- which ensures comparability.
 
 Transformation from the simplified parameter space to the $\epsilon$, $m$ space
-requires parameter optimization via multiple DBSCAN invocations with the goal to
-minimize a certain target function. We built a simple target function that
-ensures maximum expressiveness of the $\epsilon$ and $m$ parameters:
+requires optimization of the $\epsilon$, $m$ parameters via \textit{multiple}
+DBSCAN invocations on the same data set with the goal to minimize a certain
+target function $F(\epsilon, m)$. We built a simple yet useful target function
+that ensures maximum expressiveness of the $\epsilon$ and $m$ parameters:
 
 \begin{equation}
-F = N + epsilon - minpoints
+F(\epsilon, m) =
+\begin{cases}
+L & \text{if } N(\epsilon, m) < N_{min} \\
+L & \text{if } m < M_{min}-1 \\
+N(\epsilon, m) + \epsilon - m & \text{else}
+\end{cases}
 \end{equation}
 
-
-, this approach would still have a significant disadvantage: proper
-selection of the clustering parameters
-
-
- In clustering analysis, we
-are interested in how objects are grouped by the algorithm as well as in the
-properties of the groups.
-always using the
-
-Unfortunately
-
-
-
- Proper
-selection of clustering parameters is an essential step, although there are no
-standard procedures that could help in this regard.Hence, a method is required for the reproducible
-determination of
-
-
-
-More specifically, a
-certain $\epsilon$, $m$ parameter value pair determines the minimal
-\enquote{density} of structures in a cluster.
-
-
-
-
-
-Since  determines the properties of the groups that
-can be found,
-
-
-he grouping of objects and the properties of the groups
-
-
-
-Naturally, a distance
-cutoff such as $\epsilon$
-
-
-
-
-- change criteria from eps/minp to N clusters / members
-- reproducibility!
-- comparability among studies
-- characterization of a cluster via eps
-- brute force plus local optimization
-
-Compared to standard clustering methods, these ingredients significantly
-increase the interpretability of GAG docking results and enhance their
-comparability.
+whereas L is a large penalty and $N$ is the actual number of clusters identified
+for a given $\epsilon$, $m$ pair. The first two conditions implement the
+constraints as given by $N_{min}$ and $M_{min}$. Minimization of the expression
+$N + \epsilon - m$ finds parameters describing the properties of as few clusters
+as possible as good as possible: it identifies the smallest $\epsilon$ and the
+largest $m$ that still lead to (a) cluster(s) being found. From an analytical
+point of view, optimization of the named expression identifies a phase
+transition in the $\epsilon$, $m$ parameter space and returns those parameter
+values that are just on the right side of the transition.
 
 
 \section{Clustering method for GAGs: implementation details}
@@ -365,7 +338,7 @@ program written for CPython 2.6 and 2.7, and provides the following features:
 \item Automatic cluster statistics, various options for sorting
 \item Comprehensive output: cluster information as JSON data, molecular
 structures as PDB files in a meaningful directory structure
-\item well-documented command line interface
+\item Well-documented command line interface
 \end{itemize}
 
 The major bottleneck for the runtime of the clustering analysis is the $RMSatd$
@@ -463,7 +436,7 @@ source Python implementation of the DBSCAN algorithm \cite{scikit_learn}. Since
 that code was rather inefficient, we created a custom implementation where we
 used NumPy \cite{scipy_numpy} for efficiently implementing the object
 neighborhood discovery. The corresponding code is shown in Listing
-\ref{listing:dbscan}
+\ref{listing:dbscan}.
 
 \begin{listing}
 \begin{Verbatim}[fontsize=\tiny,commandchars=\\\{\}]
@@ -530,7 +503,7 @@ code.
 The parameter optimization as motivated in section \ref{clustering_param_opt}
 has been implemented as a two-step minimization protocol: a global minimization
 of the target function with a brute force method is followed by a local
-minimization. On a pre-defined grid of about \num{e3} $\epsilon$, $m$ parameter
+minimization. On a pre-defined grid of about \num{e2} $\epsilon$, $m$ parameter
 value pairs, the brute force minimization finds the ideal value pair. For
 further parameter optimization the Nelder-Mead simplex algorithm
 \cite{nelder_mead} is used, which is optimized for locally minimizing a function
@@ -541,8 +514,8 @@ optimization involves about \num{e3} invocations of the DBSCAN algorithm.
 
 \subsection{Availability}
 
-The code discussed above is released under the Apache License, Version 2.0
-\cite{apache_license_2} and available in a Mercurial repository under
+The code of cluster-pdb-structures is released under the Apache License, Version
+2.0 \cite{apache_license_2} and available in a Mercurial repository under
 \url{http://bit.ly/phd-python-clustering}. Please note that this is a
 development version without any guarantees regarding behavior and correctness.
 
@@ -552,9 +525,9 @@ development version without any guarantees regarding behavior and correctness.
 The clustering methodology described in this chapter conceptually ensures the
 interpretability of GAG docking results. The DBSCAN parameter optimization
 allows for a reproducible clustering analysis and enables systematic comparisons
-of different docking studies. The described clustering approach has become
+among different docking studies. The described clustering approach has become
 standard procedure in the Pisabarro research group. It has been used in the
-context of published work various times, such as in \cite{franz_cathepsin_2013}
+context of published work, such as in \cite{franz_cathepsin_2013}
 and \cite{dmd_samsonov_gehrcke_2014}.
 
 
