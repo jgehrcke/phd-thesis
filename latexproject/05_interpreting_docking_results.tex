@@ -281,12 +281,12 @@ parameters that describe group properties.
 Naturally, some boundary conditions must be provided by the user in order to
 guide an automated, reproducible procedure for ideal clustering parameter
 determination. That is why we have decided to transform the standard $\epsilon$,
-$m$ DBSCAN parameter space to an advanced $N_{min}$, $M_{min}$ parameters space,
-whereas $N_{min}$ determines the minimal number of clusters that must be found,
-and $M_{min}$ defines the minimal number of members within each cluster to be
-found. The meaning of these two parameters is simple to grasp and, most
-importantly, it is reasonable to keep these parameters constant among different
-clustering analyses --- which ensures comparability.
+$m$ DBSCAN parameter space to an advanced $N_{min}$, $M_{min}$ parameter space,
+whereas $N_{min}$ is the minimal number of clusters that must be found, and
+$M_{min}$ defines the minimal number of members within each cluster to be found.
+The meaning of these two parameters is simple to grasp and, most importantly, it
+is reasonable to keep these parameters constant among different clustering
+analyses --- which ensures comparability.
 
 Transformation from the simplified parameter space to the $\epsilon$, $m$ space
 requires optimization of the $\epsilon$, $m$ parameters via \textit{multiple}
@@ -303,15 +303,15 @@ N(\epsilon, m) + \epsilon - m & \text{else}
 \end{cases}
 \end{equation}
 
-whereas L is a large penalty and $N$ is the actual number of clusters identified
-for a given $\epsilon$, $m$ pair. The first two conditions implement the
-constraints as given by $N_{min}$ and $M_{min}$. Minimization of the expression
-$N + \epsilon - m$ finds parameters describing the properties of as few clusters
-as possible as good as possible: it identifies the smallest $\epsilon$ and the
-largest $m$ that still lead to (a) cluster(s) being found. From an analytical
-point of view, optimization of the named expression identifies a phase
-transition in the $\epsilon$, $m$ parameter space and returns those parameter
-values that are just on the right side of the transition.
+whereas $L$ is a large penalty and $N$ is the actual number of clusters
+identified for a given $\epsilon$, $m$ pair. The first two conditions implement
+the constraints as given by $N_{min}$ and $M_{min}$. Minimization of the
+expression $N + \epsilon - m$ finds parameters describing the properties of as
+few clusters as possible as good as possible: it identifies the smallest
+$\epsilon$ and the largest $m$ that still lead to cluster being found. From an
+analytical point of view, optimization of the named expression identifies a
+phase transition in the $\epsilon$, $m$ parameter space and returns those
+parameter values that are just on the right side of the transition.
 
 
 \section{Clustering method for GAGs: implementation details}
