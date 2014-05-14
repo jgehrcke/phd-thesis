@@ -23,24 +23,59 @@ likely binds. The decision where to center the local search on should be based
 on reliable data, otherwise the docking study might be pointless. In the best
 case, knowledge about the binding site (the region on the receptor that the
 ligand binds to) comes from experimental data, e.g.\ from mutagenesis or NMR
-studies.
+studies.In other cases, no experimental data is available that provides clues
+about the binding site, as is the case with the IL-10-GAG system. In such cases,
+it makes sense to consider \textit{in silico} methods for binding site
+prediction.
 
-In other cases, no experimental data is available that provides clues about the
-binding site, as is the case with the IL-10-GAG system. In such cases, it makes
-sense to consider \textit{in silico} methods for binding site prediction.  With
-respect to protein-GAG systems, there is only few published work on this topic.
-In \cite{hp_binding_sites_mulloy_2006}, the authors used AutoDock version 2.4
-\cite{autodock24} for globally docking rigid heparin molecules to antithrombin
-and FGF-2, and found that their docking procedure gave good agreement with the
-corresponding crystal structures regarding the overall position of the heparin
-binding sites. The authors state that the method may be used as
-\enquote{hypothesis generation tool} rather than for providing \enquote{details
-of interactions between specific atoms}. In another work
+With respect to protein-GAG systems, there is only few published work on this
+topic. In \cite{hp_binding_sites_mulloy_2006}, the authors used AutoDock version
+2.4 \cite{autodock24} for globally docking rigid heparin molecules to
+antithrombin and FGF-2, and found that their docking procedure gave good
+agreement with the corresponding crystal structures regarding the overall
+position of the heparin binding sites. The authors state that the method may be
+used as \enquote{hypothesis generation tool} rather than for providing
+\enquote{details of interactions between specific atoms}. In another work
 \cite{gandhi_bmp_heparin_binding_sites_2012}, the authors used PatchDock
 \cite{patchdock_2002} for globally docking rigid heparin oligosaccharides to
-BMP-2 and BMP-14 and state that \enquote{while there has been no validation
-of the accuracy of the PatchDock scoring function for heparin interactions,
-these docking results suggest the presence of two GAG binding sites in BMP-2}.
+BMP-2 and BMP-14 and state that \enquote{while there has been no validation of
+the accuracy of the PatchDock scoring function for heparin interactions, these
+docking results suggest the presence of two GAG binding sites in BMP-2}.
+
+The above-cited studies are by no means complete, but obviously some of the
+established docking methods seem to be able to reflect certain properties of
+protein-GAG systems, although none of these docking methods has been
+specifically optimized for GAG ligands, let alone for global docking of protein-
+GAG systems. Strictly spoken, when applied to protein-GAG systems, these docking
+methods are applied outside of their scope of validity. We postulate that the
+reason for the surprising success in named studies is that protein-GAG complexes
+are strongly driven by Coulomb interaction and that mentioned docking methods
+incorporate Coulomb interaction with a significant weight in their scoring
+functions.
+
+In fact, the importance of Coulomb interaction is a unique feature of protein-
+GAG systems. Heparin, for instance, has the highest negative charge density
+among biological macromolecules \cite{capila_linhardt_hep_prot_2002}. Standard
+literature on protein-GAG systems such as
+\cite{essentials_glycobiology_gags_2009} stresses the role of charge-charge
+interaction in protein-GAG systems in general. Many publications focusing on
+individual protein-GAG systems identify charge complementary as one of the
+driving mechanisms of the interaction between GAG and protein
+\cite{faham_heparin_1996,gandhi_bmp_heparin_binding_sites_2012,%
+pichert_characterization_2012,rogers_gag_prot_prot_2011}.
+
+
+Especially compared to other molecular interactions, the Coulomb interaction is
+a long range interaction.
+
+As of the above considerations, it seems to be reasonable to perform protein-GAG
+binding site prediction purely based on the strength and topology of the
+electrostatic potential of the protein in space
+
+ Heparin
+
+
+
 
 
 None of the authors provides arguments why the docking method of choice should
@@ -76,6 +111,7 @@ No estimation whether that model is trustable or not
 \section{Application to reference systems}
 
 \subsection{Results and discussion}
+
 
 \section{Application to IL-10}
 
@@ -192,3 +228,11 @@ potential, however, does not display clear characteristics to predict a binding
 region.
 
 
+
+\hl{INCORPORATE:} The method surely is more useful than the popular method of
+heparin binding site consensus sequence search (cardin, weintraub) (hileman,
+linhardt), which has already been applied to interleukin-10 before. Its about
+structure, not sequence, that is also why Forster and Mulloy state that
+\enquote{though some 'consensus sequences' for heparin binding have been
+identified, they are neither necessary nor sufficient to define a heparin
+binding site} \cite{forster_computational_2006}.
