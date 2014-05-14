@@ -1,20 +1,56 @@
 \chapter{Protein-GAG binding site prediction via electrostatic potential analysis}
 
 In this chapter we present a simple and yet efficient method for predicting
-where on a protein a GAG would most likely bind. The method is based on
+where on a protein a GAG would most likely bind, suggesting which amino acid
+residues are likely to be involved and which are not. The method is based on
 numerical simulation of the electrostatic (i.e.\ Coulomb) potential of a certain
 protein in water solution, and manual evaluation of the topology of the Coulomb
 potential in space. Subsequently, we apply that method to IL-10 and report our
 findings.
 
-\section{Rational}
+\section{Motivation}
 
 Classical molecular docking approaches are used for creating binding predictions
 for a given receptor-ligand system. Primarily, the correctness of a prediction
 depends on the quality of the underlying physical or phenomenological model, and
 whether the system under investigation is within the scope of validity of the
-model. Most molecular docking methods are trained for analyzing a limited
-Cartesian volume only, in a \textit{local} search.
+model. Since most molecular docking methods are trained for analyzing a limited
+Cartesian volume in a \textit{local} search, application to larger search spaces
+dramatically lowers the confidence in the resulting prediction. As a result,
+common molecular docking methods should be applied locally, and therefore
+require \textit{a priori} knowledge about where on the receptor the ligand most
+likely binds. The decision where to center the local search on should be based
+on reliable data, otherwise the docking study might be pointless. In the best
+case, knowledge about the binding site (the region on the receptor that the
+ligand binds to) comes from experimental data, e.g.\ from mutagenesis or NMR
+studies.
+
+In other cases, no experimental data is available that provides clues about the
+binding site, as is the case with the IL-10-GAG system. In such cases, it makes
+sense to consider \textit{in silico} methods for binding site prediction.  With
+respect to protein-GAG systems, there is only few published work on this topic.
+In \cite{hp_binding_sites_mulloy_2006}, the authors used AutoDock version 2.4
+\cite{autodock24} for globally docking rigid heparin molecules to antithrombin
+and FGF-2, and found that their docking procedure gave good agreement with the
+corresponding crystal structures regarding the overall position of the heparin
+binding sites. The authors state that the method may be used as
+\enquote{hypothesis generation tool} rather than for providing \enquote{details
+of interactions between specific atoms}. In another work
+\cite{gandhi_bmp_heparin_binding_sites_2012}, the authors used PatchDock
+\cite{patchdock_2002} for globally docking rigid heparin oligosaccharides to
+BMP-2 and BMP-14 and state that \enquote{while there has been no validation
+of the accuracy of the PatchDock scoring function for heparin interactions,
+these docking results suggest the presence of two GAG binding sites in BMP-2}.
+
+
+None of the authors provides arguments why the docking method of choice should
+be valid for protein-GAG systems.
+
+
+
+ In that case,
+the docking study might be able to provide insights about the receptor- ligand
+interaction on an atomic level, i.e.\ with higher resolution than the
 
 
 
