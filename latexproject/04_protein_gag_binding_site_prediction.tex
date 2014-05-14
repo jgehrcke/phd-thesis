@@ -1,4 +1,73 @@
-\chapter{A simple method for predicting protein-GAG binding sites}
+\chapter{Protein-GAG binding site prediction via electrostatic potential analysis}
+
+In this chapter we present a simple and yet efficient method for predicting
+where on a protein a GAG would most likely bind. The method is based on
+numerical simulation of the electrostatic (i.e.\ Coulomb) potential of a certain
+protein in water solution, and manual evaluation of the topology of the Coulomb
+potential in space. Subsequently, we apply that method to IL-10 and report our
+findings.
+
+\section{Rational}
+
+Classical molecular docking approaches are used for creating binding predictions
+for a given receptor-ligand system. Primarily, the correctness of a prediction
+depends on the quality of the underlying physical or phenomenological model, and
+whether the system under investigation is within the scope of validity of the
+model. Most molecular docking methods are trained for analyzing a limited
+Cartesian volume only, in a \textit{local} search.
+
+
+
+ and
+also on the sampling performance of the method. We can safely conclude that with
+increasing search space, the validity of any prediction
+
+The larger the cartesian search space, the
+
+The validity of binding predictions from classical molecular docking approaches
+increases with
+
+Molecular docking approaches
+
+No estimation whether that model is trustable or not
+
+\section{Method}
+
+\subsection{Coulomb potential simulation}
+
+\subsection{Coulomb potential evaluation}
+
+\section{Application to reference systems}
+
+\subsection{Results and discussion}
+
+\section{Application to IL-10}
+
+
+
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{gfx/bspred/SI_figure_IL-10_coulomb_isosurface_1_9kcalmol.png}
+\caption[]{
+
+Isosurface representation of IL-10's Coulomb potential with the isovalue $\Phi =
+\SI{1.9}{\kilo\calory\per\mole\per\elementarycharge}$ (blue). The molecular
+surface of the IL-10 dimer is shown in gray, the molecular surface of arginines
+102, 104, 106, 107 is shown in yellow (structure taken from PDB ID 2ILK). This
+representation allows to see where the Coulomb potential (for a given isovalue)
+protrudes into space further than the molecular surface, and has been shown to
+provide useful evidence about where GAGs bind to a protein \hl{(REF)}. Hence,
+IL-10-GAG interaction most likely takes place within the two symmetrically
+arranged regions indicated here.
+
+}
+\label{fig:bspred:il10_estatic_pred}
+\end{figure}
+
+
+
 
 \subsubsection{Electrostatic potential analysis in protein-GAG systems}
 
@@ -85,27 +154,5 @@ Coulomb potential analysis inconclusive. Recognition of the Trypsin inhibitor in
 its  binding pocket is affected by polar interactions. The electrostatic
 potential, however, does not display clear characteristics to predict a binding
 region.
-
-\section{Application to IL-10}
-
-
-\begin{figure}
-\centering
-\includegraphics[width=0.9\textwidth]{gfx/bspred/SI_figure_IL-10_coulomb_isosurface_1_9kcalmol.png}
-\caption[]{
-
-Isosurface representation of IL-10's Coulomb potential with the isovalue $\Phi =
-\SI{1.9}{\kilo\calory\per\mole\per\elementarycharge}$ (blue). The molecular
-surface of the IL-10 dimer is shown in gray, the molecular surface of arginines
-102, 104, 106, 107 is shown in yellow (structure taken from PDB ID 2ILK). This
-representation allows to see where the Coulomb potential (for a given isovalue)
-protrudes into space further than the molecular surface, and has been shown to
-provide useful evidence about where GAGs bind to a protein \hl{(REF)}. Hence,
-IL-10-GAG interaction most likely takes place within the two symmetrically
-arranged regions indicated here.
-
-}
-\label{fig:bspred:il10_estatic_pred}
-\end{figure}
 
 
