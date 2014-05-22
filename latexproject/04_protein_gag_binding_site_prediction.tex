@@ -16,7 +16,7 @@ depends on the quality of the underlying physical or phenomenological model, and
 whether the system under investigation is within the scope of validity of the
 model. Since most molecular docking methods are trained for analyzing a limited
 Cartesian volume in a \textit{local} search, application to larger search spaces
-dramatically lowers the confidence in the resulting prediction. As a result,
+dramatically lowers the confidence in the resulting prediction. Therefore,
 common molecular docking methods should be applied locally, and therefore
 require \textit{a priori} knowledge about where on the receptor the ligand most
 likely binds. The decision where to center the local search on should be based
@@ -31,7 +31,7 @@ binding site prediction.
 With respect to protein-GAG systems, there is only few published work on this
 topic. In \cite{hp_binding_sites_mulloy_2006}, Forster and Mulloy used AutoDock
 version 2.4 \cite{autodock24} for globally docking rigid heparin molecules to
-antithrombin and FGF-2, and found that their docking procedure gave good
+antithrombin and FGF2, and found that their docking procedure gave good
 agreement with the corresponding crystal structures regarding the overall
 position of the heparin binding sites. The authors state that the method may be
 used as \enquote{hypothesis generation tool} rather than for providing
@@ -56,40 +56,27 @@ functions.
 In fact, heparin has the highest negative charge density among biological
 macromolecules \cite{capila_linhardt_hep_prot_2002}. Standard literature on
 protein-GAG systems such as
-\cite{essentials_glycobiology_gags_2009} stresses the role of charge-charge
-interaction in protein-GAG systems in general. Many publications focusing on
-individual protein-GAG systems identify charge complementary as one of the
-driving mechanisms of the interaction between GAG and protein
+\cite{essentials_glycobiology_gags_2009,gandhi_structure_2008} stresses the
+role of charge-charge interaction in protein-GAG systems in general. Many
+publications focusing on individual protein-GAG systems identify charge
+complementary as one of the driving mechanisms of the interaction between GAG
+and protein
 \cite{gandhi_bmp_heparin_binding_sites_2012,faham_heparin_1996,%
 pichert_characterization_2012,rogers_gag_prot_prot_2011}.
 
-%dominates all other contributions and therefore a heterogeneously charged
-%protein is able to \enquote{catch} GAG ligands.
-
-We can conclude that the importance of Coulomb interaction is a unique feature
-of protein-GAG systems. Notably, compared to other molecular interactions, the
-Coulomb interaction is a long range interaction and therefore dominates all
-other contributions for larger distances. As of these considerations, it seems
-to be reasonable to perform protein-GAG binding site prediction purely based on
-the strength and topology of the electrostatic potential of the protein. Whether
-or not such an approach proves to be useful when applied to a set of reference
-systems in any case further enlightens the role of Coulomb interaction in
-protein-GAG systems.
-
-%None of the authors provides arguments why the docking method of choice should
-%be valid for protein-GAG systems.
-%
-% In that case,
-%the docking study might be able to provide insights about the receptor- ligand
-%interaction on an atomic level, i.e.\ with higher resolution than the
-% and
-%also on the sampling performance of the method. We can safely conclude that with
-%increasing search space, the validity of any prediction
-
-%The larger the cartesian search space, the
-%
-%The validity of binding predictions from classical molecular docking approaches
-%increases with
+We can conclude that the importance of Coulomb interaction is a distinctive
+feature of protein-GAG systems. Notably, compared to other molecular interaction
+types, the Coulomb interaction is a long range interaction and therefore
+dominates all other contributions for larger distances. As of these
+considerations, it seems to be reasonable to perform protein-GAG binding site
+prediction purely based on the strength and topology (i.e.\ the
+shape/distribution) of the electrostatic potential in the volume surrounding the
+protein. For a set of reference systems, we have investigated the relation
+between the strength and topology of Coulomb potential and the actual
+experimentally determined GAG binding site in order to determine whether the
+electrostatic properties alone can assist in predicting a receptor GAG binding
+site. The result of this study, be it positive or negative, in any case further
+enlightens the role of Coulomb interaction in protein-GAG systems.
 
 
 \section{Method}
@@ -123,6 +110,11 @@ directly conclude that coulomb interaction IS the dominating interaction that
 alone determines binding site for many systems.
 
 
+Discuss FGF2, SDF1, and CD44!
+
+Refer to \hl{The result of this study, be it positive or negative, in any case
+further enlightens the role of Coulomb interaction in protein-GAG systems.}
+
 \section{Application to IL-10}
 
 \begin{figure}
@@ -133,11 +125,8 @@ Isosurface representation of IL-10's Coulomb potential (blue), shown for
 multiple isovalues isovalues $\Phi$. The molecular surface of the IL-10 dimer is
 shown in gray (structure taken from PDB ID 2ILK).
 }
-\label{fig:bspred:il10_estatic_pred}
+\label{fig:bspred:il10_multi_iso}
 \end{figure}
-
-
-
 
 
 \begin{figure}
@@ -156,8 +145,6 @@ arranged regions indicated here.
 }
 \label{fig:bspred:il10_estatic_pred}
 \end{figure}
-
-
 
 
 \subsubsection{Electrostatic potential analysis in protein-GAG systems}
@@ -254,4 +241,4 @@ linhardt), which has already been applied to interleukin-10 before. Its about
 structure, not sequence, that is also why Forster and Mulloy state that
 \enquote{though some 'consensus sequences' for heparin binding have been
 identified, they are neither necessary nor sufficient to define a heparin
-binding site} \cite{forster_computational_2006}.
+binding site} \cite{hp_binding_sites_mulloy_2006}.
