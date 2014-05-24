@@ -106,45 +106,56 @@ solvent region. The overall electrostatic field is the sum of the Coulombic
 field of the solute and the corresponding solvent reaction field (since it is
 heavily polarizable).
 
-We calculated the overall electrostatic potential of the protein in water using
-the PBSA program shipped with AmberTools 13 \cite{case_amber_12} with default
-parameters and a finite element grid spacing of \SI{1}{\angstrom}. The atomic
-radii and point charges of the protein were parameterized according to the
-FF99SB force field \cite{case_amber_12}. After contributing Fortran software
-patches back to the AmberTools project, we were able to extract the Coulomb data
-from PBSA in units of \si{\kilo\calory\per\mole\per\elementarycharge} and in a
-file format readable by the visualization software VMD \cite{vmd_1996}.
+We used the PBSA program shipped with AmberTools 13 \cite{case_amber_12} with
+default parameters and a finite element grid spacing of \SI{1}{\angstrom} for
+calculating the overall electrostatic potential of a protein in water. The
+atomic radii and point charges of the protein were parameterized according to
+the FF99SB force field \cite{case_amber_12}. After patching PBSA (and
+contributing those patches back to the AmberTools project), we were able to
+extract the Coulomb data from PBSA in units of
+\si{\kilo\calory\per\mole\per\elementarycharge} and in a file format readable by
+the visualization software VMD \cite{vmd_1996}.
 
 \subsection{Coulomb potential evaluation}
 
-For authors discussing the electrostatic properties of a certain receptor
-protein it is not uncommon to show the electrostatic potential mapped onto the
-molecular surface, and to draw conclusions solely based on this view, as done
-for instance in
+Authors discussing the electrostatic properties of a certain receptor protein
+usually look at the the electrostatic potential mapped onto the molecular
+surface, and ignore the properties of the potential in the rest of the space
+when they draw conclusions, such as in \cite{rogers_gag_prot_prot_2011} \hl{add
+more refs}. Unfortunately, an often overseen disadvantage of this approach is
+that the PB approximation of the electrostatic potential is \text{most}
+error-prone near the dielectric boundary, i.e.\ right on the molecular surface.
+In \cite{estatic_proteins_warshel_2006}, Warshel et al.\ write that \enquote{the
+problem is not the well-known bulk contribution from the surroundings [\dots],
+but the polarization at the microscopic boundaries of the simulation spheres}.
+The data we obtain from PBSA are the values of the electrostatic potential on
+the grid centers of a three-dimensional grid, spanning a volume of a certain
+size including the protein as well as its surroundings. In contrast to what is
+usually done, we decided to analyze the properties of the electrostatic
+potential within the entire protein-surrounding volume, \textit{i)} for working
+around the uncertainty of the data near the boundary, and
+\textit{ii)} for looking at the complete picture.
 
- base the electrostastic potential
-
-
-estatic_proteins_warshel_2006
-
-quote from there that at boundary, ..
-
-
-Calculations of the electrostatic potential of molecules are most error-prone
-near the dielectric boundary, i.e.\ on the molecular surface. We therefore did
-not simply map the potential on the molecular surface but analyzed the topology
-of the potential with an isosurface representation while varying the isosurface
-value. This allows for an understanding  of the distribution of the potential in
-space and how strongly it would affect a ligand. \cref{fig:bspred:sdf1_estatic}
-shows an isosurface of the Coulomb potential of SDF-1.
-\cref{fig:bspred:various_estatic} shows analogous isosurface representations of
-the electrostatic potential for the other TDS complexes. For this type of
-visualization, the isovalue selection was done individually for each receptor in
-the TDS such that only a small part of the isosurface is protruding into space
-further than the molecular surface of the receptor.
-
+We therefore analyzed the topology and strength of the potential with an
+isosurface representation while varying the isosurface value. This procedure,
+which will become more clear in \cref{bspred:application} below, allows for
+understanding the distribution of the potential in space as well as how strongly
+it would affect a ligand. With this type of visualization, a characteristic
+isovalue determination was done individually for each protein for the case where
+only a small part of the isosurface is protruding into space further than the
+molecular surface of the receptor. This characteristic isovalue provides an idea
+about the strength of the electrostatic interaction between ligand and receptor
+in the bound state. The isosurface visualization was performed using VMD
+\cite{vmd_1996}.
 
 \section{Application to reference systems}
+\label{bspred:application}
+
+\cref{fig:bspred:sdf1_estatic} shows an isosurface of
+the Coulomb potential of SDF-1.
+\cref{fig:bspred:various_estatic} shows analogous isosurface representations of
+the electrostatic potential for the other TDS complexes.
+
 
 
 \begin{figure}
