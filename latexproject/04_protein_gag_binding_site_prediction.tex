@@ -16,17 +16,17 @@ depends on the quality of the underlying physical or phenomenological model, and
 whether the system under investigation is within the scope of validity of the
 model. Since most molecular docking methods are trained for analyzing a limited
 Cartesian volume in a \textit{local} search, application to larger search spaces
-dramatically lowers the confidence in the resulting prediction. Therefore,
-common molecular docking methods should be applied locally, and therefore
-require \textit{a priori} knowledge about where on the receptor the ligand most
-likely binds. The decision where to center the local search on should be based
-on reliable data, otherwise the docking study might be pointless. In the best
-case, knowledge about the binding site (the region on the receptor that the
-ligand binds to) comes from experimental data, e.g.\ from mutagenesis or NMR
-studies. However, in many cases no experimental data is available that provides
-clues about the binding site, as is unfortunately true for the IL-10-GAG system.
-In such situations, it makes sense to consider \textit{in silico} methods for
-binding site prediction.
+such as in \textit{global} docking dramatically lowers the confidence in the
+resulting prediction. Therefore, common molecular docking methods should be
+applied locally, and hence require \textit{a priori} knowledge about where on
+the receptor the ligand most likely binds. The decision where to center the
+local search on should be based on reliable data, otherwise the docking study
+might be pointless. In the best case, knowledge about the binding site (the
+region on the receptor that the ligand binds to) comes from experimental data,
+e.g.\ from mutagenesis or NMR studies. However, in many cases no such
+experimental data is available, as is unfortunately true for the IL-10-GAG
+system. In such situations, it makes sense to consider \textit{in silico}
+methods for binding site prediction.
 
 With respect to protein-GAG systems, there is only few published work on this
 topic. In \cite{hp_binding_sites_mulloy_2006}, Forster and Mulloy used AutoDock
@@ -44,14 +44,14 @@ docking results suggest the presence of two GAG binding sites in BMP-2}.
 
 The above-cited studies do by no means provide a complete picture, but obviously
 some of the established docking methods seem to be able to reflect certain
-properties of protein-GAG systems, although none of these docking methods has
-been specifically optimized for GAG ligands, let alone for \textit{global}
-docking. Strictly spoken, when applied to protein-GAG systems, these docking
-methods are applied outside of their scope of validity. We postulate that the
-reason for the surprising success in named studies is that protein-GAG complexes
-are strongly driven by Coulomb interaction and that mentioned docking methods
-incorporate Coulomb interaction with a significant weight in their scoring
-functions.
+properties of protein-GAG systems. This is remarkable since none of these
+docking methods has been specifically optimized for GAG ligands, let alone for
+global docking, and strictly spoken, when applied to protein-GAG systems, these
+docking methods are applied outside of their scope of validity. We postulate
+that the reason for the surprising success in named studies is that protein-GAG
+complexes are strongly driven by Coulomb interaction and that mentioned docking
+methods incorporate Coulomb interaction with a significant weight in their
+scoring functions.
 
 In fact, heparin has the highest negative charge density among biological
 macromolecules \cite{capila_linhardt_hep_prot_2002}. Standard literature on
@@ -71,17 +71,33 @@ dominates all other contributions for larger distances. As of these
 considerations, it seems to be reasonable to perform protein-GAG binding site
 prediction purely based on the strength and topology (i.e.\ the
 shape/distribution) of the electrostatic potential in the volume surrounding the
-protein. For a set of reference systems, we have investigated the relation
-between the strength and topology of Coulomb potential and the actual
-experimentally determined GAG binding site in order to determine whether the
-electrostatic properties alone can assist in predicting a receptor GAG binding
-site. The result of this study, be it positive or negative, in any case further
-enlightens the role of Coulomb interaction in protein-GAG systems.
+protein.
+
+For a set of reference systems, we have investigated the relation between the
+strength and topology of Coulomb potential and the actual experimentally
+determined GAG binding site in order to determine whether the electrostatic
+properties alone can assist in predicting a receptor GAG binding site. The
+result of this study, be it positive or negative, in any case further enlightens
+the role of Coulomb interaction in protein-GAG systems.
 
 
 \section{Method}
 
 \subsection{Coulomb potential simulation}
+
+For a given protein, we calculated its electrostatic potential with a
+finite-difference numerical solver applied to the linearized Poisson-Boltzmann
+equation
+
+
+AmberTools' PBSA program \cite{case_amber_12}
+
+(choosing the modified ICCG solver
+applied to the linearized Poisson-Boltzmann equation). The receptor atoms were
+parameterized according to the FF99SB force field. The grid spacing was set to
+$1\,\angstrom$. Isosurface visualization of the potential was done in VMD
+\cite{vmd1996}.
+
 
 \subsection{Coulomb potential evaluation}
 
