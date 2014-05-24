@@ -140,16 +140,27 @@ We therefore analyzed the topology and strength of the potential with an
 isosurface representation while varying the isosurface value. This procedure,
 which will become more clear in \cref{bspred:application} below, allows for
 understanding the distribution of the potential in space as well as how strongly
-it would affect a ligand. With this type of visualization, a characteristic
-isovalue determination was done individually for each protein for the case where
-only a small part of the isosurface is protruding into space further than the
-molecular surface of the receptor. This characteristic isovalue provides an idea
-about the strength of the electrostatic interaction between ligand and receptor
-in the bound state. The isosurface visualization was performed using VMD
+it would affect a ligand. A characteristic isovalue determination was done
+individually for each protein for the case where only a small part of the
+isosurface is protruding into space further than the molecular surface of the
+receptor. This characteristic isovalue provides an idea about the strength of
+the electrostatic interaction between ligand and receptor in the bound state.
+The isosurface visualization was performed using VMD
 \cite{vmd_1996}.
 
 \section{Application to reference systems}
 \label{bspred:application}
+
+We have analyzed the electrostatic potential of the following well-understood
+and experimentally characterized protein-GAG systems: basic fibroblast growth
+factor (FGF2) in complex with a heparin (HP) tetrasaccharide, PDB ID 1BFB,
+\SI{1.9}{\angstrom} resolution; the CD44 hyaluronic acid binding domain in
+complex with a hyaluronan heptasaccharide (HA), PDB ID 2JCQ,
+\SI{1.3}{\angstrom}; and stromal cell-derived factor-1 (SDF-1) in complex with a
+HP disaccharide, PDB ID 2NWG, \SI{2.1}{\angstrom}.
+
+Furthermore, we have applied
+
 
 \cref{fig:bspred:sdf1_estatic} shows an isosurface of
 the Coulomb potential of SDF-1.
@@ -180,12 +191,47 @@ directly conclude that coulomb interaction IS the dominating interaction that
 alone determines binding site for many systems.
 
 
+Discuss: The most important aspect to discuss regarding a method for predicting
+certain behavior is the certainty of the prediction. we can conclude that this
+method is very well able to make valid predictions regarding protein-GAG binding
+regions. Compared to docking methods, this method is significantly less complex:
+it is a bare-bones method, incorporating a quite simple physical model, whereas
+docking methods usually apply a combination of physical as well as
+phenomenological model. The certainty of a docking prediction is difficult to
+assess if the docking method is applied outside its scope of validity, i.e.\ to
+different systems and search space sizes than it has been developed for.
+Strictly spoken, the certainty is not assessable, neither quantitatively, nor
+qualitatively. The reason for this is the large complexity of a docking method,
+as of which we can not systematically describe how the method should behave, if
+we leave the scope of validity.
+
+compared to simple electrostatic potential evaluation.
+
+The prediction method we have presented here, however, seems to provide a good
+estimate about the certainty of its prediction. We see that the data about CD44
+is inconclusive, at the same time the data regarding FGF2 and SDF-2 as well as
+SOST provides strong evidence that GAGs bind where predicted, especially regarding
+the large characteristic electrostatic potential isovalues in proximity of the
+molecular surface. This is a huge advantage.
+
+
+
 Discuss FGF2, SDF1, and CD44!
 
 Refer to \hl{The result of this study, be it positive or negative, in any case
 further enlightens the role of Coulomb interaction in protein-GAG systems.}
 
 \section{Application to IL-10}
+
+Regarding IL-10, the shape of the potential in space provides strong evidence
+that if GAGs bind to it, then most likely in a well-defined region. What makes
+this prediction less certain as e.g.\ in case of SDF-1 and FGF2 is the fact that
+the characteristic isovalue of the Coulomb potential in the predicted regions is
+significantly smaller than in named reference systems. So far, we have no
+experience whether there is a certain threshold in this value, below which we
+can or should not use our prediction method anymore for deriving reliable
+predictions. The low value in any case suggests that IL-10-GAG binding occurs
+with lower binding affinity as is the case of  SDF-1 and FGF2 .
 
 \begin{figure}
 \centering
@@ -286,6 +332,11 @@ Coulomb potential analysis inconclusive. Recognition of the Trypsin inhibitor in
 its  binding pocket is affected by polar interactions. The electrostatic
 potential, however, does not display clear characteristics to predict a binding
 region.
+
+
+
+
+
 
 
 
