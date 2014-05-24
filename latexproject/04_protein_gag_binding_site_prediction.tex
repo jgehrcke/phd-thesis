@@ -87,15 +87,36 @@ the role of Coulomb interaction in protein-GAG systems.
 
 For a given protein, we calculated its electrostatic potential with a
 finite-difference numerical solver applied to the linearized Poisson-Boltzmann
-equation
+(PB) equation. The PB equation is widely used for implementing a class of
+implicit solvent models to describe solvent-mediated electrostatic interactions.
+These models have been demonstrated to be reliable in reproducing the energetics
+when compared with explicit solvent molecular dynamics simulations and
+experimental measurements for a wide range of systems \cite{honig_estatic_1995}.
+In the PB model we have applied, the solute (protein) is described by an
+atomic-detail representation, while the solvent molecules are treated as a
+continuum. The solute is modeled as a dielectric body whose shape is defined by
+atomic coordinates and atomic radii. A set of point charges at the atomic
+centers produces an electrostatic field in the solute region as well in the
+solvent regions. The overall electrostatic field is the sum of the Coulombic
+field of the solute and the corresponding solvent reaction field (since it is
+heavily polarizable).
+
+We calculated the overall electrostatic potential of the protein in water using
+the PBSA program shipped with AmberTools 13 \cite{case_amber_12} with default
+parameters. The protein point charges were parameterized according to the FF99SB
+force field \cite{case_amber_12}. The grid spacing was set to \SI{1}{\angstrom}.
 
 
-AmberTools' PBSA program \cite{case_amber_12}
+
+$1\,\angstrom$.
+Isosurface visualization of the potential was done in VMD
+
+
+
+
 
 (choosing the modified ICCG solver
-applied to the linearized Poisson-Boltzmann equation). The receptor atoms were
-parameterized according to the FF99SB force field. The grid spacing was set to
-$1\,\angstrom$. Isosurface visualization of the potential was done in VMD
+applied to the linearized Poisson-Boltzmann equation).
 \cite{vmd1996}.
 
 
