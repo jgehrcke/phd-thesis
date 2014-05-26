@@ -103,14 +103,14 @@ continuum. The solute is modeled as a dielectric body whose shape is defined by
 atomic coordinates and atomic radii. A set of point charges at the atomic
 centers produces an electrostatic field in the solute region as well in the
 solvent region. The overall electrostatic field is the sum of the Coulombic
-field of the solute and the corresponding solvent reaction field (since it is
-heavily polarizable).
+field of the solute and the corresponding reaction field of the polarizable
+solvent.
 
 We used the PBSA program shipped with AmberTools 13 \cite{case_amber_12} with
 default parameters and a finite element grid spacing of \SI{1}{\angstrom} for
-calculating the overall electrostatic potential of a protein in water. The
-atomic radii and point charges of the protein were parameterized according to
-the FF99SB force field \cite{case_amber_12}. After patching PBSA (and
+calculating the overall electrostatic potential of any given protein in water.
+The atomic radii and point charges of the protein were parameterized according
+to the FF99SB force field \cite{case_amber_12}. After patching PBSA (and
 contributing those patches back to the AmberTools project), we were able to
 extract the Coulomb data from PBSA in units of
 \si{\kilo\calory\per\mole\per\elementarycharge} and in a file format readable by
@@ -118,23 +118,31 @@ the visualization software VMD \cite{vmd_1996}.
 
 \subsection{Coulomb potential evaluation}
 
-Authors discussing the electrostatic properties of a certain receptor protein
-usually look at the the electrostatic potential mapped onto the molecular
-surface, and ignore the properties of the potential in the rest of the space
-when they draw conclusions, such as in \cite{rogers_gag_prot_prot_2011} \hl{add
-more refs}. Unfortunately, an often overseen disadvantage of this approach is
-that the PB approximation of the electrostatic potential is \text{most}
-error-prone near the dielectric boundary, i.e.\ right on the molecular surface.
-In \cite{estatic_proteins_warshel_2006}, Warshel et al.\ write that \enquote{the
-problem is not the well-known bulk contribution from the surroundings [\dots],
-but the polarization at the microscopic boundaries of the simulation spheres}.
-The data we obtain from PBSA are the values of the electrostatic potential on
-the grid centers of a three-dimensional grid, spanning a volume of a certain
-size including the protein as well as its surroundings. In contrast to what is
-usually done, we decided to analyze the properties of the electrostatic
-potential within the entire protein-surrounding volume, \textit{i)} for working
-around the uncertainty of the data near the boundary, and
-\textit{ii)} for looking at the complete picture.
+Many authors discussing the properties of a certain GAG receptor protein depict
+the electrostatic potential of the protein mapped onto its molecular surface, as
+done in \cite{rogers_gag_prot_prot_2011,%
+Gandhi01102009,sapay_hs_growthfactors_2011,%
+gandhi_bmp_heparin_binding_sites_2012,sost_heparin_2009,%
+catK_cs4_crystal_structure_2008,hydrolase_gags_2011,gandhi_structure_2008,%
+imberty_gag_prot_carbres_2007,gags_as_polyelectrolytes_2010}. Most of these
+works lack clear conclusions from this kind of analysis, which in our opinion is
+the result of two conceptual flaws of the approach. First of all, by looking at
+the surface only one ignores the properties of the potential in the volume
+surrounding the protein, i.e.\ one misses to analyze how a GAG in vicinity of a
+protein may be guided by a certain electrostatic potential topology in space.
+Secondly, an unfortunately often overseen disadvantage of the surface-mapping
+approach is that the PB approximation of the electrostatic potential is
+\text{most} error-prone near the dielectric boundary, i.e.\ right on the
+molecular surface. In \cite{estatic_proteins_warshel_2006}, Warshel et al.\
+write that \enquote{the problem is not the well-known bulk contribution from the
+surroundings [\dots], but the polarization at the microscopic boundaries of the
+simulation spheres}. The data we obtain from PBSA are the values of the
+electrostatic potential on the grid centers of a three-dimensional grid,
+spanning a volume of a certain size including the protein as well as its
+surroundings. In contrast to what is usually done, we decided to analyze the
+properties of the electrostatic potential within the entire protein-surrounding
+volume, \textit{i)} for working around the uncertainty of the data near the
+boundary, and \textit{ii)} for looking at the complete picture.
 
 We therefore analyzed the topology and strength of the potential with an
 isosurface representation while varying the isosurface value. This procedure,
