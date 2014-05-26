@@ -126,35 +126,36 @@ gandhi_bmp_heparin_binding_sites_2012,sost_heparin_2009,%
 catK_cs4_crystal_structure_2008,hydrolase_gags_2011,gandhi_structure_2008,%
 imberty_gag_prot_carbres_2007,gags_as_polyelectrolytes_2010}. Most of these
 works lack clear conclusions from this kind of analysis, which in our opinion is
-the result of two conceptual flaws of the approach. First of all, by looking at
-the surface only one ignores the properties of the potential in the volume
+the result of two conceptual flaws of the approach. First of all, by only
+looking at the surface one ignores the properties of the potential in the volume
 surrounding the protein, i.e.\ one misses to analyze how a GAG in vicinity of a
-protein may be guided by a certain electrostatic potential topology in space.
-Secondly, an unfortunately often overseen disadvantage of the surface-mapping
-approach is that the PB approximation of the electrostatic potential is
+protein may be guided by a certain toplogy of the potential in space. Secondly,
+an unfortunately often overseen disadvantage of the surface-mapping approach is
+that the PB approximation of the electrostatic potential is
 \text{most} error-prone near the dielectric boundary, i.e.\ right on the
 molecular surface. In \cite{estatic_proteins_warshel_2006}, Warshel et al.\
 write that \enquote{the problem is not the well-known bulk contribution from the
 surroundings [\dots], but the polarization at the microscopic boundaries of the
-simulation spheres}. The data we obtain from PBSA are the values of the
-electrostatic potential on the grid centers of a three-dimensional grid,
-spanning a volume of a certain size including the protein as well as its
-surroundings. In contrast to what is usually done, we decided to analyze the
-properties of the electrostatic potential within the entire protein-surrounding
-volume, \textit{i)} for working around the uncertainty of the data near the
-boundary, and \textit{ii)} for looking at the complete picture.
+simulation spheres}.
+
+The data we obtain from PBSA are the values of the electrostatic potential on
+the grid centers of a three-dimensional grid, spanning a volume of a certain
+size including the protein as well as its surroundings. In contrast to what is
+usually done, we decided to analyze the properties of the electrostatic
+potential within the entire protein-surrounding volume, \textit{i)} for working
+around the uncertainty of the data near the boundary, and \textit{ii)} for
+looking at the complete picture.
 
 We therefore analyzed the topology and strength of the potential with an
 isosurface representation while varying the isosurface value. This procedure,
 which will become more clear in \cref{bspred:application} below, allows for
 understanding the distribution of the potential in space as well as how strongly
-it would affect a ligand. A characteristic isovalue determination was done
-individually for each protein for the case where only a small part of the
-isosurface is protruding into space further than the molecular surface of the
-receptor. This characteristic isovalue provides an idea about the strength of
-the electrostatic interaction between ligand and receptor in the bound state.
-The isosurface visualization was performed using VMD
-\cite{vmd_1996}.
+it would affect a ligand. A characteristic isovalue was determined individually
+for each protein for the case where only a small part of the isosurface is
+protruding into space further than the molecular surface of the receptor. This
+characteristic isovalue may provide an idea about the strength of the
+electrostatic interaction between ligand and receptor in the bound state. The
+isosurface visualization was performed using VMD \cite{vmd_1996}.
 
 \section{Application to reference systems}
 \label{bspred:application}
