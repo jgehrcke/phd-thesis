@@ -129,7 +129,7 @@ works lack clear conclusions from this kind of analysis, which in our opinion is
 the result of two conceptual flaws of the approach. First of all, by only
 looking at the surface one ignores the properties of the potential in the volume
 surrounding the protein, i.e.\ one misses to analyze how a GAG in vicinity of a
-protein may be guided by a certain toplogy of the potential in space. Secondly,
+protein may be guided by a certain topology of the potential in space. Secondly,
 an unfortunately often overseen disadvantage of the surface-mapping approach is
 that the PB approximation of the electrostatic potential is
 \text{most} error-prone near the dielectric boundary, i.e.\ right on the
@@ -168,15 +168,11 @@ complex with a hyaluronan heptasaccharide (HA), PDB ID 2JCQ,
 \SI{1.3}{\angstrom}; and stromal cell-derived factor-1 (SDF-1) in complex with a
 HP disaccharide, PDB ID 2NWG, \SI{2.1}{\angstrom}.
 
-Furthermore, we have applied
+Furthermore, we have applied the electrostatic potential analysis to Sclerostin
+(SOST), whose interaction with heparin has recently been investigated via NMR
+\cite{sost_heparin_2009}.
 
-
-\cref{fig:bspred:sdf1_estatic} shows an isosurface of
-the Coulomb potential of SDF-1.
-\cref{fig:bspred:various_estatic} shows analogous isosurface representations of
-the electrostatic potential for the other TDS complexes.
-
-
+\subsection{Results and discussion}
 
 \begin{figure}
 \centering
@@ -190,8 +186,41 @@ in orange (structure taken from PDB ID 1BFB). }
 \end{figure}
 
 
+\cref{fig:bspred:fgf2_multi_iso} depicts the process of visualizing the
+electrostatic potential of FGF-2 with an isosurface representation for varying
+positive isovalues, i.e.\ for potential values that represent
+\textit{attraction} for GAGs.
 
-\subsection{Results and discussion}
+
+visualization
+
+
+Regarding the SDF-1-HP complex, our electrostatic potential evaluation procedure
+unambiguously identifies the GAG binding site as determined experimentally. With
+$8.5\,\mathrm{kcal\,mol^{-1}\,e^{-1}}$, the isovalue chosen is the largest among
+the TDS complexes, indicating that SDF-1 has the strongest electrostatic
+attraction to its ligand. In case of FGF2-HP (\cref{fig:bspred:various_estatic}), the
+binding site is also unambiguously defined by the electrostatic potential.
+
+
+
+
+
+
+
+\cref{fig:bspred:sdf1_estatic} shows an isosurface of
+the Coulomb potential of SDF-1.
+\cref{fig:bspred:various_estatic} shows analogous isosurface representations of
+the electrostatic potential for the other TDS complexes.
+
+
+
+
+
+
+
+
+
 
 TODO: argue, why application of complex docking methods only allowed us to
 speculate why they are sometimes succcessfull (see motivation part), but now,
@@ -297,12 +326,7 @@ experimentally (PDB ID 2NWG) is shown as sticks with C atoms in orange.
 \label{fig:bspred:sdf1_estatic}
 \end{figure}
 
-Regarding the SDF-1-HP complex, our electrostatic potential evaluation procedure
-unambiguously identifies the GAG binding site as determined experimentally. With
-$8.5\,\mathrm{kcal\,mol^{-1}\,e^{-1}}$, the isovalue chosen is the largest among
-the TDS complexes, indicating that SDF-1 has the strongest electrostatic
-attraction to its ligand. In case of FGF2-HP (\cref{fig:bspred:various_estatic}), the
-binding site is also unambiguously defined by the electrostatic potential. For
+ For
 CD44-HA, the net electrostatic interaction between both molecules is slightly
 repulsive. There is no obvious relation between the electrostatic properties of
 the receptor and the binding site location. CathK and CathKmut exhibit
