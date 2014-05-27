@@ -157,6 +157,7 @@ characteristic isovalue may provide an idea about the strength of the
 electrostatic interaction between ligand and receptor in the bound state. The
 isosurface visualization was performed using VMD \cite{vmd_1996}.
 
+
 \section{Application to reference systems}
 \label{bspred:application}
 
@@ -172,8 +173,11 @@ Furthermore, we have applied the electrostatic potential analysis to Sclerostin
 (SOST), whose interaction with heparin has recently been investigated via NMR
 \cite{sost_heparin_2009}.
 
+
 \subsection{Results and discussion}
 \label{bspred:appl_discussion}
+
+\subsubsection{FGF2}
 
 \begin{figure}
 \centering
@@ -249,6 +253,48 @@ the main anchors of the interaction between FGF2 and heparin
 \cite{faham_heparin_1996}, which is quite a remarkable result.
 
 
+\subsubsection{SDF-1}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{gfx/bspred/sdf1_isopot_8_5_view1_rotated_jcc_pub_001.jpg}
+\caption[]{
+Isosurface representation of SDF-1's Coulomb potential with the characteristic
+isovalue of $\Phi=\SI{8.5}{\kilo\calory\per\mole\per\elementarycharge}$ (blue).
+The molecular surface of the SDF-1 dimer is shown in gray, the heparin ligand as
+determined experimentally is shown in stick representation with carbon atoms in
+orange (structure taken from PDB ID 2NWG).}
+\label{fig:bspred:sdf1_estatic}
+\end{figure}
+
+\Cref{fig:bspred:sdf1_estatic} shows the isosurface of SDF-1's Coulomb potential
+corresponding to its characteristic isovalue
+$\Phi=\SI{8.5}{\kilo\calory\per\mole\per\elementarycharge}$. We see that the
+ligand pose matches the region of strongest electrostatic attraction. Another
+important observation is that the characteristic isovalue is significantly
+larger than in case of FGF2, meaning that the electrostatic attraction of SDF-1
+in the indicated region is once again stronger. In fact, SDF-1 displays the
+largest characteristic isovalue we have come across during the analysis of
+various different protein-GAG systems. The spatial arrangement of positively
+charged residues in the shape of a cleft produces an environment in which the
+attractive potential from the two sides of the cleft adds up in the center,
+yielding a stronger electrostatic potential than possible with a one-sided
+interaction only.
+
+Variation of the isovalue and observing the corresponding response of the
+isosurface, although not depicted in this case, has provided very similar
+conclusions as in the case of FGF2: all indicators point towards \textit{one}
+region on SDF-1 with a very strong electrostatic attraction at its core, as well
+as the ability to attract a GAG molecule over long distances.
+
+
+with GAGs over large distancesa strong impact on the proximity of that region, i.e.
+
+
+
+an unambiguously identifiable
+
+comprised of positively charged residues
 
 ndicated
 by the isosurface in panel d depicted less detail than the experimental
@@ -404,17 +450,6 @@ able to relate docking performance to electrostatic characteristics of the
 receptor.
 
 
-\begin{figure}
-\centering
-\includegraphics[width=0.9\textwidth]{gfx/bspred/sdf1_isopot_8_5_view1_rotated_jcc_pub_001.jpg}
-\caption[]{
-Isosurface representation of SDF-1's electrostatic potential with the isovalue
-$\Phi = 8.5\,\mathrm{kcal\,mol^{-1}\,e^{-1}}$ (blue). The molecular surface of
-the SDF-1 dimer is shown in grey, the heparin ligand as determined
-experimentally (PDB ID 2NWG) is shown as sticks with C atoms in orange.
-}
-\label{fig:bspred:sdf1_estatic}
-\end{figure}
 
  For
 CD44-HA, the net electrostatic interaction between both molecules is slightly
