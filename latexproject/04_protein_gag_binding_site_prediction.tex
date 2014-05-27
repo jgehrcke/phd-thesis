@@ -294,34 +294,34 @@ site for potential GAG interaction, and that site matches the experimentally
 confirmed one.
 
 
+\subsubsection{CD44 hyaluronic acid binding domain}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{gfx/bspred/2JCQ_isopot500_ligand_view1.jpg}
+\caption[]{
+Isosurface representation of CD44's Coulomb potential with the isovalues
+$\Phi=\pm\SI{1.5}{\kilo\calory\per\mole\per\elementarycharge}$ (blue: attractive
+for negative charges, red: repulsive for negative charges). The molecular
+surface of the hyaluronic acid binding domain of CD44 is shown in gray, the
+hyaluronan heptasaccharide ligand as determined experimentally is shown in stick
+representation with carbon atoms in orange (structure taken from PDB ID 2JCQ).}
+\label{fig:bspred:sdf1_estatic}
+\end{figure}
 
 
-
-
-
-Regarding the SDF-1-HP complex, our electrostatic potential evaluation procedure
-unambiguously identifies the GAG binding site as determined experimentally. With
-$8.5\,\mathrm{kcal\,mol^{-1}\,e^{-1}}$, the isovalue chosen is the largest among
-the TDS complexes, indicating that SDF-1 has the strongest electrostatic
-attraction to its ligand. In case of FGF2-HP (\cref{fig:bspred:various_estatic}), the
-binding site is also unambiguously defined by the electrostatic potential.
-
-
-
-\cref{fig:bspred:various_estatic} shows analogous isosurface representations of
-the electrostatic potential for the other TDS complexes.
-
+CD44-HA, the net electrostatic interaction between both molecules is slightly
+repulsive. There is no obvious relation between the electrostatic properties of
+the receptor and the binding site location.
 
 
 \subsection{Conclusions}
-
 
 TODO: argue, why application of complex docking methods only allowed us to
 speculate why they are sometimes succcessfull (see motivation part), but now,
 in a controlled environment with a very simple model (only coulomb), we can
 directly conclude that coulomb interaction IS the dominating interaction that
 alone determines binding site for many systems.
-
 
 Discuss: The most important aspect to discuss regarding a method for predicting
 certain behavior is the certainty of the prediction. we can conclude that this
@@ -346,7 +346,6 @@ SOST provides strong evidence that GAGs bind where predicted, especially regardi
 the large characteristic electrostatic potential isovalues in proximity of the
 molecular surface. This is a huge advantage.
 
-
 For large characteristic isovalues, we might even predict *if* a GAG binds.
 However, the most straight-forward summary for the predictive power of this
 method is that we can say: *if* a GAG binds to that protein, ist most likely
@@ -356,8 +355,30 @@ tells us when we should not perform a precise prediction.
 
 Discuss FGF2, SDF1, and CD44!
 
+For
+CathK and CathKmut exhibit
+electrostatic attraction for negatively charged molecules in the experimentally
+observed ligand binding site as well as in an adjacent region. We observe that
+electrostatic potential analysis provides a clear idea whether GAG-binding to a
+given receptor is mainly driven by Coulomb interaction. If a protein is known to
+bind GAGs, and the electrostatic potential topology is as unambiguous as in case
+of SDF-1 or FGF2, a GAG binding site prediction based on the presented procedure
+is reliable.
+
+Regarding the SDF-1-HP complex, our electrostatic potential evaluation procedure
+unambiguously identifies the GAG binding site as determined experimentally. With
+$8.5\,\mathrm{kcal\,mol^{-1}\,e^{-1}}$, the isovalue chosen is the largest among
+the TDS complexes, indicating that SDF-1 has the strongest electrostatic
+attraction to its ligand. In case of FGF2-HP, the binding site is also
+unambiguously defined by the electrostatic potential.
+
+Visualization of the electrostatic potential can also be helpful to
+\textit{a priori} exclude regions of the receptor surface when repulsive to
+negatively charged ligands.
+
 Refer to \hl{The result of this study, be it positive or negative, in any case
 further enlightens the role of Coulomb interaction in protein-GAG systems.}
+
 
 \section{Application to IL-10}
 
@@ -401,11 +422,19 @@ arranged regions indicated here.
 \end{figure}
 
 
-\subsubsection{Electrostatic potential analysis in protein-GAG systems}
+\subsection{Results and discussion}
+\hl{INCORPORATE:} The method surely is more useful than the popular method of
+heparin binding site consensus sequence search (cardin, weintraub) (hileman,
+linhardt), which has already been applied to interleukin-10 before. Its about
+structure, not sequence, that is also why Forster and Mulloy state that
+\enquote{though some 'consensus sequences' for heparin binding have been
+identified, they are neither necessary nor sufficient to define a heparin
+binding site} \cite{hp_binding_sites_mulloy_2006}.
+
+
 
 \hl{Generalize this section, keep details for DMD chapter. At the moment most of
 this is simply copied from the DMD manuscript.}
-
 The electrostatic potential often dominates protein-GAG interaction
 \cite{gandhi_structure_2008}. In this section, we discuss the electrostatic
 properties of the receptors in the TDS with the goal to determine how these
@@ -414,58 +443,11 @@ able to relate docking performance to electrostatic characteristics of the
 receptor.
 
 
-
- For
-CD44-HA, the net electrostatic interaction between both molecules is slightly
-repulsive. There is no obvious relation between the electrostatic properties of
-the receptor and the binding site location. CathK and CathKmut exhibit
-electrostatic attraction for negatively charged molecules in the experimentally
-observed ligand binding site as well as in an adjacent region. We observe that
-electrostatic potential analysis provides a clear idea whether GAG-binding to a
-given receptor is mainly driven by Coulomb interaction. If a protein is known to
-bind GAGs, and the electrostatic potential topology is as unambiguous as in case
-of SDF-1 or FGF2, a GAG binding site prediction based on the presented procedure
-is reliable. Visualization of the electrostatic potential can also be helpful to
-\textit{a priori} exclude regions of the receptor surface when repulsive to
-negatively charged ligands. Furthermore, this analysis shows that knowledge
+\hl{put the following back in DMD part?}
+Furthermore, this analysis shows that knowledge
 about the electrostatic potential distribution in space can be used to choose a
 reasonable ligand \enquote{entry lane} orientation for the tMD pulling process.
 
 
-\begin{figure}
-\centering
-\includegraphics[width=0.9\textwidth]{gfx/bspred/suppl_figure_estatic_distributions_004_1200.png}
-\caption[]{
-Visualization of the electrostatic potential of the receptors from the TDS
-(molecular surfaces in gray) with their ligands as experimentally determined
-(shown as sticks with C atoms in orange). Blue/red: Isosurface representation of
-the receptor's electrostatic potential with isovalue Ф (attractive/repulsive for
-negatively charged molecules, respectively).
-}
-\label{fig:bspred:various_estatic}
-\end{figure}
-
-
-\hl{Create more convincing Figure than bspred:variousestatic.
-Include more interesting complexes, remove uninteresting ones.}
-
-The SH3-p41 complex is dominated by non-polar interactions, rendering the
-Coulomb potential analysis inconclusive. Recognition of the Trypsin inhibitor in
-its  binding pocket is affected by polar interactions. The electrostatic
-potential, however, does not display clear characteristics to predict a binding
-region.
-
-
-
-
-
-
-
-
-\hl{INCORPORATE:} The method surely is more useful than the popular method of
-heparin binding site consensus sequence search (cardin, weintraub) (hileman,
-linhardt), which has already been applied to interleukin-10 before. Its about
-structure, not sequence, that is also why Forster and Mulloy state that
-\enquote{though some 'consensus sequences' for heparin binding have been
-identified, they are neither necessary nor sufficient to define a heparin
-binding site} \cite{hp_binding_sites_mulloy_2006}.
+\subsection{Conclusions}
+Short conclusional text regarding IL-10 GAG binding prediction.
