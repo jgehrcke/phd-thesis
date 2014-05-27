@@ -148,7 +148,7 @@ looking at the complete picture.
 
 We therefore analyzed the topology and strength of the potential with an
 isosurface representation while varying the isosurface value. This procedure,
-which will become more clear in \cref{bspred:application} below, allows for
+which will become more clear in \cref{bspred:appl_discussion} below, allows for
 understanding the distribution of the potential in space as well as how strongly
 it would affect a ligand. A characteristic isovalue was determined individually
 for each protein for the case where only a small part of the isosurface is
@@ -173,23 +173,71 @@ Furthermore, we have applied the electrostatic potential analysis to Sclerostin
 \cite{sost_heparin_2009}.
 
 \subsection{Results and discussion}
+\label{bspred:appl_discussion}
 
 \begin{figure}
 \centering
 \includegraphics[width=0.9\textwidth]{gfx/bspred/fgf2_coulomb_isosurfaces_different_values_03_ds.pdf}
 \caption[]{
-Isosurface representation of FGF2's Coulomb potential (blue), shown for multiple
-isovalues isovalues $\Phi$. The molecular surface of FGF2 is shown in gray, its
-heparin ligand pose as determined experimentally is shown as sticks with C atoms
-in orange (structure taken from PDB ID 1BFB). }
+Isosurface representation of FGF2's Coulomb potential (blue), shown for four
+different isovalues isovalues $\Phi$, in increasing order. The molecular surface
+of FGF2 is shown in gray, its heparin ligand pose as determined experimentally
+is shown as sticks with carbon atoms in orange (structure taken from PDB ID
+1BFB).}
 \label{fig:bspred:fgf2_multi_iso}
 \end{figure}
 
+\Cref{fig:bspred:fgf2_multi_iso} depicts the process of visualizing the
+electrostatic potential of FGF2 with an isosurface representation for varying
+isovalues. The four isovalues shown are positive ones, and the surfaces
+therefore represent \textit{attraction} for GAGs. If we had shown isosurfaces
+for isovalues of comparable absolute value and opposite sign, those would be
+entirely hidden \enquote{within} the molecular surface, i.e.\ electrostatic GAG
+repulsion is negligible in case of FGF2.
 
-\cref{fig:bspred:fgf2_multi_iso} depicts the process of visualizing the
-electrostatic potential of FGF-2 with an isosurface representation for varying
-positive isovalues, i.e.\ for potential values that represent
-\textit{attraction} for GAGs.
+\Cref{fig:bspred:fgf2_multi_iso}a shows the isosurface corresponding to the
+smallest of the four isovalues
+$\Phi=\Si{2.2}{\kilo\calory\per\mole\per\elementarycharge}$, whereas this is
+still a strong potential, yielding significant potential energies for charged
+ligand molecules: \Si{2.2}{\kilo\calory\per\mole} is almost four times larger
+than the thermal energy at \Si{300}{\kelvin}. From this representation we learn
+that FGF2 is highly polar on a global scale: in the top direction, the
+isosurface protrudes into space far beyond the molecular surface, whereas it
+does not surpass the molecular surface at the bottom. We conclude from this
+representation that FGF2 may interact with GAGs over quite large distances
+(several times larger than what can be considererd a molecular contact), with a
+clear preference towards one side of FGFs. We observe that the experimentally
+determined natural heparin ligand pose is bound on that side of the protein.
+
+\Cref{fig:bspred:fgf2_multi_iso}b and c visualize the process of increasing
+the isovalue for the isosurface shown. This process serves two purposes:
+\textit{ii)} isosurface shape changes with increasing isovalue
+provide insights about the direction into which a negatively charged
+molecule is \textit{guided} by the electrostatic potential once caught.
+
+ \textit{1)} for further narrowing down those regions in space near the molecular surface of FGF2 where electrostatic attraction is
+strongest. and
+
+
+
+changes in the shape of the isosurface shown For the isovalue shown in \Cref{fig:bspred:fgf2_multi_iso}c, we
+observe that
+
+
+
+identification of those regions in
+space and therefor e
+
+
+
+in \Cref{fig:bspred:fgf2_multi_iso} we observe that
+
+is able to \enquote{catch} GAGs via electrostatic attaction from quite a
+distance, with a clear preference--- with one
+
+
+the top direction, whereas
+
 
 
 visualization
