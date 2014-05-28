@@ -9,6 +9,7 @@ topology of the Coulomb potential in space. Subsequently, we apply that method
 to IL-10 and report our findings.
 
 \section{Motivation}
+\label{bspred:motivation}
 
 Classical molecular docking approaches are used for creating binding predictions
 for a given receptor-ligand system. Primarily, the correctness of a prediction
@@ -161,8 +162,8 @@ isosurface visualization was performed using VMD \cite{vmd_1996}.
 \section{Application to reference systems}
 \label{bspred:application}
 
-We have analyzed the electrostatic potential of the following well-understood
-and experimentally characterized protein-GAG systems: basic fibroblast growth
+We have analyzed the electrostatic potential of the following experimentally
+characterized and well-understood protein-GAG systems: basic fibroblast growth
 factor (FGF2) in complex with a heparin (HP) tetrasaccharide, PDB ID 1BFB,
 \SI{1.9}{\angstrom} resolution; the CD44 hyaluronic acid binding domain in
 complex with a hyaluronan heptasaccharide (HA), PDB ID 2JCQ,
@@ -363,51 +364,51 @@ aspect to discuss when predicting the behavior of a system is the
 presented here seems to be that it \textit{intrinsically} provides a good
 estimate about the certainty of its own prediction. Especially, this method is
 unlikely to generate false-positives. For example, the data about CD44 shown
-above would have led us to state that \enquote{we can not tell where a GAG would
-bind, however it will most likely not bind in the repulsive regions}. At the
-same time the data regarding FGF2 and SDF-2 provide undeniable support that GAGs
-bind where predicted, especially regarding the large characteristic
-electrostatic potential isovalues in proximity of the molecular surface. The
-main conclusion is that if we observe a \textit{distinct} region of
-\textit{significant} electrostatic attraction, then this is the place where GAGs
-would most likely bind. If a protein is known to bind GAGs, and the
-electrostatic potential topology is as unambiguous as in case of SDF-1 or FGF2,
-a GAG binding site prediction based on the presented procedure is reliable.
+above would have led us to state nothing more definite than \enquote{we can not
+tell where a GAG would bind, however it will most likely not bind in the
+repulsive regions}. At the same time the data regarding FGF2 and SDF-2 provide
+undeniable support that GAGs bind where the Coulomb potential points towards,
+especially regarding the large characteristic electrostatic potential isovalues
+in proximity of the molecular surface. The main conclusion is that if we observe
+a \textit{distinct} region of \textit{significant} electrostatic attraction,
+then this is the place where a GAG would most likely bind. If the electrostatic
+potential topology is as unambiguous as in case of SDF-1 or FGF2, a GAG binding
+site prediction based on the presented procedure is reliable.
 
-According to recent literature in the field (see motivation part above), global
-docking methods are often (mis)used for protein-GAG binding site prediction,
-because no other tool seems to be established. With the presented method we seek
-to provide such a tool to the field. Hence, the presented method is in direct
-competition with (global) docking methods. Compared to those, Coulomb potential
-evaluation is significantly less complex: it is a bare-bones method based on a
-simple physical model, whereas docking methods usually apply a combination of a
-more complex physical as well as a phenomenological models. The certainty of a
-docking prediction is difficult to assess if the docking method is applied
-outside of its scope of validity, i.e.\ to different systems and e.g.\ search
-space sizes than it has been optimized for. A reason for this is the complexity
-of a docking method, as of which we can not systematically understand the
-behavior of the method if we leave the scope of validity. Strictly spoken, in
-that case the certainty is \textit{not} assessable, neither quantitatively, nor
-qualitatively. Therefore, the risk for producing false-positive predictions is
-much higher than in case of the method presented by us. Here, we see a clear
-conceptual advantage of the Coulomb potential evaluation over more complex
-methods such as global docking.
+According to recent literature in the field (see \cref{bspred:motivation}),
+global docking methods are often (mis)used for protein-GAG binding site
+prediction, because no other tool seems to be established for that task. With
+the presented method we seek to provide such a tool. Hence, the presented method
+is in direct competition with (global) docking methods. Compared to those,
+Coulomb potential evaluation is significantly less complex: it is a bare-bones
+approach based on a simple physical model, whereas a docking method usually
+applies a combination of both, a more complex physical and phenomenological
+model. The certainty of a docking prediction is difficult to assess if the
+docking method is applied outside of its scope of validity, i.e.\ to different
+systems and e.g.\ search space sizes than it has been optimized for. A reason
+for this is the complexity of a docking method, as of which we can not
+systematically understand the behavior of the method if we leave its scope of
+validity. Strictly spoken, in that case the certainty is \textit{not}
+assessable, neither quantitatively nor qualitatively. Therefore, the risk for
+producing false-positive predictions is much higher than in case of the method
+presented by us. Here, we see a clear conceptual advantage of the Coulomb
+potential evaluation over more complex methods such as global docking.
 
 Another advantage of the proposed visualization of the electrostatic potential
 via isosurface representation is that it enables the researcher to quickly grasp
 the global electrostatic properties of any given protein, much better than it is
-possible via mapping of the potential to the molecular surface only. For
-instance, this can be helpful for identifying repulsive regions in space to
-\textit{a priori} exclude large regions of the protein as potential ligand
-binding regions.
+possible via mapping the potential to the molecular surface only. For instance,
+this can be helpful for identifying repulsive regions in space to \textit{a
+priori} exclude large regions of the protein as potential ligand binding
+regions.
 
 In the motivational part we stated that the result of this study further
 enlightens the role of Coulomb interaction in protein-GAG systems. Indeed, we
 did not expect that the Coulomb potential topology might yield such precise
 clues about the binding site as we have seen in case of FGF2 and SDF-1. This
 underlines the role of Coulomb interaction in protein-GAG systems as the primary
-determinant. However, we have also learned that in special cases the a strong
-electrostatic interaction is not required for GAG binding, as vividly shown for
+determinant. However, we have also learned that in special cases a strong
+electrostatic attraction is not required for GAG binding, as vividly shown for
 the CD44-HA example.
 
 While the method presented here can in all generality not be used for predicting
