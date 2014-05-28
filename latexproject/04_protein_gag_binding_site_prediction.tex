@@ -393,12 +393,13 @@ much higher than in case of the method presented by us. Here, we see a clear
 conceptual advantage of the Coulomb potential evaluation over more complex
 methods such as global docking.
 
-Another advantage of the visualization of the electrostatic potential is that it
-enables the researcher to quickly grasp the global electrostatic properties of
-any given protein. For instance, it can be helpful to \textit{a priori} exclude
-large regions of the protein surface as potential GAG binding region, when
-repulsive to negatively charged ligands.
-
+Another advantage of the proposed visualization of the electrostatic potential
+via isosurface representation is that it enables the researcher to quickly grasp
+the global electrostatic properties of any given protein, much better than it is
+possible via mapping of the potential to the molecular surface only. For
+instance, this can be helpful for identifying repulsive regions in space to
+\textit{a priori} exclude large regions of the protein surface as potential
+ligand binding regions.
 
 In the motivational part we stated that the result of this study further
 enlightens the role of Coulomb interaction in protein-GAG systems. Indeed, we
@@ -417,11 +418,21 @@ obvious.
 If we had to name a spatial resolution that would quantify the degree of detail
 the electrostatic potential analysis allows
 
+Besides qualitative statements about a binding region, the method presented here
+might also provide insights about the binding \textit{affinity} of a certain
+protein-GAG system, via evaluation of the the characteristic isovalue. However,
+the method can in all generality not be used for predicting whether a certain
+binding mode would be \textit{specific} or not.
+
+For large characteristic isovalues, we might even predict *if* a GAG binds.
+However, the most straight-forward summary for the predictive power of this
+method is that we can say: *if* a GAG binds to that protein, it most likely
+binds here, in case the topology data is rather unambiguous. The data itself
+tells us when we should not perform a precise prediction.
 
 
-\textit{affinity} via the characteristic isovalue, however
-it also can not be used for predicting whether a certain binding mode would be
-\textit{specific} or not.
+
+
 
 
 
@@ -430,11 +441,6 @@ Discuss:
 compared to simple electrostatic potential evaluation.
 
 
-For large characteristic isovalues, we might even predict *if* a GAG binds.
-However, the most straight-forward summary for the predictive power of this
-method is that we can say: *if* a GAG binds to that protein, ist most likely
-binds here, in case the topology data is rather unambiguous. The data itself
-tells us when we should not perform a precise prediction.
 
 
 Discuss FGF2, SDF1, and CD44!
