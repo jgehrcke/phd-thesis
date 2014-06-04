@@ -140,7 +140,7 @@ write that \enquote{the problem is not the well-known bulk contribution from the
 surroundings [\dots], but the polarization at the microscopic boundaries of the
 simulation spheres}.
 
-The data we obtain from PBSA are the values of the electrostatic potential on
+The data we obtained from PBSA are the values of the electrostatic potential on
 the grid centers of a three-dimensional grid, spanning a volume of a certain
 size including the protein as well as its surroundings. In contrast to what is
 usually done, we decided to analyze the properties of the electrostatic
@@ -151,13 +151,14 @@ looking at the complete picture.
 We therefore analyzed the topology and strength of the potential with an
 isosurface representation while varying the isosurface value. This procedure,
 which will become more clear in \cref{bspred:appl_discussion} below, allows for
-understanding the distribution of the potential in space as well as how strongly
-it would affect a ligand. A characteristic isovalue was determined individually
-for each protein for the case where only a small part of the isosurface is
-protruding into space further than the molecular surface of the receptor. This
-characteristic isovalue may provide an idea about the strength of the
-electrostatic interaction between ligand and receptor in the bound state. The
-isosurface visualization was performed using VMD \cite{vmd_1996}.
+understanding the shape of the potential in space as well as how strong it would
+affect a ligand. Additionally, we determined a characteristic isovalue
+individually for each protein under investigation, for the case where only a
+small part of the isosurface is protruding into space further than the molecular
+surface of the receptor. This characteristic isovalue provides an idea about the
+strength of the electrostatic interaction between ligand and receptor in the
+bound state. The isosurface visualization was performed using VMD
+\cite{vmd_1996}.
 
 
 \section{Application to reference systems}
@@ -221,17 +222,17 @@ FGF2.
 Panels a, b, and c of \cref{fig:bspred:fgf2_multi_iso} visualize the process of
 increasing the isovalue while observing the response of the isosurface. This
 process serves two purposes. Firstly, the shape change of the isosurface with
-increasing isovalue provides insight about the direction into which a negatively
-charged molecule would be \textit{guided} by the Coulomb potential once caught
-(the gradient of the potential). Secondly, it allows for further narrowing down
-those regions in space near the molecular surface of FGF2 where electrostatic
-attraction is strongest, because the surface protrudes less and less into space
-with increasing isovalue. Regarding directionality, the isosurface clearly
-contracts itself towards a certain region on FGF2's surface, considering panels
-a, b, and c of \cref{fig:bspred:fgf2_multi_iso}. It is that region where we also
-find the experimentally determined ligand pose. In panel c we observe that there
-is only a small region in space outside of FGF2 where the Coulomb potential is
-as large as
+increasing isovalue provides insight about the gradient of the potential, i.e.
+the direction into which a negatively charged molecule would be \textit{guided}
+by the Coulomb potential once caught. Secondly, it allows for further narrowing
+down those regions in space near the molecular surface of FGF2 where
+electrostatic attraction is strongest, because the isosurface protrudes less and
+less into space with increasing isovalue. Regarding directionality, the
+isosurface clearly contracts itself towards a certain region on FGF2's surface,
+considering panels a, b, and c of \cref{fig:bspred:fgf2_multi_iso}. It is that
+region where we also find the experimentally determined ligand pose. In panel c
+we observe that there is only a small region in space outside of FGF2 where the
+Coulomb potential is as large as
 \SI{4.0}{\kilo\calory\per\mole\per\elementarycharge}, which is about seven times
 stronger than the thermal energy at room temperature, considering a single test
 charge. With an electrostatic attraction as strong as this and clearly no other
@@ -276,25 +277,24 @@ orange (structure taken from PDB ID 2NWG).}
 \Cref{fig:bspred:sdf1_estatic} shows the isosurface of SDF-1's Coulomb potential
 corresponding to its characteristic isovalue
 $\Phi=\SI{8.5}{\kilo\calory\per\mole\per\elementarycharge}$. We see that the
-ligand pose matches the region of strongest electrostatic attraction. Another
-important observation is that the characteristic isovalue is significantly
-larger than in case of FGF2, meaning that the electrostatic attraction of SDF-1
-in the indicated region is once again stronger. In fact, SDF-1 displays the
-largest characteristic isovalue we have come across during the analysis of
-various different protein-GAG systems. The spatial arrangement of positively
-charged residues in the shape of a cleft produces an environment in which the
-attractive potential from the two sides of the cleft adds up in the center,
-yielding a stronger electrostatic potential than possible with a one-sided
-interaction only.
+measured ligand pose matches the region of strongest electrostatic attraction.
+Another important observation is that the characteristic isovalue is
+significantly larger than in case of FGF2, meaning that the electrostatic
+attraction of SDF-1 in the indicated region is once again stronger. In fact,
+SDF-1 displays the largest characteristic isovalue we have come across during
+the analysis of various different protein-GAG systems. The spatial arrangement
+of positively charged residues in the shape of a cleft produces an environment
+in which the attractive potential from the two sides of the cleft adds up in the
+center, yielding a stronger electrostatic potential than possible with a
+one-sided interaction only.
 
 Variation of the isovalue and observing the corresponding response of the
-isosurface, although not depicted in this case, has provided very similar
-conclusions as in the case of FGF2: all indicators point towards \textit{one}
-region on SDF-1 with a very strong electrostatic attraction at its core, as well
-as the ability to attract a GAG molecule over long distances. As in case of
-FGF2, the topology of SDF-1's electrostatic potential unambiguously suggests one
-site for potential GAG interaction, and that site matches the experimentally
-confirmed one.
+isosurface, although not depicted here, has provided very similar conclusions as
+in case of FGF2: all indicators point towards \textit{one} region on SDF-1 with
+a very strong electrostatic attraction at its core, as well as the ability to
+attract a GAG molecule over long distances. As in case of FGF2, the topology of
+SDF-1's electrostatic potential unambiguously suggests one site for potential
+GAG interaction, and that site matches the experimentally confirmed one.
 
 
 \subsubsection{CD44 hyaluronic acid binding domain}
@@ -324,12 +324,12 @@ However, their location is rather scattered. The main observation for the
 CD44-HA system is that most parts of the protein have a slightly repulsive
 Coulomb potential. Considering how far certain parts of the isosurface for
 \SI{-1.5}{\kilo\calory\per\mole\per\elementarycharge} protrude into space, we
-can conclude that the net repulsion may take effect over long distances. While
+can conclude that the net repulsion takes effect over longer distances. While
 there seems to be a (weak) net repulsion for GAGs, there also is larger region
-on the protein surface which appears to be rather neutral from the electrostatic
-point of view, with neither of both isosurfaces piercing through the molecular
-surface of CD44. It is that region where hyaluronan was shown to bind to CD44
-(see \cref{fig:bspred:cd44_estatic}).
+on the protein surface which appears to be neutral from the electrostatic point
+of view, with neither of both isosurfaces piercing through the molecular surface
+of CD44. It is that region where hyaluronan was shown to bind to CD44 (see
+\cref{fig:bspred:cd44_estatic}).
 
 For the CD44-HA system, the main conclusion is that analysis of the
 electrostatic potential fits the binding pose obtained experimentally in the
@@ -338,13 +338,14 @@ experimentally obtained binding site contains most of the scattered patches
 representing attraction for negative charges mentioned above. Furthermore, it
 makes sense that the hyaluronan does not bind in one of those regions that have
 been identified as being explicitly repulsive for negative charges. However,
-purely based on the electrostatic potential data we would not have been able to
-pinpoint a certain site as being particularly likely to attract GAGs. The major
-reason for being unable to narrow down a site is that we are missing a distinct
-region of significant electrostatic attraction. Accordingly, the authors of
-\cite{cd44_hya_2007} point out that CD44-HA system is  \enquote{dominated by
-hydrogen bonds and van der Waals forces rather than electrostatic interactions},
-a quite special characteristic among protein-GAG systems.
+purely based on the electrostatic potential data we would \textit{not} have been
+able to pinpoint a certain region as being particularly likely to attract GAGs.
+The major reason for being unable to narrow down a region is that we are missing
+a \textit{distinct} region of \textit{significant} electrostatic attraction.
+Accordingly, the authors of \cite{cd44_hya_2007} point out that CD44-HA system
+is  \enquote{dominated by hydrogen bonds and van der Waals forces rather than
+electrostatic interactions}, a quite special characteristic among protein-GAG
+systems.
 
 
 
@@ -355,15 +356,15 @@ Coulomb interaction is one of the major determinants. Therefore, we claim that
 evaluation of the Coulomb potential of a protein receptor alone is a systematic
 and simple approach for predicting where on a protein a GAG would bind ---
 \textit{if} it binds. This is an important distinction from predicting whether a
-protein binds GAGs or not, which Coulomb potential analysis alone can surely
-\textit{not} do reliably.
+protein binds GAGs or not, which Coulomb potential analysis alone can surely not
+do reliably.
 
 We could conclude that the presented method is very well able to make valid
 predictions regarding protein-GAG binding regions. However, the most important
 aspect to discuss when predicting the behavior of a system is the
 \textit{certainty} of the prediction. The huge advantage of the method we have
 presented here seems to be that it \textit{intrinsically} provides a good
-estimate about the certainty of its own prediction. Especially, this method is
+estimate about the certainty of its own prediction, i.e.\ this method is
 unlikely to generate false-positives. For example, the data about CD44 shown
 above would have led us to state nothing more definite than \enquote{we can not
 tell where a GAG would bind, however it will most likely not bind in the
@@ -384,10 +385,10 @@ is in direct competition with (global) docking methods. Compared to those,
 Coulomb potential evaluation is significantly less complex: it is a bare-bones
 approach based on a simple physical model, whereas a docking method usually
 applies a combination of both, a more complex physical and phenomenological
-model. The certainty of a docking prediction is difficult to assess if the
-docking method is applied outside of its scope of validity, i.e.\ to different
-systems and e.g.\ search space sizes than it has been optimized for. A reason
-for this is the complexity of a docking method, as of which we can not
+model. If the docking method is applied outside of its scope of validity, e.g.\
+to different systems and search space sizes than it has been optimized for, the
+certainty of the corresponding docking prediction is difficult to assess. The
+reason is the complexity of a docking method, as of which we can not
 systematically understand the behavior of the method if we leave its scope of
 validity. Strictly spoken, in that case the certainty is \textit{not}
 assessable, neither quantitatively nor qualitatively. Therefore, the risk for
