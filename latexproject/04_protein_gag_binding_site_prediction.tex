@@ -434,7 +434,20 @@ We have applied the procedure discussed above to the IL-10 dimer structure as
 given by PDB entry 2ILK (crystal structure with \SI{1.6}{\angstrom} spatial
 resolution).
 
-\subsection{Results}
+\subsection{Results and discussion}
+\label{bspred:il10}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{gfx/bspred/il10_top_coulomb_isosurfaces_different_values_03_ds.pdf}
+\caption[]{
+Isosurface representation of IL-10's Coulomb potential (blue), shown for
+multiple isovalues isovalues $\Phi$. The molecular surface of the IL-10 dimer is
+shown in gray (structure taken from PDB ID 2ILK).
+}
+\label{fig:bspred:il10_multi_iso}
+\end{figure}
+
 
 The procedure of changing electrostatic isosurface with increasing isovalue is
 depicted in \cref{fig:bspred:il10_multi_iso}. The characteristic isovalue has
@@ -447,8 +460,9 @@ isosurfaces in figures \ref{fig:bspred:fgf2_multi_iso}a and
 \ref{fig:bspred:il10_multi_iso}d (different protein, comparable isovalue)
 visualizes how much less IL-10 is capable of attracting GAGs through larger
 distances than FGF2. However, the characteristic isovalue of
-\SI{2.0}{\kilo\calory\per\mole\per\elementarycharge} still represents a \textit{significant} attraction, with an energy per test charge that is about three
-times larger than the thermal energy at room temperature.
+\SI{2.0}{\kilo\calory\per\mole\per\elementarycharge} still represents a
+\textit{significant} attraction, with an energy per test charge being about
+three times larger than the thermal energy at room temperature.
 
 Regarding IL-10, the shape of the potential in space provides strong evidence
 that if GAGs bind to it, then most likely in a well-defined region. What makes
@@ -460,16 +474,17 @@ can or should not use our prediction method anymore for deriving reliable
 predictions. The low value in any case suggests that IL-10-GAG binding occurs
 with lower binding affinity as is the case of  SDF-1 and FGF2 .
 
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{gfx/bspred/il10_top_coulomb_isosurfaces_different_values_03_ds.pdf}
-\caption[]{
-Isosurface representation of IL-10's Coulomb potential (blue), shown for
-multiple isovalues isovalues $\Phi$. The molecular surface of the IL-10 dimer is
-shown in gray (structure taken from PDB ID 2ILK).
-}
-\label{fig:bspred:il10_multi_iso}
-\end{figure}
+
+\hl{INCORPORATE:} The method surely is more useful than the popular method of
+heparin binding site consensus sequence search (cardin, weintraub) (hileman,
+linhardt), which has already been applied to interleukin-10 before. Its about
+structure, not sequence, that is also why Forster and Mulloy state that
+\enquote{though some 'consensus sequences' for heparin binding have been
+identified, they are neither necessary nor sufficient to define a heparin
+binding site} \cite{hp_binding_sites_mulloy_2006}.
+
+
+
 
 
 \begin{figure}
@@ -488,16 +503,6 @@ arranged regions indicated here.
 }
 \label{fig:bspred:il10_estatic_pred}
 \end{figure}
-
-
-\subsection{Results and discussion}
-\hl{INCORPORATE:} The method surely is more useful than the popular method of
-heparin binding site consensus sequence search (cardin, weintraub) (hileman,
-linhardt), which has already been applied to interleukin-10 before. Its about
-structure, not sequence, that is also why Forster and Mulloy state that
-\enquote{though some 'consensus sequences' for heparin binding have been
-identified, they are neither necessary nor sufficient to define a heparin
-binding site} \cite{hp_binding_sites_mulloy_2006}.
 
 
 
