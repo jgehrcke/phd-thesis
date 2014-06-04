@@ -22,12 +22,12 @@ resulting prediction. Therefore, common molecular docking methods should be
 applied locally, and hence require \textit{a priori} knowledge about where on
 the receptor the ligand most likely binds. The decision where to center the
 local search on should be based on reliable data, otherwise the docking study
-might be pointless. In the best case, knowledge about the binding site (the
+might be pointless. In the best case, knowledge about the binding region (the
 region on the receptor that the ligand binds to) comes from experimental data,
 e.g.\ from mutagenesis or NMR studies. However, in many cases no such
 experimental data is available, as is unfortunately true for the IL-10-GAG
 system. In such situations, it makes sense to consider \textit{in silico}
-methods for binding site prediction.
+methods for prediction the binding region.
 
 With respect to protein-GAG systems, there is only few published work on this
 topic. In \cite{hp_binding_sites_mulloy_2006}, Forster and Mulloy used AutoDock
@@ -74,7 +74,7 @@ We can conclude that the importance of Coulomb interaction is a distinctive
 feature of protein-GAG systems. Notably, compared to other molecular interaction
 types, the Coulomb interaction is a long range interaction and therefore
 dominates all other contributions for larger distances. As of these
-considerations, it seems to be reasonable to perform protein-GAG binding site
+considerations, it seems to be reasonable to perform protein-GAG binding region
 prediction purely based on the strength and topology (i.e.\ the
 shape/distribution) of the electrostatic potential in the volume surrounding the
 protein.
@@ -82,7 +82,7 @@ protein.
 For a set of reference systems, we have investigated the relation between the
 strength and topology of Coulomb potential and the actual experimentally
 determined GAG binding site in order to determine whether the electrostatic
-properties alone can assist in predicting a receptor GAG binding site. The
+properties alone can assist in predicting a receptor GAG binding region. The
 result of this study, be it positive or negative, in any case further enlightens
 the role of Coulomb interaction in protein-GAG systems.
 
@@ -129,10 +129,11 @@ imberty_gag_prot_carbres_2007,gags_as_polyelectrolytes_2010}. Most of these
 works lack clear conclusions from this kind of analysis, which in our opinion is
 the result of two conceptual flaws of the approach. First of all, by only
 looking at the surface one ignores the properties of the potential in the volume
-surrounding the protein, i.e.\ one misses to analyze how a GAG in vicinity of a
-protein may be guided by a certain topology of the potential in space. Secondly,
-an unfortunately often overseen disadvantage of the surface-mapping approach is
-that the PB approximation of the electrostatic potential is
+surrounding the protein, i.e.\ one misses to analyze the potential which a GAG
+feels when it is in the neighborhood of a protein, and one especially misses to
+see how a GAG may be guided by a certain topology of the potential in space.
+Secondly, an unfortunately often overseen disadvantage of the surface-mapping
+approach is that the PB approximation of the electrostatic potential is
 \text{most} error-prone near the dielectric boundary, i.e.\ right on the
 molecular surface. In \cite{estatic_proteins_warshel_2006}, Warshel et al.\
 write that \enquote{the problem is not the well-known bulk contribution from the
@@ -355,7 +356,7 @@ evaluation of the Coulomb potential of a protein receptor alone is a systematic
 and simple approach for predicting where on a protein a GAG would bind ---
 \textit{if} it binds. This is an important distinction from predicting whether a
 protein binds GAGs or not, which Coulomb potential analysis alone can surely
-\texit{not} do reliably.
+\textit{not} do reliably.
 
 We could conclude that the presented method is very well able to make valid
 predictions regarding protein-GAG binding regions. However, the most important
