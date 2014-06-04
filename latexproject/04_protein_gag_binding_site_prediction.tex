@@ -454,38 +454,41 @@ depicted in \cref{fig:bspred:il10_multi_iso}. The characteristic isovalue has
 been narrowed down to \SI{2.0}{\kilo\calory\per\mole\per\elementarycharge},
 which is weaker than even the lowest isovalue shown for FGF2 in
 \cref{fig:bspred:fgf2_multi_iso}. We learn from this observation that IL-10's
-attraction for GAGs via Coulomb interaction is in a different league than FGF2's
-and SDF-1's -- in the sense that it is much weaker. Comparison of the
+attraction for GAGs via Coulomb interaction plays in a different league than
+FGF2's and SDF-1's -- in the sense that it is much weaker. Comparison of the
 isosurfaces in figures \ref{fig:bspred:fgf2_multi_iso}a and
 \ref{fig:bspred:il10_multi_iso}d (different protein, comparable isovalue)
 visualizes how much less IL-10 is capable of attracting GAGs through larger
 distances than FGF2. However, the characteristic isovalue of
 \SI{2.0}{\kilo\calory\per\mole\per\elementarycharge} still represents a
-\textit{significant} attraction, with an energy per test charge being about
-three times larger than the thermal energy at room temperature.
+\textit{significant} attraction for GAGs being in contact with IL-10,
+with the energy per test charge being about three times larger than the thermal
+energy at room temperature.
 
-Regarding IL-10, the shape of the potential in space provides strong evidence
-that if GAGs bind to it, then most likely in a well-defined region. What makes
-this prediction less certain as e.g.\ in case of SDF-1 and FGF2 is the fact that
-the characteristic isovalue of the Coulomb potential in the predicted regions is
-significantly smaller than in named reference systems. So far, we have no
-experience whether there is a certain threshold in this value, below which we
-can or should not use our prediction method anymore for deriving reliable
-predictions. The low value in any case suggests that IL-10-GAG binding occurs
-with lower binding affinity as is the case of  SDF-1 and FGF2 .
+Besides the strength of the potential we need to discuss its topology. In
+\cref{fig:bspred:il10_multi_iso}a we can observe a well-ordered isosurface,
+i.e.\ an isosurface with homogeneous appearance. The electrostatic potential
+isosurfaces are symmetrically assembled, according to the two-fold rotational
+symmetry of the IL-10 dimer. Following the \enquote{V-shape} nomenclature (which
+is the way we look at IL-10 throughout this thesis), the perspective shown in
+\cref{fig:bspred:il10_multi_iso} is from the top of the V towards its bottom.
+GAGs are directional molecules (extended in only one dimension), and panels a
+and b of \cref{fig:bspred:il10_multi_iso} suggest that IL-10's Coulomb potential
+tends to align their direction of longest extent along its sides. Additionally,
+we observe a tendency for negatively charged ligands to be pulled towards the
+\enquote{cleft}) of the V-shape. With increasing isovalue we see the origin of
+this attraction evolve: \cref{fig:bspred:il10_multi_iso}d shows two
+\textit{distinct} surface patches of considerable electrostatic attraction.
 
-
-\hl{INCORPORATE:} The method surely is more useful than the popular method of
-heparin binding site consensus sequence search (cardin, weintraub) (hileman,
-linhardt), which has already been applied to interleukin-10 before. Its about
-structure, not sequence, that is also why Forster and Mulloy state that
-\enquote{though some 'consensus sequences' for heparin binding have been
-identified, they are neither necessary nor sufficient to define a heparin
-binding site} \cite{hp_binding_sites_mulloy_2006}.
-
-
-
-
+Before, we concluded that whenever we observe a distinct region of significant
+electrostatic attraction, then this is the place where a GAG would most likely
+bind. In case of IL-10, we have identified one distinct region that occurs twice
+as of IL-10's spatial symmetry. The shape of the potential in space provides
+strong evidence that if GAGs interact with IL-10, this interaction is most
+likely centered on the two blue spots shown in
+\cref{fig:bspred:il10_multi_iso}d. The strength of the attraction has been
+identified as weaker than in case of the exemplary protein-GAG systems discussed
+before, but still significant.
 
 \begin{figure}
 \centering
@@ -504,6 +507,32 @@ arranged regions indicated here.
 \label{fig:bspred:il10_estatic_pred}
 \end{figure}
 
+The GAG-attractive Coulomb potential of the identified region mainly arises from
+the four arginine residues R102, R104, R106, R107 in the sequence of the human
+IL-10 monomer. These residues are labeled in
+\cref{fig:bspred:il10_estatic_pred}. A closer look in this region reveals that
+R107 is particularly solvent-exposed, i.e.\ could serve as key residue in
+IL-10-GAG interaction. As of these observations, we are quite certain that the
+identified region is IL-10's GAG binding region. What makes this prediction less
+certain as e.g.\ in case of SDF-1 and FGF2 is the fact that the characteristic
+isovalue of the Coulomb potential in the predicted regions is significantly
+smaller than in named reference systems.
+
+
+
+
+
+
+
+
+
+\hl{INCORPORATE:} The method surely is more useful than the popular method of
+heparin binding site consensus sequence search (cardin, weintraub) (hileman,
+linhardt), which has already been applied to interleukin-10 before. Its about
+structure, not sequence, that is also why Forster and Mulloy state that
+\enquote{though some 'consensus sequences' for heparin binding have been
+identified, they are neither necessary nor sufficient to define a heparin
+binding site} \cite{hp_binding_sites_mulloy_2006}.
 
 
 \hl{Generalize this section, keep details for DMD chapter. At the moment most of
@@ -524,3 +553,10 @@ reasonable ligand \enquote{entry lane} orientation for the tMD pulling process.
 
 \subsection{Conclusions}
 Short conclusional text regarding IL-10 GAG binding prediction.
+
+ So far, we have no experience whether
+there is a certain threshold connected to this value, below which we should not use our prediction method anymore for deriving reliable predictions.
+The low value in any case suggests that IL-10-GAG binding occurs with lower
+binding affinity as is the case of  SDF-1 and FGF2 .
+
+
