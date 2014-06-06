@@ -254,12 +254,10 @@ $\bm{L}(t_0)$ being the rotation center. Each rotational ligand corresponds to
 one LROM.
 
 \subsection{Data analysis}
-
             MMPB(GB)SA
             Movement
             H-bonding
-
-\lipsum[1-2]
+\hl{\lipsum[1-2]}
 
 
 
@@ -367,7 +365,7 @@ where taking into account entropy may increase the overall uncertainty in the
 calculated binding energies{\cite{Gandhi01102009, homeyer_gohlke_2012}}.
 
 \subsection{Software architecture}
-\lipsum[1-2]
+\hl{\lipsum[1-2]}
 
 
 \subsection{Computing resources}
@@ -379,7 +377,7 @@ For testing purposes, some MD simulations were executed on Nvidia Tesla C2070
 as well as Nvidia GTX 580 GPUs, taking advantage of Amber's recent optimizations
 for such hardware \cite{amber_gpu_2012}.
 
-\lipsum[1-2]
+\hl{more to it?}
 
 
 \section{Validation study}
@@ -467,13 +465,13 @@ The parameters $\epsilon$ and $m$ were determined individually for each set of
 docking solutions with the goal to produce one cluster with at least four
 members and a minimal $\epsilon$-value.
 
-\subsubsection{Electrostatic potential analysis}
-For each TDS complex, we analyzed the electrostatic potential of the receptor
-calculated numerically with AmberTools' PBSA program (choosing the modified ICCG
-solver applied to the linearized Poisson-Boltzmann equation). The receptor atoms
-were parameterized according to the FF99SB force field. The grid spacing was set
-to  \SI{1}{\angstrom}. Isosurface visualization of the potential was done in VMD
-\cite{vmd_1996}.
+%\subsubsection{Electrostatic potential analysis}
+%For each TDS complex, we analyzed the electrostatic potential of the receptor
+%calculated numerically with AmberTools' PBSA program (choosing the modified ICCG
+%solver applied to the linearized Poisson-Boltzmann equation). The receptor atoms
+%were parameterized according to the FF99SB force field. The grid spacing was set
+%to  \SI{1}{\angstrom}. Isosurface visualization of the potential was done in VMD
+%\cite{vmd_1996}.
 
 
 \subsection{Results and discussion}
@@ -632,41 +630,6 @@ docking solutions stands out, the chosen receptor target region most likely does
 not contain a real binding site for the ligand. Furthermore, even if the focus
 point of the method is not centered on but only in the vicinity of a real
 binding site, the latter most likely stands out during data analysis.
-
-
-\subsubsection{Binding site prediction via electrostatic potential analysis}
-
-\hl{Refer back to generic estatic binding site prediction section, explain usage
-for DMD. The following paragraphs are duplicates.}
-
-Regarding the SDF-1-HP complex, our electrostatic potential evaluation procedure
-unambiguously identifies the GAG binding site as determined experimentally. With
-\SI{8.5}{\kilo\calory\per\mole\per\elementarycharge}, the isovalue chosen is the
-largest among the TDS complexes, indicating that SDF-1 has the strongest
-electrostatic attraction to its ligand. In case of FGF2-HP
-(\hl{FIG REF REMOVED}), the binding site is also unambiguously
-defined by the electrostatic potential. For CD44-HA, the net electrostatic
-interaction between both molecules is slightly repulsive. There is no obvious
-relation between the electrostatic properties of the receptor and the binding
-site location. CathK and CathKmut exhibit electrostatic attraction for
-negatively charged molecules in the experimentally observed ligand binding site
-as well as in an adjacent region. We observe that electrostatic potential
-analysis provides a clear idea whether GAG-binding to a given receptor is mainly
-driven by Coulomb interaction. If a protein is known to bind GAGs, and the
-electrostatic potential topology is as unambiguous as in case of SDF-1 or FGF2,
-a GAG binding site prediction based on the presented procedure is reliable.
-Visualization of the electrostatic potential can also be helpful to \textit{a
-priori} exclude regions of the receptor surface when repulsive to negatively
-charged ligands. Furthermore, this analysis shows that knowledge about the
-electrostatic potential distribution in space can be used to choose a reasonable
-ligand \enquote{entry lane} orientation for the tMD pulling process.
-
-
-The SH3-p41 complex is dominated by non-polar interactions, rendering the
-Coulomb potential analysis inconclusive. Recognition of the Trypsin inhibitor in
-its  binding pocket is affected by polar interactions. The electrostatic
-potential, however, does not display clear characteristics to predict a binding
-region.
 
 \subsubsection{DMD performance}
 
@@ -1061,6 +1024,33 @@ Target distance $D$ as applied during the tMD simulations for any given TDS comp
 \label{tab:dmd:tds_target_distances}
 \end{table}
 
+% was a subsubsection before, now include in discussion
+%\subsubsection{Electrostatic potential analysis in the context of DMD}
+
+\hl{
+\textbf{Electrostatic potential analysis in the context of DMD}
+Improve this section?!}
+
+Our electrostatic potential evaluation procedure as discussed in
+\cref{chapter:bspred} unambiguously identifies the GAG binding sites as
+determined experimentally for SDF-1-HP as well as the FGF2-HP systems. Analysis
+of CD44's Coulomb potential revealed that the net electrostatic interaction
+between CD44 and HA is either insignificant or even slightly repulsive. These
+findings seem to be directly correlated to the success of DMD in terms of
+reproducing the natural ligand binding mode.
+
+In any case, we observe that electrostatic potential analysis provides a clear
+idea whether GAG-binding to a given receptor is mainly driven by Coulomb
+interaction. If a protein is known to bind GAGs, and the electrostatic potential
+topology is as unambiguous as in case of SDF-1 or FGF2, a GAG binding site
+prediction based on the presented procedure is reliable and can be used for
+planning a DMD study for a given system. Visualization of the electrostatic
+potential can in any case be helpful to \textit{a priori} exclude regions of the
+receptor surface when repulsive to negatively charged ligands. Especially,
+knowledge about the electrostatic potential distribution in space can be used to
+choose a reasonable ligand \enquote{entry lane} orientation for the tMD pulling
+process.
+
 
 One of the main concepts of DMD is that pulling process and subsequent free MD
 are repeated many times in independent simulations. This allows for the creation
@@ -1119,15 +1109,6 @@ entirely feasible when having access to reasonable computing resources,
 especially using MD software optimized for GPU hardware such as Amber: a DMD
 study for the FGF2-HP complex as presented here can be performed within one week
 incorporating six modern GPU cards (GTX 580 in this case).
-
-%((Equations should be inserted using standard LaTeX equation and eqnarray environments, not as graphics, and should be set in the main text))
-%Equation                                           (1)
-%((References should be superscripted and appear after punctuation.1,2 Please define all acronyms at their first usage except IR, UV, NMR, and DNA or similar commonly understood terms.))
-
-
-%\subsection*{\sffamily \large Second-order heading}
-%\subsubsection*{\sffamily \normalsize Third-order heading}
-%{\sffamily \small Fourth-order heading}\\
 
 \subsection{Conclusions}
 
