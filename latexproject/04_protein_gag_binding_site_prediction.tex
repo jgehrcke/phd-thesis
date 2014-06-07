@@ -31,8 +31,8 @@ system. In such situations, it makes sense to consider \textit{in silico}
 methods for prediction the binding region.
 
 With respect to protein-GAG systems, there is only few published work on this
-topic. All of the proposed approaches lack a well-founded physical model, and
-so far none of the approaches gained general acceptance. In
+topic. The proposed approaches lack a well-founded physical model, and so far
+none of the approaches gained general acceptance. In
 \cite{gandhi_bmp_heparin_binding_sites_2012}, the authors used PatchDock
 \cite{patchdock_2002} for globally docking rigid heparin oligosaccharides to
 BMP-2 and BMP-14 and carefully conclude that \enquote{while there has been no
@@ -41,8 +41,8 @@ interactions, these docking results suggest the presence of two GAG binding
 sites in BMP-2}. In \cite{rogers_gag_prot_prot_2011}, the authors used a mixture
 of two docking softwares for rigid-body docking of GAG structures \enquote{to
 the entire molecular surface of the protein to locate the most favorable binding
-sites} and claimed general success without further discussion. In
-\cite{bitomsky_gag_docking_1999}, the authors report general success:
+sites} and claimed general success without further quantification or
+description. In \cite{bitomsky_gag_docking_1999}, the authors report that
 \enquote{all three docking programs (GRID, AutoDock, Dock) were able to
 correctly localize the heparin binding sites on our test case proteins}. In
 \cite{hp_binding_sites_mulloy_2006}, Forster and Mulloy used AutoDock version
@@ -53,43 +53,55 @@ position of the heparin binding sites. The authors state that the method may be
 used as \enquote{hypothesis generation tool} rather than for providing
 \enquote{details of interactions between specific atoms}.
 
-The above-cited studies do by no means provide a complete picture, but obviously
-some of the established docking methods seem to be able to reflect certain
-properties of protein-GAG systems. This is remarkable since none of these
-docking methods has been specifically optimized for GAG ligands, let alone for
-global docking, and strictly spoken, when applied to protein-GAG systems, these
-docking methods are applied outside their scope of validity. We postulate that
-the main reason for the surprising success in named studies is that protein-GAG
-complexes are strongly driven by Coulomb interaction and that mentioned docking
-methods incorporate Coulomb interaction with a significant weight in their
-scoring functions.
+The above-cited studies do not provide a complete picture, but obviously some of
+the established docking methods seem to be able to reflect certain properties of
+protein-GAG systems. This is remarkable since none of these docking methods has
+been specifically developed for GAG ligands, let alone for global docking, and
+strictly spoken, when applied to protein-GAG systems, these docking methods are
+applied outside their scope of validity. A problem in named studies is that none
+of them provides an explanation for why a certain docking method should yield
+success for protein-GAG binding region prediction. Therefore these studies lack
+the capability of further enlightening the theoretical basis of protein-GAG
+interaction, since a good nonarbitrary explanation would be a step towards
+induction and further predictions \cite{swirski2007literature}. In scientific
+theory, it is established that prediction and explanation are formally the same,
+the only difference being that prediction is before the fact and explanation is
+after the fact \cite{suppe1977structure}. Without proper justification (i.e.\
+explanation), a prediction is not suitable for generating scientific knowledge
+--- no matter if the prediction becomes corroborated or contradicted by an
+empirical observation \cite{schafersman_scientific_method}.
 
-In fact, heparin has the highest negative charge density among biological
-macromolecules \cite{capila_linhardt_hep_prot_2002}. Standard literature on
-protein-GAG systems such as
-\cite{essentials_glycobiology_gags_2009,gandhi_structure_2008} stresses the
-role of charge-charge interaction in protein-GAG systems in general. Many
+We \textit{postulate} that the main reason for the surprising success of docking
+methods in named studies is that protein-GAG complexes are strongly driven by
+Coulomb interaction and that mentioned docking methods incorporate Coulomb
+interaction with a significant weight in their scoring functions. In fact,
+heparin has the highest negative charge density among biological macromolecules
+\cite{capila_linhardt_hep_prot_2002}. Standard literature on protein-GAG systems
+such as \cite{essentials_glycobiology_gags_2009,gandhi_structure_2008} stresses
+the role of charge-charge interaction in protein-GAG systems in general. Many
 publications focusing on individual protein-GAG systems identify charge
 complementary as one of the driving mechanisms of the interaction between GAG
 and protein
 \cite{gandhi_bmp_heparin_binding_sites_2012,faham_heparin_1996,%
 pichert_characterization_2012,rogers_gag_prot_prot_2011}.
 
-We can conclude that the importance of Coulomb interaction is a distinctive
-feature of protein-GAG systems. Notably, compared to other molecular interaction
-types, the Coulomb interaction is a long range interaction and therefore
-dominates all other contributions for larger distances. As of these
-considerations, it seems to be reasonable to perform protein-GAG binding region
-prediction purely based on the strength and topology (i.e.\ the
-shape/distribution) of the electrostatic potential in the volume surrounding the
-protein.
+We conclude that the importance of Coulomb interaction is a distinctive feature
+of protein-GAG systems. Notably, compared to other molecular interaction types,
+the Coulomb interaction is a long range interaction and therefore dominates all
+other contributions for larger distances. As of these considerations, we
+\textit{hypothesize} that protein-GAG binding region prediction is possible
+purely based on the strength and topology (i.e.\ the shape/distribution) of the
+electrostatic potential in the volume surrounding the protein. Taking this step
+back compared to the application of complex docking methods is in favor of
+gaining scientific knowledge about the fundamental concepts of protein-GAG
+interaction.
 
 For a set of reference systems, we have investigated the relation between the
 strength and topology of Coulomb potential and the actual experimentally
 determined GAG binding site in order to determine whether the electrostatic
-properties alone can assist in predicting a receptor GAG binding region. The
-result of this study, be it positive or negative, in any case further enlightens
-the role of Coulomb interaction in protein-GAG systems.
+properties alone can assist in predicting a receptor GAG binding region. From
+the scientific theory point of view, the result of this study in any case
+further enlightens the role of Coulomb interaction in protein-GAG systems.
 
 
 \section{Method}
@@ -365,11 +377,9 @@ and simple approach for predicting where on a protein a GAG would bind ---
 protein binds GAGs or not, which Coulomb potential analysis alone can surely not
 do reliably.
 
-We could conclude that the presented method is very well able to make valid
-predictions regarding protein-GAG binding regions. However, the most important
-aspect to discuss when predicting the behavior of a system is the
-\textit{certainty} of the prediction. The huge advantage of the method we have
-presented here seems to be that it \textit{intrinsically} provides a good
+The most important aspect to discuss when predicting the behavior of a system is
+the \textit{certainty} of the prediction. The huge advantage of the method we
+have presented here seems to be that it \textit{intrinsically} provides a good
 estimate about the certainty of its own prediction, i.e.\ this method is
 unlikely to generate false-positives. For example, the data about CD44 shown
 above would have led us to state nothing more definite than \enquote{we can not
@@ -399,8 +409,26 @@ systematically understand the behavior of the method if we leave its scope of
 validity. Strictly spoken, in that case the certainty is \textit{not}
 assessable, neither quantitatively nor qualitatively. Therefore, the risk for
 producing false-positive predictions is much higher than in case of the method
-presented by us. Here, we see a clear conceptual advantage of the Coulomb
+presented by us. At the same time, our simplified approach seems to provide no
+less detail and insight about potential protein-GAG binding regions than the
+authors of the literature summarized in \cref{bspred:motivation} have obtained,
+indicating that classical molecular docking is an overkill approach for binding
+region prediction. Here, we see a clear conceptual advantage of the Coulomb
 potential evaluation over more complex methods such as global docking.
+
+Also from the scientific theory point of view our hypothesis is advantageous
+compared to molecular docking methods: generally, we aim to generate knowledge
+by coming up with \textit{falsifiable} predictions. The failure of a docking
+prediction for any given system falsifies the docking approach as a whole, which
+is a conjunction of many statements (scoring and search are comprised of various
+subcomponents). Failure shows that one or more of these statements is false, but
+it does not show which one \cite{savage1990scientific}. Falsification of our
+\textit{simplistic} hypothesis on the other hand would more easily translate
+into explanatory force and gain of scientific knowledge. So far, our hypothesis
+is corroborated by the reference systems discussed above as well as other
+systems we have looked at, i.e.\ it is a hypothesis that has passed certain
+tests --- however, it has not been proven right (generally, scientific theories
+can not be proved, only disproved \cite{schafersman_scientific_method}).
 
 Another advantage of the proposed visualization of the electrostatic potential
 via isosurface representation is that it enables the researcher to quickly grasp
