@@ -413,15 +413,17 @@ presented by us. At the same time, our simplified approach seems to provide no
 less detail and insight about potential protein-GAG binding regions than the
 authors of the literature summarized in \cref{bspred:motivation} have obtained,
 indicating that classical molecular docking is an overkill approach for
-protein-GAG binding region prediction. Here, we see a clear conceptual advantage
-of the Coulomb potential evaluation over more complex methods such as global
-docking.
+protein-GAG binding region prediction. With the Coulomb potential analysis at
+hand, we can \textit{explain} the results obtained by named authors, which is a
+huge gain for improving the theoretical understanding of protein-GAG
+interaction. Here, we see a clear conceptual advantage of the Coulomb potential
+evaluation over more complex methods such as global docking.
 
 Also from the scientific theory point of view our hypothesis is advantageous
 compared to molecular docking methods: generally, we aim to generate knowledge
 by coming up with \textit{falsifiable} predictions. The failure of a docking
-prediction for any given system falsifies this docking approach as a whole,
-whereas this docking method is backed by a conjunction of many statements
+prediction falsifies the docking approach (applied to a certain system) as a
+whole, whereas the docking method is based on a conjunction of many statements
 (scoring and search are comprised of various subcomponents). Failure shows that
 one or more of these statements is false, but it does not show which one
 \cite{savage1990scientific}. Falsification of our \textit{simplistic} hypothesis
@@ -580,74 +582,48 @@ significance. Otherwise, both validation or invalidation of the prediction with
 the help of an experiment \textit{would not improve theoretical knowledge}:
 proving the prediction right must be considered coincidence, proving the
 prediction wrong would not provide fundamental insights about why the applied
-model was insufficient to describe the system. In \cite{salek_ardakani_2000},
-where IL-10 was shown to bind heparin, the authors note that IL-10 residues 105
-to 110 (LRRCHR) match the pattern XBBXBX, which was published as one of various
-protein-GAG binding site \enquote{consensus sequence} earlier by various authors
-\cite{mccaffrey_1992,cardin_weintraub_1989,fromm_1997,caldwell_1996,%
-hileman_1998}.
+model was insufficient to describe the system. Again, alone the electrostatic
+properties of IL-10 nicely explain the docking results obtained in
+\cite{mulloy_forster_2008_4helixcytokines}.
 
+In \cite{salek_ardakani_2000}, where IL-10 was shown to bind heparin, the
+authors note that IL-10 residues 105 to 110 (LRRCHR) match the pattern XBBXBX,
+which was earlier published as one of various protein-GAG binding site
+\enquote{consensus sequences}. The idea that protein-GAG interaction should be
+governed by such consensus sequences has been proposed and pushed forward by
+various authors in the 1990s \cite{mccaffrey_1992,
+cardin_weintraub_1989,fromm_1997,caldwell_1996,hileman_1998}. If that was the
+case, scanning proteins for such sequence fragments would be a powerful
+protein-GAG binding region prediction method. However, in fact, the interaction
+between two molecules is clearly governed by the assembly of atoms in space,
+i.e.\ by their \textit{structure} rather than their \textit{sequence}. We must
+conclude that protein sequence information is not suitable for making resilient
+protein-GAG binding region predictions. This view is supported by Forster and
+Mulloy who state that \enquote{though some 'consensus sequences' for heparin
+binding have been identified, they are neither necessary nor sufficient to
+define a heparin binding site} \cite{hp_binding_sites_mulloy_2006}. Obviously,
+our method is based on a theoretical model that uses and requires protein
+\textit{structure} information. The consensus sequence approach seems to roughly
+match our prediction in case of IL-10. The explanation is that the named
+\enquote{consensus sequence} is the only local agglomeration of positively
+charged amino acid residues in IL-10: it is purely the local density of
+positively charged residues that is responsible for the compliance of both
+predictions. Hence, the order of residues in the \enquote{consensus sequence} is
+not important, reducing the idea of a certain required residue pattern reflected
+by the \enquote{consensus sequence} to absurdity. The fact that both predictions
+match is a matter of coincidence.
 
-
-
-The sequence 2-(), which is
-conserved between all species of IL-10 sequenced to date, is
-similar to one consensus site, XBBXBX
-
-
-\hl{INCORPORATE:} The method surely is more useful than the popular method of
-heparin binding site consensus sequence search (cardin, weintraub) (hileman,
-linhardt), which has already been applied to interleukin-10 before. Its about
-structure, not sequence, that is also why Forster and Mulloy state that
-\enquote{though some 'consensus sequences' for heparin binding have been
-identified, they are neither necessary nor sufficient to define a heparin
-binding site} \cite{hp_binding_sites_mulloy_2006}.
-
-
-
-
-
- can be  or wrong by an
-experiment
-
-, or the prediction can be supported by
-an experiment
-
-questioning the benefit of a prediction when not being able to
-derive its . With the Coulomb
-potential analysis at hand, we can \textit{explain} the results obtained by
-named authors, which is a huge gain for improving the theoretical understanding
-of protein-GAG interaction.
-
-
-argue that the electrostatic properties of IL-10 are the reason why their approach suggested
-this region.
-
-
-
-
-
-question of this chapter
-
-
-The question
-pointed our that The important
-question how valuable a prediction is
-
-
-
-cite weintraub with consensus sequence.
-
-
-
-
+% a special arrangement of the side chains could
+%abolish the strong electrostatic attraction for negatively charged molecules. In
+%that case, the sequence fragment would still match a so-called consensus
+%sequence, whereas Coulomb potential evaluation would
 
 \subsection{Conclusions}
-Short conclusional text regarding IL-10 GAG binding prediction.
-
- So far, we have no experience whether
-there is a certain threshold connected to this value, below which we should not use our prediction method anymore for deriving reliable predictions.
-The low value in any case suggests that IL-10-GAG binding occurs with lower
-binding affinity as is the case of  SDF-1 and FGF2 .
-
-
+The strength of IL-10's Coulomb attraction for GAGs has been identified as
+significantly weaker than in case of exemplary protein-GAG systems such as
+FGF2-HP. Nevertheless, it has been characterized as still being significant. Our
+protein-GAG binding region prediction method reveals a distinct region centered
+on R102, R104, R106, R107 of the human IL-10 monomer as a putative IL10-GAG
+binding region. That region has been characterized as a specific feature of
+IL-10 before, which is why we are quite certain that the discussed region plays
+a major role in IL-10-GAG interaction.
