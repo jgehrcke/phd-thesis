@@ -71,15 +71,14 @@ method has only two major components:
 \item the \textit{distance metric}, quantifying the similarity between any two
 given objects.
 \item a \textit{clustering algorithm}, classifying the objects into groups
-(clusters), based on their mutual similarity (i.e.\ distance).
+(clusters), based on their mutual similarity.
 \end{itemize}
 
 It is important to appreciate that both components must be adjusted to the
 scientific question, otherwise the result of docking solution clustering might
-be meaningless and/or incomparable to other docking studies. Within the next
-sections, we introduce a distance metric optimized for GAG molecules and
-describe a clustering algorithm appropriate for clustering molecular structure
-ensembles.
+be meaningless. Within the next sections, we introduce a distance metric
+optimized for GAG molecules and describe a clustering algorithm appropriate for
+clustering molecular structure ensembles.
 
 
 \section{A meaningful distance metric for GAGs: RMSatd}
@@ -93,7 +92,7 @@ obviously must correspond to a small distance.
 The established way for measuring a structural distance between two molecules
 that have an equivalent atomic configuration but different atomic coordinates is
 to calculate the root mean square distance ($RMSd$) while pairing up atoms of
-same identity:
+equivalent identity:
 
 \begin{equation}
 RMSd = \sqrt{\frac{1}{N}\sum{{d_i}^2}}
@@ -134,15 +133,15 @@ $RMSd$ measures quite a large distance, i.e.\ low similarity. Assuming bond
 lengths and a vertical displacement between both molecules of \SI{1}{\angstrom},
 the classical $RMSd$ in that situation would be \SI{3}{\angstrom}.
 
-We propose what we call the root mean square \textit{atom type} distance
-$RMSatd$, which works just as the classical $RMSd$, but pairs up spatially
+We propose what we call the \textit{root mean square atom type distance}
+($RMSatd$), which works just as the classical $RMSd$, but pairs up spatially
 closest atoms of the same type (\cref{fig:clust:rmsd_vs_rmsatd}, bottom panel).
-In case of the example situation discussed above, the $RMSatd$ would be
+In case of the example situation discussed above, the $RMSatd$ is
 \SI{1}{\angstrom}, i.e.\ more realistically reflects the actual distance between
 both molecules than the classical $RMSd$. While GAGs do not have a strict 2-fold
-rotational symmetry, they are still highly similar when just reversed along
+rotational symmetry, they are still highly similar when reversed along
 their end-to-end direction. As demonstrated, this effect is accounted for by the
-$RMSatd$ metric. Furthermore, GAGs usually are modeled as strictly periodic
+$RMSatd$ metric. Furthermore, GAGs are usually modeled as strictly periodic
 molecules. The $RMSatd$ accounts for this periodicity and considers two GAGs
 shifted by $n$ periodic units as structurally similar, while classical $RMSd$
 with identity-based matching ignores this characteristic.
@@ -226,7 +225,7 @@ cluster are required to be mutually \textit{density-connected}. Generally
 spoken, this means that within a cluster the local density is never lower than a
 certain threshold, as defined by two parameters: $\epsilon$, the neighborhood
 search radius of an object, and $m$, the minimum number of objects that is
-required to be within that neighborhood in order do form a dense region. DBSCAN
+required to be within that neighborhood in order to form a dense region. DBSCAN
 is resistant to noise, and can handle clusters of arbitrary shapes and sizes
 \cite{dbscan_ester1996}.
 
@@ -268,15 +267,15 @@ One could argue that simply using the same $\epsilon$, $m$ parameter value pairs
 for all data sets (docking solution ensembles) would ensure comparability. While
 this is true in general, such an approach would render clustering analysis less
 valuable than it could be. In clustering, we are interested in how objects are
-grouped by the algorithm as well as in the properties of the groups.
-\enquote{Ideal} DBSCAN clustering parameters very well describe the density of
-objects in a cluster and can therefore be a useful measure. The more the
-clustering parameters deviate from ideal ones, the less they represent cluster
-properties. Most importantly however, the classification in groups (clusters)
-becomes less and less clear for non-ideal parameters. Hence, the goal is to
-\textit{reproducibly} derive \textit{ideal} clustering parameters for a certain
-data set. Then the clustering results for different data sets can be compared
-\textit{i)} via the grouping itself and \textit{ii)} via the clustering
+grouped by the algorithm, but we are also interested in the \textit{properties}
+of those groups. \enquote{Ideal} DBSCAN clustering parameters very well describe
+the density of objects in a cluster and can therefore be a useful measure. The
+more the clustering parameters deviate from ideal ones, the less they represent
+cluster properties. Most importantly however, the classification in groups
+(clusters) becomes less and less clear for non-ideal parameters. Hence, the goal
+is to \textit{reproducibly} derive \textit{ideal} clustering parameters for a
+certain data set. Then the clustering results for different data sets can be
+compared \textit{i)} via the grouping itself and \textit{ii)} via the clustering
 parameters that describe group properties.
 
 Naturally, some boundary conditions must be provided by the user in order to
@@ -309,10 +308,11 @@ identified for a given $\epsilon$, $m$ pair. The first two conditions implement
 the constraints as given by $N_{min}$ and $M_{min}$. Minimization of the
 expression $N + \epsilon - m$ finds parameters describing the properties of as
 few clusters as possible as good as possible: it identifies the smallest
-$\epsilon$ and the largest $m$ that still lead to cluster being found. From an
-analytical point of view, optimization of the named expression identifies a
-phase transition in the $\epsilon$, $m$ parameter space and returns those
-parameter values that are just on the right side of the transition.
+$\epsilon$ and the largest $m$ (i.e.\ the highest density threshold) that
+fulfill the other boundary conditions. From an analytical point of view,
+optimization of the named expression identifies a phase transition in the
+$\epsilon$, $m$ parameter space and returns those parameter values that are just
+on the right side of the transition.
 
 
 \section{Clustering method for GAGs: implementation details}
@@ -336,9 +336,9 @@ program written for CPython 2.6 and 2.7, and provides the following features:
 \item Agglomerative hierarchical clustering (dendrogram display supported)
 \item DBSCAN clustering and parameter optimization
 \item $RMSatd$ distance metric calculation
-\item Automatic cluster statistics, various options for sorting
-\item Comprehensive output: cluster information as JSON data, molecular
-structures as PDB files in a meaningful directory structure
+\item Automatic cluster statistics creation, various options for sorting
+\item Comprehensive output: cluster information is provided as JSON data,
+molecular structures as PDB files, output in a meaningful directory structure
 \item Well-documented command line interface
 \end{itemize}
 
@@ -346,9 +346,9 @@ The major bottleneck for the runtime of the clustering analysis is the $RMSatd$
 distance matrix calculation. In order to keep the runtime for common clustering
 scenarios in the order of seconds instead of hours, we efficiently distribute
 the distance matrix calculation over multiple CPU cores (input: shared read-only
-memory on POSIX-compliant systems after fork(), output collected with a queue).
-Furthermore, the individual $RMSatd$ metric calculation as well as the DBSCAN
-implementation are heavily optimized, as described in the following sections
+memory on POSIX-compliant systems, output collected through pipes). Furthermore,
+the individual $RMSatd$ metric calculation as well as the DBSCAN implementation
+are heavily optimized, as described in the following sections
 \ref{impl_rmsatd} and \ref{impl_dbscan}.
 
 
@@ -504,7 +504,7 @@ code.
 The parameter optimization as motivated in section \ref{clustering_param_opt}
 has been implemented as a two-step minimization protocol: a global minimization
 of the target function with a brute force method is followed by a local
-minimization. On a pre-defined grid of about \num{e2} $\epsilon$, $m$ parameter
+minimization: on a pre-defined grid of about \num{e2} $\epsilon$, $m$ parameter
 value pairs, the brute force minimization finds the ideal value pair. For
 further parameter optimization the Nelder-Mead simplex algorithm
 \cite{nelder_mead} is used, which is optimized for locally minimizing a function
@@ -517,7 +517,7 @@ optimization involves about \num{e3} invocations of the DBSCAN algorithm.
 
 The code of cluster-pdb-structures is released under the Apache License, Version
 2.0 \cite{apache_license_2} and available in a Mercurial repository under
-\url{http://bit.ly/phd-python-clustering}. Please note that this is a
+\url{http://bit.ly/jgehrcke-phd-python-clustering}. Please note that this is a
 development version without any guarantees regarding behavior and correctness.
 
 
