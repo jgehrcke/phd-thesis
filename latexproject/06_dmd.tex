@@ -1,7 +1,7 @@
 \chapter{Dynamic Molecular Docking}
 
-This chapter is a slightly customized version of
-\cite{dmd_samsonov_gehrcke_2014}.
+This chapter is a customized version of \cite{dmd_samsonov_gehrcke_2014}, where
+we have published the description and validation of Dynamic Molecular Docking.
 
 % American Chemical Society’s Policy on Theses and Dissertations
 % http://pubs.acs.org/userimages/ContentEditor/1218205107465/dissertation.pdf
@@ -245,6 +245,25 @@ simulations, which in total usually comprise one or more microsecond(s) of
 simulated real time. Nevertheless, we can classify the different approaches here
 and discuss some obvious data extraction techniques.
 
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{gfx/dmd/dmd_timeline_for_thesis_09.png}
+\caption[]{
+Schematic overview of the chronological sequence of a DMD run, and definition of
+the term \enquote{DMD study}. The black bars, read from left to right, provide
+an overview of the time course of a single DMD run: its starts with the initial
+system setup and goes through the targeted molecular dynamics (tMD) process. The
+final tMD system state is further processed in a free MD simulation. tMD and
+free MD involve the usual MD preparations (minimization, heat-up, and
+equilibration), as indicated by the shorter black bars. The coordinates of a
+single docking solution are the result of minimizing the final free MD state.
+Extraction of data from the MD trajetories for docking solution characterization
+is limited to the final fragment of free MD, as indicated in green.}
+\label{fig:dmd:timeline}
+\end{figure}
+
+
 First of all, we need to clarify which fractions of the trajectories of a DMD
 study are interesting for data extraction. Method characterization for sure
 requires analysis of all trajectory data created. Application of the method,
@@ -256,7 +275,7 @@ sampling -- they however are not applicable for final state characterization.
 That is why we have (arbitrarily) decided to use the last
 \SI{10}{\percent} of the free MD simulation, i.e.\ the last \SI{1}{\nano\second}
 for extracting data about single docking solutions. For clarification,
-\cref{fig:dmd_timeline} shows \textit{i)} the relation of a \enquote{DMD study}
+\cref{fig:dmd:timeline} shows \textit{i)} the relation of a \enquote{DMD study}
 and single \textit{DMD runs}, as well as a time line of a single DMD run with
 specific labeling of the time interval relevant for data extraction.
 
