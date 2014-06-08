@@ -1,7 +1,7 @@
 \chapter{Dynamic Molecular Docking}
 
-Significant parts of this chapter have been published in \cite{
-dmd_samsonov_gehrcke_2014}.
+This chapter is a slightly customized version of
+\cite{dmd_samsonov_gehrcke_2014}.
 
 % American Chemical Society’s Policy on Theses and Dissertations
 % http://pubs.acs.org/userimages/ContentEditor/1218205107465/dissertation.pdf
@@ -23,9 +23,6 @@ dominated by electrostatic attraction and demonstrate its capability to reliably
 identify the receptor residues contributing most to binding.
 
 \section{Rational}
-
-\hl{Add this argument:phenomenological model (docking method trained to exp
-results) vs. physical model (MD with correct atomic properties)}
 
 Molecular docking has been extensively applied for drug
 discovery in the recent decades \cite{klebe_recent_2000,
@@ -59,8 +56,8 @@ involved in cell regeneration and proliferation, angiogenesis, metastasis and
 lipid metabolism \cite{hynes_extracellular_2009, macri_growth_2007,
 barbero_chembiochem_2013}. Due to the occurrence of numerous sulfate and
 carboxyl groups, GAGs have a high charge density, rendering long-range Coulomb
-interactions to be crucial for binding to proteins
-\cite{mulloy_specificity_2005}. The significance of electrostatic interactions
+interaction to be crucial for binding to proteins
+\cite{mulloy_specificity_2005}. The significance of electrostatic interaction
 underlines the importance of taking explicit solvent molecules as binding
 mediators into account when GAGs are used as ligands in molecular docking
 \cite{samsonov_docking_2011}. Moreover, the orientation and conformation of long
@@ -79,30 +76,28 @@ modest computational requirements and therefore enable the quick investigation
 of single complexes as well as the execution of large-scale studies involving a
 large number of different complexes. Taking into account ligand and receptor
 flexibility as well as treating solvent explicitly clearly increases the
-computational complexity of docking approaches. However, in view of the ever-
-increasing computing power, a new generation of docking methods should evolve,
-which though being computationally more demanding, aims to deal with the above-
-mentioned challenges.
+computational complexity of docking approaches. However, in view of the
+ever-increasing computing power, a new generation of docking methods should
+evolve, which though being computationally more demanding, aims to deal with the
+above-mentioned challenges.
 
 Molecular dynamics (MD) techniques are established for rigorous studies of
 intermolecular interactions \cite{karplus_molecular_2005}. Beyond that, MD
 methods have already been used in docking approaches for overcoming the
-challenges of both ligand and receptor
-flexibility \cite{chaudhuri_application_2012, antes_dynadock_2010}. Furthermore,
-standard MD methods allow for the inclusion of explicit solvent via well-
-established water models. The application of MD techniques is limited by high
-computational cost, which previously has hindered their usage in high-throughput
-approaches for drug discovery. However, nowadays, advanced computational
-resources are available and specialized hardware (such as graphics processing
-units, GPUs) can be used to dramatically increase the performance of MD
-simulations, making the establishment of MD in the field of docking gradually
-feasible.
+challenges of both ligand and receptor flexibility
+\cite{chaudhuri_application_2012, antes_dynadock_2010}. Furthermore, standard MD
+methods allow for the inclusion of explicit solvent via well-established water
+models. The application of MD techniques is limited by high computational cost,
+which previously has hindered their usage in high-throughput approaches for drug
+discovery. However, nowadays, advanced computational resources are available and
+specialized hardware (such as graphics processing units, GPUs) can be used to
+dramatically increase the performance of MD simulations, making the
+establishment of MD in the field of docking gradually feasible.
 
-
-We propose Dynamic Molecular Docking (DMD), a combination of established MD-
-based methods specifically designed for tackling the above-mentioned challenges
-in protein-GAG docking. DMD is a targeted MD-based approach where the ligand,
-which is initially placed at a distance from the receptor so that their
+We propose Dynamic Molecular Docking (DMD), a combination of established
+MD-based methods specifically designed for tackling the above-mentioned
+challenges in protein-GAG docking. DMD is a targeted MD-based approach where the
+ligand, which is initially placed at a distance from the receptor so that their
 interaction is negligible, is slowly pulled towards a receptor target region by
 applying a time-dependent distance restraint. During this process, both receptor
 and ligand are treated as entirely flexible in explicit solvent. The time-
@@ -114,35 +109,37 @@ unbinding and large-scale conformational alteration. In DMD, once the ligand
 reaches the receptor, the distance restraint is switched off and a long free MD
 simulation is carried out, allowing for the mutual adjustment of receptor
 residues and GAG as well as for extensive GAG-internal degree of freedom
-sampling. The obtained trajectory data are then used for extracting a docking
-solution (the coordinates) and for its characterization (binding energy estimate
-and other quantities). Binding pose search as well as binding pose scoring are
-consistent in terms of using the same potential as given by the MD force field
-and the parameterization of the molecular system.
+sampling. The obtained trajectory data are then used for \textit{i)} extracting
+a docking solution (the coordinates of the ligand relative to the receptor) and
+\textit{ii)} for the characterization of this docking solution. In terms of
+molecular docking, this method keeps binding pose search well as binding pose
+scoring consistent, in the sense that both use the same potential as given by
+the MD force field and the parameterization of the molecular system.
 
+Classical molecular docking is usually based on a phenomenological model,
+whereas the internal parameters have been trained based on a set of molecular
+reference systems (often, machine learning tools are applied for this task).
+This raises the question about the applicability of such model to systems
+outside the training data set, and about the validity of the resulting data. In
+contrast, one of the main conceptual advantages of molecular dynamics
+simulations compared to classical docking approaches is that the underlying
+model and its parameters are (classical) physics-based. The parameters have been
+developed over years with the goal to make dynamics simulations reproduce the
+classical chemical and physical properties of the simulated system. Hence, if
+properly set up, MD simulations produce data that is generally more trustable
+and resilient than data produced by machine learning-based docking methods.
 
-\hl{THIS COMES LATER, TOO. MOVE HERE I WOULD SAY!.... One of the
-main concepts of DMD is that pulling process and subsequent free MD are repeated
-many times in independent simulations. This allows for the creation and
-evaluation of an ensemble of docking solutions rather than the interpretation of
-single trajectories. In this ensemble, the energetically more favorable states
-are the more likely ones. Spatial clustering of this docking solution ensemble
-identifies those docking solutions that appeared with highest probability and,
-therefore, lowest energy.}
-
-\hl{INCORPORATE: There is no general dependence of
-the DMD protocol on the confidence in the binding region assumption. Like any
-other local docking method, DMD allows for searching within a limited region of
-the receptor surface. It therefore requires an a priori definition/assumption of
-the ligand binding region. To further improve the explanation of this point, we
-added the following clarification to page 21 of the revised manuscript: “DMD is
-a local docking method focused towards a certain region on the receptor surface.
-If the confidence in the binding region assumption is to be increased, one could
-repeat the DMD study while varying the focus point for covering a larger search
-space. There is no general dependence of the DMD protocol on the confidence in
-the binding region assumption (however, the conclusiveness of the DMD results
-clearly depends on the validity of this assumption).” }
-
+One of the main concepts of a DMD study is that pulling process and subsequent
+free MD are repeated \textit{many} times in independent simulations. This allows
+for the creation and evaluation of an ensemble of docking solutions rather than
+the interpretation of single trajectories. In this ensemble, the energetically
+more favorable states are the more likely ones. Subsequent spatial clustering of
+this docking solution ensemble identifies those docking solutions that appeared
+with highest probability and, therefore, lowest energy. We should note that a
+meaningful DMD study requires a reasonable assumption about the binding region
+it is focused on. However, there is no general dependence of the DMD protocol on
+the confidence in the binding region assumption --- selection of the binding
+region and local docking are independent tasks.
 
 In this validation study, we applied DMD to a set of reference systems and
 compared its performance to a classical docking approach, AutoDock 3 (AD3),
