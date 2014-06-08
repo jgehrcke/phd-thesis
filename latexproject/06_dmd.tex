@@ -891,7 +891,7 @@ with the protein. When docking an HP disaccharide, those key interactions were
 not identified, suggesting that the disaccharide is not long enough to maintain
 specificity. Nevertheless, for the SDF-1-HP and FGF2-HP systems, we observe that
 all obtained poses overlap regardless of the GAG length
-(\cref{fig:dmd:fgf2_hp_246,% fig:dmd:sdf1_hp_246}).  A direct visual comparison
+(\cref{fig:dmd:fgf2_hp_246,fig:dmd:sdf1_hp_246}).  A direct visual comparison
 between the crystal structure of FGF2 with a heparin
 hexasaccharide \cite{faham_heparin_1996} and the corresponding DMD result can
 be seen in \cref{fig:dmd:fgf2_hp_246}.
@@ -1011,12 +1011,11 @@ the intersection of both sets (\cref{tab:dmd:anchoring_receptor_redidues}).
 
 
 \begin{table}
+\tiny
   \centering
-  \label{tab:dmd:anchoring_receptor_redidues}
-  \caption{Predictive power of DMD for the identification of receptor anchoring residues.}
   \smallskip
   \begin{threeparttable}
-    {\renewcommand{\arraystretch}{1.4}%
+    {\renewcommand{\arraystretch}{1.3}%
       \begin{tabular}{lcccr}
       \hline
       \textbf{Complex} & \specialcell{\textbf{Number of correctly} \\ \textbf{predicted residues}\tnote{a}} &
@@ -1038,6 +1037,8 @@ the intersection of both sets (\cref{tab:dmd:anchoring_receptor_redidues}).
       (calculated only if five or more residues match).
     \end{tablenotes}
   \end{threeparttable}
+\caption{Predictive power of DMD for the identification of receptor anchoring residues.}
+\label{tab:dmd:anchoring_receptor_redidues}
 \end{table}
 
 
