@@ -624,13 +624,13 @@ degrees of freedom (DOFs) of the ligand as well as translational and rotational
 DOFs of the entire ligand within a certain volume including part of the receptor
 surface (the anticipated binding region). It is important to note that ligand
 pulling via tMD does not occur along a predefined axis: the ligand follows a
-random trajectory and samples its conformational space (Figure 1a). While doing
-so, the pulling velocity has a crucial impact on the sampling extent of
-especially the rotational and translational DOFs of the ligand: the slower the
-ligand is pulled, the more time it has to respond to the potential of the
-receptor, and -- with that -- to deviate from the shortest path towards the
-receptor (an extreme scenario with translation along the initially defined
-displacement axis only).
+random trajectory and samples its conformational space, see
+\cref{fig:dmd:n_repetitions}. While doing so, the pulling velocity has a crucial
+impact on the sampling extent of especially the rotational and translational
+DOFs of the ligand: the slower the ligand is pulled, the more time it has to
+respond to the potential of the receptor, and --- with that --- to deviate from
+the shortest path towards the receptor (an extreme scenario with translation
+along the initially defined displacement axis only).
 
 \begin{figure}
 \centering
@@ -661,7 +661,7 @@ ligand configuration for each point in time during tMD. Ligand translation,
 rotation and internal conformational changes contribute to this time-dependent
 structural difference denoted as $RMSd_{\mathrm{rot,trans,int}}(t)$.  The
 difference $RMSd_{\mathrm{rot,trans,int}}(t) - ts/T$ describes the extent of
-ligand translation and rotation in space compared to the shortest-path scenario.
+ligand translation and rotation in space compared to the shortest path scenario.
 
 For single test cases with $T=\SI{4}{\nano\second}$ we observed a quickly
 fluctuating $RMSd_{\mathrm{rot,trans,int}}(t)$ curve with ligand displacements
@@ -714,7 +714,7 @@ extent of glycosidic linkage sampling by analyzing the distribution of
 glycosidic linkage dihedral values within all free MD simulations of a DMD study
 with FGF2 in complex with heparin. Since GLYCAM 06 is known for its proper
 description of the glycosidic linkage torsional
-potential{\cite{kirschner_glycam06:_2008}}, we extracted the distribution of
+potential \cite{kirschner_glycam06:_2008}, we extracted the distribution of
 equivalent torsion angles from an independently performed 760 ns MD simulation
 of the same heparin molecule free in solution for reference. We compared both
 distributions and observed high similarity between them
@@ -733,8 +733,9 @@ shown in \cref{fig:dmd:glycolinkage_sampling}).
 
 
 \begin{figure}
+\begin{adjustwidth}{-1.5cm}{-1.5cm}
 \centering
-\includegraphics[width=0.9\textwidth]{gfx/dmd/suppl/suppl_glyco_linkage_torsion_maps_03.png}
+\includegraphics[width=1.3\textwidth]{gfx/dmd/suppl/suppl_glyco_linkage_torsion_maps_03.png}
 \caption[]{
 Conformational sampling of the glycosidic linkage dihedrals of a free (unbound)
 heparin hexasaccharide extracted from 760 ns MD (B, D) compared to the sampling
@@ -749,6 +750,7 @@ the PDB entries 1AXM, 1BFB, 1BFC, 1E0O, 1FQ9, 1G5N, 1GMN, 1HPN, 1QQP, 2AXM,
 lengths, the three outliers correspond to terminal sugar monomers).
 }
 \label{fig:dmd:glycolinkage_sampling}
+\end{adjustwidth}
 \end{figure}
 
 
@@ -835,7 +837,7 @@ We compared the performance of DMD with the performance of the well-established
 AD3 docking approach, which was used for other molecular systems including GAGs.
 We applied DMD and AD3 to all TDS complexes and analyzed the spatial
 distribution of docking results via clustering
-(\cref{tab:dmd:clustering_parameters} \hl{remove this table?}). For each
+(see \cref{tab:dmd:clustering_parameters}). For each
 complex, we compared the mean structural distance $\langle \delta \rangle$
 between the experimentally determined ligand position and all members of the
 most populated cluster (\cref{fig:dmd:clus_dmd_vs_ad3}). In terms of the
@@ -888,10 +890,11 @@ the assumption that GAG fragments differing in length share key interactions
 with the protein. When docking an HP disaccharide, those key interactions were
 not identified, suggesting that the disaccharide is not long enough to maintain
 specificity. Nevertheless, for the SDF-1-HP and FGF2-HP systems, we observe that
-all obtained poses overlap regardless of GAG length (\cref{fig:dmd:fgf2_hp_246,%
-fig:dmd:sdf1_hp_246}).  A direct visual comparison between the crystal structure
-of FGF2 with a heparin hexasaccharide{\cite{faham_heparin_1996}} and the
-corresponding DMD result can be seen in \cref{fig:dmd:fgf2_hp_246}.
+all obtained poses overlap regardless of the GAG length
+(\cref{fig:dmd:fgf2_hp_246,% fig:dmd:sdf1_hp_246}).  A direct visual comparison
+between the crystal structure of FGF2 with a heparin
+hexasaccharide \cite{faham_heparin_1996} and the corresponding DMD result can
+be seen in \cref{fig:dmd:fgf2_hp_246}.
 
 
 \begin{figure}
@@ -1004,7 +1007,39 @@ and extracted the set of anchoring residues, which are at most ten of the
 receptor residues contributing most (positively) to ligand binding. We also
 determined a reference set of anchoring residues from MD simulations of the
 experimentally determined structures. For each TDS complex, we then identified
-the intersection of both sets (Table 1).
+the intersection of both sets (\cref{tab:dmd:anchoring_receptor_redidues}).
+
+
+\begin{table}
+  \centering
+  \label{tab:dmd:anchoring_receptor_redidues}
+  \caption{Predictive power of DMD for the identification of receptor anchoring residues.}
+  \smallskip
+  \begin{threeparttable}
+    {\renewcommand{\arraystretch}{1.4}%
+      \begin{tabular}{lcccr}
+      \hline
+      \textbf{Complex} & \specialcell{\textbf{Number of correctly} \\ \textbf{predicted residues}\tnote{a}} &
+      \specialcell{\textbf{Number of} \\ \textbf{charged residues}} &
+      \specialcell{\textbf{Number of polar} \\ \textbf{uncharged residues}} & $r$\tnote{b} \\ \hline
+      SDF-1 + HP & 7 of 10 & 7 & 0 & 0.52 \\
+      CathK + CS4 & 6 of 10 & 4 & 2 & -0.21 \\
+      CathKmut + CS4 & 6 of 10 & 4 & 1 & -0.12 \\
+      FGF2 + HP & 9 of 10 & 6 & 2 & 0.84 \\
+      SH3 + p41 & 2 of 5 & 0 & 0 & -- \\
+      Trypsin + Ihb. & 5 of 10 & 2 & 2 & 0.73 \\
+      CD44 + HA & 1 of 7 & 1 & 0 & -- \\ \hline
+      \end{tabular}
+    }
+    \begin{tablenotes}
+      \item[a] Number of predicted receptor anchoring residues having a match in
+      the reference set (as obtained from SRED via MD of the experimentally determined structures).
+      \item[b] Spearman's rank correlation $r$ between the SRED-energies of both residue sets
+      (calculated only if five or more residues match).
+    \end{tablenotes}
+  \end{threeparttable}
+\end{table}
+
 
 For Trypsin in complex with its inhibitor, half of the anchoring residues in the
 crystal structure were correctly found. For SDF-1-HP, CathK-CS4, and CathKmut-
@@ -1015,11 +1050,11 @@ predicted properly.
 In order to evaluate the capability of DMD to rank the receptor anchoring
 residues according to their importance for ligand binding, we calculated
 Spearman's rank correlation between the SRED-energies of residues in both, the
-reference and comparison sets (Table 1). For three of those five complexes with
-at least five predicted anchoring residues, the DMD ranking turned out to
-reproduce the reference ranking quite well (SDF-1-HP, FGF2-HP, Trypsin-Ihb). For
-the CathK-CS4 and CathKmut-CS4 complexes the anchoring residue ranking was not
-reproduced.
+reference and comparison sets (\cref{tab:dmd:anchoring_receptor_redidues}). For
+three of those five complexes with at least five predicted anchoring residues,
+the DMD ranking turned out to reproduce the reference ranking quite well
+(SDF-1-HP, FGF2-HP, Trypsin-Ihb). For the CathK-CS4 and CathKmut-CS4 complexes
+the anchoring residue ranking was not reproduced.
 
 \begin{figure}
 \centering
