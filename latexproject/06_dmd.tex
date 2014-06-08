@@ -240,11 +240,12 @@ one LROM.
 
 MD simulations provide a plethora of data extraction and analysis possibilities,
 and in general the researcher is not limited in his/her creativity to extract
-interesting quantities from a DMD study, i.e.\ from $N$ tMD and $N$ free MD
-simulations, which in total usually comprise one or more microsecond(s) of
-simulated real time. Nevertheless, we can classify the different approaches here
-and discuss some obvious data extraction techniques.
-
+interesting quantities from the raw data of a DMD study. Namely, the available
+raw data are the trajectories of $N$ tMD and $N$ free MD simulations, which in
+total usually comprise one or more microsecond(s) of simulated real time. In
+this section, we provide an overview about how DMD data analysis should be
+performed in general, classify the different approaches, and discuss some
+obvious data extraction techniques.
 
 \begin{figure}
 \centering
@@ -252,14 +253,17 @@ and discuss some obvious data extraction techniques.
 \caption[]{
 Schematic overview of the chronological sequence of a DMD run, and definition of
 the term \enquote{DMD study}. The black bars, read from left to right, provide
-an overview of the time course of a single DMD run: its starts with the initial
-system setup and goes through the targeted molecular dynamics (tMD) process. The
-final tMD system state is further processed in a free MD simulation. tMD and
-free MD involve the usual MD preparations (minimization, heat-up, and
-equilibration), as indicated by the shorter black bars. The coordinates of a
-single docking solution are the result of minimizing the final free MD state.
-Extraction of data from the MD trajetories for docking solution characterization
-is limited to the final fragment of free MD, as indicated in green.}
+an overview of the time course of a single DMD run: its starts off with the
+initial system (example system shown at the left, with the protein surface in
+gray and the ligand shown in blue sticks) and proceeds with the targeted
+molecular dynamics (tMD) process. The final tMD system state (central example
+system with the ligand shown in yellow sticks) is further processed in a free MD
+simulation. tMD and free MD involve the usual MD preparations (minimization,
+heat-up, and equilibration), as indicated by the shorter black bars. The
+coordinates of a single docking solution are the result of energy minimization
+of the final free MD state (example system on the right, with the ligand shown
+in magenta sticks). Extraction of data for docking solution characterization is
+limited to the final fragment of free MD, as indicated in green.}
 \label{fig:dmd:timeline}
 \end{figure}
 
@@ -269,17 +273,21 @@ study are interesting for data extraction. Method characterization for sure
 requires analysis of all trajectory data created. Application of the method,
 however, focuses on docking solution \textit{generation} and
 \textit{characterization}. For this task, it is required to ignore most parts of
-the trajectory data, especially the entire tMD process as well as the first
-major part of the free MD simulations. These parts are strongly relevant for
-sampling -- they however are not applicable for final state characterization.
-That is why we have (arbitrarily) decided to use the last
-\SI{10}{\percent} of the free MD simulation, i.e.\ the last \SI{1}{\nano\second}
-for extracting data about single docking solutions. For clarification,
-\cref{fig:dmd:timeline} shows \textit{i)} the relation of a \enquote{DMD study}
-and single \textit{DMD runs}, as well as a time line of a single DMD run with
-specific labeling of the time interval relevant for data extraction.
+the trajectory data, namely the entire tMD process as well as the first major
+part of the free MD simulations. These parts are strongly relevant for sampling,
+they however are not applicable for characterizing the final state of a DMD run,
+i.e.\ the \textit{docking solution} corresponding to that run. That is why we
+have (arbitrarily) decided to use the last \SI{1}{\nano\second} of the free MD
+simulation, for extracting data about a single docking solution. For
+clarification, \cref{fig:dmd:timeline} shows the relation of a \enquote{DMD
+study} and single \enquote{DMD runs}, as well as a time line of a single DMD run
+with specific labeling of the time interval relevant for data extraction.
 
 \subsubsection{Characterization of single docking solutions}
+
+Conceptually, data extraction has to be performed for single DMD runs, i.e.\
+all extracted quantities correspond to single DMD runs.
+
 
 \subsubsection{Merging: extraction of ensemble properties}
 
