@@ -412,7 +412,7 @@ residues that are most important for binding in most of the single DMD runs ---
 just in a systematic and reliable way.
 
 
-\section{Implementation for this project}
+\section{DMD implementation for this thesis project}
 
 \subsection{Molecular dynamics protocol}
 
@@ -428,15 +428,15 @@ The systems were neutralized by adding Na$^{+}$ or Cl$^{-}$ counterions. The MD
 time integration step was set to \SI{2}{\femto\second}, whereas bonds including
 hydrogen atoms were length-constrained by the standard SHAKE method. During MD,
 non-bonded interactions were switched off for atom pairs further apart than
-\SI{8}{\angstrom}. The Particle Mesh Ewald method was used for treating long-
-range electrostatic interactions.
+\SI{8}{\angstrom}. The Particle Mesh Ewald method was used for treating
+long-range electrostatic interactions.
 
-Each simulated system went through minimization, heat up, equilibration, and
+Each simulated system went through minimization, heat-up, equilibration, and
 production steps. During the first stage of minimization, only the solvent was
 relaxed. During the second stage, the entire system was minimized without
-restraints. System heat up to \SI{300}{\kelvin} was performed within
-\SI{20}{\pico\second} in the canonical ensemble (NVT) using the Langevin
-thermostate and periodic boundary conditions. Subsequently,
+restraints. System heat-up to \SI{300}{\kelvin} was performed within
+\SI{20}{\pico\second} of simulated real time in the canonical ensemble (NVT)
+using the Langevin thermostate and periodic boundary conditions. Subsequently,
 \SI{500}{\pico\second} of MD in the isothermal-isobaric ensemble (NPT) with
 Langevin thermostate and Berendsen barostat under periodic boundary conditions
 were carried out for system density equilibration. The following production
@@ -476,12 +476,12 @@ $D+s$ to $D$ (\cref{fig:dmd:geometry_scheme}b). For all tMD simulations, we used
 a pulling velocity of $s=\SI{30}{\angstrom}$ per $T=\SI{4}{\nano\second}$.
 
 For each DMD study, we prepared ten LROMs. Within such a study, we usually
-repreated the tMD pulling process 10 to 30 times for each of the LROMs, using a
-different random seed for each MD simulation. In total, this yields 100 to 300
+repeated the tMD pulling process 10 to 30 times for each of the LROMs, using a
+different random seed for each MD simulation. In total, this yielded 100 to 300
 independent tMD simulations per DMD study. Based on the final state of receptor
 and ligand of each tMD trajectory, an MD simulation with \SI{10}{\nano\second}
 without restraints was performed according to the protocol described above,
-hereafter referred to as \textit{free MD}.
+referred to as \textit{free MD}.
 
 
 \subsection{Energetic evaluation of DMD docking results}
@@ -491,12 +491,12 @@ hereafter referred to as \textit{free MD}.
 From the last 200 ps of each free MD trajectory, 100 equidistantly distributed
 frames were extracted for energy analysis. The MM-PBSA \cite{mmpbsa_py} approach
 was applied for calculating a time-averaged estimate for the free energy of
-binding $\Delta G$ between receptor and ligand. MM-GBSA\cite{mmpbsa_py} single
+binding $\Delta G$ between receptor and ligand. MM-GBSA \cite{mmpbsa_py} single
 residue energy decomposition (SRED) was applied to estimate the energy
 contribution of single receptor residues to the bound state.
 
-For identifying the receptor residues contributing most to binding \textit{from
-the entire ensemble of DMD runs}, the SRED data of all free MD trajectories of
+For identifying the receptor residues contributing most to binding from
+the entire ensemble of DMD runs, the SRED data of all free MD trajectories of
 the ensemble of DMD runs were filtered and merged: we excluded DMD runs resulting in weakly bound docking solutions (MM-PBSA $\Delta G >
 \SI{-1}{\kilo\calory\per\mole} $) and averaged the SRED-energy $\Delta G_R$ for
 each receptor residue over the remaining independent DMD runs. We discarded all
@@ -513,21 +513,22 @@ decompositions were performed with default parameters using the Python version
 of the MM-PBSA application provided with AmberTools 12. We did not incorporate a
 term for entropic contribution to binding, because we aimed to compare very
 similar systems where taking into account entropy likely increases the overall
-uncertainty in the calculated binding energies{\cite{Gandhi01102009,
+uncertainty in the calculated binding energies {\cite{Gandhi01102009,
 homeyer_gohlke_2012}}.
 
 
 \section{Validation study}
 
-In this validation study, we applied DMD to several previously literature
-reported protein-GAG systems. We directly compared our results to the
-corresponding references: i.e. docking solutions to experimentally obtained
-structures; computationally described key binding residues to those previously
-annotated in literature. Furthermore, we compared DMD to AutoDock 3 (AD3), which
-has been previously applied for investigating protein-GAG systems
+In the validation study described in this section, we applied DMD to several
+previously literature-reported protein-GAG systems. We directly compared our
+results to the corresponding references. That is, we compared docking solutions
+to experimentally obtained structures and computationally described key binding
+residues to those previously annotated in literature. Furthermore, we compared
+DMD to AutoDock 3 (AD3), which is one of the classical docking methods that
+previously has most often been applied for investigating protein-GAG systems
 \cite{japan_docking_ad3_clustering,pichert_characterization_2012,%
-imberty_perez_protgag_comp_book_2006,franz_cathepsin_2013}. In our previous work
-\cite{samsonov_docking_2011}, AD3 performed best for protein- GAG systems in
+imberty_perez_protgag_comp_book_2006,franz_cathepsin_2013}. Furthermore, in
+\cite{samsonov_docking_2011}, AD3 performed best for protein-GAG systems in
 direct comparison to eHITs, MOE, and FlexX. In these lines, we cover two major
 components any meaningful validation study for a new approach needs to provide:
 \textit{i)} application of the new method to previously characterized reference
