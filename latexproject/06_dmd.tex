@@ -1043,8 +1043,8 @@ the intersection of both sets (\cref{tab:dmd:anchoring_receptor_redidues}).
 
 
 For Trypsin in complex with its inhibitor, half of the anchoring residues in the
-crystal structure were correctly found. For SDF-1-HP, CathK-CS4, and CathKmut-
-CS4 more than half of the anchoring residues were identified by SRED.
+crystal structure were correctly found. For SDF-1-HP, CathK-CS4, and
+CathKmut-CS4 more than half of the anchoring residues were identified by SRED.
 Furthermore, for the FGF2-HP complex, nine of ten anchoring residues were
 predicted properly.
 
@@ -1084,48 +1084,65 @@ regardless of their length, GAG fragments preserve their key interactions with
 certain protein amino acid residues. The set of FGF2 key amino acid residues as
 identified by SRED contains all residues that were crystallographically
 characterized as most important for binding (R121, K126, N28,
-Q135){\cite{faham_heparin_1996}}. Based on our data we can additionally state
+Q135) \cite{faham_heparin_1996}. Based on our data we can additionally state
 that also residue K120 is of major importance, since it acts as hydrogen bond
 donor in a similar way as K126 does. The latter observation is in agreement with
 previous calorimetry studies pointing out the importance of K120 in the FGF2-HP
-system{\cite{thompson_1994_fgf2_heparin}}. These findings motivate the
+system \cite{thompson_1994_fgf2_heparin}. These findings motivate the
 application of DMD to systems in which a detailed and appropriate description of
 GAG recognition is required.
 
-% TODO: clarify hierarchy? remove parts?
-\vspace{1cm}
-\textbf{Summary.}
-In summary, our data suggest that DMD is able to yield docking
-results of high significance, especially in case of receptor-ligand systems
-dominated by attractive electrostatic interaction. This success is well-grounded
-by the concept of the ligand conformational sampling while responding to the
-long-range Coulomb potential of the receptor when slowly approaching its
-surface. During this step, the Coulomb potential significantly contributes to
-steering the entirely flexible and charged ligand towards its binding site and
-to let it finally adopt its binding pose in an explicit solvent environment. The
-subsequent free MD step allows for an unbiased mutual adjustment of receptor
-residues and ligand.
+
+
+\subsubsection{Electrostatic potential analysis in the context of DMD}
+
+Our electrostatic potential evaluation procedure as discussed in
+\cref{chapter:bspred} unambiguously identifies the GAG binding sites as
+determined experimentally for SDF-1-HP as well as the FGF2-HP systems. Analysis
+of CD44's Coulomb potential revealed that the net electrostatic interaction
+between CD44 and HA is either insignificant or even slightly repulsive. These
+findings seem to be directly correlated to the success of DMD in terms of
+reproducing the natural ligand binding mode, which can be described as failure
+in case of the CD44-HA system. We observe that electrostatic potential analysis
+provides a clear idea whether GAG-binding to a given receptor is mainly driven
+by Coulomb interaction. If a protein is known to bind GAGs, and the
+electrostatic potential topology is as unambiguous as in case of SDF-1 or FGF2,
+a GAG binding site prediction based on the procedure presented in
+\cref{chapter:bspred} is reliable and can be used for planning a DMD study for a
+given system. Visualization of the electrostatic potential can in any case be
+helpful to \textit{a priori} exclude regions of the receptor surface when
+repulsive to negatively charged ligands. Especially, knowledge about the
+electrostatic potential distribution in space can be used to choose a reasonable
+ligand \enquote{entry lane} orientation for the tMD pulling process.
+
+
+\subsubsection{General discussion}
+
+In summary, our data suggest that DMD is able to yield docking results of high
+significance, especially in case of receptor-ligand systems dominated by
+attractive electrostatic interaction. This success is well-grounded by the
+concept that the ligand --- while slowly approaching the receptor surface ---
+performs extensive conformational sampling and, at the same time, responds to
+the long-range Coulomb potential of the receptor. During the pulling process,
+the Coulomb potential significantly contributes to steering the entirely
+flexible and charged ligand towards its binding site and to let it finally adopt
+its binding pose in an explicit solvent environment. The subsequent free MD step
+allows for an unbiased mutual adjustment of receptor residues and ligand.
 
 DMD is a local docking method focused towards a certain region on the receptor
-surface. If the confidence in the binding region assumption is to be increased,
-one could repeat the DMD study while varying the focus point for covering a
-larger search space. There is no general dependence of the DMD protocol on the
-confidence in the binding region assumption (however, the conclusiveness of the
-DMD results clearly depends on the validity of this assumption). When selecting
-focus point, core atom, and target distance $D$, one needs to ensure that after
-the pulling process, the ligand is able to establish short-range interactions
-within the receptor binding region but is not forced into clashes with the
-receptor. In our study, we selected the focus point based on the experimentally
-determined ligand position (\cref{tab:dmd:tds_target_distances}). \hl{In
-practice, when the structure of the bound ligand is unknown, the focus point has
-to be defined based on the residues comprising the putative binding region. Via
-analysis of the atomic coordinates of ten protein-GAG complexes (PDB IDs 1BFB,
-1G5N, 1GMO, 1RID, 1T8U, 2BRS, 2HYU, 2JQR, 3C9E, 1XMN, including GAGs comprised
-of two to seven monosaccharide units), we found that the distance as well as the
-direction from the center of mass of the receptor residues comprising the
-putative binding site to the ligand center is consistent within these complexes
-(Supplementary Table 2). This relationship can be used to derive a focus point
-from the residues constituting the receptor binding region.\textbf{REMOVE?}}
+surface. When selecting focus point, core atom, and target distance $D$, one
+needs to ensure that after the pulling process, the ligand is able to establish
+short-range interactions within the receptor binding region but is not forced
+into clashes with the receptor. In our study, we selected the focus point based
+on the experimentally determined ligand position and could therefore easily
+determine the required MD target distance values
+(\cref{tab:dmd:tds_target_distances}). In practice, when the structure of the
+bound ligand is unknown, the focus point has to be defined based on the residues
+comprising the putative binding region and based on binding mode assumptions,
+for instance generated by classical docking methods or by manual docking .
+
+\hl{stress again that we have observed convergence of the data in case of
+SRED hexa vs. tetra FGF2?}
 
 \begin{table}
 \scriptsize
@@ -1150,32 +1167,6 @@ Target distance $D$ as applied during the tMD simulations for any given TDS comp
 \label{tab:dmd:tds_target_distances}
 \end{table}
 
-% was a subsubsection before, now include in discussion
-%\subsubsection{Electrostatic potential analysis in the context of DMD}
-
-\hl{
-\textbf{Electrostatic potential analysis in the context of DMD}
-Improve this section?!}
-
-Our electrostatic potential evaluation procedure as discussed in
-\cref{chapter:bspred} unambiguously identifies the GAG binding sites as
-determined experimentally for SDF-1-HP as well as the FGF2-HP systems. Analysis
-of CD44's Coulomb potential revealed that the net electrostatic interaction
-between CD44 and HA is either insignificant or even slightly repulsive. These
-findings seem to be directly correlated to the success of DMD in terms of
-reproducing the natural ligand binding mode.
-
-In any case, we observe that electrostatic potential analysis provides a clear
-idea whether GAG-binding to a given receptor is mainly driven by Coulomb
-interaction. If a protein is known to bind GAGs, and the electrostatic potential
-topology is as unambiguous as in case of SDF-1 or FGF2, a GAG binding site
-prediction based on the presented procedure is reliable and can be used for
-planning a DMD study for a given system. Visualization of the electrostatic
-potential can in any case be helpful to \textit{a priori} exclude regions of the
-receptor surface when repulsive to negatively charged ligands. Especially,
-knowledge about the electrostatic potential distribution in space can be used to
-choose a reasonable ligand \enquote{entry lane} orientation for the tMD pulling
-process.
 
 One of the main concepts of DMD is that pulling process and subsequent free MD
 are repeated many times in independent simulations. This allows for the creation
