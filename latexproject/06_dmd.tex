@@ -285,8 +285,55 @@ with specific labeling of the time interval relevant for data extraction.
 
 \subsubsection{Characterization of single docking solutions}
 
-Conceptually, data extraction has to be performed for single DMD runs, i.e.\
-all extracted quantities correspond to single DMD runs.
+Conceptually, data extraction is performed for single DMD runs. That is,
+evaluation of the tail of any given free MD simulation yields certain
+quantities, and these quantities correspond to one DMD run only. Such quantities
+can be used for characterizing the single docking solution as obtained from that
+DMD run. These quantities can be classified as either of \textit{static}, or of
+\textit{dynamic} nature. Static quantities are derived from the energy-minimized
+free MD final system state, i.e.\ from one set of coordinates only. Meaningful
+examples of such static quantities are:
+
+\begin{itemize}
+\item The minimal distance between receptor an ligand, i.e.\ the distance
+between those two atoms in receptor and ligand which are closest to each other
+of all receptor-ligand atom pairs. This quantity describes whether receptor and
+ligand are in contact or not. An atomic contact usually leads to an inter-atomic
+distance of slightly below \SI{2}{\angstrom}.
+\item The average minimal distance between receptor and ligand, i.e.\ find the
+closest atom in the receptor for each atom in the ligand and build the mean of
+all resulting atom pair distances. For ligand molecules such as GAGst his
+quantity describes the alignment of receptor and ligand: a small value suggests
+that the ligand is entirely aligned with the receptor. A large value on the
+other hand means that most parts of the ligand are not in contact with the
+receptor.
+\end{itemize}
+
+These quantities can be convenient for automatically filtering DMD runs, e.g.\
+for separating out those docking solutions where receptor and ligand are not in
+contact with each other, by pure geometric criteria. Dynamic quantities on the
+other hand implicate analysis of multiple MD trajectory frames. That is, they
+are based on multiple sets of coordinates that represent the \textit{dynamic}
+nature of the system as simulated by the MD method. Meaningful examples of such
+dynamic quantities are:
+
+
+\begin{itemize}
+\item The minimal distance between receptor an ligand, i.e.\ the distance
+between those two atoms in receptor and ligand which are closest to each other
+of all receptor-ligand atom pairs. This quantity describes whether receptor and
+ligand are in contact or not. An atomic contact usually leads to an inter-atomic
+distance of slightly below \SI{2}{\angstrom}.
+\item The average minimal distance between receptor and ligand, i.e.\ find the
+closest atom in the receptor for each atom in the ligand and build the mean of
+all resulting atom pair distances. For ligand molecules such as GAGst his
+quantity describes the alignment of receptor and ligand: a small value suggests
+that the ligand is entirely aligned with the receptor. A large value on the
+other hand means that most parts of the ligand are not in contact with the
+receptor.
+\end{itemize}
+
+
 
 
 \subsubsection{Merging: extraction of ensemble properties}
