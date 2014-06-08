@@ -237,7 +237,48 @@ $\bm{L}(t_0)$ being the rotation center. Each rotational ligand corresponds to
 one LROM.
 
 \subsection{Data analysis}
-\hl{TODOTODO}
+
+MD simulations provide a plethora of data extraction and analysis possibilities,
+and in general the researcher is not limited in his/her creativity to extract
+interesting quantities from a DMD study, i.e.\ from $N$ tMD and $N$ free MD
+simulations, which in total usually comprise one or more microsecond(s) of
+simulated real time. Nevertheless, we can classify the different approaches here
+and discuss some obvious data extraction techniques.
+
+First of all, we need to clarify which fractions of the trajectories of a DMD
+study are interesting for data extraction. Method characterization for sure
+requires analysis of all trajectory data created. Application of the method,
+however, focuses on docking solution \textit{generation} and
+\textit{characterization}. For this task, it is required to ignore most parts of
+the trajectory data, especially the entire tMD process as well as the first
+major part of the free MD simulations. These parts are strongly relevant for
+sampling -- they however are not applicable for final state characterization.
+That is why we have (arbitrarily) decided to use the last
+\SI{10}{\percent} of the free MD simulation, i.e.\ the last \SI{1}{\nano\second}
+for extracting data about single docking solutions. For clarification,
+\cref{fig:dmd_timeline} shows \textit{i)} the relation of a \enquote{DMD study}
+and single \textit{DMD runs}, as well as a time line of a single DMD run with
+specific labeling of the time interval relevant for data extraction.
+
+\subsubsection{Characterization of single docking solutions}
+
+\subsubsection{Merging: extraction of ensemble properties}
+
+
+
+Beyond the proof of concept provided by this study for including receptor
+flexibility and explicit solvent in molecular dynamics-based docking of protein-
+GAG systems, the analysis of MD data collected in the course of DMD can be
+largely extended to further increase the atomic resolution of results, improve
+the overall predictive significance and to gain new insights into molecular
+recognition mechanisms. The behavior and role of single water molecules in
+ligand binding, for instance, could be investigated thoroughly. Furthermore, the
+dynamic nature of DMD data enables and motivates the creation of specialized
+scoring schemes, e.g.\ the evaluation of ligand position fluctuations during
+free MD as an indicator for the stability of a docking solution. Also, the
+single-residue energy decomposition analysis can be accompanied by an evaluation
+of hydrogen bond formation and occupancy via simple distance and angle criteria.
+
 
 Keep this general, say what is possible (examples!)
 
@@ -973,7 +1014,6 @@ receptor surface when repulsive to negatively charged ligands. Especially,
 knowledge about the electrostatic potential distribution in space can be used to
 choose a reasonable ligand \enquote{entry lane} orientation for the tMD pulling
 process.
-
 
 One of the main concepts of DMD is that pulling process and subsequent free MD
 are repeated many times in independent simulations. This allows for the creation
