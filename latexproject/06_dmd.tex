@@ -1198,33 +1198,34 @@ of a DMD study does not too strictly depend on special DMD parameters such as
 the target distance.
 
 Beyond the proof of concept provided by this study for including receptor
-flexibility and explicit solvent in molecular dynamics-based docking of protein-
-GAG systems, the analysis of MD data collected in the course of DMD can be
-largely extended to further increase the atomic resolution of results, improve
-the overall predictive significance and to gain new insights into molecular
-recognition mechanisms. The behavior and role of single water molecules in
-ligand binding, for instance, could be investigated thoroughly. Furthermore, the
-dynamic nature of DMD data enables and motivates the creation of specialized
-scoring schemes, e.g.\ the evaluation of ligand position fluctuations during
-free MD as an indicator for the stability of a docking solution. Also, the
-single-residue energy decomposition analysis can be accompanied by an evaluation
-of hydrogen bond formation and occupancy via simple distance and angle criteria.
+flexibility and explicit solvent in molecular dynamics-based docking of
+protein-GAG systems, the analysis of MD data collected in the course of DMD can
+be largely extended to further increase the atomic resolution of results,
+improve the overall predictive significance and to gain new insights into
+molecular recognition mechanisms. The behavior and role of single water
+molecules in ligand binding, for instance, could be investigated thoroughly.
+Furthermore, the dynamic nature of DMD data enables and motivates the creation
+of specialized scoring schemes, e.g.\ the evaluation of ligand position
+fluctuations during free MD as an indicator for the stability of a docking
+solution. Also, the single-residue energy decomposition analysis can be
+accompanied by an evaluation of hydrogen bond formation and occupancy via simple
+distance and angle criteria.
 
 An important challenge in GAG-protein docking is to properly deal with the
-conformational flexibility of IdoA(2S) in
-heparin\cite{Mulloy_dyn_conf_heparin_2000, barbero_jacs_2005}. Unfortunately,
-GLYCAM 06 is known to not properly reproduce the natural ring conformer
-population of IdoA(2S) \cite{gandhi_idoa2s_2010} and its ring conformation
-interconversion time scale is beyond simulation times accessible in DMD
-anyway{\cite{almond_jacs_2010}}. Nevertheless, this issue can be addressed by
-applying ring-internal restraints to explicitly impose a certain conformation on
+conformational flexibility of IdoA(2S) in heparin
+\cite{Mulloy_dyn_conf_heparin_2000, barbero_jacs_2005}. Unfortunately, GLYCAM 06
+is known to not properly reproduce the natural ring conformer population of
+IdoA(2S) \cite{gandhi_idoa2s_2010} and its ring conformation interconversion
+time scale is beyond simulation times accessible in DMD anyway
+\cite{almond_jacs_2010}. Nevertheless, this issue can be addressed by applying
+ring-internal restraints to explicitly impose a certain conformation on
 individual rings (as outlined in the Methods section) and then perform a number
 of independent DMD studies differing only in the combination of ring
-conformations -- an approach which has recently been proposed by Mu\~noz-
-Garc\'ia and co-workers{\cite{conf_idoa_timeavg_restraints_2013}}. As we have
-shown previously, the MM-PBSA approach is capable of distinguishing GAG poses
-differing only in the conformation of one single
-ring \cite{Samsonov_rings_cr_2013}.
+conformations -- an approach which has recently been proposed by Muñoz-García
+and co-workers {\cite{conf_idoa_timeavg_restraints_2013}}. As we have shown
+previously, the MM-PBSA approach is capable of distinguishing GAG poses
+differing only in the conformation of one single ring
+\cite{Samsonov_rings_cr_2013}.
 
 Although the computational demands for DMD are higher than for conventional
 docking methods such as AD3, investigations of single systems via DMD are
