@@ -143,7 +143,7 @@ region and local docking are independent tasks.
 
 \begin{figure}
 \centering
-\includegraphics[height=7cm]{gfx/dmd/scheme_n_repetitions_for_thesis_002.pdf}
+\includegraphics[height=8cm]{gfx/dmd/scheme_n_repetitions_for_thesis_002.pdf}
 \caption[]{Schematic representation of the DMD pulling process. Starting from a
 distal position, the ligand (blue) is pulled towards its receptor (green).
 During this process, the ligand moves along a random path. The pulling process
@@ -356,19 +356,19 @@ donors or acceptors over time, yielding the importance of single atoms in the
 ligand or atoms/amino acid residues in the protein receptor.
 
 \item Estimation of the free energy of binding via end-point free energy methods
-such as MM-PBSA or MM-GBSA (cf. \cref{methods:mmpbsa_mmgbsa} \hl{CHECK CREF}).
-These methods are usually applied to a time series of MD trajectory frames, and
-yield an estimate for the contributions of different interaction types to the
-overall binding affinity, including standard deviation and standard error of the
-mean. Different docking solutions of the same molecular system can be ranked by
-such free energy of binding estimates, providing a meaningful and convenient
-tool for comparison among different docking solutions.
+such as MM-PBSA or MM-GBSA (cf.\ \cref{methods:mmpbsa_mmgbsa}). These methods
+are usually applied to a time series of MD trajectory frames, and yield an
+estimate for the contributions of different interaction types to the overall
+binding affinity, including standard deviation and standard error of the mean.
+Different docking solutions of the same molecular system can be ranked by such
+free energy of binding estimates, providing a meaningful and convenient tool for
+comparison among different docking solutions.
 
 \item So-called single-residue energy decomposition (SRED) can be performed via
-a specialized form of the MM-GBSA analysis (cf. \cref{methods:mmpbsa_mmgbsa}
-\hl{CHECK CREF}). SRED assigns an energy value for each amino acid residue in
-the protein receptor and therefore enables meaningful ranking of such residues
-by importance for ligand binding.
+a specialized form of the MM-GBSA analysis (cf.\ \cref{methods:mmpbsa_mmgbsa}).
+SRED assigns an energy value for each amino acid residue in the protein receptor
+and therefore enables meaningful ranking of such residues by importance for
+ligand binding.
 \end{itemize}
 
 
@@ -495,9 +495,10 @@ binding $\Delta G$ between receptor and ligand. MM-GBSA \cite{mmpbsa_py} single
 residue energy decomposition (SRED) was applied to estimate the energy
 contribution of single receptor residues to the bound state.
 
-For identifying the receptor residues contributing most to binding from
-the entire ensemble of DMD runs, the SRED data of all free MD trajectories of
-the ensemble of DMD runs were filtered and merged: we excluded DMD runs resulting in weakly bound docking solutions (MM-PBSA $\Delta G >
+For identifying the receptor residues contributing most to binding from the
+entire ensemble of DMD runs, the SRED data of all free MD trajectories of the
+ensemble of DMD runs were filtered and merged: we excluded DMD runs resulting in
+weakly bound docking solutions (MM-PBSA $\Delta G >
 \SI{-1}{\kilo\calory\per\mole} $) and averaged the SRED-energy $\Delta G_R$ for
 each receptor residue over the remaining independent DMD runs. We discarded all
 receptor residues with an average SRED-energy $\langle\Delta G_R\rangle \ge
@@ -634,16 +635,15 @@ along the initially defined displacement axis only).
 
 \begin{figure}
 \centering
-\includegraphics[width=0.9\textwidth]{gfx/dmd/figure_2_freedom_over_time_100samples_avg_stddev_randomone_pub_003.pdf}
+\includegraphics[width=1.0\textwidth]{gfx/dmd/figure_2_freedom_over_time_100samples_avg_stddev_randomone_pub_003.pdf}
 \caption[]{
 Translational and rotational freedom of a heparin tetramer while approaching
 FGF2 during the tMD pulling process with $s=\SI{30}{\angstrom}$ and
-\SI{4}{\nano\second}. For each point in time during tMD, the structural difference
-between the current and initial ligand configuration was calculated via
-classical $RMSd$ and averaged over 100 independent pulling processes. The
+\SI{4}{\nano\second}. For each point in time during tMD, the structural
+difference between the current and initial ligand configuration was calculated
+via classical $RMSd$ and averaged over 100 independent pulling processes. The
 variation in ligand movement among different ligand trajectories is visualized
-in terms of the standard deviation (grey background).
-}
+in terms of the standard deviation (grey background). }
 \label{fig:dmd:sampling}
 \end{figure}
 
@@ -1059,7 +1059,7 @@ the anchoring residue ranking was not reproduced.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.9\textwidth]{gfx/dmd/figure_6_receptor_top7_residues_of_top_40percent_dmd_runs.pdf}
+\includegraphics[width=1.0\textwidth]{gfx/dmd/figure_6_receptor_top7_residues_of_top_40percent_dmd_runs.pdf}
 \caption[]{
 FGF2 amino acid residues identified by DMD as having the greatest impact on
 FGF2-HP binding. Results are shown for both heparin tetra- and hexasaccharide
