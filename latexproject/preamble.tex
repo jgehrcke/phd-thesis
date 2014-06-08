@@ -215,6 +215,10 @@
 % Set smaller font size in bibliography.
 \renewcommand*{\bibfont}{\small}
 
+% http://tex.stackexchange.com/a/19678
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
 
 \newfloat{listing}{tbph}{lop}[chapter]
 \floatname{listing}{Listing}
