@@ -141,20 +141,6 @@ it is focused on. However, there is no general dependence of the DMD protocol on
 the confidence in the binding region assumption --- selection of the binding
 region and local docking are independent tasks.
 
-In this validation study, we applied DMD to a set of reference systems and
-compared its performance to a classical docking approach, AutoDock 3 (AD3),
-which has successfully been applied to protein-GAG systems before
-\cite{japan_docking_ad3_clustering, samsonov_docking_2011,%
-pichert_characterization_2012}. The results obtained for our test data set
-comprised of five protein-GAG complexes, one protein-peptide and one protein-
-small molecule complex show that DMD has high predictive significance while
-performing best when complex formation is driven by strong electrostatic
-interaction. Detailed analysis of the electrostatic potential of the
-corresponding binding sites, of the spatial distribution of docking solutions,
-and per-residue binding free energy decomposition support the promising
-potential of the DMD approach when used for docking in highly flexible and
-electrostatics-driven systems.
-
 \begin{figure}
 \centering
 \includegraphics[height=7cm]{gfx/dmd/scheme_n_repetitions_for_thesis_002.pdf}
@@ -368,35 +354,23 @@ homeyer_gohlke_2012}}.
 \hl{TODOTODO}
 
 
-\subsection{Computing resources}
-
-Most of the simulations were performed on a compute cluster comprised of AMD
-Opteron 6274 CPUs. On these machines, a DMD study as
-described above requires about 100.000 CPU hours per TDS complex.
-For testing purposes, some MD simulations were executed on Nvidia Tesla C2070
-as well as Nvidia GTX 580 GPUs, taking advantage of Amber's recent optimizations
-for such hardware \cite{amber_gpu_2012}.
-
-\hl{more to it?}
-
 
 \section{Validation study}
 
-We have applied DMD to several previously literature reported protein-GAG
-systems. We directly compared our results to the corresponding references: i.e.
-docking solutions to experimentally obtained structures; computationally
-described key binding residues to those previously annotated in literature.
-Furthermore, we compared DMD to AutoDock 3 (AD3), which has been previously
-applied for investigating protein-GAG systems (references \hl{ 26, 38, 39 20,
-27, 28}). In our previous work (reference 20), AD3 performed best for protein-
-GAG systems in direct comparison to eHITs, MOE, and FlexX.
-
-In these lines, we cover two major components any meaningful
-validation study for a new approach needs to provide: i) application of the new
-method to previously characterized reference systems, as well as ii) comparison
-of the method to other available methods.
-
-
+In this validation study, we applied DMD to several previously literature
+reported protein-GAG systems. We directly compared our results to the
+corresponding references: i.e. docking solutions to experimentally obtained
+structures; computationally described key binding residues to those previously
+annotated in literature. Furthermore, we compared DMD to AutoDock 3 (AD3), which
+has been previously applied for investigating protein-GAG systems
+\cite{japan_docking_ad3_clustering,pichert_characterization_2012,%
+imberty_perez_protgag_comp_book_2006,franz_cathepsin_2013}. In our previous work
+\cite{samsonov_docking_2011}, AD3 performed best for protein- GAG systems in
+direct comparison to eHITs, MOE, and FlexX. In these lines, we cover two major
+components any meaningful validation study for a new approach needs to provide:
+\textit{i)} application of the new method to previously characterized reference
+systems, as well as \textit{ii)} comparison of the method to other available
+methods.
 
 \subsection{Methods}
 \subsubsection{Test data set}
@@ -466,6 +440,16 @@ coordinate system via structural alignment of corresponding protein receptors.
 The parameters $\epsilon$ and $m$ were determined individually for each set of
 docking solutions with the goal to produce one cluster with at least four
 members and a minimal $\epsilon$-value.
+
+
+\subsection{Computing resources}
+
+Most of the simulations in this validation study were performed on a compute
+cluster comprised of AMD Opteron 6274 CPUs. On these machines, a DMD study as
+described above requires about 100.000 CPU hours per TDS complex. For testing
+purposes, some MD simulations were executed on Nvidia Tesla C2070 as well as
+Nvidia GTX 580 GPUs, taking advantage of Amber's recent optimizations for such
+hardware \cite{amber_gpu_2012}.
 
 
 \subsection{Results and discussion}
