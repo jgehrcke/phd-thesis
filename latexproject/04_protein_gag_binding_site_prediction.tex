@@ -128,11 +128,14 @@ We used the PBSA program shipped with AmberTools 13 \cite{case_amber_12} with
 default parameters and a finite element grid spacing of \SI{1}{\angstrom} for
 calculating the overall electrostatic potential of any given protein in water.
 The atomic radii and point charges of the protein were parameterized according
-to the FF99SB force field \cite{case_amber_12}. After patching PBSA (and
+to the FF99SB force field \cite{case_amber_12}. In order to make proper use of
+PBSA's output, we were required to modify the software, for \textit{i)}
+writing the discretized scalar data in compliance with the OpenDX data format
+\cite{opendx}, and \textit{ii)} in units of
+\si{\kilo\calory\per\mole\per\elementarycharge}. After patching PBSA (and
 contributing those patches back to the AmberTools project), we were able to
-extract the Coulomb data from PBSA in units of
-\si{\kilo\calory\per\mole\per\elementarycharge} and in a file format readable by
-the visualization software VMD \cite{vmd_1996}.
+visualize the data in VMD \cite{vmd_1996}.
+
 
 \subsection{Coulomb potential evaluation}
 
@@ -458,6 +461,9 @@ underlines the role of Coulomb interaction in protein-GAG systems as the primary
 determinant. However, we have also learned that in special cases a strong
 electrostatic attraction is not required for GAG binding, as vividly shown for
 the CD44-HA example.
+
+A short description and application of this method has been published in
+\cite{dmd_samsonov_gehrcke_2014}.
 
 %If we had to name a spatial resolution that would quantify the degree of detail
 %the electrostatic potential analysis allows
