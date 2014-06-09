@@ -24,22 +24,78 @@ we need to \textit{vary} exactly those. That is, that investigation requires the
 conduction of \textit{many} DMD studies. By the time of designing the first
 IL-10-GAG DMD studies, the conduction and analysis of a single study consumed
 about two weeks, given the fact that no technical issues occurred. Hence, time
-and computational resources clearly limited the scope of this endeavor. In turn,
-were required to get as much conclusive output of as few DMD studies as
+and computational resources clearly limited the scope of this endeavor. In these
+lines, were required to get as much conclusive output of as few DMD studies as
 possible.
 
 \subsubsection{Factors to investigate}
 
-This obviously interesting variables among the different DMD studies in case of
-the IL-10-GAG system are:
+The entities that are obviously interesting to vary among among the different
+DMD studies in case of the IL-10-GAG system are:
 
 \begin{itemize}
-\item The geometrical DMD parameterization. In \cref{chapter:bspred}, we have
-derived a region of interest for our DMD studies. In order to further narrow
-down However, that region is As of the uncertainty in the IL-10-GAG binding
-region. We
-\item
-\item
+
+\item \textbf{The DMD protocol.} In the course of performing various DMD studies
+we aimed for slight protocol changes for optimizing the computational efficiency
+of DMD. We decided to potentially optimize parameters such as decreasing the tMD
+simulation length as well as the LROM displacement length, both of which have
+direct impact on the pulling process velocity. A the same time, we tried to
+increase the number of independent DMD run repetitions within single DMD studies
+as far as our computational resources allowed to, in order to obtain as much
+sampling performance as possible.
+
+\item \textbf{The geometrical DMD parameterization.} In \cref{chapter:bspred},
+we have derived a region of interest for our DMD studies. For potentially
+discovering a distinct and well-defined binding \textit{site} and for
+investigating and finally eliminating the impact of the geometrical DMD
+parameterization on any conclusion about the IL-10-GAG system, we decided to
+vary this parameterization among the DMD studies. One should note however, that
+in order to obtain reliable information about the impact of other variables,
+this one here should not be varied too often, which is why we decided to try two
+different conditions in the first round of DMD studies, and a final geometrical
+parameterization in the second round of DMD studies.
+
+\item \textbf{The representation of IL-10's N-terminus in the MD simulations}.
+In IL-10's crystal structure with PDB 2ILK the first 5 residues of the
+N-terminus are not resolved as of their flexibility. The N-terminus is close to
+our main region of interest derived in \cref{chapter:bspred}. This is an
+unfortunate situation, because if this terminus plays a role in GAG recognition,
+it would not easily be possible for us to detect it -- modeling the behavior of
+such flexible / disordered terminus is not possible with all certainty and
+requires special sampling techniques on its own, not combinable with DMD.
+Primarily, we take the flexibility and sequence as an argument that the
+N-terminus is surely less important for specific GAG interaction than the region
+we have identified. Since simulating this disordered part without special
+treatment is pointless anyway, we have omitted these five residues from most of
+our MD simulations. However, for having a comparison, and for obtaining an idea
+about their possible impact, we decided to include them in at least one or two
+test case DMD studies.
+
+\item \textbf{The chemical configuration of GAG ligands.} Obviously, we had the
+hope to identify characteristic differences among different GAG types and
+lengths with respect to their interaction with our IL-10 region of interest.
+Therefore, we aimed to perform DMD studies with constant conditions while
+varying the chemical configuration of the GAG molecule. As of the limited amount
+of computational resources, we had to decide which GAG types/lengths are most
+interesting for our investigation and came up with the following selection:
+\begin{itemize}
+\item Heparin, a must-have in this list, as its interaction with IL-10 has been
+experimentally confirmed previously \cite{salek_ardakani_2000}. We decided to
+study heparin tetra- as well as hexasaccharides. One reason for this selection
+is that in our DMD validation study, we have shown that DMD is capable of
+properly sampling the internal degrees of freedom of GAG hexasaccharides.
+Regarding longer GAGs, however, we would be uncertain again regarding the
+sufficiency of the sampling and -- with that -- the reliability of the results.
+Additional tetrasaccharide investigation is useful for observing potential
+(in)consistenties in our observations depending on GAG length. Disaccharide
+
+\item Hyaluronan
+\item Chondroitin-4-sulfate
+\item Chondroitin-6-sulfate
+\end{itemize}
+
+
+
 \end{itemize}
 
 We decided to take an iterative approach. In a first round of DMD studies, we
@@ -134,12 +190,21 @@ Observations in first round of studies:
 
 \begin{itemize}
 
+\item N=200 and N=300 for much clearer clustering and , reduction of target displacement length
+to 25  Angstroms and pulling process simulation time to 3 ns instead of 4 without
+observable caveats.
+
 \item slight change in DMD geometry parameterization does not change outcome (different starting conditions, very similar outcome -- show figure on page 25 of 131030_3rd_tac )
+
 \item Heparin length change yields same outcome
+
 \item Complete inclusion of IL-10's N terminus does not qualitatively change hbond/SRED data (130530 groupmeeting pdf)
+
 \item Again: DMD reproducible results!
+
 \item MM-GBSA SRED yields consistent outcome with hydrogen bonding analysis,
 whereas hbond analysis is much simpler
+
 
 \end{itemize}
 
