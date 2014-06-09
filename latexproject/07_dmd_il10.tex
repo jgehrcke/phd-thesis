@@ -127,10 +127,27 @@ second round, together with an optimized geometrical DMD parameterization.
 
 \subsubsection{Automated DMD data analysis}
 
- list all analysis steps performed, i.e. conceptually clarifly the entire
- work flow here
+For efficiently breaking the enormous amount of raw data produced by any DMD
+study down to human-interpretable essentials, we specified and implemented an
+automated data analysis framework. In this framework, every DMD run within a DMD
+study is assigned a unique identifier. Subsequently, we extracted all
+\textit{static} and \textit{dynamic} quantities for each DMD run listed in
+\cref{dmd:dataanalysis}, and assigned those quantities to the corresponding
+run identifiers. As a result, we obtained a table of dimensions $NxM$, with $N$
+being the number of DMD runs and $M$ being the number of single-run-derivable
+quantities. In a second class of analyses, the ensemble-derived quantities as
+described in \cref{dmd:dataanalysis} were extracted from all runs in the DMD
+study, usually based on the data extraction performed before. Finally, we
+clustered the docking solution ensemble the method described in
+\cref{chapter:bspred}.
 
- trajectories -> analysis -> merging -> clustering -> cluster stats, etc
+These reduced set of data allows for a broad subsequent data analysis. For
+instance, any two single-run-derivable quantities can easily be correlated, or
+the distribution of any extracted quantity can easily be looked at. Furthermore,
+given the \textit{clustering} of docking solutions, it makes sense to generate
+cluster statistics, e.g.\ the average ligand mobility within a cluster. This
+enables meaningful comparison of clusters among different DMD studies by those
+properties.
 
 
 \subsection{Computational framework}
