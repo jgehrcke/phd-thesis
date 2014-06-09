@@ -1,11 +1,58 @@
 \chapter{DMD applied to the IL-10-GAG system}
 
+In order to exploit the predictive power of DMD for the IL-10-GAG system, we
+have performed several DMD studies differing in DMD parameterization and
+molecular system setup. Conducting these studies required an increment of the
+computational resources available to us by orders of magnitudes. In the course
+of performing these studies we continuously refined our software architecture
+for controlling the corresponding high performance computing resources and
+enriched our DMD data analysis framework. This chapter seeks to present
+\textit{i)} the computational challenges, \textit{ii)} the methodological
+details, and \textit{iii)} the major outcomes of this endeavor.
+
+
 \section{Methods}
 
 \subsection{DMD study design}
 
+As a reminder, the term DMD study covers many DMD run repetitions followed by
+data analysis. Hence, within a single DMD study the \textit{constants} are ---
+among others --- the chemical configuration of the ligand molecule and the
+geometrical DMD parametrization, i.e.\ the protein core atom and the focus
+point. Clearly, for a systematic investigation of the IL-10-GAG system via DMD
+we need to \textit{vary} exactly those. That is, that investigation requires the
+conduction of \textit{many} DMD studies. By the time of designing the first
+IL-10-GAG DMD studies, the conduction and analysis of a single study consumed
+about two weeks, given the fact that no technical issues occurred. Hence, time
+and computational resources clearly limited the scope of this endeavor. In turn,
+were required to get as much conclusive output of as few DMD studies as
+possible.
 
-    - Study design / overview
+\subsubsection{Factors to investigate}
+
+This obviously interesting variables among the different DMD studies in case of
+the IL-10-GAG system are:
+
+\begin{itemize}
+\item The geometrical DMD parameterization. In \cref{chapter:bspred}, we have
+derived a region of interest for our DMD studies. In order to further narrow
+down However, that region is As of the uncertainty in the IL-10-GAG binding
+region. We
+\item
+\item
+\end{itemize}
+
+We decided to take an iterative approach. In a first round of DMD studies, we
+aimed to gather experience and tried to estimate how the IL-10-GAG system
+responds to various kinds of condition changes. Also, since the technical
+conditions were unstable, we used this first round of studies for detecting
+and resolving technical issues. In this first round of studies, we varied
+the geometrical DMD parameterization
+
+
+In a second round of studies,
+
+
         - iterative approach
             1st round, collect experience
             2nd round, start with most probable region
@@ -20,7 +67,7 @@ N= 200 or 300
 Second iteration
 
 
-\subsubsection{DMD data analysis}
+\subsubsection{Automated DMD data analysis}
 
  list all analysis steps performed, i.e. conceptually clarifly the entire
  work flow here
@@ -32,6 +79,18 @@ Second iteration
 
 \subsubsection{High performance computing resources}
 
+
+ On state-of-the-art hardware, one
+DMD study consumes about 10 years of CPU time. It can be conducted within two
+weeks using a large resource pool in the supercomputing center of the TU Dresden (ZIH).
+Independently, we have started establishing a group-internal compute cluster making
+use of specialized GPU hardware. Using this, one DMD study can also be performed
+in about two weeks. Recently, the ZIH has introduced GPU hardware. We have been
+part of the testing period and started using their GPU resources for DMD production
+runs.
+
+For the purpose of being able to apply DMD on a scale as required by this study,
+we have established a
 
         - Computing resources
             - Establishment of GPU infrastructure
@@ -51,5 +110,44 @@ Second iteration
 
 \section{Results and discussion}
 
-        - 1st round
-        - 2nd round
+\subsection{1st round of DMD studies}
+
+
+
+So far, about 10 independent DMD studies involving IL-10 and different GAGs have
+been performed. An important intermediate result of the corresponding data analysis
+is that one amino acid residue, R107 (in the hIL-10 sequence, conserved in mouse), significantly
+stands out compared to all other residues and supposedly plays a particularly
+important role in IL-10-GAG recognition. This conclusion is based on different types
+of data, including time-averaged hydrogen bonding analysis and single-residue energy
+decomposition applied to MD data collected on the microsecond time scale
+
+- Show picture of R107 specifically marked in the structure
+
+
+R107 significantly stands out compared to all other residues
+and supposedly plays a particularly important role in IL-10-
+GAG recognition.
+(conserved in mouse)
+
+Observations in first round of studies:
+
+\begin{itemize}
+
+\item slight change in DMD geometry parameterization does not change outcome (different starting conditions, very similar outcome -- show figure on page 25 of 131030_3rd_tac )
+\item Heparin length change yields same outcome
+\item Complete inclusion of IL-10's N terminus does not qualitatively change hbond/SRED data (130530 groupmeeting pdf)
+\item Again: DMD reproducible results!
+\item MM-GBSA SRED yields consistent outcome with hydrogen bonding analysis,
+whereas hbond analysis is much simpler
+
+\end{itemize}
+
+\subsection{2nd round of DMD studies}
+
+\subsubsection{R107A mutation}
+
+\hl{If there is not enough content here, do not make this a (sub)section}
+
+Most important result: No other residue could take the role of R107,
+
