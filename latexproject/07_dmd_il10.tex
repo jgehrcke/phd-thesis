@@ -156,31 +156,29 @@ DMD studies.
 
 \subsection{Computational framework}
 
-\subsubsection{High performance computing (HPC) resources}
+\subsubsection{High performance computing (HPC) requirements of one DMD study}
 
 
-\textbf{HPC resource requirements of one DMD study}. One DMD study according to
-the protocol as presented in \cref{chapter:dmd}, i.e.\ with $N = 100$
-repetitions, a pulling process simulation time of \SI{4}{\nano\second} and a
-free MD simulation time of \SI{10}{\nano\second} implicates about
-\SI{1.4}{\micro\second} of simulated real time. As of these numbers, one DMD
-study requires about 12 years ($10^5$ hours) of CPU time using state-of-the-art
-hardware (such as the Intel® Xeon® Processor X5650).
+One DMD study according to the protocol as presented in \cref{chapter:dmd},
+i.e.\ with $N = 100$ repetitions, a pulling process simulation time of
+\SI{4}{\nano\second} and a free MD simulation time of \SI{10}{\nano\second}
+implicates about \SI{1.4}{\micro\second} of simulated real time. As of these
+numbers, one DMD study requires about 12 years ($10^5$ hours) of CPU time using
+state-of-the-art hardware (such as the Intel® Xeon® Processor X5650).
 
 In high performance computing, computational tasks are usually abstracted as
-\enquote{jobs}, whereas a job is a sub-problems of an
+\enquote{jobs}, whereas a job is a sub-problem of an
 \enquote{embarrassingly parallel} problem \cite{heath1986hypercube}, for which
 little or no effort is required to separate the problem into a number of
-independent tasks. For efficient use of batch schedulers in high performance
-computing environments in DMD, we have abstracted a DMD study as the following
-list of jobs, whereas those jobs names later in the list require completion of
-those listed earlier.
+independent tasks. For efficient use of HPC batch schedulers for DMD, we have
+abstracted a DMD study into the following list of jobs (whereas some of the jobs
+named later in the list require completion of those listed earlier):
 
 \begin{itemize}
-\item a few LROM system preparation jobs (minimization, heat-up, equilibration)
+\item LROM system preparation jobs (minimization, heat-up, equilibration)
 \item $N$ tMD production jobs
 \item $N$ free MD jobs (minimization, heat-up, equilibration, production)
-\item $N$ validation and energy minimization jobs
+\item $N$ final state validation and energy minimization jobs
 \item $N$ free MD trajectory analysis jobs (MM-PBSA)
 \item $N$ free MD trajectory analysis jobs (MM-GBSA + SRED)
 \item $N$ free MD trajectory analysis jobs (geometry and hydrogen bonding
@@ -188,15 +186,15 @@ analysis)
 \end{itemize}
 
 Depending on $N$, this yields on the order of $10^3$ computing jobs per DMD
-study. The raw data created by those jobs comprises about 200 gigabytes
-distributed in about $10^5$ files. These numbers suggest that the management of
-corresponding jobs and data requires a well-engineered DMD controlling system.
-The essential purpose of such system is to automatically identify errors and
-recover from those: the likelihood for a single computing machine to fail
-integrated time the number of machines involved in a DMD study integrated over
-the computing time yields a significant probability for the study to be
-affected by technical issues. By experience we can tell that this prediction
-came true.
+study. The raw data created by those jobs comprises on the order of $10^2$
+gigabytes distributed in about $10^5$ files. These numbers suggest that the
+management of corresponding jobs and data requires a well-engineered DMD
+controlling system. The essential purpose of such system is to automatically
+identify errors and recover from those: the likelihood for a single computing
+machine to fail times the number of machines involved in a DMD study integrated
+over the computing time yields a significant probability for the study to be
+affected by one or more technical issues. By experience we can tell that this
+prediction came true.
 
 is
 integrated over  the number of independent computing nodes
@@ -226,6 +224,11 @@ period and started using their GPU resources for DMD production runs.
 
 For the purpose of being able to apply DMD on a scale as required by this study,
 we have established a
+
+
+\subsubsection{Establishment and testing of HPC graphics processing unit (GPU) infrastructure}
+
+
 
         - Computing resources
             - Establishment of GPU infrastructure
