@@ -23,15 +23,14 @@ point. Clearly, a systematic investigation of the IL-10-GAG system via DMD
 requires \textit{variation} of exactly these entities. That is, the planned
 investigation requires the conduction of \textit{many} DMD studies. By the time
 of designing the first IL-10-GAG DMD studies, the conduction and analysis of a
-single study consumed about two weeks, given the fact that no technical issues
-occurred. Hence, time and computational resources clearly limited the scope of
-this endeavor. In these lines, we required to get as much conclusive output out
-of as few DMD studies as possible.
+single study consumed about two weeks. Hence, time and computational resources
+clearly limited the scope of this endeavor. In these lines, the requirement was
+to get as much conclusive output out of as few DMD studies as possible.
 
 \subsubsection{Factors to investigate}
 
-The entities that are obviously interesting to vary among among the different
-DMD studies in case of the IL-10-GAG system are:
+The entities that are obviously interesting to vary among the different DMD
+studies in case of the IL-10-GAG system are:
 
 \begin{itemize}
 
@@ -51,18 +50,19 @@ performance as possible.
 For potentially discovering a distinct and well-defined binding \textit{site}
 and for investigating and finally eliminating the impact of the geometrical DMD
 parameterization on any conclusion about the IL-10-GAG system, we decided to
-vary this parameterization among the DMD studies. One should note however, that
-in order to obtain reliable information about the impact of other variables,
-this one here should not be varied too often, which is why we decided to try two
-different conditions in the first round of DMD studies, and a final third
-geometrical parameterization in the second round of DMD studies.
+vary DMD focus point and entry lane among the DMD studies. One should note
+however, that in order to obtain reliable information about the impact of other
+variables, this one here should stay constant most of the time, which is why we
+decided to try only two different geometrical setups in the first round of DMD
+studies, and a final third geometrical parameterization in the second round of
+DMD studies.
 
 \item[3)] \textbf{The representation of IL-10's N-terminus in the MD
 simulations}. In IL-10's crystal structure with PDB 2ILK the first 5 residues of
 the N-terminus are not resolved as of their flexibility. The N-terminus is close
 to our main region of interest derived in \cref{chapter:bspred}. This is an
 unfortunate situation, because if this terminus plays a role in GAG recognition,
-it would not easily be possible for us to detect it -- modeling the behavior of
+it would not easily be possible for us to detect it --- modeling the behavior of
 such flexible / disordered terminus is not possible with all certainty and
 requires special sampling techniques on its own, not \textit{per se} combinable
 with DMD. Primarily, we take the flexibility and sequence as an argument that
@@ -94,9 +94,10 @@ is useful for observing potential (in)consistencies in our observations
 depending on GAG length. Disaccharide investigation, however, would likely be a
 waste of computational resources.
 
-\item \textit{Hyaluronan}, which is the only natural GAG free of sulfation. It
-As of its lack of sulfate groups, it has significantly different spatial
-properties than e.g.\ heparin (in the sense that it is slim).
+\item \textit{Hyaluronan}, which is the only natural GAG free of sulfation. As
+of its lack of sulfate groups, besides of being less charged, it has
+significantly different spatial properties than e.g.\ heparin: it is less bulky
+(i.e.\ it is slim).
 
 \item \textit{Chondroitin-4-sulfate}. The chondroitin sulfates are important
 representatives of the class of GAGs. Compared to heparin, the 4- and 6-
@@ -136,20 +137,21 @@ study is assigned a unique identifier. Subsequently, we extracted all
 run identifiers. As a result, we obtained a table of dimensions $N \times M$,
 with $N$ being the number of DMD runs and $M$ being the number of
 single-run-derivable quantities. In a second class of analyses, the
-ensemble-derived quantities as described in \cref{dmd:dataanalysis} were
-extracted from all runs in the DMD study, usually based on the data extraction
-performed before. Finally, we clustered the docking solution ensemble using the
-method described in
+ensemble-derivable quantities as described in \cref{dmd:dataanalysis} were
+extracted from all runs in the DMD study, usually based on the single-run data
+extraction performed before. Finally, we clustered the docking solution ensemble
+using the method described in
 \cref{chapter:bspred}.
 
 The resulting reduced set of data allows for a broad subsequent data analysis.
 For instance, any two single-run-derivable quantities can easily be correlated
 for understanding their relationship, or the distribution of any extracted
-quantity can easily be looked at and statistically evaluated. Furthermore, given
-the \textit{clustering} of docking solutions, it makes sense to generate cluster
-statistics, such as for instance the average ligand mobility within a cluster.
-This enables meaningful comparison of clusters among different DMD studies by
-those properties.
+quantity can easily be looked at and statistically evaluated. Furthermore, our
+data analysis framework allows for generating cluster statistics based on the
+\textit{clustering} of docking solutions. For instance, the average ligand
+mobility within a certain cluster is easy to obtain. This enables meaningful
+comparison of clusters by those properties, especially among \textit{different}
+DMD studies.
 
 
 \subsection{Computational framework}
