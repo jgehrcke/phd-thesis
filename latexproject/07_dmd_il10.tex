@@ -156,17 +156,73 @@ DMD studies.
 
 \subsection{Computational framework}
 
-\subsubsection{High performance computing resources}
+\subsubsection{High performance computing (HPC) resources}
 
 
- On state-of-the-art hardware, one
-DMD study consumes about 10 years of CPU time. It can be conducted within two
-weeks using a large resource pool in the supercomputing center of the TU Dresden (ZIH).
-Independently, we have started establishing a group-internal compute cluster making
-use of specialized GPU hardware. Using this, one DMD study can also be performed
-in about two weeks. Recently, the ZIH has introduced GPU hardware. We have been
-part of the testing period and started using their GPU resources for DMD production
-runs.
+\textbf{HPC resource requirements of one DMD study}. One DMD study according to
+the protocol as presented in \cref{chapter:dmd}, i.e.\ with $N = 100$
+repetitions, a pulling process simulation time of \SI{4}{\nano\second} and a
+free MD simulation time of \SI{10}{\nano\second} implicates about
+\SI{1.4}{\micro\second} of simulated real time. As of these numbers, one DMD
+study requires about 12 years ($10^5$ hours) of CPU time using state-of-the-art
+hardware (such as the Intel® Xeon® Processor X5650).
+
+In high performance computing, computational tasks are usually abstracted as
+\enquote{jobs}, whereas a job is a sub-problems of an
+\enquote{embarrassingly parallel} problem \cite{heath1986hypercube}, for which
+little or no effort is required to separate the problem into a number of
+independent tasks. For efficient use of batch schedulers in high performance
+computing environments in DMD, we have abstracted a DMD study as the following
+list of jobs, whereas those jobs names later in the list require completion of
+those listed earlier.
+
+\begin{itemize}
+\item a few LROM system preparation jobs (minimization, heat-up, equilibration)
+\item $N$ tMD production jobs
+\item $N$ free MD jobs (minimization, heat-up, equilibration, production)
+\item $N$ validation and energy minimization jobs
+\item $N$ free MD trajectory analysis jobs (MM-PBSA)
+\item $N$ free MD trajectory analysis jobs (MM-GBSA + SRED)
+\item $N$ free MD trajectory analysis jobs (geometry and hydrogen bonding
+analysis)
+\end{itemize}
+
+Depending on $N$, this yields on the order of $10^3$ computing jobs per DMD
+study. The raw data created by those jobs comprises about 200 gigabytes
+distributed in about $10^5$ files. These numbers suggest that the management of
+corresponding jobs and data requires a well-engineered DMD controlling system.
+The essential purpose of such system is to automatically identify errors and
+recover from those: the likelihood for a single computing machine to fail
+integrated time the number of machines involved in a DMD study integrated over
+the computing time yields a significant probability for the study to be
+affected by technical issues. By experience we can tell that this prediction
+came true.
+
+is
+integrated over  the number of independent computing nodes
+involved in a single DMD study, it is quite likely affected
+
+ This is
+often the case where there exists no dependency (or communication) between those
+parallel tasks
+
+
+For us,
+conduction of a single study was possible within about two weeks, using the
+\enquote{Atlas} resource pool in the supercomputing center of the TU Dresden
+(ZIH), which provisions a large number of AMD Opteron 6274 CPUs.
+
+
+, and about
+\SI{1.0}{\micro\second}
+
+
+On , one DMD study consumes about 10 years of CPU time.
+By the time of the first DMD studies performed, the. Independently, we have started
+establishing a group-internal compute cluster making use of specialized GPU
+hardware. Using this, one DMD study can also be performed in about two weeks.
+Recently, the ZIH has introduced GPU hardware. We have been part of the testing
+period and started using their GPU resources for DMD production runs.
 
 For the purpose of being able to apply DMD on a scale as required by this study,
 we have established a
