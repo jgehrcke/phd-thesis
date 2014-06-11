@@ -205,69 +205,51 @@ resources.
 For mitigating issues related to a lack of computing resources for DMD, we were
 early adopters of a new technology: the usage of graphics processing units
 (GPUs) for general purpose computing (\enquote{GPGPU} \cite{wikipedia_gpgpu}).
-Simply spoken, GPUs implement the so-called \enquote{single instruction,
-multiple data} paradigm (SIMD) in an extreme way (see
-\cite{kirk2012programming_gpus} for further information), which matches common
-algorithms used in MD simulations very well. That is, MD simulations can take
-strong advantage of GPU architectures. Compared to classical computing
-architectures, this leads to \textit{i)} a significantly higher absolute
-simulation performance (measured in \si{\nano\second\per\day})} and a
-\textit{ii)} a much better performance per financial cost, considering
-acquisition cost as well as energy cost. With the MD simulation framework Amber
-12 \cite{case_amber_12} and corresponding patches \cite{amber_12_patches}, the
-Amber developers were among the first to work on and release a solid MD
-implementation for GPUs (pmemd.cuda, see
+Simply spoken, GPUs make heavy use of the so-called single instruction, multiple
+data paradigm (SIMD, see \cite{kirk2012programming_gpus} for further
+information), which matches common algorithms used in MD simulations very well.
+That is, MD simulations can take strong advantage of GPU architectures. Compared
+to classical computing architectures, this leads to \textit{i)} a significantly
+higher absolute simulation performance (measured in nanoseconds of simulated
+time per day} and a \textit{ii)} a much better performance per financial cost,
+considering acquisition cost as well as energy cost. With the MD simulation
+framework Amber 12 \cite{case_amber_12} and corresponding patches
+\cite{amber_12_patches}, the Amber developers were among the first to work on
+and release a solid MD implementation for GPUs (pmemd.cuda, see
 \cite{amber_gpu_2012,amber_gpu_pme_2013} for methodological details and
 validation).
 
 Correspondingly, we engineered a GPU computing cluster in our research group,
 which implicated large amounts of planning and testing, because no
 enterprise-level vendors were available for this kind of hardware. Hence, we
-composed this cluster based on raw hardware and software components (some
-details are reported in \cite{gehrcke_torque_gpu_setup}), eventually yielding
-the following configuration:
+composed this cluster based on raw hardware and software components, eventually
+yielding the following configuration:
 
 \begin{itemize}
-\item Four dedicated compute nodes, based on low-clocked 8-core Intel CPUs
-on consumer-level mainboards
+\item Four dedicated compute nodes, based on low-clocked Intel central
+processing units on special consumer-level mainboards, placed in
+temperature-regulated server racks
 \item A total of 15 GPU devices distributed among these machines (2 Tesla C2070,
 3 GTX 580, 2 GTX 690, 4 GTX 770, 4 GTX TITAN, all Nvidia CUDA devices
-\cite{nvidia_cuda_devices})
-\item $N$ free MD jobs (minimization, heat-up, equilibration, production)
-\item Linux operating systems
-\item A self-built
-\item $N$ free MD trajectory analysis jobs (MM-GBSA + SRED)
-\item $N$ free MD trajectory analysis jobs (geometry and hydrogen bonding
-analysis)
+\cite{nvidia_cuda_devices}, purchased in batches spread across 1.5 years)
+\item Linux operating systems, along with appropriate drivers and CUDA runtime
+libraries
+\item A customized Torque \cite{torque_website} GPU job scheduling system, see
+\cite{gehrcke_torque_gpu_setup} for details.
+%\item pmemd.cuda, built
 \end{itemize}
-
-
-
-and Unfortunately, vendor support for this
-
-
-amber_12_patches
-dracan heavily profit from the hardware architecture of GPUs, since
-
-
-
-
-
 
 
 , and about
 \SI{1.0}{\micro\second}
 
 
-On , one DMD study consumes about 10 years of CPU time.
-By the time of the first DMD studies performed, the. Independently, we have started
-establishing a group-internal compute cluster making use of specialized GPU
-hardware. Using this, one DMD study can also be performed in about two weeks.
+
+ Using this, one DMD study can also be performed in about two weeks.
 Recently, the ZIH has introduced GPU hardware. We have been part of the testing
 period and started using their GPU resources for DMD production runs.
 
-For the purpose of being able to apply DMD on a scale as required by this study,
-we have established a
+
 
 
 \subsubsection{Establishment and testing of HPC graphics processing unit (GPU) infrastructure}
