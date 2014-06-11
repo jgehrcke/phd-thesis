@@ -228,29 +228,24 @@ yielding the following configuration:
 \begin{itemize}
 \item Four dedicated compute nodes, based on low-clocked Intel central
 processing units on special consumer-level mainboards, placed in
-temperature-regulated server racks
+temperature-regulated server racks.
 \item A total of 15 GPU devices distributed among these machines (2 Tesla C2070,
 3 GTX 580, 2 GTX 690, 4 GTX 770, 4 GTX TITAN, all Nvidia CUDA devices
-\cite{nvidia_cuda_devices}, purchased in batches spread across 1.5 years)
+\cite{nvidia_cuda_devices}, purchased in batches spread across 1.5 years).
 \item Linux operating systems, along with appropriate drivers and CUDA runtime
-libraries
+libraries.
 \item A customized Torque \cite{torque_website} GPU job scheduling system, see
 \cite{gehrcke_torque_gpu_setup} for details.
 %\item pmemd.cuda, built
 \end{itemize}
 
-
-, and about
-\SI{1.0}{\micro\second}
-
-
-
- Using this, one DMD study can also be performed in about two weeks.
-Recently, the ZIH has introduced GPU hardware. We have been part of the testing
-period and started using their GPU resources for DMD production runs.
-
-
-
+With this infrastructure at hand, we were able to perform a single DMD study
+within less than two weeks, without being dependent on \textit{external}
+resources. On top of that, from summer 2013 on we have been part of the testing
+period of the large-scale GPU computing cluster of the supercomputing center of
+the TU Dresden: as a section of their \enquote{Taurus} platform, they provide 80
+Nvidia CUDA GPU devices. All in all, with these GPU resources at hand, we
+were able to perform single DMD studies on a weekly basis.
 
 \subsubsection{Establishment and testing of HPC graphics processing unit (GPU) infrastructure}
 
