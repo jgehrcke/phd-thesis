@@ -14,6 +14,7 @@ details, and \textit{iii)} the major outcomes of this endeavor.
 \section{Methods}
 
 \subsection{Overall study design}
+\label{dmdil10:overallmethod}
 
 As a reminder, the term DMD study covers many DMD run repetitions followed by
 data analysis. Hence, within a single DMD study the \textit{constants} are ---
@@ -287,6 +288,7 @@ repository is available at \url{http://bit.ly/jgehrcke-phd-dmd-control}.
 
 
 \subsection{Geometrical DMD parameterization}
+\label{dmdil10:method_geom_setup}
 
 \begin{figure}
 \centering
@@ -312,9 +314,9 @@ selection of core atom and focus point was based on the binding site prediction
 made in \cref{bspred:il10} and performed in compliance with the guidelines
 formulated in \cref{dmd:lrom_preparation}. We ended up using the C-alpha atom of
 M154 as core atom, and a tMD target distance of \SI{17.7}{\angstrom}, yielding a
-quite large spherical surface for proper putative binding site sampling.
-Deviations from this geometrical setup in the first or second round of DMD
-studies are described in the results and discussions part.
+quite large spherical surface for proper putative binding site sampling. If
+relevant, deviations from this geometrical setup in the first or second round of
+DMD studies are described in the results and discussions part.
 
 
 \section{Results and discussion}
@@ -348,7 +350,7 @@ to 1, and $M_{min}$ (the minimal number of members within each cluster) set to
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{gfx/dmdil10/hp_hexa_vs_tetra_clusters_position_match_cropped.jpg}
-\caption[]{Result consistency among two independently conducted DMD studies. The
+\caption[]{Consistent results among two independently conducted DMD studies. The
 IL-10 structure is shown in gray cartoon/line representation. The most populated
 cluster of docking solutions derived from a DMD study with a heparin
 hexasaccharide is shown with carbon atoms in blue. The most populated cluster of
@@ -363,6 +365,28 @@ show the same density. That is, with respect to the distribution of docking
 solutions, both DMD studies returned the same result. In addition to the DMD
 validation study presented in \cref{chapter:dmd}, this result also supports the
 significance of the DMD method.
+
+
+\subsubsection{Impact of N-terminal residues and modest geometry changes}
+
+In one of the early studies we included the five N-terminal residues of IL-10
+(see \ref{dmdil10:overallmethod}) and slightly varied the geometrical
+parameterization of DMD compared to the setup described in
+\ref{dmdil10:method_geom_setup}: we kept the C-alpha of M154 as core atom,
+but slightly changed the focus point within the anticipated binding region,
+resulting in a different orientation of the yellow axis shown in
+\cref{fig:dmdil10:dmd_geometry_round1}, and in a tMD target distance of
+\SI{20.5}{\angstrom}. The rest of the system and protocol setup was equivalent
+to another DMD study with a heparin tetrasaccharide, whose geometrical outcome
+is shown in \cref{fig:dmdil10:hp_hexa_vs_tetra_clusters_position_match}.
+As it turned out, the final distribution of docking solutions was not affected
+by both changes, as the most populated cluster matched the position of the
+clusters shown in \cref{fig:dmdil10:hp_hexa_vs_tetra_clusters_position_match}.
+
+We concluded that the results of a DMD study are rather insensitive with respect
+to modest changes in the geometrical parameterization of DMD and that the
+impact of the five N-terminal residues is not of the highest priority to study.
+
 
 \subsubsection{R107 stands out by hydrogen bonding and SRED}
 
