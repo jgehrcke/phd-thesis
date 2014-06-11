@@ -298,6 +298,57 @@ important role in IL-10-GAG recognition. This conclusion is based on different t
 of data, including time-averaged hydrogen bonding analysis and single-residue energy
 decomposition applied to MD data collected on the microsecond time scale
 
+\subsubsection{Geometrical DMD parameterization}
+
+Core atom:
+Displacement direction... mhh figure?
+target distance:
+
+
+\subsubsection{DMD consistency}
+
+\begin{figure}
+\centering
+\includegraphics[height=8cm]{gfx/dmdil10/hp_hexa_vs_tetra_clusters_position_match_cropped.jpg}
+\caption[]{Result consistency among two independently conducted DMD studies. The
+IL-10 structure is shown in gray cartoon/line representation. The most populated
+cluster of docking solutions derived from a DMD study with a heparin
+hexasaccharide is shown with carbon atoms in blue. The most populated cluster of
+a corresponding DMD study with a heparin tetrasaccharide is shown with carbon
+atoms in green. Setup and protocol of both DMD studies differed \textit{only} in
+the GAG ligand length.}
+\label{fig:dmdil10:hp_hexa_vs_tetra_clusters_position_match}
+\end{figure}
+
+One of the first pleasant results in the first round of IL-10-GAG DMD studies
+was the observation of method consistency, i.e.\ another proof for sufficient
+sampling and convergence.
+\Cref{fig:dmdil10:hp_hexa_vs_tetra_clusters_position_match} shows the overlay
+of two clustering results from two independently performed DMD studies that
+differed \textit{only} in the GAG ligand length --- one was performed with a
+heparin hexasaccharide, and the other with a heparin tetrasaccharide. Note that
+comparison of both clusters, and with that, comparison of both DMD studies with
+respect to the distribution of docking solutions, is only possible because we
+took great care of making both clustering results comparable via the clustering
+parameter optimization described in \cref{clustering_param_opt}. In both cases,
+the docking solution clustering was performed with $N_{min}$ (the minimal number
+of clusters that must be found) set to 1, and $M_{min}$ (the minimal number of
+members within each cluster) set to 4. In both cases, the automatic clustering
+parameter optimization as described in \cref{clustering_param_opt} yielded an
+$\epsilon$ value of \SI{2.6}{\angstrom}, i.e.\ just about the same density of
+docking solutions on both clusters.
+
+In essence, both clusters are positioned equivalently with respect to IL-10, and
+show the same density, i.e.\ with respect to the distribution of docking
+solutions, both DMD studies returned the same result. In addition to the DMD
+validation study presented before in \cref{chapter:dmd}, this result also
+supports the significance of the method.
+
+\subsubsection{R107 stands out by hydrogen bonding and SRED}
+
+
+
+result of two docking
 - Show picture of R107 specifically marked in the structure
 
 
