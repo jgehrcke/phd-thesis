@@ -252,33 +252,43 @@ would not have been possible using classical computing resources.
 
 \subsubsection{Software architecture}
 
- These numbers suggest that the
-management of corresponding jobs and data requires a well-engineered DMD
-controlling system. The essential purpose of such system is to automatically
-identify errors and recover from those: the likelihood for a single computing
-machine to fail times the number of machines involved in a DMD study integrated
-over the computing time yields a significant probability for the study to be
-affected by one or more technical issues. By experience we can tell that this
-prediction came true, and manual identification of corresponding issues is a
-daunting task.
+Above, we derived that a DMD study is comprised of on the order of $10^3$
+computing jobs, and that it requires storing hundreds of gigabytes sof raw data
+distributed in about $10^5$ files. These numbers suggest that the management of
+corresponding jobs and data requires a well-engineered DMD controlling system.
+The essential purpose of such system is to automatically identify errors and
+recover from those: the likelihood for a single computing machine to fail times
+the number of machines involved in a DMD study integrated over the computing
+time yields a significant probability for the study to be affected by
+\textit{one or more} technical issues. In other words, there is a guarantee
+that something will go wrong. By experience we can tell that this prediction
+came true, and manual identification of corresponding issues was a daunting
+task, which is why we iteratively developed a system architecture that enables
+the efficient conduction of DMD studies.
 
-Must support various run time environemnts:
+One requirement for this management architecture was to support all involved
+hardware platforms, i.e.\ the Taurus GPUs, the Taurus CPUs (for data analysis),
+the group-internal GPU cluster, and the biocluster CPUs (for data analysis),
+whereas these platforms alone involve three different batch scheduling systems.
+As all of these platforms are based on POSIX-compliant operating systems with
+reliable and well-performing file systems attached, we abstracted the data
+structure for managing and monitoring a DMD study on top of the file system
+hierarchy, and implemented basic data creation, manipulation, and validation
+using well-established POSIX command line tools, incorporated in shell scripts.
 
-taurus CPU, taurus GPU, biocluster CPPU, Pisabarro GPU cluster
-
-
-        - Architecture:
-            shell scripts, file system for study organization
-            Python/numpy/scipy/matplotlib for analysis
-            code on bitbucket
-
+For many purposes of data validation and analysis we implemented Python
+programs based on Biopython \cite{biopython_web} and SciPy/NumPy
+\cite{scipy_numpy} whenever appropriate. Data plotting was performed using
+the Python module Matplotlib \cite{matplotlib_web}. Iterative development and
+continuous integration of this software architecture was largely facilitated by
+the efficient usage of a decentralized version control system (Mercurial
+\cite{mercurial_web} in this case). The corresponding code repository is
+available at http://bit.ly/jgehrcke-phd-dmd-control.
 
 
 \section{Results and discussion}
 
 \subsection{1st round of DMD studies}
-
-
 
 So far, about 10 independent DMD studies involving IL-10 and different GAGs have
 been performed. An important intermediate result of the corresponding data analysis
