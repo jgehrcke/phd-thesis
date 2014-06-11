@@ -190,17 +190,17 @@ study. The raw data created by those jobs comprises on the order of $10^2$
 gigabytes distributed in about $10^5$ files.
 
 
-\subsubsection{Increase of HPC resources via establishment of GPU computing}
+\subsubsection{Establishment of GPU computing resources}
 
 Initially, the execution of a single DMD study was possible for us within about
 three weeks, using the \enquote{Atlas} resource pool in the supercomputing
 center of the TU Dresden (ZIH), which provisions a large number of AMD Opteron
-6274 CPUs. However, this system was affected by many technical issues and did
-not realistically allow us to perform various DMD studies in parallel, or even
-increase the number of DMD run repetitions $N$. The in-house computing cluster
-of the BIOTEC, TU Dresden (the \enquote{biocluster}, comprised of about 30
-machines) was out of question for performing DMD studies as of too few
-resources.
+6274 CPUs. However, this system was affected by many technical issues, ran out
+of support by the ZIH, and did not reliably allow us to perform various DMD
+studies in parallel, or even increase the number of DMD run repetitions $N$. The
+in-house computing cluster of the BIOTEC, TU Dresden (the
+\enquote{biocluster}, comprised of about 30 machines) was out of question for
+performing DMD studies as of too few resources.
 
 For mitigating issues related to a lack of computing resources for DMD, we were
 early adopters of a new technology: the usage of graphics processing units
@@ -211,16 +211,16 @@ information), which matches common algorithms used in MD simulations very well.
 That is, MD simulations can take strong advantage of GPU architectures. Compared
 to classical computing architectures, this leads to \textit{i)} a significantly
 higher absolute simulation performance (measured in nanoseconds of simulated
-time per day} and a \textit{ii)} a much better performance per financial cost,
-considering acquisition cost as well as energy cost. With the MD simulation
-framework Amber 12 \cite{case_amber_12} and corresponding patches
+time per day} and \textit{ii)} a much better performance per financial cost
+ratio, considering acquisition cost as well as energy cost. With the MD
+simulation framework Amber 12 \cite{case_amber_12} and corresponding patches
 \cite{amber_12_patches}, the Amber developers were among the first to work on
-and release a solid MD implementation for GPUs (pmemd.cuda, see
+and release a solid and efficient MD implementation for GPUs (pmemd.cuda, see
 \cite{amber_gpu_2012,amber_gpu_pme_2013} for methodological details and
 validation).
 
 Correspondingly, we engineered a GPU computing cluster in our research group,
-which implicated large amounts of planning and testing, because no
+which required substantial amounts of planning and testing, because no
 enterprise-level vendors were available for this kind of hardware. Hence, we
 composed this cluster based on raw hardware and software components, eventually
 yielding the following configuration:
@@ -244,19 +244,11 @@ within less than two weeks, without being dependent on \textit{external}
 resources. On top of that, from summer 2013 on we have been part of the testing
 period of the large-scale GPU computing cluster of the supercomputing center of
 the TU Dresden: as a section of their \enquote{Taurus} platform, they provide 80
-Nvidia CUDA GPU devices. All in all, with these GPU resources at hand, we
-were able to perform single DMD studies on a weekly basis.
+Nvidia CUDA GPU devices. All in all, with these GPU resources at hand, we were
+able to perform single DMD studies on a weekly basis, with a significantly
+increased number of DMD runs per study ($N=200$ or $300$). In Dresden, this
+would not have been possible using classical computing resources.
 
-\subsubsection{Establishment and testing of HPC graphics processing unit (GPU) infrastructure}
-
-
-
-        - Computing resources
-            - Establishment of GPU infrastructure
-                - Software: compilation of Amber 12 against ...
-                - built up group-internal GPU cluster:
-                    4 machines, this hardware, PBS schedular with Python wrapper
-                - ZIH resources
 
 \subsubsection{Software architecture}
 
