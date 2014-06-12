@@ -439,6 +439,33 @@ not shown) is that the IL-10-GAG system does not easily allow for a quantitative
 distinction of different GAG types via DMD.
 
 
+\subsubsection{Ensemble-derived H-bond and MM-GBSA SRED analysis}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{gfx/dmdil10/round1_il10_hbond_hadp6_vs_hpdp6.pdf}
+\caption[]{Most important residues of IL-10 for GAG-interaction, as identified
+by DMD ensemble-derived hydrogen bonding information, from two independently
+performed DMD studies differing \textit{only} in the GAG type (top: heparin
+hexasaccharide, bottom: hyaluronan hexasaccharide). The box plot representation
+is made from  $N=100$ samples per box, whereas each sample is the number of
+hydrogen bond donors integrated and normalized over the data production period
+of one free MD trajectory, for the residue specified in the abscissa label.
+The residues are sorted by the \textit{mean} (not shown), the red bars indicate
+the \textit{median}.}
+\label{fig:dmdil10:hp_hexa_vs_ha_hexa_hbond}
+\end{figure}
+
+
+As explained in the \enquote{extraction of ensemble properties} part of
+\cref{dmd:dataanalysis}, a DMD study is able to derive reliable information
+about the importance of single receptor amino acids, via so-called
+single-residue energy decomposition (SRED) and hydrogen bonding (H-bond)
+analysis of the MD trajectory data. Surprisingly, all of the DMD studies
+performed in the first round of studies yielded the same clear and unequivocal
+result that R107 of IL-10 plays a major role in IL-10-GAG interaction.
+\Cref{fig:dmdil10:hp_hexa_vs_ha_hexa_hbond}
+
 
 
 
