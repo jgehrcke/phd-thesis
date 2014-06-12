@@ -440,7 +440,7 @@ not shown) is that the IL-10-GAG system does not easily allow for a binary
 to their role for IL-10 function modulation.
 
 
-\subsubsection{Ensemble-derived H-bond and MM-GBSA SRED analysis}
+\subsubsection{Ensemble-derived hydrogen bonding information}
 
 \begin{figure}
 \centering
@@ -461,13 +461,13 @@ the \textit{median}.}
 As explained in the \enquote{extraction of ensemble properties} part of
 \cref{dmd:dataanalysis}, a DMD study is able to yield reliable information
 about the importance of single receptor amino acids for ligand binding, via
-so-called single-residue energy decomposition (SRED) and hydrogen bonding
-(H-bond) analysis of the MD trajectory data. Surprisingly, \textit{all} of the
-DMD studies performed in the first round of studies returned the same clear and
-unequivocal result --- that R107 of IL-10 plays a major role in IL-10-GAG
-interaction. \Cref{fig:dmdil10:hp_hexa_vs_ha_hexa_hbond} shows ensemble-derived
-H-bond information for two independently performed DMD studies differing in the
-GAG type: one was performed with a heparin hexasaccharide, the other with a
+e.g.\ hydrogen bonding (H-bond) analysis of the MD trajectory data.
+Surprisingly, \textit{all} of the DMD studies performed in the first round of
+studies returned the same clear and unequivocal result --- that R107 of IL-10
+plays a major role in IL-10-GAG interaction.
+\Cref{fig:dmdil10:hp_hexa_vs_ha_hexa_hbond} shows ensemble-derived H-bond
+information for two independently performed DMD studies differing in the GAG
+type: one was performed with a heparin hexasaccharide, the other with a
 hyaluronan hexasaccharide. For each free MD trajectory in these two DMD studies
 we determined the normalized occupancy of H-bond donor atoms in each receptor
 residue, and ranked the results by the mean normalized occupancy. We accumulated
@@ -494,63 +494,68 @@ Obviously, hyaluronan has significantly less functional groups available that
 might act as H-bond acceptors than heparin. Quantitatively, this difference is
 clearly reflected in the mean of the H-bond occupancy distributions, with about
 1.7 for HP dp6 and about 0.7 for HA dp6 (data not shown). For all different GAG
-types and lengths investigated in the first round of IL-10-GAG DMD studies, R107
-clearly stands out by the qualitative criteria described in the paragraph above.
-We conclude that R107 significantly stands out compared to all other residues
-and supposedly plays a particularly important role in IL-10- GAG recognition.
+types and lengths investigated in the first round of IL-10-GAG DMD studies (such
+as CS4 dp4, CS6 dp4, HA dp4, HP dp4, data not shown), R107 clearly stands out by
+the qualitative criteria described in the paragraph above. We conclude that R107
+significantly stands out compared to all other residues and supposedly plays a
+particularly important role in IL-10- GAG recognition.
 
 
-\subsubsection{R107 stands out by hydrogen bonding and SRED}
+\subsubsection{Ensemble-derived single-residue energy decomposition}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{gfx/dmdil10/round1_il10_SRED_hpdp6.pdf}
+\caption[]{TODO}
+\label{fig:dmdil10:SRED_hpdp6}
+\end{figure}
+
+
+\Cref{fig:dmdil10:SRED_hpdp6}
+
+MM-GBSA SRED yields consistent outcome with hydrogen bonding analysis,
+whereas hbond analysis is much simpler
+
+include here:
+
+Complete inclusion of IL-10's N terminus does not qualitatively change hbond/SRED data (130530 groupmeeting pdf)
+
+
+bla bla, note that results in consistency with H-bond.
+
 
 
 result of two docking
 - Show picture of R107 specifically marked in the structure
 
 
-R107 significantly stands out compared to all other residues
-and supposedly plays a particularly important role in IL-10-
-GAG recognition.
-(conserved in mouse)
+\subsubsection{R107A mutation}
 
-Observations in first round of studies:
-
-\begin{itemize}
-
-\item N=200 and N=300 for much clearer clustering and , reduction of target displacement length
-to 25  Angstroms and pulling process simulation time to 3 ns instead of 4 without
-observable caveats.
-
-\item slight change in DMD geometry parameterization does not change outcome (different starting conditions, very similar outcome -- show figure on page 25 of 131030 3rd tac )
-
-%\item Heparin length change yields same outcome
-
-\item Complete inclusion of IL-10's N terminus does not qualitatively change hbond/SRED data (130530 groupmeeting pdf)
-
-%\item Again: DMD reproducible results!
-
-\item MM-GBSA SRED yields consistent outcome with hydrogen bonding analysis,
-whereas hbond analysis is much simpler
-
-\end{itemize}
+\hl{Note (TODO):}
+If there is not enough content here, do not make this a (sub)section
+Most important result: No other residue could take the role of R107
 
 
 
 \subsection{2nd round of DMD studies}
 
-\subsubsection{R107A mutation}
 
-\hl{If there is not enough content here, do not make this a (sub)section}
+\hl{Note (TODO):}
+N=200 and N=300 for much clearer clustering and , reduction of target displacement length
+to 25  Angstroms and pulling process simulation time to 3 ns instead of 4 without
+observable caveats.
 
-Most important result: No other residue could take the role of R107,
 
 \subsection{Conclusions}
 
-\hl{So far, about 10 independent DMD studies involving IL-10 and different GAGs
+\hl{Note (TODO):}
+So far, about 10 independent DMD studies involving IL-10 and different GAGs
 have been performed. An important intermediate result of the corresponding data
 analysis is that one amino acid residue, R107 (in the hIL-10 sequence, conserved
 in mouse), significantly stands out compared to all other residues and
 supposedly plays a particularly important role in IL-10-GAG recognition. This
 conclusion is based on different types of data, including time-averaged hydrogen
 bonding analysis and single-residue energy decomposition applied to MD data
-collected on the microsecond time scale}.
+collected on the microsecond time scale.
 
