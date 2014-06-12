@@ -368,6 +368,8 @@ significance of data created by the DMD method.
 
 
 \subsubsection{Impact of N-terminal residues and modest geometry changes}
+%NOTE: when changing this heading, also change the "quote" in the section
+% \subsubsection{Ensemble-derived single-residue energy decomposition} below.
 
 In one of the early studies we included the five N-terminal residues of IL-10
 (see \ref{dmdil10:overallmethod}) and varied the geometrical parameterization of
@@ -503,7 +505,6 @@ particularly important role in IL-10- GAG recognition.
 
 \subsubsection{Ensemble-derived single-residue energy decomposition}
 
-
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{gfx/dmdil10/round1_il10_SRED_hpdp6.pdf}
@@ -511,23 +512,43 @@ particularly important role in IL-10- GAG recognition.
 \label{fig:dmdil10:SRED_hpdp6}
 \end{figure}
 
+We have observed the ensemble-merged MM-GBSA single-residue energy decomposition
+(SRED, as explained in the \enquote{extraction of ensemble properties} part of
+\cref{dmd:dataanalysis}) data to yield results generally consistent with those
+of the hydrogen bonding analysis. Most importantly, the SRED data also points
+out the importance of R107 for IL-10-GAG recognition.
+\Cref{fig:dmdil10:SRED_hpdp6} shows the six top-ranked IL-10 residues according
+to SRED performed on a DMD study with a heparin hexasaccharide. In this case,
+the DMD study was comprised of $N=200$ DMD runs, and the SRED data of the top
+\SI{40}{\percent} of the DMD runs according to the MM-PBSA free energy of
+binding estimate has been merged, yielding about 80 DMD runs contributing to the
+data shown. The error bars represent the standard error of the mean, and we can
+conclude that --- considering the statistical error --- the residues on ranks
+two to five are not distinguishable, ranging in the interval between
+\SI{-6}{\kilo\calory\per\mol} and \SI{-8}{\kilo\calory\per\mol}. R107, however,
+has a special role, with a significantly stronger mean interaction energy of
+about \SI{-13.5 +- 0.5}{\kilo\calory\per\mol}. Note that the absolute values of
+these energies as well as the inter-residue energy distance have no real
+meaning. However, relative distances with proper consideration of the
+statistical errors yield resilient information.
 
-\Cref{fig:dmdil10:SRED_hpdp6}
+Further insights were derived from other IL-10-GAG DMD studies. For instance, a
+DMD study with a hyaluronan hexasaccharide led to the same qualitative SRED
+results, in the sense that R107 stood out. However, the corresponding mean
+interaction energy was determined as \SI{-3.8 +- 0.3}{\kilo\calory\per\mol},
+i.e.\ about \SI{70}{\percent} less than in case of the heparin hexasaccharide
+study discussed in the paragraph above. Again, this is expected as of the
+missing sulfate groups in HA compared to HP, and in compliance with the hydrogen
+bonding data discussed in the previous section. In general, we can conclude that
+both, SRED and hydrogen bonding analysis are able to identify R107 as especially
+important, whereas the hydrogen bonding analysis is computationally less complex
+than hydrogen bonding analysis. Another interesting observation we have made is
+that inclusion of IL-10's N terminus does not significantly influence the
+outcome of SRED as well as hydrogen bonding data, in line with the conclusions
+made in the \enquote{Impact of N-terminal residues and modest geometry changes}
+part above.
 
-MM-GBSA SRED yields consistent outcome with hydrogen bonding analysis,
-whereas hbond analysis is much simpler
 
-include here:
-
-Complete inclusion of IL-10's N terminus does not qualitatively change hbond/SRED data (130530 groupmeeting pdf)
-
-
-bla bla, note that results in consistency with H-bond.
-
-
-
-result of two docking
-- Show picture of R107 specifically marked in the structure
 
 
 \subsubsection{R107A mutation}
@@ -545,6 +566,12 @@ Most important result: No other residue could take the role of R107
 N=200 and N=300 for much clearer clustering and , reduction of target displacement length
 to 25  Angstroms and pulling process simulation time to 3 ns instead of 4 without
 observable caveats.
+
+
+\hl{Note (TODO):}
+Show picture of R107 specifically marked in the structure, together with
+crystal sulfates, discuss possible binding poses involving these crystal
+sulfates.
 
 
 \subsection{Conclusions}
