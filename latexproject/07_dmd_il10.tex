@@ -458,13 +458,29 @@ the \textit{median}.}
 
 
 As explained in the \enquote{extraction of ensemble properties} part of
-\cref{dmd:dataanalysis}, a DMD study is able to derive reliable information
-about the importance of single receptor amino acids, via so-called
-single-residue energy decomposition (SRED) and hydrogen bonding (H-bond)
-analysis of the MD trajectory data. Surprisingly, all of the DMD studies
-performed in the first round of studies yielded the same clear and unequivocal
-result that R107 of IL-10 plays a major role in IL-10-GAG interaction.
-\Cref{fig:dmdil10:hp_hexa_vs_ha_hexa_hbond}
+\cref{dmd:dataanalysis}, a DMD study is able to yield reliable information
+about the importance of single receptor amino acids for ligand binding, via
+so-called single-residue energy decomposition (SRED) and hydrogen bonding
+(H-bond) analysis of the MD trajectory data. Surprisingly, \textit{all} of the
+DMD studies performed in the first round of studies returned the same clear and
+unequivocal result --- that R107 of IL-10 plays a major role in IL-10-GAG
+interaction. \Cref{fig:dmdil10:hp_hexa_vs_ha_hexa_hbond} shows ensemble-derived
+hydrogen bonding information for two independently performed DMD studies
+differing in the GAG type: one was performed with a heparin hexasaccharide, the
+other with a hyaluronan hexasaccharide. For each free MD trajectory in these two
+DMD studies we determined the normalized occupancy of hydrogen bond donor atoms
+in each receptor residue, and ranked the results by the mean normalized
+occupancy. We accumulated all donors within single residues, for instance an
+arginine can donate up to three hydrogens at the same time, and the maximum
+normalized occupancy in this case would be 3.
+\Cref{fig:dmdil10:hp_hexa_vs_ha_hexa_hbond} shows the top 6 of residues for
+both studies, including a box plot representation of the corresponding
+distributions.
+
+determined those residues
+that contributed most hydrogen bonds
+
+integrated and normalized the number of hydrogen bond donors ieach data production period of
 
 
 
