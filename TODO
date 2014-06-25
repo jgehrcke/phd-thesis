@@ -1,8 +1,7 @@
 Technical / layout:
 - choose proper math font (fitting the normal text)
 - The BIBLIOGRAPHY pdf link points to the end of the document, this is wrong!
-- the hyphenation of hexasaccharide is wrong (seen: hexas-accharide)!
-  define proper hyphenation generally in preamble.
+
 
 Content-wise:
 - in clustering section: point out somehow that this topic is often neglected
@@ -17,3 +16,9 @@ in protein-dna complexes
 http://books.google.de/books?id=5ZtR-sl4DgYC&dq=end+point+free+energy+methods&source=gbs_navlinks_s
 volume 2 chapter 12,  end-point free energy methods
 compare potential with that of DNA?
+
+
+DONE
+====
+- the hyphenation of hexasaccharide is wrong (seen: hexas-accharide)!
+  define proper hyphenation generally in preamble.

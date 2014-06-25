@@ -219,11 +219,12 @@
 \newcommand{\specialcell}[2][c]{%
   \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 
-
+% A new float type 'listing' for presenting
+% sourcecode.
 \newfloat{listing}{tbph}{lop}[chapter]
 \floatname{listing}{Listing}
 
-% Python code highlight.
+% ---- Definitions for Python code highlight BEGIN ----
 % $ pygmentize -f latex -S default
 \makeatletter
 \def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
@@ -317,5 +318,9 @@
 \def\PYZlb{[}
 \def\PYZrb{]}
 \makeatother
+% ---- Definitions for Python code highlight END ----
+
+% Declar hyphenation rules for certain words (these rules take global effect).
+\hyphenation{he-xa-sac-cha-ride}
 
 
