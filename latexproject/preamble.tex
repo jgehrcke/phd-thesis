@@ -2,33 +2,50 @@
 
 % http://www.howtotex.com/packages/the-nag-package-warns-you-for-incorrect-latex-usage/
 \RequirePackage[l2tabu, orthodox]{nag}
-\documentclass[a4paper,12pt,onecolumn,twoside,openright]{memoir}
+%\documentclass[a4paper,12pt,onecolumn,twoside,openright]{memoir}
+\documentclass[draft,a4paper,12pt,onecolumn,twoside,openright]{memoir}
 
-%\usepackage{lmodern}
-%\usepackage[osf,sc]{mathpazo}
+% Use Linux Libertine font. A quote from Michael Sharpe: "The free font Linux
+% Libertine is one particular target—it is of nearly the same x-height as
+% Computer Modern, but, not being a modern font, does not have a high contrast
+% ratio, and so appears denser than Computer Modern but not as much so as Times.
+% It is meant as a replacement for Times, but differs from it in many
+% characteristics, more similar to MinionPro than Times, and provides a better
+% range of variants than Times—three weights (regular, semi-bold and bold)
+% rather than just two, and has expert features in all weights: old-style
+% figures, more extensive and more interesting ligatures, and small caps. In my
+% opinion, material typeset in Linux Libertine looks better than the
+% corresponding material typeset in Times. This seems especially true on the
+% screen."
+
+% Math font from newtx package, fits the Libertine text font very well.
+% Must be loaded before fontspec, and fontspec must be loaded with the
+% no-math option, followed by \usepackage{libertine} or
+% \setmainfont{Linux Libertine O}, see
+% http://tex.stackexchange.com/q/97299/11816
+
+\usepackage[libertine]{newtxmath}
+\usepackage[no-math]{fontspec}
 \usepackage{libertine}
-\usepackage{fontspec}
 
+% Properly typeset numbers with units.
+\usepackage{siunitx}
 
+% This is likely already loaded by some other package.
+\usepackage{amsmath}
+
+% Bold math symbols.
+\usepackage{bm}
 
 % Improve typography. Must be loaded after any font.
 \usepackage{microtype}
 
 \usepackage[english]{babel}
+
+% Dummy paragraphs.
 \usepackage{lipsum}
 
-% Properly typeset numbers with units.
-% http://www.howtotex.com/packages/beautiful-fractions-and-units-with-the-unit-package/
-\usepackage{siunitx}
-\usepackage{amsmath}
 
-% The math font in text looks a bit crappy at the moment. Try things out later:
-%\usepackage{unicode-math}
-%\setmathfont[version=cambria]{Cambria Math}
-%\setmathfont{Asana-math.otf}
-
-% Bold math symbols.
-\usepackage{bm}
 \usepackage{graphicx}
 
 % Highlight with soul package. (\hl{})
@@ -43,24 +60,24 @@
 % For SRED table in DMD chapter. TODO: Convert to not require that package.
 \usepackage{threeparttable}
 
-%\usepackage{stmaryrd}
+
 \usepackage{url}
 % \usepackage{geometry}  % Should be loaded after hyperref!
-%\usepackage{longtable}
+
 %\usepackage[figuresright]{rotating}
-% e.g. \textmu
-%\usepackage{textcomp}
+
 \usepackage[babel]{csquotes}
+
 % captions (for figures etc)
 %\DisemulatePackage{ccaption}
 \usepackage[margin=5pt,font=small,labelfont=bf]{caption}
 
 % Configure footnotes: counter reset every page etc.
 \usepackage[perpage,hang,splitrule]{footmisc}
+
 \usepackage{color}
 \usepackage{fancyvrb}
 \usepackage{float}
-
 
 % Intelligent space after "commands".
 % http://tex.stackexchange.com/a/17873/11816
@@ -70,8 +87,7 @@
 % http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
 %\usepackage[nottoc]{tocbibind}
 
-
-% Should be included as late as possible.
+% Hyperref provides PDF links etc. Should be included as late as possible.
 \usepackage{hyperref}
 
 % See: Which packages should be loaded after hyperref instead of before?
