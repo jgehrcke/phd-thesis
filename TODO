@@ -4,6 +4,9 @@ Technical / layout:
 
 
 Content-wise:
+- in NMR MD section, write more about why simulated annealing simulations, and give some
+references for similar work, and more literature in general about NMR MD restraint methods
+
 - in clustering section: point out somehow that this topic is often neglected
 by others (in published docking work)?
 
