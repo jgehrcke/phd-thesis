@@ -234,6 +234,17 @@
 \newfloat{listing}{tbph}{lop}[chapter]
 \floatname{listing}{Listing}
 
+% Date/Signature field
+% http://tex.stackexchange.com/a/35943
+\newcommand{\namesigdate}[2][5cm]{%
+  \begin{tabular}{@{}p{#1}@{}}
+    #2 \\[2\normalbaselineskip] \hrule \\[0pt]
+    {\small \textit{Unterschrift}} \\[2\normalbaselineskip] \hrule \\[0pt]
+    {\small \textit{Datum}}
+  \end{tabular}
+}
+
+
 % ---- Definitions for Python code highlight BEGIN ----
 % $ pygmentize -f latex -S default
 \makeatletter
