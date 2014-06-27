@@ -2,16 +2,16 @@
 
 % http://www.howtotex.com/packages/the-nag-package-warns-you-for-incorrect-latex-usage/
 \RequirePackage[l2tabu, orthodox]{nag}
-%\documentclass[a4paper,12pt,onecolumn,twoside,openright]{memoir}
-\documentclass[draft,a4paper,12pt,onecolumn,twoside,openright]{memoir}
+\documentclass[a4paper,12pt,onecolumn,twoside,openright]{memoir}
+%\documentclass[draft,a4paper,12pt,onecolumn,twoside,openright]{memoir}
 
 % Use Linux Libertine font. A quote from Michael Sharpe: "The free font Linux
-% Libertine is one particular target—it is of nearly the same x-height as
+% Libertine is one particular target — it is of nearly the same x-height as
 % Computer Modern, but, not being a modern font, does not have a high contrast
 % ratio, and so appears denser than Computer Modern but not as much so as Times.
 % It is meant as a replacement for Times, but differs from it in many
 % characteristics, more similar to MinionPro than Times, and provides a better
-% range of variants than Times—three weights (regular, semi-bold and bold)
+% range of variants than Times — three weights (regular, semi-bold and bold)
 % rather than just two, and has expert features in all weights: old-style
 % figures, more extensive and more interesting ligatures, and small caps. In my
 % opinion, material typeset in Linux Libertine looks better than the
@@ -40,15 +40,12 @@
 % Improve typography. Must be loaded after any font.
 \usepackage{microtype}
 
-\usepackage[english]{babel}
-
 % Dummy paragraphs.
 \usepackage{lipsum}
 
-
 \usepackage{graphicx}
 
-% Highlight with soul package. (\hl{})
+% Highlight text via \hl{}.
 \usepackage{soul}
 
 % Temporary margin change.
@@ -60,13 +57,8 @@
 % For SRED table in DMD chapter. TODO: Convert to not require that package.
 \usepackage{threeparttable}
 
-
 \usepackage{url}
 % \usepackage{geometry}  % Should be loaded after hyperref!
-
-%\usepackage[figuresright]{rotating}
-
-\usepackage[babel]{csquotes}
 
 % captions (for figures etc)
 %\DisemulatePackage{ccaption}
@@ -75,6 +67,8 @@
 % Configure footnotes: counter reset every page etc.
 \usepackage[perpage,hang,splitrule]{footmisc}
 
+\usepackage[english]{babel}
+\usepackage[babel]{csquotes}
 \usepackage{color}
 \usepackage{fancyvrb}
 \usepackage{float}
