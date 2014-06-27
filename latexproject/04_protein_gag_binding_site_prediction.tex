@@ -1,13 +1,17 @@
 \chapter{Coulomb potential analysis in protein-GAG systems}
 \label{chapter:bspred}
 
-In this chapter we present a simple and yet efficient method for predicting
-where on a protein a GAG would most likely bind, suggesting which amino acid
-residues are likely to be involved in the interaction and which are not. The
-method is based on numerical simulation of the electrostatic (i.e.\ Coulomb)
-potential of the protein in water solution, and manual evaluation of the
-topology of the Coulomb potential in space. Subsequently, we apply that method
-to IL-10 and report our findings.
+
+% I or we?
+% http://english.stackexchange.com/a/24683
+% http://www.researchgate.net/post/Should_I_use_either_we_or_I_in_my_thesis
+
+In this chapter I present a simple and yet efficient method for predicting where
+on a protein a GAG would most likely bind, suggesting which amino acid residues
+are likely to be involved in the interaction. The method is based on numerical
+simulation of the electrostatic (i.e.\ Coulomb) potential of the protein in
+water solution, and manual evaluation of the topology of the Coulomb potential
+in space. Subsequently, I report the findings of this method applied to IL-10.
 
 \section{Motivation}
 \label{bspred:motivation}
@@ -27,30 +31,32 @@ might be pointless. In the best case, knowledge about the binding region (the
 region on the receptor that the ligand binds to) comes from experimental data,
 e.g.\ from mutagenesis or NMR studies. However, in many cases no such
 experimental data is available, as is unfortunately true for the IL-10-GAG
-system. In such situations, it makes sense to consider \textit{in silico}
-methods for prediction the binding region.
+system. In such situations, \textit{in silico} methods can be applied for
+prediction of the binding region.
 
-With respect to protein-GAG systems, there is only few published work on this
-topic. The proposed approaches lack a well-founded physical model, and so far
-none of the approaches gained general acceptance. In
-\cite{gandhi_bmp_heparin_binding_sites_2012}, the authors used PatchDock
-\cite{patchdock_2002} for globally docking rigid heparin oligosaccharides to
-BMP-2 and BMP-14 and carefully conclude that \enquote{while there has been no
-validation of the accuracy of the PatchDock scoring function for heparin
-interactions, these docking results suggest the presence of two GAG binding
-sites in BMP-2}. In \cite{rogers_gag_prot_prot_2011}, the authors used a mixture
-of two docking softwares for rigid-body docking of GAG structures \enquote{to
-the entire molecular surface of the protein to locate the most favorable binding
-sites} and claimed general success without further quantification or
-description. In \cite{bitomsky_gag_docking_1999}, the authors report that
-\enquote{all three docking programs (GRID, AutoDock, Dock) were able to
+There is only a little amount of work published on the topic of the prediction
+of protein-GAG binding regions. The proposed approaches lack a well-founded
+physical model, and so far none of the approaches gained general acceptance. In
+a previous work \cite{gandhi_bmp_heparin_binding_sites_2012}, PatchDock
+\cite{patchdock_2002} was used for globally docking rigid heparin
+oligosaccharides to different proteins. The authors carefully conclude that
+\enquote{while there has been no validation of the accuracy of the PatchDock
+scoring function for heparin interactions, these docking results suggest the
+presence of two GAG binding sites [in one of the proteins]}. In another study
+\cite{rogers_gag_prot_prot_2011}, the authors used a mixture of two docking
+softwares for rigid-body docking of GAG structures
+\enquote{to the entire molecular surface of the protein to locate the most
+favorable binding sites} and claimed general success without further
+quantification or description. In \cite{bitomsky_gag_docking_1999}, the authors
+report that commonly used
+\enquote{docking programs (GRID, AutoDock, Dock) were able to
 correctly localize the heparin binding sites on our test case proteins}. In
 \cite{hp_binding_sites_mulloy_2006}, Forster and Mulloy used AutoDock version
-2.4 \cite{autodock24} for globally docking rigid heparin molecules to
-antithrombin and FGF2, and found that their docking procedure gave good
-agreement with the corresponding crystal structures regarding the overall
-position of the heparin binding sites. The authors state that the method may be
-used as \enquote{hypothesis generation tool} rather than for providing
+2.4 \cite{autodock24} for globally docking rigid heparin molecules to the
+proteins antithrombin and FGF2, and found that their resulting binding region
+prediction agreement quite well with the regions determined experimentally. The
+authors state that the method may be used as \enquote{hypothesis generation
+tool} rather than for providing
 \enquote{details of interactions between specific atoms}.
 
 The above-cited studies do not provide a complete picture, but obviously some of
@@ -58,10 +64,10 @@ the established docking methods seem to be able to reflect certain properties of
 protein-GAG systems. This is remarkable since none of these docking methods has
 been specifically developed for GAG ligands, let alone for global docking, and
 strictly spoken, when applied to protein-GAG systems, these docking methods are
-applied outside their scope of validity. A problem in named studies is that none
-of them provides an explanation for why a certain docking method should yield
-success in protein-GAG binding region prediction. Hence, these studies lack the
-capability of further enlightening the theoretical basis of protein-GAG
+applied outside their scope of validity. An issue with named studies is that
+none of them provides an explanation for why a certain docking method should
+yield success in protein-GAG binding region prediction. Hence, these studies
+lack the capability of further enlightening the theoretical basis of protein-GAG
 interaction, since a good non-arbitrary explanation would be a step towards
 induction and further predictions \cite{swirski2007literature}. In scientific
 theory, it is established that prediction and explanation are formally the same,
@@ -71,13 +77,13 @@ explanation), a prediction is not suitable for generating scientific knowledge
 --- no matter if the prediction becomes corroborated or contradicted by an
 empirical observation \cite{schafersman_scientific_method}.
 
-We \textit{postulate} that the main reason for the surprising success of docking
-methods in named studies is that protein-GAG complexes are strongly driven by
-Coulomb interaction and that mentioned docking methods incorporate Coulomb
-interaction with a significant weight in their scoring functions. In fact,
-heparin has the highest negative charge density among biological macromolecules
-\cite{capila_linhardt_hep_prot_2002}. Standard literature on protein-GAG systems
-such as \cite{essentials_glycobiology_gags_2009,gandhi_structure_2008} stresses
+I \textit{postulate} that the main reason for the success of docking methods in
+named studies is that protein-GAG complexes are strongly driven by Coulomb
+interaction, and that mentioned docking methods incorporate Coulomb interaction
+with a significant weight in their scoring functions. In fact, heparin has the
+highest negative charge density among biological macromolecules
+\cite{capila_linhardt_hep_prot_2002}. Reviews on protein-GAG systems
+\cite{essentials_glycobiology_gags_2009,gandhi_structure_2008} stress
 the role of charge-charge interaction in protein-GAG systems in general. Many
 publications focusing on individual protein-GAG systems identify charge
 complementary as one of the driving mechanisms of the interaction between GAG
@@ -85,37 +91,37 @@ and protein
 \cite{gandhi_bmp_heparin_binding_sites_2012,faham_heparin_1996,%
 pichert_characterization_2012,rogers_gag_prot_prot_2011}.
 
-We conclude that the importance of Coulomb interaction is a distinctive feature
-of protein-GAG systems. Notably, compared to other molecular interaction types,
-the Coulomb interaction is a long range interaction and therefore dominates all
-other types of interaction for larger distances. As of these considerations, we
-\textit{hypothesize} that protein-GAG binding region prediction is possible
-purely based on the strength and topology (i.e.\ the shape/distribution) of the
-electrostatic potential in the volume surrounding the protein. Taking this step
-back compared to the application of complex docking methods is in favor of
-gaining scientific knowledge about the fundamental concepts of protein-GAG
-interaction.
+It can be concluded that the importance of Coulomb interaction is a distinctive
+feature of protein-GAG systems. Notably, compared to other molecular interaction
+types, the Coulomb interaction is a long range interaction and therefore
+dominates all other types of interaction for larger distances. As of these
+considerations, I \textit{hypothesize} that protein-GAG binding region
+prediction is possible purely based on the strength and topology (i.e.\ the
+shape/distribution) of the electrostatic potential in the volume surrounding the
+protein. Taking this step back compared to the application of complex docking
+methods is in favor of gaining scientific knowledge about the fundamental
+concepts of protein-GAG interaction.
 
-For a set of reference systems, we have investigated the relation between the
-strength and topology of Coulomb potential and the actual experimentally
-determined GAG binding site in order to determine whether the electrostatic
-properties alone can assist in predicting a receptor GAG binding region. From
-the scientific theory point of view, the result of this study in any case
-further enlightens the role of Coulomb interaction in protein-GAG systems.
+In order to determine whether the electrostatic properties alone can assist in
+predicting a receptor GAG binding region, the relation between the strength and
+topology of the Coulomb potential and the actual experimentally determined GAG
+binding site was investigated for a set of reference systems. From the
+scientific theory point of view, the result of this study in any case further
+enlightens the role of Coulomb interaction in protein-GAG systems.
 
 
 \section{Method}
 
 \subsection{Coulomb potential simulation}
 
-For a given protein, we calculated its electrostatic potential with a
+The electrostatic potential of a given protein was calculated with a
 finite-difference numerical solver applied to the linearized Poisson-Boltzmann
 (PB) equation. The PB equation is widely used for implementing a class of
 implicit solvent models to describe solvent-mediated electrostatic interactions.
 These models have been demonstrated to be reliable in reproducing the energetics
 when compared with explicit solvent molecular dynamics simulations and
 experimental measurements for a wide range of systems \cite{honig_estatic_1995}.
-In the PB model we have applied, the solute (protein) is described by an
+In the PB model applied here, the solute (protein) is described by an
 atomic-detail representation, while the solvent molecules are treated as a
 continuum. The solute is modeled as a dielectric body whose shape is defined by
 atomic coordinates and atomic radii. A set of point charges at the atomic
@@ -124,53 +130,52 @@ solvent region. The overall electrostatic field is the sum of the Coulombic
 field of the solute and the corresponding reaction field of the polarizable
 solvent.
 
-We used the PBSA program shipped with AmberTools 13 \cite{case_amber_12} with
-default parameters and a finite element grid spacing of \SI{1}{\angstrom} for
-calculating the overall electrostatic potential of any given protein in water.
-The atomic radii and point charges of the protein were parameterized according
-to the FF99SB force field \cite{case_amber_12}. In order to make proper use of
-PBSA's output, we were required to modify the software, for \textit{i)}
-writing the discretized scalar data in compliance with the OpenDX data format
-\cite{opendx}, and \textit{ii)} in units of
-\si{\kilo\calory\per\mole\per\elementarycharge}. After patching PBSA (and
-contributing those patches back to the AmberTools project), we were able to
-visualize the data in VMD \cite{vmd_1996}.
+For calculating the overall electrostatic potential of any given protein, the
+PBSA program shipped with AmberTools 13 \cite{case_amber_12} was used with
+default parameters and a finite element grid spacing of \SI{1}{\angstrom}. The
+atomic radii and point charges of the protein were parameterized according to
+the FF99SB force field \cite{case_amber_12}. Source code modification of the
+PBSA software was required for \textit{i)} writing the discretized scalar data
+in compliance with the OpenDX data format \cite{opendx} and \textit{ii)} in
+units of \si{\kilo\calory\per\mole\per\elementarycharge}. After patching PBSA
+(and contributing those patches back to the AmberTools project), the data could
+be visualized and analyzed in VMD \cite{vmd_1996}.
 
 
 \subsection{Coulomb potential evaluation}
 
 Many authors discussing the properties of a certain GAG receptor protein depict
-the electrostatic potential of the protein mapped onto its molecular surface, as
-done in \cite{rogers_gag_prot_prot_2011,%
+the electrostatic potential of the protein mapped onto its molecular surface
+\cite{rogers_gag_prot_prot_2011,%
 Gandhi01102009,sapay_hs_growthfactors_2011,%
 gandhi_bmp_heparin_binding_sites_2012,sost_heparin_2009,%
 catK_cs4_crystal_structure_2008,hydrolase_gags_2011,gandhi_structure_2008,%
 imberty_gag_prot_carbres_2007,gags_as_polyelectrolytes_2010}. Most of these
-works lack clear conclusions from this kind of analysis, which in our opinion is
-the result of two conceptual flaws of the approach. First of all, by only
-looking at the surface one ignores the properties of the potential in the volume
-surrounding the protein, i.e.\ one misses to analyze the potential which a GAG
-feels when it is in the neighborhood of a protein, and one especially misses to
-see how a GAG may be guided by a certain topology of the potential in space.
-Secondly, an unfortunately often overseen disadvantage of the surface-mapping
-approach is that the PB approximation of the electrostatic potential is
-\text{most} error-prone near the dielectric boundary, i.e.\ right on the
-molecular surface. In \cite{estatic_proteins_warshel_2006}, Warshel et al.\
-write that \enquote{the problem is not the well-known bulk contribution from the
-surroundings [\dots], but the polarization at the microscopic boundaries of the
-simulation spheres}.
+studies lack clear conclusions from this kind of analysis, which in my opinion
+is the result of two conceptual flaws of the approach. First of all, by only
+looking at the surface, the properties of the potential in the volume
+surrounding the protein are ignored, i.e.\ analysis of the potential which a GAG
+feels when it is in the neighborhood of a protein is missed. Especially, one
+misses to see how a GAG may be guided by a certain topology of the potential in
+space. Secondly, an unfortunately often overseen disadvantage of the
+surface-mapping approach is that the PB approximation of the electrostatic
+potential is \text{most} error-prone near the dielectric boundary, i.e.\ right
+on the molecular surface: Warshel et al.\ write that \enquote{the problem is not
+the well-known bulk contribution from the surroundings [\dots], but the
+polarization at the microscopic boundaries of the simulation spheres}
+\cite{estatic_proteins_warshel_2006}.
 
-The data we obtained from PBSA are the values of the electrostatic potential on
-the grid centers of a three-dimensional grid, spanning a volume of a certain
-size including the protein as well as its surroundings. In contrast to what is
-usually done, we decided to analyze the properties of the electrostatic
-potential within the entire protein-surrounding volume, \textit{i)} for working
-around the uncertainty of the data near the boundary, and \textit{ii)} for
-looking at the complete picture.
+The data obtained from PBSA are the values of the electrostatic potential on the
+grid centers of a three-dimensional grid, spanning a volume of a certain size
+including the protein as well as its surroundings. In contrast to what is
+usually done, I decided to analyze the properties of the electrostatic potential
+within the entire protein-surrounding volume, \textit{i)} for working around the
+uncertainty of the data near the boundary, and \textit{ii)} for not ignoring the
+protein neighborhood.
 
-We therefore analyzed the topology and strength of the potential with an
-isosurface representation while varying the isosurface value. This procedure,
-which will become more clear in \cref{bspred:appl_discussion} below, allows for
+Therefore, the topology and strength of the potential with an was analyzed with
+an isosurface representation while varying the isovalue. This procedure, which
+will become more clear in \cref{bspred:appl_discussion} below, allows for
 understanding the shape of the potential in space as well as how strong it would
 affect a ligand. Additionally, we determined a characteristic isovalue
 individually for each protein under investigation, for the case where only a
@@ -184,11 +189,11 @@ bound state. The isosurface visualization was performed using VMD
 \section{Application to reference systems}
 \label{bspred:application}
 
-We have analyzed the electrostatic potential of the following experimentally
-characterized and well-understood protein-GAG systems: basic fibroblast growth
-factor (FGF2) in complex with a heparin (HP) tetrasaccharide, PDB ID 1BFB,
+The electrostatic potential of the following experimentally characterized
+protein-GAG systems was analyzed: basic fibroblast growth factor (FGF2) in
+complex with a heparin (HP) tetrasaccharide, PDB ID 1BFB,
 \SI{1.9}{\angstrom} resolution; the CD44 hyaluronic acid binding domain in
-complex with a hyaluronan heptasaccharide (HA), PDB ID 2JCQ,
+complex with a hyaluronan (HA) heptasaccharide, PDB ID 2JCQ,
 \SI{1.3}{\angstrom}; and stromal cell-derived factor-1 (SDF-1) in complex with a
 HP disaccharide, PDB ID 2NWG, \SI{2.1}{\angstrom}.
 
@@ -208,10 +213,9 @@ HP disaccharide, PDB ID 2NWG, \SI{2.1}{\angstrom}.
 \includegraphics[width=0.9\textwidth]{gfx/bspred/fgf2_coulomb_isosurfaces_different_values_03_ds.pdf}
 \caption[]{
 Isosurface representation of FGF2's Coulomb potential (blue), shown for four
-different isovalues isovalues $\Phi$, in increasing order. The molecular surface
-of FGF2 is shown in gray, its heparin ligand pose as determined experimentally
-is shown as sticks with carbon atoms in orange (structure taken from PDB ID
-1BFB).}
+different isovalues $\Phi$ in increasing order. The molecular surface of FGF2
+is shown in gray, the heparin ligand pose as determined experimentally is shown
+as sticks with carbon atoms in orange (structure taken from PDB ID 1BFB).}
 \label{fig:bspred:fgf2_multi_iso}
 \end{figure}
 
@@ -228,31 +232,29 @@ smallest of the four isovalues with
 \SI{2.2}{\kilo\calory\per\mole\per\elementarycharge}. This is still a strong
 potential, yielding significant potential energies for charged ligand molecules:
 \SI{2.2}{\kilo\calory\per\mole} is almost four times larger than the thermal
-energy at \SI{300}{\kelvin}. From this representation we learn that FGF2 is
-highly polar on its global scale: in the depicted top direction, the isosurface
-protrudes into space far beyond the molecular surface, whereas it does not
-surpass the molecular surface at the bottom. We conclude that FGF2 may interact
-with GAGs over large distances (several times larger than what can be
-considered a molecular contact), and with a clear preference towards one side
-of the protein (the top side in the orientation as shown in
-\cref{fig:bspred:fgf2_multi_iso}). Furthermore, we observe that the
-experimentally determined natural heparin ligand pose is bound to that side of
-FGF2.
+energy at \SI{300}{\kelvin}. \Cref{fig:bspred:fgf2_multi_iso}a shows that FGF2
+is highly polar on its global scale: in the depicted top direction, the
+isosurface protrudes into space far beyond the molecular surface, whereas it
+does not surpass the molecular surface at the bottom. Hence, FGF2 may interact
+with GAGs over large distances (several times larger than what can be considered
+a molecular contact), and with a clear preference towards one side of the
+protein (the top side in the orientation as shown in
+\cref{fig:bspred:fgf2_multi_iso}). Furthermore, the experimentally determined
+natural heparin ligand pose is located on that side of FGF2.
 
 Panels a, b, and c of \cref{fig:bspred:fgf2_multi_iso} visualize the process of
 increasing the isovalue while observing the response of the isosurface. This
 process serves two purposes. Firstly, the shape change of the isosurface with
 increasing isovalue provides insight about the gradient of the potential, i.e.
 the direction into which a negatively charged molecule would be \textit{guided}
-by the Coulomb potential once caught. Secondly, it allows for further narrowing
-down those regions in space near the molecular surface of FGF2 where
-electrostatic attraction is strongest, because the isosurface protrudes less and
-less into space with increasing isovalue. Regarding directionality, the
-isosurface clearly contracts itself towards a certain region on FGF2's surface,
-considering panels a, b, and c of \cref{fig:bspred:fgf2_multi_iso}. It is that
-region where we also find the experimentally determined ligand pose. In panel c
-we observe that there is only a small region in space outside of FGF2 where the
-Coulomb potential is as large as
+by the Coulomb potential. Secondly, it allows for further narrowing down those
+regions in space near the molecular surface of FGF2 where electrostatic
+attraction is strongest, because the isosurface protrudes less and less into
+space with increasing isovalue. Regarding directionality, the isosurface clearly
+contracts itself towards a certain region on FGF2's surface, considering panels
+a, b, and c of \cref{fig:bspred:fgf2_multi_iso}. It is that region where also
+the experimentally determined ligand pose is to be found. Panel c shows a small
+region in the neighborhood of FGF2 where the Coulomb potential is as large as
 \SI{4.0}{\kilo\calory\per\mole\per\elementarycharge}, which is about seven times
 stronger than the thermal energy at room temperature, considering a single test
 charge. With an electrostatic attraction as strong as this and clearly no other
@@ -260,24 +262,24 @@ regions near the molecular surface of FGF2 with a comparably strong Coulomb
 potential, it is unlikely that a negatively charged ligand molecule tends to
 interact anywhere else with FGF2 than in that region.
 
-\Cref{fig:bspred:fgf2_multi_iso}d shows the isosurface for what we call the
+\Cref{fig:bspred:fgf2_multi_iso}d shows the isosurface for what I call the
 \textit{characteristic} isovalue, which (roughly) is that isovalue for which
 only a residual part of the isosurface is protruding into space further than the
 molecular surface of the receptor protein. The goal of this representation is to
 scan the direct vicinity of the molecular surface of the protein for the regions
 of strongest electrostatic attraction, and to be able to quantify that
-attraction. In case of FGF2, we found that value to be about
+attraction. In case of FGF2, that value was found to be about
 \SI{6}{\kilo\calory\per\mole\per\elementarycharge}, which is about 10 times
 larger than the thermal energy. While the isosurface representation in panel c
 localizes the region of interest within a volume still larger than the size of
-the heparin ligand, the isosurface in panel d narrows it further down to one
-major \enquote{hot spot}. We observe a match between the position of this hot
-spot and the position of those two sulfate groups of the heparin ligand that are
-the main anchors of the interaction between FGF2 and heparin
-\cite{faham_heparin_1996}, which is quite a remarkable result. Overall, the
-topology of FGF2's electrostatic potential \textit{unambiguously} suggests
+the heparin ligand, the isosurface in panel d narrows it further down to a more
+localized volume, which might be called \enquote{hot spot}. Further inspection
+shows that the position of this spot matches the position of those two sulfate
+groups of the heparin ligand that are the main anchors of the interaction
+between FGF2 and heparin \cite{faham_heparin_1996}. Overall, the topology of
+FGF2's electrostatic potential \textit{unambiguously} suggests
 \textit{one} site for potential GAG interaction, and that site very well matches
-the measured one.
+the experimentally determined one.
 
 
 \subsubsection{SDF-1}
