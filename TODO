@@ -5,6 +5,14 @@ headed by Dr. María Teresa Pisabarro at the Biotechnology Center (BIOTEC) of
 Technical University of Dresden. The research carried out in this thesis has been supported by the Klaus Tschira Foundation
 + plus logos
 
+- Fix (./02_structure_biology_il10.texLuaTeX warning (ext4): destination with the same
+ identifier (name{page.4}) has been already used, duplicate ignored
+<to be read again>
+\relax
+l.1 \chapter
+          {Structure and biology of the IL-10 system} [4] [5] [6]) [7]
+
+
 
 
 Content-wise:
