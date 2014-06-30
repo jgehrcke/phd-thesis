@@ -5,10 +5,14 @@
 % Include title page, created externally.
 % http://tu-dresden.de/die_tu_dresden/fakultaeten/fakultaet_mathematik_und_naturwissenschaften/deckblatt_dissertation
 
+% Disable hyperref links for these pages, to prevent page identifier collision.
+% http://tex.stackexchange.com/a/18927/11816
+\hypersetup{pageanchor=false}
 \includepdf{pdf_pages_for_inclusion/titlepage_01.pdf}
 % Start on recto page.
 \cleardoublepage
 \includepdf{pdf_pages_for_inclusion/logopage_01.pdf}
+\hypersetup{pageanchor=true}
 
 % The \frontmatter declaration sets the folios to be printed in lowercase roman
 % numerals, starts the page numbering from i, and prohibits any numbering of
