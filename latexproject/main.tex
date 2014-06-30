@@ -5,8 +5,18 @@
 % Include title page, created externally.
 % http://tu-dresden.de/die_tu_dresden/fakultaeten/fakultaet_mathematik_und_naturwissenschaften/deckblatt_dissertation
 
+\includepdf{pdf_pages_for_inclusion/titlepage_01.pdf}
+% Start on recto page.
+\cleardoublepage
+\includepdf{pdf_pages_for_inclusion/logopage_01.pdf}
+
+% The \frontmatter declaration sets the folios to be printed in lowercase roman
+% numerals, starts the page numbering from i, and prohibits any numbering of
+% sectional divisions. Caption, equations, etc., will be numbered continuously.
 \frontmatter
-\include{abstract}
+
+\include{summary}
+
 \begin{adjustwidth}{-1.5cm}{-1.5em}
 \tableofcontents
 \end{adjustwidth}
@@ -34,8 +44,9 @@
 
 %\OnehalfSpacing
 
-\appendixpage*
-\addappheadtotoc
+\appendix
+\appendixpage
+%\addappheadtotoc
 \include{appendix}
 
 %\normalfont
@@ -47,5 +58,6 @@
 %\listoftables
 %\footnotesize
 %\printindex
+
 
 \end{document}

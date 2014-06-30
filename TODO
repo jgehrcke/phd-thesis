@@ -1,9 +1,16 @@
 Technical / layout:
-- choose proper math font (fitting the normal text)
-- The BIBLIOGRAPHY pdf link points to the end of the document, this is wrong!
+- add a page like Sergey's page 5/200:
+The research in this thesis has been carried out at the Structural Bioinformatics Group
+headed by Dr. María Teresa Pisabarro at the Biotechnology Center (BIOTEC) of
+Technical University of Dresden. The research carried out in this thesis has been supported by the Klaus Tschira Foundation
++ plus logos
+
 
 
 Content-wise:
+- in NMR MD section, write more about why simulated annealing simulations, and give some
+references for similar work, and more literature in general about NMR MD restraint methods
+
 - in clustering section: point out somehow that this topic is often neglected
 by others (in published docking work)?
 
@@ -18,7 +25,7 @@ volume 2 chapter 12,  end-point free energy methods
 compare potential with that of DNA?
 
 
-DONE
-====
-- the hyphenation of hexasaccharide is wrong (seen: hexas-accharide)!
-  define proper hyphenation generally in preamble.
+Mayte first correction TODO:
+- write summary (up to three pages, according to promotionsordnung)
+- better introduce each chapter, with clarifying MY contribution.
+- clarify I WE etc
