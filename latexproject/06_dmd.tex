@@ -640,12 +640,8 @@ method for enhanced reproducibility and comparability of clustering results.
 % while classical $RMSd$ with identity-based matching ignores this characteristic.
 % This clustering approach is discussed in detail in \cref{chapter:clustering}.
 
-Prior to clustering, we transformed all docking solutions into the same
+Prior to clustering, all docking solutions were transformed into the same
 coordinate system via structural alignment of corresponding protein receptors.
-The parameters $\epsilon$ and $m$ were determined individually for each set of
-docking solutions with the goal to produce one cluster with at least four
-members and a minimal $\epsilon$-value.
-
 
 \subsection{Computing resources}
 
@@ -868,7 +864,7 @@ Trypsin + Ihb.  & 0.1 & 100 & 4.1 & 0.0 \\
 Clustering parameters of the most populated cluster for docking solution
 ensembles obtained via DMD and AD3. $\epsilon$ is the neighborhood search radius
 as used for DBSCAN clustering, $\delta$ measures the structural difference
-between two molecules (see Methods).
+between two molecules (see \cref{dmd:clustering_method}).
 }
 \label{tab:dmd:clustering_parameters}
 \end{table}
@@ -979,8 +975,10 @@ docking solutions than AD3.
 For CD44 in complex with the HA heptamer, both docking methods were only
 partially able to reproduce the experimentally determined ligand pose. Weak net
 electrostatic repulsion between receptor and ligand seemingly imposes a major
-challenge for both docking methods. AD3 and DMD solutions, however, are
-spatially consistent (data not shown).
+challenge for both docking methods.
+
+% AD3 and DMD solutions, however, are
+%spatially consistent (data not shown).
 
 Both docking methods had difficulties reproducing the experimentally determined
 binding poses of CathK and CathKmut in complex with CS4. In case of CathK-CS4,
@@ -1045,8 +1043,8 @@ particular practical value. While AD3 does not provide energetic data on the
 single-residue level, DMD allows for a single-residue energy decomposition
 (SRED) based on time-averaged free MD interaction energy data.
 
-For each TDS complex, we merged SRED data from the entire ensemble of DMD runs
-and extracted the set of anchoring residues, which are at most ten of the
+For each TDS complex, we merged the SRED data from the entire ensemble of DMD
+runs and extracted the set of anchoring residues, which are at most ten of the
 receptor residues contributing most (positively) to ligand binding. We also
 determined a reference set of anchoring residues from MD simulations of the
 experimentally determined structures. For each TDS complex, we then identified
@@ -1139,7 +1137,7 @@ GAG recognition is required.
 
 \subsubsection{Electrostatic potential analysis in the context of DMD}
 
-Our electrostatic potential evaluation procedure as discussed in
+The Coulomb potential evaluation procedure as presented and discussed in
 \cref{chapter:bspred} unambiguously identifies the GAG binding sites as
 determined experimentally for SDF-1-HP as well as the FGF2-HP systems. Analysis
 of CD44's Coulomb potential revealed that the net electrostatic interaction
@@ -1161,7 +1159,7 @@ ligand \enquote{entry lane} orientation for the tMD pulling process.
 
 \subsubsection{General discussion}
 
-In summary, our data suggest that DMD is able to yield docking results of high
+In summary, the data suggest that DMD is able to yield docking results of high
 significance, especially in case of receptor-ligand systems dominated by
 attractive electrostatic interaction. This success is well-grounded by the
 concept that the ligand --- while slowly approaching the receptor surface ---
@@ -1219,7 +1217,7 @@ anchoring residues in the receptor and their energetical ranking, meaningful
 results can be obtained by merging the properties of multiple docking solutions.
 
 Sampling performance is one of the main limitations of any docking method.
-Regarding our DMD protocol applied to the TDS complexes, we have shown that with
+Regarding the DMD protocol applied to the TDS complexes, we have shown that with
 100 independent DMD runs the sampling performance was sufficient for generating
 meaningful docking solution ensembles. Although the predictive significance of
 DMD in this study has been good enough, it can still be largely improved by a
