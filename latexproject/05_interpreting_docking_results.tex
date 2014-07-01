@@ -332,7 +332,8 @@ implementation details.
 \subsection{Architecture of cluster-pdb-structures}
 
 The software \enquote{cluster-pdb-structures} is a cross-platform command line
-program written for CPython 2.6 and 2.7, and provides the following features:
+program written for (C)Python \cite{pythonorg}, and provides the following
+features:
 
 \begin{itemize}
 \item PDB file parser with an atom type filter.
@@ -419,8 +420,9 @@ provided for example by the Intel Math Kernel Library \cite{intel_mkl_2014}.
     \PY{k}{return} \PY{n+nb+bp}{None}
 \end{Verbatim}
 \caption{$RMSatd$ distance metric implementation for Python using linear algebra
-methods as provided by SciPy, NumPy, and bottleneck, i.e.\ using heavily
-optimized native code and the BLAS/LAPACK system libraries whenever possible.}
+methods as provided by SciPy/NumPy \cite{scipy_numpy}, and bottleneck
+\cite{py_bottleneck} i.e.\ using heavily optimized native code and the
+BLAS/LAPACK system libraries whenever possible.}
 \label{listing:rmsatd}
 \end{listing}
 
