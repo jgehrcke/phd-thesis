@@ -242,13 +242,13 @@ analyzing molecular dynamics trajectories, although without thorough
 documentation and reasoning.
 
 
-\section{Clustering reproducibility and comparability}
+\section{Reproducibility and comparability of clustering results}
 \label{clustering_param_opt}
 
 One of the superordinate goals of docking solution ensemble clustering is to
 make a systematic comparison among multiple docking studies possible, i.e.\ to
-allow for comparing the properties of docking solution ensembles of different
-docking studies. Comparability of clustering results on the other hand
+allow for comparison of the properties of docking solution ensembles of
+different docking studies. Comparability of clustering results on the other hand
 necessitates a \textit{reproducible} clustering method.
 
 Obviously, the clustering analysis outcome (i.e.\ the grouping of objects)
@@ -281,8 +281,8 @@ compared \textit{i)} via the grouping itself and \textit{ii)} via the clustering
 parameters that describe group properties.
 
 Naturally, some boundary conditions must be provided by the user in order to
-guide an automated, reproducible procedure for ideal clustering parameter
-determination. That is why we have decided to transform the standard $\epsilon$,
+guide an automated reproducible procedure for ideal clustering parameter
+determination. That is why I have decided to transform the standard $\epsilon$,
 $m$ DBSCAN parameter space to an advanced $N_{min}$, $M_{min}$ parameter space,
 whereas $N_{min}$ is the minimal number of clusters that must be found, and
 $M_{min}$ defines the minimal number of members within each cluster to be found.
@@ -293,8 +293,9 @@ analyses --- which ensures comparability.
 Transformation from the simplified parameter space to the $\epsilon$, $m$ space
 requires optimization of the $\epsilon$, $m$ parameters via \textit{multiple}
 DBSCAN invocations on the same data set with the goal to minimize a certain
-target function $F(\epsilon, m)$. We built a simple yet useful target function
-that ensures maximum expressiveness of the $\epsilon$ and $m$ parameters:
+target function $F(\epsilon, m)$. What follows is a simple yet useful target
+function that ensures maximum expressiveness of the $\epsilon$ and $m$
+parameters:
 
 \begin{equation}
 F(\epsilon, m) =
@@ -319,14 +320,14 @@ on the right side of the transition.
 
 \section{Clustering method for GAGs: implementation details}
 
-We have implemented a clustering method optimized for GAG docking solution
-ensemble clustering. According to the considerations above, we chose DBSCAN as
-clustering algorithm, which is appropriate for molecular structure clustering in
-general, and the $RMSatd$ distance metric, which is optimized for quantifying
-the positional similarity between any two given GAG molecules. We implemented
-the clustering method using modern software architecture and provide it as open
-source software. This part describes methodological and well as implementation
-details.
+I created a novel clustering software implementing the methods described above.
+Specifically, this software implements DBSCAN as the clustering algorithm
+(appropriate for molecular structure clustering in general), and $RMSatd$ as the
+distance metric (which is optimized for quantifying the positional similarity
+between any two given GAG molecules). The software was developed using modern
+architecture paradigms and is provided under an open source license. The
+following parts describe further methodological details and well as
+implementation details.
 
 \subsection{Architecture of cluster-pdb-structures}
 
@@ -334,23 +335,25 @@ The software \enquote{cluster-pdb-structures} is a cross-platform command line
 program written for CPython 2.6 and 2.7, and provides the following features:
 
 \begin{itemize}
-\item PDB file parser with atom type filter
-\item Agglomerative hierarchical clustering (dendrogram display supported)
-\item DBSCAN clustering and parameter optimization
-\item $RMSatd$ distance metric calculation
+\item PDB file parser with an atom type filter.
+\item Agglomerative hierarchical clustering (dendrogram display supported).
+\item DBSCAN clustering and parameter optimization.
+\item $RMSatd$ distance metric calculation.
 \item Automatic cluster statistics creation, various options for sorting
-\item Comprehensive output: cluster information is provided as JSON data,
-molecular structures as PDB files, output in a meaningful directory structure
-\item Well-documented command line interface
+clusters.
+\item Cluster information is provided as JavaScript Object
+Notation (JSON) data.
+\item Well-documented command line interface.
 \end{itemize}
 
 The major bottleneck for the runtime of the clustering analysis is the $RMSatd$
 distance matrix calculation. In order to keep the runtime for common clustering
-scenarios in the order of seconds instead of hours, we efficiently distribute
-the distance matrix calculation over multiple CPU cores (input: shared read-only
-memory on POSIX-compliant systems, output collected through pipes). Furthermore,
-the individual $RMSatd$ metric calculation as well as the DBSCAN implementation
-are heavily optimized, as described in the following sections
+scenarios in the order of seconds instead of hours, the distance matrix
+calculation becomes efficiently distributed over multiple CPU cores (input:
+shared read-only memory on POSIX-compliant systems, output collected through
+pipes). Furthermore, the individual $RMSatd$ metric calculation as well as the
+DBSCAN implementation are heavily optimized, as described in the following
+sections
 \ref{impl_rmsatd} and \ref{impl_dbscan}.
 
 
@@ -364,7 +367,7 @@ $n$ being the number of structures in the ensemble. For common ensemble sizes of
 \num{e2} or \num{e3} the distance matrix calculation takes significantly more
 time than the subsequent clustering, subject to the condition that the
 clustering algorithm is implemented efficiently. Since the distance matrix
-calculation is the bottleneck of the entire clustering analysis, we developed an
+calculation is the bottleneck of the entire clustering analysis, I created an
 algorithm that calculates the $RMSatd$ metric using linear algebra methods, and
 therefore takes advantage of the heavily optimized Basic Linear Algebra
 Subprograms (BLAS) / Linear Algebra Package (LAPACK) math operations, as
@@ -436,10 +439,9 @@ achievable on any given classical computing system.
 
 At the time of prototyping cluster-pdb-structures, there has only been one open
 source Python implementation of the DBSCAN algorithm \cite{scikit_learn}. Since
-that code was rather inefficient, we created a custom implementation where we
-used NumPy \cite{scipy_numpy} for efficiently implementing the object
-neighborhood discovery. The corresponding code is shown in Listing
-\ref{listing:dbscan}.
+that code was rather inefficient, I created a custom implementation where NumPy
+\cite{scipy_numpy} is used for efficiently implementing the object neighborhood
+discovery. The corresponding code is shown in Listing \ref{listing:dbscan}.
 
 \begin{listing}
 \begin{Verbatim}[fontsize=\tiny,commandchars=\\\{\}]
@@ -495,17 +497,16 @@ neighborhood discovery. The corresponding code is shown in Listing
 \end{Verbatim}
 \caption{
 Python DBSCAN implementation. Object neighborhood discovery is done via bool
-masking on a two-dimensional NumPy array, i.e.\ using heavily optimized native
-code.
-}
+masking on a two-dimensional NumPy \cite{scipy_numpy} array, i.e.\ using heavily
+optimized native code. }
 \label{listing:dbscan}
 \end{listing}
 
 \subsection{Parameter optimization}
 
 The parameter optimization as motivated in section \ref{clustering_param_opt}
-has been implemented as a two-step minimization protocol: a global minimization
-of the target function with a brute force method is followed by a local
+was implemented as a two-step minimization protocol. A global minimization of
+the target function with a brute force method is followed by a local
 minimization: on a pre-defined grid of about \num{e2} $\epsilon$, $m$ parameter
 value pairs, the brute force minimization finds the ideal value pair. For
 further parameter optimization the Nelder-Mead simplex algorithm
@@ -529,9 +530,8 @@ The clustering methodology described in this chapter conceptually ensures the
 interpretability of GAG docking results. The DBSCAN parameter optimization
 allows for a reproducible clustering analysis and enables systematic comparisons
 among different docking studies. The described clustering approach has become
-standard procedure in the Pisabarro research group. It has been used in the
-context of published work, such as in \cite{franz_cathepsin_2013}
-and \cite{dmd_samsonov_gehrcke_2014}.
+standard procedure in the Pisabarro research group and is already being used
+in a variety of studies \cite{franz_cathepsin_2013,dmd_samsonov_gehrcke_2014}.
 
 
 
