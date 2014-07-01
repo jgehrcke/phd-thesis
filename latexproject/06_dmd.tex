@@ -1263,8 +1263,8 @@ ring-internal restraints to explicitly impose a certain conformation on
 individual rings (as outlined in the Methods section) and then perform a number
 of independent DMD studies differing only in the combination of ring
 conformations -- an approach which has recently been proposed by Muñoz-García
-and co-workers {\cite{conf_idoa_timeavg_restraints_2013}}. As we have shown
-previously, the MM-PBSA approach is capable of distinguishing GAG poses
+and co-workers {\cite{conf_idoa_timeavg_restraints_2013}}. As shown in a
+previous study, the MM-PBSA approach is capable of distinguishing GAG poses
 differing only in the conformation of one single ring
 \cite{Samsonov_rings_cr_2013}.
 
@@ -1277,10 +1277,10 @@ incorporating six modern GPU cards (GTX 580 in this case).
 
 \subsection{Conclusions}
 
-In this study, we have established and tested DMD, a targeted molecular
-dynamics-based protocol for local docking developed for specifically tackling
-the challenges imposed by highly flexible systems dominated by electrostatic
-interaction, such as protein-GAG systems.
+Here, we have described and validated DMD, a targeted molecular dynamics-based
+protocol for local docking developed for specifically tackling the challenges
+imposed by highly flexible systems dominated by electrostatic interaction, such
+as protein-GAG systems.
 
 In particular, flexible treatment of the receptor copes with the fact that GAGs
 usually bind to charged surface patches on the receptor comprised of highly
@@ -1294,14 +1294,14 @@ force in DMD while slowly approaching the ligand towards the receptor. A long
 free MD simulation and the flexible treatment of the ligand allow for an
 extensive sampling of the GAG-internal degrees of freedom.
 
-We show that DMD has high predictive significance for systems dominated by
+It was shown that DMD has high predictive significance for systems dominated by
 electrostatic attraction. Our data implicate that via proper selection of DMD
 parameters such as pulling velocity, ligand displacement distance and the number
-of independent repetitions, sufficient sampling is achievable. We demonstrate
-that in some cases the simple analysis of the spatial distribution of the
-electrostatic potential of the receptor can lead to a reliable prediction of the
-GAG binding region and therefore offers itself as a useful tool for defining the
-target region on the receptor surface as required by DMD.
+of independent repetitions, sufficient sampling is achievable. It was
+demonstrated that in some cases the simple analysis of the spatial distribution
+of the electrostatic potential of the receptor can lead to a reliable prediction
+of the GAG binding region and therefore offers itself as a useful tool for
+defining the target region on the receptor surface as required by DMD.
 
 Regarding the spatial distribution of docking solutions, DMD generally yields
 results comparable to AD3. Nevertheless, DMD performs better in terms of
