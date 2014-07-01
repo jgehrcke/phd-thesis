@@ -5,7 +5,7 @@
 % American Chemical Society’s Policy on Theses and Dissertations
 % http://pubs.acs.org/userimages/ContentEditor/1218205107465/dissertation.pdf
 
-This chapter is a customized version of the publication titles
+This chapter is a customized version of the publication titled
 \enquote{Flexibility and Explicit Solvent in Molecular Dynamics-Based Docking of
 Protein-Glycosaminoglycan Systems}, which has been published in the
 \textit{Journal of Chemical Information and Modeling} in 2014
@@ -298,18 +298,18 @@ limited to the final fragment of free MD, as indicated in green.}
 \end{figure}
 
 
-First of all, we need to clarify which fractions of the trajectories of a DMD
-study are interesting for data extraction. Method characterization for sure
-requires analysis of all trajectory data created. Application of the method,
-however, focuses on docking solution \textit{generation} and
-\textit{characterization}. For this task, it is required to ignore most parts of
-the trajectory data, namely the entire tMD process as well as the first major
-part of the free MD simulations. These parts are strongly relevant for sampling,
-they however are not applicable for characterizing the final state of a DMD run,
-i.e.\ the \textit{docking solution} corresponding to that run. That is why we
-have (arbitrarily) decided to use the last \SI{1}{\nano\second} of the free MD
-simulation, for extracting data about a single docking solution. For
-clarification, \cref{fig:dmd:timeline} shows the relation of a \enquote{DMD
+First of all, clarification is needed regarding which fractions of the
+trajectories of a DMD study are interesting for data extraction. Method
+characterization for sure requires analysis of all trajectory data created.
+Application of the method, however, focuses on docking solution
+\textit{generation} and \textit{characterization}. For this task, it is required
+to ignore most parts of the trajectory data, namely the entire tMD process as
+well as the first major part of the free MD simulations. These parts are
+strongly relevant for sampling, they however are not applicable for
+characterizing the final state of a DMD run, i.e.\ the \textit{docking solution}
+corresponding to that run. That is why here we use the last \SI{1}{\nano\second}
+of the free MD simulation for extracting data about a single docking solution.
+For clarification, \cref{fig:dmd:timeline} shows the relation of a \enquote{DMD
 study} and single \enquote{DMD runs}, as well as a time line of a single DMD run
 with specific labeling of the time interval relevant for data extraction.
 
@@ -340,12 +340,12 @@ receptor.
 \end{itemize}
 
 These quantities can be convenient for automatically filtering DMD runs, e.g.\
-for separating out those docking solutions where receptor and ligand are not in
-contact with each other, by pure geometric criteria. Dynamic quantities on the
-other hand implicate analysis of multiple MD trajectory frames. That is, they
-are based on multiple sets of coordinates that represent the \textit{dynamic}
-nature of the system as simulated by the MD method. Meaningful examples of such
-dynamic quantities are:
+for separating out those solutions where receptor and ligand are not in contact
+with each other, by pure geometric criteria. Dynamic quantities on the other
+hand implicate analysis of multiple MD trajectory frames. That is, they are
+based on multiple sets of coordinates that represent the \textit{dynamic} nature
+of the system as simulated by the MD method. Meaningful examples of such dynamic
+quantities are:
 
 
 \begin{itemize}
@@ -364,27 +364,6 @@ $RMSd$, i.e.\ the receptor defines the reference coordinate system, and not the
 ligand. Hence, the standard deviation of this $RMSd$ time series represents the
 overall mobility of the ligand with respect to the receptor.
 
-\item The average number of hydrogen bonds established between ligand and
-receptor. For simple analyses, it is safe and established to infer hydrogen
-bonds by simple atom type, distance, and angle criteria
-\cite{hbonds_crystal_survey,hbonds_sulfur_1991}, as implemented in the MD
-trajectory analysis software cpptraj \cite{cpptraj_2013}. The average number of
-hydrogen bonds throughout the tail of the free MD trajectory gives quite useful
-clues about how many high affinity atomic contacts are established in the
-binding mode described by the docking solution. The and the corresponding
-standard deviation of this time series expresses the stability of the hydrogen
-bonding network.
-
-\item Hydrogen bonds can also be analyzed by tracking the existence of specific
-acceptor-donor atom pairs over time, which allows for determination of the time
-fraction of occupancy of such a specific pair. Acceptor-donor atom pairs can
-then be ranked by their relative occupancy, in order to determine the importance
-of single hydrogen bonds.
-
-\item Hydrogen bonding can also be analyzed by tracking the occupancy of single
-donors or acceptors over time, yielding the importance of single atoms in the
-ligand or atoms/amino acid residues in the protein receptor.
-
 \item Estimation of the free energy of binding via end-point free energy methods
 such as MM-PBSA or MM-GBSA (cf.\ \cref{methods:mmpbsa_mmgbsa}). These methods
 are usually applied to a time series of MD trajectory frames, and yield an
@@ -399,12 +378,37 @@ a specialized form of the MM-GBSA analysis (cf.\ \cref{methods:mmpbsa_mmgbsa}).
 SRED assigns an energy value for each amino acid residue in the protein receptor
 and therefore enables meaningful ranking of such residues by importance for
 ligand binding.
+
+\item Hydrogen bonding quantities:
+\begin{itemize}
+\item The average number of hydrogen bonds established between ligand and
+receptor. For simple analyses, it is safe and established to infer hydrogen
+bonds by simple atom type, distance, and angle criteria
+\cite{hbonds_crystal_survey,hbonds_sulfur_1991}, as implemented in the MD
+trajectory analysis software cpptraj \cite{cpptraj_2013}. The average number of
+hydrogen bonds throughout the tail of the free MD trajectory gives quite useful
+clues about how many strongly bound atomic contacts are established in the
+binding mode described by the docking solution. The corresponding standard
+deviation of this time series expresses the stability of the hydrogen bonding
+network.
+
+\item Hydrogen bonds can also be analyzed by tracking the existence of specific
+acceptor-donor atom pairs over time, which allows for determination of the time
+fraction of occupancy of such a specific pair. Acceptor-donor atom pairs can
+then be ranked by their relative occupancy, in order to determine the importance
+of single hydrogen bonds.
+
+\item Hydrogen bonding can also be analyzed by tracking the occupancy of single
+donors or acceptors over time, yielding the importance of single atoms in the
+ligand or atoms/amino acid residues in the protein receptor.
+\end{itemize}
+
 \end{itemize}
 
 
 \subsubsection{Merge the data: extraction of ensemble properties}
 
-We have stressed before that an essential concept of DMD is the creation and
+It was stressed before that an essential concept of DMD is the creation and
 analysis of an entire \textit{ensemble} of docking solutions. In fact, the
 characterization of single docking solutions does not necessarily yield
 trustable or even meaningful insights about the protein-ligand system under
@@ -415,10 +419,10 @@ same kind. As of the validity of the underlying model, a converged result of MD
 simulations is usually \textit{reliable} and \textit{meaningful}. Therefore, we
 seek to extract ensemble properties of a DMD study. \textit{Static}
 coordinate-based docking solution ensemble evaluation by means of clustering has
-been discussed before in \cref{chapter:clustering}. Here, we describe an
-additional approach for extracting \textit{dynamic} DMD study ensemble
-properties that are likely to provide essential insights about the molecular
-system under investigation.
+been discussed before in \cref{chapter:clustering}. Here, an additional approach
+is described for extracting \textit{dynamic} DMD study ensemble properties that
+are likely to provide essential insights about the molecular system under
+investigation.
 
 Two of the single docking solution analysis types listed above are qualified for
 \textit{merging} their results among (nearly) \textit{all} docking solutions:
@@ -429,7 +433,7 @@ study provides the corresponding data, rendering the outcome significant and
 trustable. Essentially, the merge operation is comprised of \textit{filtering}
 useful docking solutions, and \textit{averaging} their corresponding quantities
 for single residues in the protein receptor. The filtering step makes sure that
-no invalid (e.g.\ unbound) docking solutions contribute to the final result. The
+no invalid (e.g.\ unbound) solutions contribute to the final result. The
 averaging operation merges the ensemble data, enriched with statistics: it
 usually makes sense to track standard deviation and standard error of the mean
 in order to decide whether the merge provides valid data or not. The result of
@@ -442,22 +446,26 @@ residues that are most important for binding in most of the single DMD runs ---
 just in a systematic and reliable way.
 
 
-\section{DMD implementation for this thesis project}
+\section{DMD implementation}
 
 \subsection{Molecular dynamics protocol}
 
-The DMD-related molecular dynamics simulations performed in the context of this
-PhD project were set up, performed, and analyzed using Amber 12 and AmberTools
-12 \cite{case_amber_11}. The FF99SB force field was used for parameterization of
-the peptidic parts in the investigated complexes. GAG force field parameters
-were created based on GLYCAM 06 version g \cite{kirschner_glycam06:_2008} and
-sulfate partial charges obtained by RESP fitting calculations at the level of
-6-31(d)G for methylsulfate. All systems were solvated in a box of TIP3P water
-with a minimum of \SI{8}{\angstrom} distance between solute and box boundaries.
-The systems were neutralized by adding Na$^{+}$ or Cl$^{-}$ counterions. The MD
-time integration step was set to \SI{2}{\femto\second}, whereas bonds including
-hydrogen atoms were length-constrained by the standard SHAKE method. During MD,
-non-bonded interactions were switched off for atom pairs further apart than
+The concept of DMD as introduced before can be realized using various molecular
+dynamics frameworks. Likewise, the implementation details (especially the
+molecular dynamics protocol) may be chosen with quite some freedom. The
+DMD-related molecular dynamics simulations performed in the context of the work
+presented here were set up, performed, and analyzed using Amber 12 and
+AmberTools 12 \cite{case_amber_11}. The FF99SB force field was used for
+parameterization of the peptidic parts in the investigated complexes. GAG force
+field parameters were created based on GLYCAM 06 version g
+\cite{kirschner_glycam06:_2008} and sulfate partial charges obtained by RESP
+fitting calculations at the level of 6-31(d)G for methylsulfate. All systems
+were solvated in a box of TIP3P water with a minimum of \SI{8}{\angstrom}
+distance between solute and box boundaries. The systems were neutralized by
+adding Na$^{+}$ or Cl$^{-}$ counterions. The MD time integration step was set to
+\SI{2}{\femto\second}, whereas bonds including hydrogen atoms were
+length-constrained by the standard SHAKE method. During MD, non-bonded
+interactions were switched off for atom pairs further apart than
 \SI{8}{\angstrom}. The Particle Mesh Ewald method was used for treating
 long-range electrostatic interactions.
 
@@ -550,13 +558,13 @@ homeyer_gohlke_2012}}.
 
 \section{Validation study}
 
-In the validation study described in this section, we applied DMD to several
-previously literature-reported protein-GAG systems. We directly compared our
-results to the corresponding references. That is, we compared docking solutions
-to experimentally obtained structures and computationally described key binding
-residues to those previously annotated in literature. Additionally, we compared
-DMD to AutoDock 3 (AD3), which is according to literature one of the most often
-used classical docking methods for investigating protein-GAG systems
+In the validation study described in this section, DMD was applied to several
+previously literature-reported protein-GAG systems. The results were directly
+compared to the corresponding references. That is, docking solutions were
+compared to experimentally obtained structures and computationally described key
+binding residues to those previously annotated in literature. Additionally, DMD
+was compared to AutoDock 3 (AD3), which is according to literature one of the
+most often used classical docking methods for investigating protein-GAG systems
 \cite{japan_docking_ad3_clustering,pichert_characterization_2012,%
 imberty_perez_protgag_comp_book_2006,franz_cathepsin_2013}. Furthermore, in
 \cite{samsonov_docking_2011}, AD3 performed best for protein-GAG systems in
@@ -612,22 +620,25 @@ otherwise, default parameters were used. Spatial clustering was performed with
 the top 100 solutions according to the AD3 score.
 
 \subsubsection{Spatial clustering of docking results}
+\label{dmd:clustering_method}
 
 In order to evaluate the spatial distribution of docking solutions generated by
-either docking method, we used the DBSCAN clustering algorithm
-\cite{dbscan_ester1996}. Based on the  parameters $\epsilon$ (neighborhood
-search radius) and $m$ (the minimal neighborhood size), DBSCAN assigns data
-points to clusters or classifies them as noise.
+either docking method, we used the clustering method described in
+\cref{chapter:clustering}, i.e.\ the DBSCAN clustering algorithm
+\cite{dbscan_ester1996} which is appropriate for clustering molecular structures
+by similarity, the $RMSatd$ distance metric, from here on called $\delta$, which
+accounts for symmetry and periodicity of GAGs, and the parameter optimization
+method for enhanced reproducibility and comparability of clustering results.
 
-Since spatial clustering evaluates distances between data points rather than
-data points themselves, the distance metric used for calculation of the
-similarity between two structures must be properly adjusted to the scientific
-aim. Thus, we define a distance metric $\delta$ as the root mean square of
-pairwise atomic distances while pairing up spatially closest atoms of the same
-type. This distance metric accounts for periodicity of functional groups in GAGs
-and considers two GAGs shifted by $n$ periodic units as structurally similar,
-while classical $RMSd$ with identity-based matching ignores this characteristic.
-This clustering approach is discussed in detail in \cref{chapter:clustering}.
+% Since spatial clustering evaluates distances between data points rather than
+% data points themselves, the distance metric used for calculation of the
+% similarity between two structures must be properly adjusted to the scientific
+% aim. Thus, we define a distance metric $\delta$ as the root mean square of
+% pairwise atomic distances while pairing up spatially closest atoms of the same
+% type. This distance metric accounts for periodicity of functional groups in GAGs
+% and considers two GAGs shifted by $n$ periodic units as structurally similar,
+% while classical $RMSd$ with identity-based matching ignores this characteristic.
+% This clustering approach is discussed in detail in \cref{chapter:clustering}.
 
 Prior to clustering, we transformed all docking solutions into the same
 coordinate system via structural alignment of corresponding protein receptors.
