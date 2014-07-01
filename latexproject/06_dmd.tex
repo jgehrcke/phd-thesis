@@ -5,8 +5,8 @@
 % American Chemical Society’s Policy on Theses and Dissertations
 % http://pubs.acs.org/userimages/ContentEditor/1218205107465/dissertation.pdf
 
-This chapter is a customized version of the publication \enquote{Flexibility and
-Explicit Solvent in Molecular Dynamics-Based Docking of
+This chapter is a customized version of the publication titles
+\enquote{Flexibility and Explicit Solvent in Molecular Dynamics-Based Docking of
 Protein-Glycosaminoglycan Systems}, which has been published in the
 \textit{Journal of Chemical Information and Modeling} in 2014
 \cite{dmd_samsonov_gehrcke_2014}. It describes a novel method, Dynamic Molecular
@@ -16,44 +16,38 @@ solvent in local molecular docking. The goal of this work has been to develop a
 proof of concept for an MD-based docking approach and to analyze its
 applicability for protein-GAG systems, for which it is conceptually well-suited:
 DMD exploits the electrostatics-driven attraction of a ligand to its receptor,
-treats both as entirely flexible and considers solvent explicitly.
-
-In the validation study presented here, DMD was shown to have high predictive
+treats both as entirely flexible and considers solvent explicitly. In the
+validation study presented here, DMD was shown to have high predictive
 significance for systems dominated by electrostatic attraction and demonstrated
 its capability to reliably identify the receptor residues contributing most to
 binding.
 
-Sergey Samsonov (SS) and Jan-Philip Gehrcke (JPG) equally contributed to the
-method development and validation study design. The figures have been prepared
-by JPG.
+Jan-Philip Gehrcke (JPG) and Sergey Samsonov (SS) equally contributed to the DMD
+method establishment and validation study design. JPG created the formal
+geometrical description of the method (\cref{dmd:data_production}) as well as
+the fundamental data analysis concepts (\cref{dmd:dataanalysis}). SS and JPG
+equally contributed to the molecular dynamics protocol development. SS conducted
+the test data set for the validation study, and collected most of the raw data
+for DMD and classical molecular docking. JPG designed and performed most of the
+data analysis (sampling validation, clustering analysis, and key residue
+identification (see \cref{dmd:results})). JPG and SS contributed to the
+discussion in equal terms. The figures have been prepared by JPG.
 
-
-., performed the analysis, and wrote the manuscript. ABC and GHI collected the data.
-
-The overall method development and study design was conducted by  in equal terms.
-
-
-
-A class of ligands for which docking performance    where we have
-published the description and validation of Dynamic Molecular Docking.
-
-
-
-\section{Abstract}
-We present Dynamic Molecular Docking (DMD), a novel
-targeted molecular dy\-namics-based protocol developed to address ligand and
-receptor flexibility as well as the inclusion of explicit solvent in local
-molecular docking. A class of ligands for which docking performance especially
-benefits from overcoming these challenges are glycosaminoglycans (GAGs). GAGs
-are periodic, highly flexible and negatively charged polysaccharides playing an
-important role in the extracellular matrix via interaction with proteins such as
-growth factors and chemokines. The goal of our work has been to develop a proof
-of concept for an MD-based docking approach and to analyze its applicability for
-protein-GAG systems. DMD exploits the electrostatics-driven attraction of a
-ligand to its receptor, treats both as entirely flexible and considers solvent
-explicitly. We show that DMD has high predictive significance for systems
-dominated by electrostatic attraction and demonstrate its capability to reliably
-identify the receptor residues contributing most to binding.
+% \section{Abstract}
+% We present Dynamic Molecular Docking (DMD), a novel
+% targeted molecular dy\-namics-based protocol developed to address ligand and
+% receptor flexibility as well as the inclusion of explicit solvent in local
+% molecular docking. A class of ligands for which docking performance especially
+% benefits from overcoming these challenges are glycosaminoglycans (GAGs). GAGs
+% are periodic, highly flexible and negatively charged polysaccharides playing an
+% important role in the extracellular matrix via interaction with proteins such as
+% growth factors and chemokines. The goal of our work has been to develop a proof
+% of concept for an MD-based docking approach and to analyze its applicability for
+% protein-GAG systems. DMD exploits the electrostatics-driven attraction of a
+% ligand to its receptor, treats both as entirely flexible and considers solvent
+% explicitly. We show that DMD has high predictive significance for systems
+% dominated by electrostatic attraction and demonstrate its capability to reliably
+% identify the receptor residues contributing most to binding.
 
 \section{Rational}
 
@@ -190,6 +184,7 @@ blue, orange) near the receptor surface.}
 
 \section{General method description}
 \subsection{Data production}
+\label{dmd:data_production}
 
 A DMD study for a given receptor-ligand complex implies performing $N$ (e.g.
 100) independent DMD runs. The number of independent repetitions $N$ must be
@@ -652,6 +647,7 @@ hardware \cite{amber_gpu_2012}.
 
 
 \subsection{Results and discussion}
+\label{dmd:results}
 
 \subsubsection{Sampling of the degrees of freedom of the ligand during DMD}
 
@@ -810,6 +806,7 @@ point of the method is not centered on but only in the vicinity of a real
 binding site, the latter most likely stands out during data analysis.
 
 \subsubsection{DMD performance}
+\label{dmd:performance}
 
 \begin{figure}
 \centering
