@@ -145,8 +145,8 @@ parameterization optimized for the IL-10-GAG system.
 
 For efficiently breaking the enormous amount of raw data produced by any DMD
 study down to human-interpretable essentials, I specified and implemented an
-automated data analysis framework. In this framework, every DMD run within a DMD
-study was assigned a unique identifier. Subsequently, for each DMD run all
+automated data analysis framework. In this framework, every DMD run within the
+DMD study was assigned a unique identifier. Subsequently, for each DMD run all
 \textit{static} and \textit{dynamic} quantities listed in
 \cref{dmd:dataanalysis} were extracted and assigned to the corresponding run
 identifier. As a result, each DMD study yielded a table of dimensions $N \times
@@ -160,12 +160,12 @@ clustered using the method described in \cref{chapter:bspred}.
 The resulting reduced set of data allows for a broad subsequent data analysis.
 For instance, any two single-run-derivable quantities can easily be correlated
 for understanding their relationship, or the distribution of any extracted
-quantity can easily be looked at and statistically evaluated. Furthermore, this
-data analysis framework allows for generating cluster statistics based on the
-\textit{clustering} of docking solutions. For instance, the average ligand
-mobility within a certain cluster is easy to obtain. This enables meaningful
-comparison of clusters by those properties, especially among \textit{different}
-DMD studies.
+quantity among all DMD runs can easily be looked at and statistically evaluated.
+Furthermore, this data analysis framework allows for generating cluster
+statistics based on the clustering of docking solutions. For instance, the
+average ligand mobility within a certain cluster is easy to obtain. This enables
+meaningful comparison of clusters by those properties, especially among
+\textit{different} DMD studies.
 
 
 \subsection{Computational framework}
@@ -209,34 +209,35 @@ gigabytes distributed in about $10^5$ files.
 Initially, the execution of a single DMD study was possible for us within about
 three weeks, using the \enquote{Atlas} resource pool in the supercomputing
 center of the TU Dresden (ZIH), which provisions a large number of AMD Opteron
-6274 CPUs. However, this system was affected by many technical issues, ran out
-of support by the ZIH, and did not reliably allow us to perform various DMD
+6274 CPUs. However, this system was affected by various technical issues, ran
+out of support by the ZIH, and did not reliably allow us to perform multiple DMD
 studies in parallel, or even increase the number of DMD run repetitions $N$. The
-in-house computing cluster of the BIOTEC, TU Dresden (the
-\enquote{biocluster}, comprised of about 30 machines) was out of question for
-performing DMD studies as of too few resources.
+computational capacity of the in-house computing cluster of the BIOTEC, TU
+Dresden (the \enquote{biocluster}, comprised of about 30 machines) was
+insufficient for performing DMD studies.
 
-For mitigating issues related to a lack of computing resources for DMD, we were
-early adopters of a new technology: the usage of graphics processing units
+For mitigating issues related to a lack of computing resources for DMD, and
+especially for the IL-10-GAG system investigation via DMD, I decided to become
+early adopter of a new HPC technology and use of graphics processing units
 (GPUs) for general purpose computing (\enquote{GPGPU} \cite{wikipedia_gpgpu}).
 Simply spoken, GPUs make heavy use of the so-called single instruction, multiple
 data paradigm (SIMD, see \cite{kirk2012programming_gpus} for further
 information), which matches common algorithms used in MD simulations very well.
-That is, MD simulations can take strong advantage of GPU architectures. Compared
-to classical computing architectures, this leads to \textit{i)} a significantly
-higher absolute simulation performance (measured in nanoseconds of simulated
-time per day) and \textit{ii)} a much better performance per financial cost
-ratio, considering acquisition cost as well as energy cost. With the MD
+That is, MD simulations can take strong advantage of GPU hardware architectures.
+Compared to classical computing architectures, this leads to \textit{i)} a
+significantly higher absolute simulation performance (measured in nanoseconds of
+simulated time per day) and \textit{ii)} a much better performance per financial
+cost ratio, considering acquisition cost as well as energy cost. With the MD
 simulation framework Amber 12 \cite{case_amber_12} and corresponding patches
 \cite{amber_12_patches}, the Amber developers were among the first to work on
 and release a solid and efficient MD implementation for GPUs (pmemd.cuda, see
 \cite{amber_gpu_2012,amber_gpu_pme_2013} for methodological details and
 validation).
 
-Correspondingly, we engineered a GPU computing cluster in our research group,
-which required substantial amounts of planning and testing, because no
-enterprise-level vendors were available for this kind of hardware. Hence, we
-composed this cluster based on raw hardware and software components, eventually
+Correspondingly, I built up a GPU computing cluster in our research group, which
+required substantial amounts of planning and testing, because no
+enterprise-level vendors were available for this kind of hardware. Hence, this
+cluster was composed based on raw hardware and software components, eventually
 yielding the following configuration:
 
 \begin{itemize}
@@ -253,12 +254,12 @@ libraries.
 %\item pmemd.cuda, built
 \end{itemize}
 
-With this infrastructure at hand, we were able to perform a single DMD study
+With this infrastructure at hand, I was able to perform a single DMD study
 within less than two weeks, without being dependent on \textit{external}
-resources. On top of that, from summer 2013 on we have been part of the testing
+resources. On top of that, from summer 2013 on I have been part of the testing
 period of the large-scale GPU computing cluster of the supercomputing center of
 the TU Dresden: as a section of their \enquote{Taurus} platform, they provide 80
-Nvidia CUDA GPU devices. All in all, with these GPU resources at hand, we were
+Nvidia CUDA GPU devices. All in all, with these GPU resources at hand, I was
 able to perform single DMD studies on a weekly basis, with a significantly
 increased number of DMD runs per study ($N=200$ or $300$). \hl{In Dresden, this
 would not have been possible using classical computing resources. keep this?}.
@@ -266,7 +267,7 @@ would not have been possible using classical computing resources. keep this?}.
 
 \subsubsection{Software architecture}
 
-Above, we derived that one DMD study is comprised of on the order of $10^3$
+Above, it was stated that one DMD study is comprised of on the order of $10^3$
 computing jobs, and that it requires storing hundreds of gigabytes of raw data
 distributed in about $10^5$ files. These numbers suggest that the management of
 corresponding jobs and data requires a well-engineered DMD controlling system.
@@ -275,22 +276,22 @@ recover from those: the likelihood for a single computing machine to fail times
 the number of machines involved in a DMD study integrated over the computing
 time yields a significant probability for the study to be affected by
 \textit{one or more} technical issues. In other words, there is a guarantee
-that something will go wrong. By experience we can tell that this prediction
-came true, and manual identification of corresponding issues was a daunting
-task, which is why we iteratively developed a system architecture that enables
-the efficient conduction of DMD studies.
+that something will go wrong. By experience I can tell that this prediction came
+true, and manual identification of corresponding issues was a daunting task,
+which is why I iteratively developed a system architecture that enables the
+efficient conduction of DMD studies.
 
 One requirement for this management architecture was to support all involved
 hardware platforms, i.e.\ the Taurus GPUs, the Taurus CPUs (for data analysis),
 the group-internal GPU cluster, and the biocluster CPUs (for data analysis),
 whereas these platforms alone involve three different batch scheduling systems.
 As all of these platforms are based on POSIX-compliant operating systems with
-reliable and well-performing file systems attached, we abstracted the data
+reliable and well-performing file systems attached, I abstracted the data
 structure for managing and monitoring a DMD study on top of the file system
 hierarchy, and implemented basic data creation, manipulation, and validation
 using well-established POSIX command line tools, incorporated in shell scripts.
 
-For many purposes of data validation and analysis we implemented Python
+For many purposes of data validation and analysis I implemented Python
 programs based on Biopython \cite{biopython_web} and SciPy/NumPy
 \cite{scipy_numpy} whenever appropriate. Data plotting was performed using
 the Python module Matplotlib \cite{matplotlib_web}. Iterative development and
