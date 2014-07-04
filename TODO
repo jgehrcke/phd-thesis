@@ -18,6 +18,8 @@ l.1 \chapter
 Content-wise:
 - abbreviations list?
 
+- intro: introduce N-terminus, used in chapter 7.1.
+
 - in NMR MD section, write more about why simulated annealing simulations, and give some
 references for similar work, and more literature in general about NMR MD restraint methods
 

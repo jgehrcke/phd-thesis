@@ -63,62 +63,68 @@ parameterization on any conclusion about the IL-10-GAG system, I decided to vary
 DMD focus point and entry lane among the DMD studies. One should note however,
 that in order to obtain reliable information about the impact of other
 variables, this one here should stay constant most of the time, which is why I
-decided to try only two different geometrical setups in the first round of DMD
-studies, and a final third geometrical parameterization in the second round of
-DMD studies.
+decided to try only two different geometrical setups in a first stage of DMD
+studies, and a final third geometrical parameterization in a second stage of
+DMD studies. The terms \textit{first stage} and \textit{second stage} will be
+used throughout the upcoming sections of this chapter.
 
-\item[3)] \textbf{The representation of IL-10's N-terminus in the MD
-simulations}. In IL-10's crystal structure with PDB 2ILK the first 5 residues of
-the N-terminus are not resolved as of their flexibility. The N-terminus is close
-to our main region of interest derived in \cref{chapter:bspred}. This is an
-unfortunate situation, because if this terminus plays a role in GAG recognition,
-it would not easily be possible for us to detect it --- modeling the behavior of
-such flexible / disordered terminus is not possible with all certainty and
-requires special sampling techniques on its own, not \textit{per se} combinable
-with DMD. Primarily, we take the flexibility and sequence as an argument that
-the N-terminus is surely less important for specific GAG interaction than the
-amino acid residues in the region we have identified. Since simulating the
-disordered N-terminus without special treatment is pointless, we have omitted
-these five residues from most of our MD simulations. However, for having a
-comparison, and for obtaining an idea about their possible impact, we decided to
-include them in at least one or two test case DMD studies.
+\item[3)] \textbf{The representation of IL-10's N-terminus in MD simulations}.
+In IL-10's crystal structure with PDB ID 2ILK the first 5 residues of the
+N-terminus are not resolved as of their flexibility. This N-terminus is
+spatially close to the putative GAG binding region derived in
+\cref{chapter:bspred}. This is an unfortunate situation, because if this
+terminus plays a role in GAG recognition, it would not easily be possible for us
+to detect it --- modeling the behavior of such a flexible / disordered terminus
+is not possible with all certainty and requires special sampling techniques on
+its own, not \textit{per se} combinable with DMD. However, the N-terminus is
+expected to be less important for specific GAG interaction than the amino acid
+residues in the region identified and since simulating the disordered N-terminus
+without special treatment is pointless, these five residues were omitted from
+most of the MD simulations. In addition, for having a comparison, and for
+obtaining an idea about its possible impact, I decided to include the
+N-terminus in at least one or two test case DMD studies.
 
-\item[4)] \textbf{The chemical configuration of GAG ligands.} Obviously, we had
-the hope to identify characteristic differences among different GAG types and
-lengths with respect to their interaction with our IL-10 region of interest.
-Therefore, we aimed to perform DMD studies with constant conditions while
-varying the chemical configuration of the GAG molecule. As of the limited amount
-of computational resources, we had to decide which GAG types/lengths are most
-interesting for our investigation and came up with the following selection:
+%, as of the strong electrostatic attraction towards that
+%\textit{static} region, and the  expect take the flexibility and sequence as an argument that
+
+
+\item[4)] \textbf{The chemical configuration of GAG ligands.} For identifying
+characteristic differences among different GAG types and lengths with respect to
+their interaction with IL-10 it was required to perform DMD studies with
+constant conditions while varying the chemical configuration of the GAG
+molecule. A decision was taken about which GAG types/lengths are most
+interesting for investigation, resulting in the following selection of GAG
+molecules:
 
 \begin{itemize}
 
-\item \textit{Heparin}, a must-have in this list, as its interaction with IL-10
-has been experimentally confirmed previously \cite{salek_ardakani_2000}. We
-decided to study heparin tetra- as well as hexasaccharides. In our DMD
-validation study we have shown that DMD is capable of properly sampling the
-internal degrees of freedom of GAG hexasaccharides. For longer GAGs, however, we
-would be uncertain regarding the sufficiency of the sampling and --- with that
---- the reliability of the results. Additionally, tetrasaccharide investigation
-is useful for observing potential (in)consistencies in our observations
-depending on GAG length. Disaccharide investigation, however, would likely be a
-waste of computational resources.
+\item \textit{Heparin} (HP), a must-have in this list, as its interaction with
+IL-10 has been experimentally confirmed previously \cite{salek_ardakani_2000}. I
+decided to investigate heparin tetra- as well as hexasaccharides: in the DMD
+validation study it was shown that DMD is capable of properly sampling the
+internal degrees of freedom of GAG hexasaccharides. For longer GAGs, however, it
+would be uncertain whether the sampling is sufficient and, with that, the
+reliability of the results. Investigating tetrasaccharides in addition to
+hexasaccharides is useful for observing potential (in)consistencies in the
+observations depending on GAG length. Disaccharide investigation, however, would
+likely be a waste of computational resources, since protein-GAG binding
+specificity can usually not be established for such short GAGs (the vast
+majority of GAGs in protein-GAG complexes in the PDB hast more than two sugar
+rings only).
 
-\item \textit{Hyaluronan}, which is the only natural GAG free of sulfation. As
-of its lack of sulfate groups, besides of being less charged, it has
-significantly different spatial properties than e.g.\ heparin: it is less bulky
-(i.e.\ it is slim).
+\item \textit{Hyaluronan} (HA), which is the only natural GAG free of sulfation.
+As of its lack of sulfate groups, besides of being less charged, it has
+significantly different spatial properties than e.g.\ heparin: it is less bulky.
 
-\item \textit{Chondroitin-4-sulfate}. The chondroitin sulfates are important
-representatives of the class of GAGs. Compared to heparin, the 4- and 6-
-variants of chondroitin sulfate have two sulfate groups less per disaccharide
-unit (only one) and are therefore less charged and less bulky.
-
-\item \textit{Chondroitin-6-sulfate}. Carbon 6 of the
-N-Acetyl\-ga\-lacto\-sa\-mine is sulfated, meaning that the sulfate group is
-protruding further into space than in case of chondroitin-4-sulfate, where the
-sulfate is attached directly to the ring (cf. \cref{intro:gags}), providing this
-GAG with quite different spatial properties than chondroitin-4-sulfate.
+\item \textit{Chondroitin-4-sulfate} (CS4) and \textit{Chondroitin-6-sulfate}
+(CS6). The chondroitin sulfates are important representatives of the class of
+GAGs. Compared to heparin, the 4- and 6- variants of chondroitin sulfate have
+two sulfate groups less per disaccharide unit (only one) and are therefore less
+charged and less bulky. In CS6, carbon 6 of the N-Acetyl\-ga\-lacto\-sa\-mine is
+sulfated, meaning that the sulfate group is protruding further into space than
+in case of CS4, where the sulfate is attached directly to the ring (cf.
+\cref{intro:gags}), providing this GAG with quite different spatial properties
+than CS4.
 
 \end{itemize}
 
@@ -126,14 +132,14 @@ GAG with quite different spatial properties than chondroitin-4-sulfate.
 
 \subsubsection{Iterative approach}
 
-For the global design of our DMD studies, we decided to take an iterative
-approach. In a first round, we aimed to gather experience about how the
-IL-10-GAG system responds to various kinds of DMD parameter changes.
-Furthermore, since the technical environment was unstable, we used this first
-round of studies for detecting and resolving technical issues. Hence, in this
-first round of studies, we varied the conditions according to all points
-described above, with the goal to obtain stable conditions applicable in a
-second round, together with an optimized geometrical DMD parameterization.
+For the global design of our DMD studies, I decided to take an iterative
+approach. In a first stage, I aimed to gather experience about how the IL-10-GAG
+system responds to various kinds of DMD parameter changes. Furthermore, since
+the technical environment was unstable, I used this first stage of studies for
+detecting and resolving technical issues. Hence, in this first stage of studies,
+I varied the conditions according to all points described above, with the goal
+to obtain stable conditions applicable in a second stage, together with an
+optimized geometrical DMD parameterization.
 
 
 \subsubsection{Automated DMD data analysis}
@@ -303,7 +309,7 @@ repository is available at \url{http://bit.ly/jgehrcke-phd-dmd-control}.
 \centering
 \includegraphics[width=1.0\textwidth]{gfx/dmdil10/round1_il10_ligandcenter_proteincore_sphere_top_and_side_001.jpg}
 \caption[]{Geometrical DMD parameterization used for most of the DMD studies
-in the first round. The IL-10 dimer is shown in gray ribbon representation (top:
+in the first stage. The IL-10 dimer is shown in gray ribbon representation (top:
 side view on the V-shape, bottom: top-down view on the V-shape). The C-alpha
 atom of methionine 154 in the human interleukin-10 sequence was selected as
 protein core atom (ribbon colored in orange). The focus point (small sphere
@@ -318,23 +324,23 @@ atoms after tMD.}
 \end{figure}
 
 \Cref{fig:dmdil10:dmd_geometry_round1} visualizes the geometrical DMD
-parameterization used for most of the DMD studies in the first round. The manual
+parameterization used for most of the DMD studies in the first stage. The manual
 selection of core atom and focus point was based on the binding site prediction
 made in \cref{bspred:il10} and performed in compliance with the guidelines
 formulated in \cref{dmd:lrom_preparation}. We ended up using the C-alpha atom of
 M154 as core atom, and a tMD target distance of \SI{17.7}{\angstrom}, yielding a
 quite large spherical surface for proper putative binding site sampling. If
-relevant, deviations from this geometrical setup in the first or second round of
+relevant, deviations from this geometrical setup in the first or second stage of
 DMD studies are described in the results and discussions part.
 
 
 \section{Results and discussion}
 
-\subsection{1st round of DMD studies}
+\subsection{1st stage of DMD studies}
 
 \subsubsection{DMD result consistency}
 
-One of the first results in this round of IL-10-GAG DMD studies was the
+One of the first results in this stage of IL-10-GAG DMD studies was the
 observation of method consistency, i.e.\ support for sufficient sampling and
 convergence of the DMD method.
 \Cref{fig:dmdil10:hp_hexa_vs_tetra_clusters_position_match} shows the overlay
@@ -473,7 +479,7 @@ As explained in the \enquote{extraction of ensemble properties} part of
 \cref{dmd:dataanalysis}, a DMD study is able to yield reliable information
 about the importance of single receptor amino acids for ligand binding, via
 e.g.\ hydrogen bonding (H-bond) analysis of the MD trajectory data.
-Surprisingly, \textit{all} of the DMD studies performed in the first round of
+Surprisingly, \textit{all} of the DMD studies performed in the first stage of
 studies returned the same clear and unequivocal result --- that R107 of IL-10
 plays a major role in IL-10-GAG interaction.
 \Cref{fig:dmdil10:hp_hexa_vs_ha_hexa_hbond} shows ensemble-derived H-bond
@@ -505,7 +511,7 @@ Obviously, hyaluronan has significantly less functional groups available that
 might act as H-bond acceptors than heparin. Quantitatively, this difference is
 clearly reflected in the mean of the H-bond occupancy distributions, with about
 1.7 for HP dp6 and about 0.7 for HA dp6 (data not shown). For all different GAG
-types and lengths investigated in the first round of IL-10-GAG DMD studies (such
+types and lengths investigated in the first stage of IL-10-GAG DMD studies (such
 as CS4 dp4, CS6 dp4, HA dp4, HP dp4, data not shown), R107 clearly stands out by
 the qualitative criteria described in the paragraph above. We conclude that R107
 significantly stands out compared to all other residues and supposedly plays a
@@ -569,7 +575,7 @@ If there is not enough content here, do not make this a (sub)section.
 Most important result: No other residue could take the role of R107.
 
 
-\subsection{2nd round of DMD studies}
+\subsection{2nd stage of DMD studies}
 
 \hl{Note (TODO):}
 N=200 and N=300 for much clearer clustering and reduction of target displacement
