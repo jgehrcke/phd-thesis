@@ -1,14 +1,22 @@
 \chapter{DMD applied to the IL-10-GAG system}
 
-In order to exploit the predictive power of DMD for the IL-10-GAG system, we
-have performed several DMD studies differing in DMD parameterization and
-molecular system setup. Conducting these studies required an increment of the
-computational resources available to us by orders of magnitudes. In the course
-of performing these studies we continuously refined our software architecture
-for controlling the corresponding high performance computing resources and
-enriched our DMD data analysis framework. This chapter seeks to present
-\textit{i)} the computational challenges, \textit{ii)} the methodological
-details, and \textit{iii)} the major outcomes of this endeavor.
+The previous chapter presented Dynamic Molecular Docking (DMD), a novel
+molecular dynamics-based local docking method well-suited for exploring
+protein-GAG interaction. I applied DMD to the IL-10-GAG system, using the
+binding region prediction derived in \cref{chapter:bspred}. The goal was to
+further characterize the interaction of GAGs with IL-10 in that region, and to
+identify potential molecular mechanisms of IL-10-GAG interaction. This chapter
+seeks to present \textit{i)} the computational challenges, \textit{ii)} the
+methodological details, and \textit{iii)} the major outcomes of this endeavor.
+
+Several DMD studies were performed, with varying DMD parameterization as well as
+varying molecular system setup. Conducting these studies required an increment
+of the computational resources available to us by orders of magnitude. In the
+course of performing these studies I continuously refined the software
+architecture for controlling the corresponding high performance computing
+resources and enriched the DMD data analysis framework, as described in this
+chapter. One of the main results of the IL-10-GAG DMD studies presented here is
+the identification of IL-10's R107 as key residue for GAG binding.
 
 
 \section{Methods}
@@ -21,12 +29,12 @@ data analysis. Hence, within a single DMD study the \textit{constants} are ---
 among others --- the chemical configuration of the ligand molecule and the
 geometrical DMD parametrization, i.e.\ the protein core atom and the focus
 point. Clearly, a systematic investigation of the IL-10-GAG system via DMD
-requires \textit{variation} of exactly these entities. That is, the planned
-investigation requires the conduction of \textit{many} DMD studies. By the time
-of designing the first IL-10-GAG DMD studies, the conduction and analysis of a
-single study consumed about two weeks. Hence, time and computational resources
-clearly limited the scope of this endeavor. In these lines, the requirement was
-to get as much conclusive output out of as few DMD studies as possible.
+requires \textit{variation} of exactly these entities. Consequently, the planned
+investigation requires the conduction of \textit{many} DMD studies. Initially,
+the conduction and analysis of a single study consumed about two weeks. That is,
+time and computational resources were the main limiters of the extent of this
+endeavor. Hence, the goal was to get as much conclusive output out of as few DMD
+studies as possible.
 
 \subsubsection{Factors to investigate}
 
@@ -36,24 +44,25 @@ studies in case of the IL-10-GAG system are:
 \begin{itemize}
 
 \item[1)] \textbf{The DMD protocol.} In the course of performing various DMD
-studies we aimed for slight protocol changes for optimizing the computational
+studies I aimed for slight protocol changes for optimizing the computational
 efficiency of DMD, compared to the protocol initially developed for the DMD
 validation study described in \cref{chapter:dmd}. We decided to potentially
 optimize parameters such as decreasing the tMD simulation length as well as the
 LROM displacement length, both of which have direct impact on the pulling
-process velocity. A the same time, we tried to increase the number of
+process velocity. A the same time, I tried to increase the number of
 independent DMD run repetitions within single DMD studies as far as our
 computational resources allowed to, in order to obtain as much sampling
 performance as possible.
 
 \item[2)] \textbf{The geometrical DMD parameterization.} In
-\cref{chapter:bspred}, we have derived a region of interest for our DMD studies.
-For potentially discovering a distinct and well-defined binding \textit{site}
-and for investigating and finally eliminating the impact of the geometrical DMD
-parameterization on any conclusion about the IL-10-GAG system, we decided to
-vary DMD focus point and entry lane among the DMD studies. One should note
-however, that in order to obtain reliable information about the impact of other
-variables, this one here should stay constant most of the time, which is why we
+\cref{chapter:bspred}, a putative IL-10-GAG binding region was derived, which
+can directly be used as input for designing IL-10-GAG DMD studies. For
+potentially discovering a distinct and well-defined binding \textit{site} and
+for investigating and finally eliminating the impact of the geometrical DMD
+parameterization on any conclusion about the IL-10-GAG system, I decided to vary
+DMD focus point and entry lane among the DMD studies. One should note however,
+that in order to obtain reliable information about the impact of other
+variables, this one here should stay constant most of the time, which is why I
 decided to try only two different geometrical setups in the first round of DMD
 studies, and a final third geometrical parameterization in the second round of
 DMD studies.
@@ -247,8 +256,8 @@ period of the large-scale GPU computing cluster of the supercomputing center of
 the TU Dresden: as a section of their \enquote{Taurus} platform, they provide 80
 Nvidia CUDA GPU devices. All in all, with these GPU resources at hand, we were
 able to perform single DMD studies on a weekly basis, with a significantly
-increased number of DMD runs per study ($N=200$ or $300$). In Dresden, this
-would not have been possible using classical computing resources.
+increased number of DMD runs per study ($N=200$ or $300$). \hl{In Dresden, this
+would not have been possible using classical computing resources. keep this?}.
 
 
 \subsubsection{Software architecture}
