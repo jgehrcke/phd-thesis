@@ -132,37 +132,35 @@ than CS4.
 
 \subsubsection{Iterative approach}
 
-For the global design of our DMD studies, I decided to take an iterative
-approach. In a first stage, I aimed to gather experience about how the IL-10-GAG
-system responds to various kinds of DMD parameter changes. Furthermore, since
-the technical environment was unstable, I used this first stage of studies for
-detecting and resolving technical issues. Hence, in this first stage of studies,
-I varied the conditions according to all points described above, with the goal
-to obtain stable conditions applicable in a second stage, together with an
-optimized geometrical DMD parameterization.
+For the global design of the DMD studies, I decided to take an iterative
+approach. In a \textit{first stage}, I aimed to collect experience about how the
+IL-10-GAG system responds to various kinds of DMD parameter changes. Hence, in
+this first stage of studies, I varied the conditions according to all points
+described above. The goal of the first stage was to obtain stable conditions
+applicable in a \textit{second stage}, together with a geometrical DMD
+parameterization optimized for the IL-10-GAG system.
 
 
 \subsubsection{Automated DMD data analysis}
 
 For efficiently breaking the enormous amount of raw data produced by any DMD
-study down to human-interpretable essentials, we specified and implemented an
+study down to human-interpretable essentials, I specified and implemented an
 automated data analysis framework. In this framework, every DMD run within a DMD
-study is assigned a unique identifier. Subsequently, we extracted all
-\textit{static} and \textit{dynamic} quantities for each DMD run listed in
-\cref{dmd:dataanalysis}, and assigned those quantities to the corresponding
-run identifiers. As a result, we obtained a table of dimensions $N \times M$,
-with $N$ being the number of DMD runs and $M$ being the number of
+study was assigned a unique identifier. Subsequently, for each DMD run all
+\textit{static} and \textit{dynamic} quantities listed in
+\cref{dmd:dataanalysis} were extracted and assigned to the corresponding run
+identifier. As a result, each DMD study yielded a table of dimensions $N \times
+M$, with $N$ being the number of DMD runs and $M$ being the number of
 single-run-derivable quantities. In a second class of analyses, the
 ensemble-derivable quantities as described in \cref{dmd:dataanalysis} were
 extracted from all runs in the DMD study, usually based on the single-run data
-extraction performed before. Finally, we clustered the docking solution ensemble
-using the method described in
-\cref{chapter:bspred}.
+extraction performed before. Finally, the docking solution ensemble was
+clustered using the method described in \cref{chapter:bspred}.
 
 The resulting reduced set of data allows for a broad subsequent data analysis.
 For instance, any two single-run-derivable quantities can easily be correlated
 for understanding their relationship, or the distribution of any extracted
-quantity can easily be looked at and statistically evaluated. Furthermore, our
+quantity can easily be looked at and statistically evaluated. Furthermore, this
 data analysis framework allows for generating cluster statistics based on the
 \textit{clustering} of docking solutions. For instance, the average ligand
 mobility within a certain cluster is easy to obtain. This enables meaningful
@@ -186,7 +184,7 @@ In high performance computing (HPC), computational tasks are usually abstracted 
 \enquote{jobs}, whereas a job is a sub-problem of an \enquote{embarrassingly
 parallel} problem \cite{heath1986hypercube}, for which little or no effort is
 required to separate the problem into a number of independent tasks. For
-efficient use of HPC batch schedulers for DMD, we have abstracted a DMD study
+efficient use of HPC batch schedulers for DMD, I have abstracted a DMD study
 into the following list of jobs (whereas some of the jobs named later in the
 list require completion of those listed earlier):
 
