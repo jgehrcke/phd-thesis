@@ -5,31 +5,32 @@
 % American Chemical Society’s Policy on Theses and Dissertations
 % http://pubs.acs.org/userimages/ContentEditor/1218205107465/dissertation.pdf
 
-This chapter is a customized version of the publication titled
+This chapter is a customized version of our publication titled
 \enquote{Flexibility and Explicit Solvent in Molecular Dynamics-Based Docking of
 Protein-Glycosaminoglycan Systems}, which has been published in the
 \textit{Journal of Chemical Information and Modeling} in 2014
-\cite{dmd_samsonov_gehrcke_2014}. It describes a novel method, Dynamic Molecular
-Docking (DMD), which is a targeted molecular dynamics-based protocol developed
-to address ligand and receptor flexibility as well as the inclusion of explicit
-solvent in local molecular docking. The goal of this work has been to develop a
-proof of concept for an MD-based docking approach and to analyze its
-applicability for protein-GAG systems, for which it is conceptually well-suited:
-DMD exploits the electrostatics-driven attraction of a ligand to its receptor,
-treats both as entirely flexible and considers solvent explicitly. In the
-validation study presented here, DMD was shown to have high predictive
-significance for systems dominated by electrostatic attraction and demonstrated
-its capability to reliably identify the receptor residues contributing most to
-binding.
+\cite{dmd_samsonov_gehrcke_2014}.
+
+Here, a novel method is described, Dynamic Molecular Docking (DMD), which is a
+targeted molecular dynamics-based protocol developed to address ligand and
+receptor flexibility as well as the inclusion of explicit solvent in local
+molecular docking. The goal of this work has been to develop a proof of concept
+for an MD-based docking approach and to analyze its applicability for
+protein-GAG systems, for which it is conceptually well-suited: DMD exploits the
+electrostatics-driven attraction of a ligand to its receptor, treats both as
+entirely flexible and considers solvent explicitly. In the validation study
+presented here, DMD was shown to have high predictive significance for systems
+dominated by electrostatic attraction and demonstrated its capability to
+reliably identify the receptor residues contributing most to binding.
 
 Jan-Philip Gehrcke (JPG) and Sergey Samsonov (SS) equally contributed to the DMD
 method establishment and validation study design. JPG created the formal
-geometrical description of the method (\cref{dmd:data_production}) as well as
-the fundamental data analysis concepts (\cref{dmd:dataanalysis}). SS and JPG
+geometrical description of the method (\cref{dmd:data_production}). SS and JPG
 equally contributed to the molecular dynamics protocol development. SS conducted
 the test data set for the validation study, and collected most of the raw data
-for DMD and classical molecular docking. JPG designed and performed most of the
-data analysis (sampling validation, clustering analysis, and key residue
+for DMD and classical molecular docking. JPG designed the fundamental data
+analysis concepts (\cref{dmd:dataanalysis}) and performed most of the data
+analysis (sampling validation, clustering analysis, and key residue
 identification (see \cref{dmd:results})). JPG and SS contributed to the
 discussion in equal terms. The figures have been prepared by JPG.
 
@@ -1287,9 +1288,9 @@ usually bind to charged surface patches on the receptor comprised of highly
 flexible side chains. The identification of proper binding poses in these
 surface patches requires the flexible adjustments of protein residues to the GAG
 ligand. Furthermore, the inclusion of explicit solvent in DMD considers the
-solvent-accessibility of such binding sites and -- most important -- lives up to
-the supremacy of charge-charge interactions in most protein-GAG complexes. The
-dominating long-range Coulomb potential is explicitly exploited as a driving
+solvent-accessibility of such binding sites and --- most important --- lives up
+to the supremacy of charge-charge interactions in most protein-GAG complexes.
+The dominating long-range Coulomb potential is explicitly exploited as a driving
 force in DMD while slowly approaching the ligand towards the receptor. A long
 free MD simulation and the flexible treatment of the ligand allow for an
 extensive sampling of the GAG-internal degrees of freedom.
