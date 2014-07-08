@@ -126,29 +126,29 @@ Dresden, this would not have been possible using classical computing resources.
 
 \subsubsection{Software architecture}
 
-Above, it was stated that one DMD study is comprised of on the order of $10^3$
+Above, it was stated that one DMD study is comprised of $\mathcal{O}(10^3)$
 computing jobs, and that it requires storing hundreds of gigabytes of raw data
-distributed in about $10^5$ files. These numbers suggest that the management of
-corresponding jobs and data requires a well-engineered DMD controlling system.
-The essential purpose of such system is to automatically identify errors and
-recover from those: the likelihood for a single computing machine to fail times
-the number of machines involved in a DMD study integrated over the computing
-time yields a significant probability for the study to be affected by
-\textit{one or more} technical issues. In other words, there is a guarantee
-that something will go wrong. By experience I can tell that this prediction came
-true, and manual identification of corresponding issues was a daunting task,
-which is why I iteratively developed a system architecture that enables the
-efficient conduction of DMD studies.
+distributed in $\mathcal{O}(10^5)$ files. These numbers suggest that the
+management of corresponding jobs and data requires a well-engineered controlling
+system. The essential purpose of such system is to automatically identify errors
+and recover from those: the likelihood for a single computing machine to fail
+times the number of machines involved in a DMD study integrated over the
+computing time yields a significant probability for the study to be affected by
+\textit{one or more} technical issues. In other words, there is a guarantee that
+something goes wrong. By experience I can tell that this prediction came true,
+and manual identification of corresponding issues was a daunting task, which is
+why I iteratively developed a system architecture that enables the efficient
+conduction of DMD studies.
 
 One requirement for this management architecture was to support all involved
 hardware platforms, i.e.\ the Taurus GPUs, the Taurus CPUs (for data analysis),
-the group-internal GPU cluster, and the biocluster CPUs (for data analysis),
-whereas these platforms alone involve three different batch scheduling systems.
-As all of these platforms are based on POSIX-compliant operating systems with
-reliable and well-performing file systems attached, I abstracted the data
-structure for managing and monitoring a DMD study on top of the file system
-hierarchy, and implemented basic data creation, manipulation, and validation
-using well-established POSIX command line tools, incorporated in shell scripts.
+the group-internal GPU cluster, and the biocluster CPUs (for data analysis).
+These platforms involve three different batch scheduling systems. As all of
+these platforms are based on POSIX-compliant operating systems with reliable and
+well-performing file systems attached, I abstracted the data structure for
+managing and monitoring a DMD study on top of the file system hierarchy, and
+implemented basic data creation, manipulation, and validation using
+well-established POSIX command line tools, incorporated in shell scripts.
 
 For many purposes of data validation and analysis I implemented Python
 programs based on Biopython \cite{biopython_web} and SciPy/NumPy
@@ -308,7 +308,7 @@ meaningful comparison of clusters by those properties, especially among
 
 
 
-\subsection{Geometrical DMD parameterization}
+\subsubsection{Geometrical DMD parameterization}
 \label{dmdil10:method_geom_setup}
 
 \begin{figure}
@@ -324,20 +324,21 @@ comprised by residues R102, R104, R106, R107 (colored in green sticks). The tMD
 target distance of \SI{17.7}{\angstrom} between the protein core atom and the
 focus point is indicated by a thick yellow dashed line. The large transparent
 yellow sphere is centered on the protein core atom and its radius is set to the
-tMD target distance. It visualizes the surface that contains all central ligand
-atoms after tMD.}
+tMD target distance (after tMD, all central ligand atoms are located on that
+spherical surface).}
 \label{fig:dmdil10:dmd_geometry_round1}
 \end{figure}
 
 \Cref{fig:dmdil10:dmd_geometry_round1} visualizes the geometrical DMD
 parameterization used for most of the DMD studies in the first stage. The manual
 selection of core atom and focus point was based on the binding site prediction
-made in \cref{bspred:il10} and performed in compliance with the guidelines
-formulated in \cref{dmd:lrom_preparation}. We ended up using the C-alpha atom of
-M154 as core atom, and a tMD target distance of \SI{17.7}{\angstrom}, yielding a
-quite large spherical surface for proper putative binding site sampling. If
-relevant, deviations from this geometrical setup in the first or second stage of
-DMD studies are described in the results and discussions part.
+made by Coulomb potential analysis (see \cref{bspred:il10}) and performed in
+compliance with the guidelines formulated in \cref{dmd:lrom_preparation}. The
+C-alpha atom of M154 was selected as core atom. The tMD target distance was set
+to \SI{17.7}{\angstrom}, yielding a quite large spherical surface for proper
+putative binding site sampling. If relevant, deviations from this geometrical
+setup in the first or second stage of DMD studies are described in the results
+and discussion part.
 
 
 \section{Results and discussion}
@@ -346,38 +347,37 @@ DMD studies are described in the results and discussions part.
 
 \subsubsection{DMD result consistency}
 
-One of the first results in this stage of IL-10-GAG DMD studies was the
-observation of method consistency, i.e.\ support for sufficient sampling and
-convergence of the DMD method.
-\Cref{fig:dmdil10:hp_hexa_vs_tetra_clusters_position_match} shows the overlay
-of two clustering results from two independently performed DMD studies that
-differed \textit{only} in the GAG ligand length --- one was performed with a
-heparin hexasaccharide, and the other with a heparin tetrasaccharide.
-Rationally, one would require DMD to return a very similar binding pose
-prediction in both cases, as it is unlikely for these GAG types to behave
-fundamentally different. As motivated in \cref{relevance_of_clustering},
-comparison of the position of the most populated clusters in both cases is a way
-to (in)validate this assumption. Note that comparison of both clusters, and with
-that, comparison of both DMD studies with respect to the distribution of docking
-solutions, is only possible because we took great care of making both clustering
-results comparable via the clustering parameter optimization described in
-\cref{clustering_param_opt}. In both cases, the docking solution clustering was
-performed with $N_{min}$ (the minimal number of clusters that must be found) set
-to 1, and $M_{min}$ (the minimal number of members within each cluster) set to
-4. In both cases, the automatic clustering parameter optimization yielded an
-   $\epsilon$ value of \SI{2.6}{\angstrom}, i.e.\ just about the same density of
-   docking solutions in both clusters.
+One of the first observations in this stage of DMD studies was method
+consistency, i.e.\ further support for sufficient sampling and convergence of
+the DMD method. \Cref{fig:dmdil10:hp_hexa_vs_tetra_clusters_position_match}
+shows the overlay of two clustering results from two independently performed DMD
+studies that differed only in the GAG ligand length --- one was performed with a
+heparin hexasaccharide, and the other with a heparin tetrasaccharide. Ideally,
+one would want DMD to return a very similar binding pose prediction in both
+cases, as it is unlikely for these two GAG molecules to behave fundamentally
+different. As motivated in \cref{relevance_of_clustering}, comparison of the
+position of the most populated clusters in both cases is a way to (in)validate
+this assumption. Note that comparison of both clusters, and with that,
+comparison of both DMD studies with respect to the distribution of docking
+solutions, is only possible because great care was taken of making both
+clustering results comparable via the clustering parameter optimization
+described in \cref{clustering_param_opt}. In both cases, the docking solution
+clustering was performed with $N_{min}$ (the minimal number of clusters that
+must be found) set to 1, and $M_{min}$ (the minimal number of members within
+each cluster) set to 4. In both cases, the automatic clustering parameter
+optimization yielded an $\epsilon$ value of \SI{2.6}{\angstrom}, i.e.\ just
+about the same density of docking solutions in both clusters.
 
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{gfx/dmdil10/hp_hexa_vs_tetra_clusters_position_match_cropped.jpg}
-\caption[]{Consistent results among two independently conducted DMD studies. The
-IL-10 structure is shown in gray cartoon/line representation. The most populated
-cluster of docking solutions derived from a DMD study with a heparin
-hexasaccharide is shown with carbon atoms in blue. The most populated cluster of
-a corresponding DMD study with a heparin tetrasaccharide is shown with carbon
-atoms in green. Setup and protocol of both DMD studies differed \textit{only} in
-the GAG ligand length.}
+\caption[]{Consistent results among two independently conducted DMD studies.
+Setup and protocol of both DMD studies differed only in the GAG ligand length,
+one was performed with a heparin hexasaccharide, the other with a heparin
+tetrasaccharide. The most populated cluster of docking solutions derived from
+the hexasaccharide study is shown with carbon atoms in blue, and the
+corresponding tetrasaccharide representation is shown with carbon atoms in
+green. The IL-10 structure is shown in gray cartoon/line representation. }
 \label{fig:dmdil10:hp_hexa_vs_tetra_clusters_position_match}
 \end{figure}
 
