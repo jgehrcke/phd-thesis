@@ -392,27 +392,30 @@ significance of data created by the DMD method.
 %NOTE: when changing this heading, also change the "quote" in the section
 % \subsubsection{Ensemble-derived single-residue energy decomposition} below.
 
-In one of the early studies we included the five N-terminal residues of IL-10
-(see \ref{dmdil10:overallmethod}) and varied the geometrical parameterization of
-DMD compared to the setup described in \ref{dmdil10:method_geom_setup}: we kept
-the C-alpha of M154 as core atom, but slightly changed the focus point within
-the anticipated binding region, resulting in a different orientation of the
-yellow axis shown in \cref{fig:dmdil10:dmd_geometry_round1}, and in a tMD target
-distance of \SI{20.5}{\angstrom}. The rest of the system and protocol setup was
-equivalent to another DMD study with a heparin tetrasaccharide, whose
-geometrical outcome is shown in
-\cref{fig:dmdil10:hp_hexa_vs_tetra_clusters_position_match}. As it turned out,
-the final distribution of docking solutions was not affected by both changes, as
-the most populated cluster matched the position of the clusters shown in
-\cref{fig:dmdil10:hp_hexa_vs_tetra_clusters_position_match}.
+In one of the early studies the five N-terminal residues of IL-10 (see
+\ref{dmdil10:overallmethod}) were included, and the geometrical parameterization
+of DMD was varied compared to the setup described in
+\ref{dmdil10:method_geom_setup}: the C-alpha of M154 was kept as core atom, but
+the focus point was changed slightly within the anticipated binding region,
+resulting in a different orientation of the yellow axis shown in
+\cref{fig:dmdil10:dmd_geometry_round1}, and in a tMD target distance of
+\SI{20.5}{\angstrom} instead of \SI{17.7}{\angstrom}. The rest of the system and
+protocol setup was equivalent to another DMD study (with a heparin
+tetrasaccharide used as ligand), whose geometrical outcome of this study is
+shown in \cref{fig:dmdil10:hp_hexa_vs_tetra_clusters_position_match}. As it
+turned out, the final distribution of docking solutions was not affected by both
+changes, as the most populated cluster matched the position of the clusters
+shown in \cref{fig:dmdil10:hp_hexa_vs_tetra_clusters_position_match}.
 
-We conclude that the results of a DMD study are rather insensitive with respect
-to modest changes in the geometrical parameterization of DMD, and that the
-presence of the five N-terminal residues does not significantly affect the DMD
-binding pose prediction, and therefore is not of the highest priority to study.
+It can be concluded that the main data obtained from a DMD study are rather
+insensitive with respect to modest changes in the geometrical parameterization
+of DMD, and that the presence of the five N-terminal residues does not
+significantly affect the DMD binding pose prediction, i.e.\ the assumption from
+here on is that the flexible part of IL-10's N-terminus can be neglected for
+investigating the main mechanism of IL-10-GAG interaction.
 
 
-\subsubsection{Distinction among GAG types by single-run quantity cluster stats}
+\subsubsection{Distinction of GAG types by cluster statistics}
 
 \begin{table}
 \footnotesize
@@ -429,33 +432,35 @@ CS4 dp6 (2nd cluster) & 4               & 3.2                         & 2.4 $\pm
 \end{tabular}
 \caption{
 Characterization of most populated clusters by single-run quantity cluster stats
-for two different DMD studies differing \textit{only} in the GAG type. In one
-study, we used a heparin hexasaccharide (dp6), in the other we used a
-chondroitin-4-sulfate (CS4) hexasaccharide. The heparin study yielded a single
-prominent cluster, the CS4 study yielded two similar clusters. $\epsilon$ is the
-spatial density of docking solutions according to \cref{clustering_param_opt}.
-$m$ is the mobility of the ligand relative to the receptor, as defined in
-\cref{dmd:dataanalysis}. Here, $\Delta G$ is the free energy of binding
-estimate as provided by the MM-PBSA method \cref{methods:mmpbsa_mmgbsa}. The
-standard deviations shown are derived from the cluster-internal variations.}
+for two different DMD studies differing only in the GAG type. In one study, a
+heparin hexasaccharide (dp6) was used, in the other study a
+chondroitin-4-sulfate (CS4) hexasaccharide was used. The heparin study yielded a
+single prominent cluster, the CS4 study yielded two similar clusters. $\epsilon$
+is the spatial density of docking solutions according to
+\cref{clustering_param_opt}. $m$ is the mobility of the ligand relative to the
+receptor, as defined in \cref{dmd:dataanalysis}. Here, $\Delta G$ is the free
+energy of binding estimate as provided by the MM-PBSA method
+\cref{methods:mmpbsa_mmgbsa}. The standard deviations shown are derived from the
+cluster-internal variations.}
 \label{tab:dmdil10:round1_different_gag_types}
 \end{table}
 
-Ideally, different behavior of different GAG types is expressed in the docking
-solution clustering, and especially in the single-run quantities evaluated on a
-per-cluster basis. The characterization of most populated clusters for two
-different DMD studies differing \textit{only} in the GAG type should be
-discussed by means of an example. In one study, we used a heparin hexasaccharide
-(dp6), in another we used a chondroitin-4-sulfate (CS4) hexasaccharide. The
-heparin study yielded a single prominent cluster, the CS4 study yielded two
-similar clusters. The placement of the clusters relative to IL-10 was similar
-(data not shown), and the quantitative evaluation of both clusters yielded
-similar results, see \cref{tab:dmdil10:round1_different_gag_types}: among the
-three clusters, the ligand movement relative to the receptor as well as the
-MM-PBSA free energy of binding estimate are indistinguishable, considering the
-cluster-internal fluctuations represented by the standard deviations. Just the
-cluster density indicates that the docking solutions obtained for heparin show a
-little more spatial consistency than the solutions obtained for CS4.
+Ideally, different behavior of different GAG types is manifests itself in the
+docking solution clustering, and especially in the single-run quantities
+evaluated on a per-cluster basis. The characterization of most populated
+clusters for two different DMD studies differing \textit{only} in the GAG type
+should be discussed by means of an example. In one study, a heparin
+hexasaccharide (dp6) was used, in another study a chondroitin-4-sulfate (CS4)
+hexasaccharide was used. The heparin study yielded a single prominent cluster,
+the CS4 study yielded two similar clusters. The placement of the clusters
+relative to IL-10 was similar, and the quantitative evaluation of both clusters
+yielded similar results (see \cref{tab:dmdil10:round1_different_gag_types}):
+among the three clusters, the ligand movement relative to the receptor as well
+as the MM-PBSA free energy of binding estimate are indistinguishable,
+considering the cluster-internal fluctuations represented by the standard
+deviations. Just the cluster density indicates that the docking solutions
+obtained for heparin show a little more spatial consistency than the solutions
+obtained for CS4.
 
 The important conclusion to be drawn from this and comparable observations (data
 not shown) is that the IL-10-GAG system does not easily allow for a binary
