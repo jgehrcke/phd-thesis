@@ -21,6 +21,145 @@ the identification of IL-10's R107 as key residue for GAG binding.
 
 \section{Methods}
 
+\subsection{Computational framework}
+
+With the standard high performance computing resources available in Dresden, the
+conduction of DMD studies required for IL-10-GAG investigation would not have
+been possible. Hardware and software engineering was required in order to
+develop a system architecture that allowed for efficient conduction of DMD
+studies. This subsection provides technical information about these engineering
+decisions.
+
+\subsubsection{High performance computing requirements of one DMD study}
+
+One DMD study according to the protocol as presented in \cref{chapter:dmd},
+i.e.\ with $N = 100$ repetitions, a pulling process simulation time of
+\SI{4}{\nano\second} and a free MD simulation time of \SI{10}{\nano\second}
+implicates about \SI{1.4}{\micro\second} of simulated real time. As of these
+numbers, one DMD study requires about 12 years ($10^5$ hours) of accumulated CPU
+time using state-of-the-art hardware (such as the Intel Xeon Processor X5650).
+
+In high performance computing (HPC), computational tasks are usually abstracted as
+\enquote{jobs}, whereas a job is a sub-problem of an \enquote{embarrassingly
+parallel} problem \cite{heath1986hypercube}, for which little or no effort is
+required to separate the problem into a number of independent tasks. For
+efficient use of HPC batch schedulers for DMD, I have abstracted a DMD study
+into the following list of jobs (whereas some of the jobs named later in the
+list require completion of those listed earlier):
+
+\begin{itemize}
+\item LROM system preparation jobs (minimization, heat-up, equilibration)
+\item $N$ tMD production jobs
+\item $N$ free MD jobs (minimization, heat-up, equilibration, production)
+\item $N$ final state validation and energy minimization jobs
+\item $N$ free MD trajectory analysis jobs (MM-PBSA)
+\item $N$ free MD trajectory analysis jobs (MM-GBSA + SRED)
+\item $N$ free MD trajectory analysis jobs (geometry and hydrogen bonding
+analysis)
+\end{itemize}
+
+Depending on $N$, this yields on the order of $10^3$ computing jobs per DMD
+study. The raw data created by those jobs comprises on the order of $10^2$
+gigabytes distributed in about $10^5$ files.
+
+
+\subsubsection{Establishment of GPU computing resources}
+
+Initially, the execution of a single DMD study lasted about three weeks, using
+the \enquote{Atlas} resource pool (provisioning a large number of AMD Opteron
+6274 CPUs) in the supercomputing center of the TU Dresden (ZIH). However, this
+system was affected by various technical issues and did not reliably allow us to
+perform multiple DMD studies in parallel, or even increase the number of DMD run
+repetitions $N$. The computational capacity of the in-house computing cluster of
+the BIOTEC, TU Dresden (the \enquote{biocluster}, comprised of about 30
+machines) was insufficient for performing DMD studies.
+
+For mitigating issues related to a lack of computing resources for DMD, and
+especially for the IL-10-GAG system investigation via DMD, our research group
+became early adopter of a new HPC technology: the usage of graphics processing
+units (GPUs) for general purpose computing (\enquote{GPGPU}
+\cite{wikipedia_gpgpu}). Simply spoken, GPUs make heavy use of the so-called
+single instruction, multiple data paradigm (SIMD, see
+\cite{kirk2012programming_gpus} for further information), which matches common
+algorithms used in MD simulations very well. That is, MD simulations can take
+strong advantage of GPU hardware architectures. Compared to classical computing
+architectures, this leads to \textit{i)} a significantly higher absolute
+simulation performance (measured in nanoseconds of simulated time per day) and
+\textit{ii)} a much better performance per financial cost ratio, considering
+acquisition cost as well as energy cost. With the MD simulation framework Amber
+12 \cite{case_amber_12} and corresponding patches
+\cite{amber_12_patches}, the Amber developers were among the first to work on
+and release a solid and efficient MD implementation for GPUs (pmemd.cuda, see
+\cite{amber_gpu_2012,amber_gpu_pme_2013} for methodological details and
+validation).
+
+Correspondingly, I built up a GPU computing cluster in our research group, which
+required substantial amounts of planning and testing, because no
+enterprise-level vendors were available for this kind of hardware. Hence, this
+cluster was composed based on raw hardware and software components, eventually
+yielding the following configuration:
+
+\begin{itemize}
+\item Four dedicated compute nodes, based on low-clocked Intel central
+processing units (CPUs) on special consumer-level mainboards, placed in
+temperature-regulated server racks.
+\item A total of 15 GPU devices distributed among these machines (2 Tesla C2070,
+3 GTX 580, 2 GTX 690, 4 GTX 770, 4 GTX TITAN, all Nvidia CUDA devices
+\cite{nvidia_cuda_devices}, purchased in batches spread across 1.5 years).
+\item Linux operating systems, along with appropriate drivers and CUDA runtime
+libraries.
+\item A customized Torque \cite{torque_website} GPU job scheduling system, see
+\cite{gehrcke_torque_gpu_setup} for details.
+%\item pmemd.cuda, built
+\end{itemize}
+
+With this infrastructure at hand, I was able to perform a single DMD study
+within less than two weeks, without being dependent on \textit{external}
+resources. On top of that, from summer 2013 on I have been part of the testing
+period of the large-scale GPU computing cluster of the supercomputing center of
+the TU Dresden: as a section of their \enquote{Taurus} platform, they provide 80
+Nvidia CUDA GPU devices (Tesla K20X). All in all, with these GPU resources at
+hand, I was able to perform single DMD studies on a weekly basis, with a
+significantly increased number of DMD runs per study ($N=200$ or $300$). In
+Dresden, this would not have been possible using classical computing resources.
+
+
+\subsubsection{Software architecture}
+
+Above, it was stated that one DMD study is comprised of on the order of $10^3$
+computing jobs, and that it requires storing hundreds of gigabytes of raw data
+distributed in about $10^5$ files. These numbers suggest that the management of
+corresponding jobs and data requires a well-engineered DMD controlling system.
+The essential purpose of such system is to automatically identify errors and
+recover from those: the likelihood for a single computing machine to fail times
+the number of machines involved in a DMD study integrated over the computing
+time yields a significant probability for the study to be affected by
+\textit{one or more} technical issues. In other words, there is a guarantee
+that something will go wrong. By experience I can tell that this prediction came
+true, and manual identification of corresponding issues was a daunting task,
+which is why I iteratively developed a system architecture that enables the
+efficient conduction of DMD studies.
+
+One requirement for this management architecture was to support all involved
+hardware platforms, i.e.\ the Taurus GPUs, the Taurus CPUs (for data analysis),
+the group-internal GPU cluster, and the biocluster CPUs (for data analysis),
+whereas these platforms alone involve three different batch scheduling systems.
+As all of these platforms are based on POSIX-compliant operating systems with
+reliable and well-performing file systems attached, I abstracted the data
+structure for managing and monitoring a DMD study on top of the file system
+hierarchy, and implemented basic data creation, manipulation, and validation
+using well-established POSIX command line tools, incorporated in shell scripts.
+
+For many purposes of data validation and analysis I implemented Python
+programs based on Biopython \cite{biopython_web} and SciPy/NumPy
+\cite{scipy_numpy} whenever appropriate. Data plotting was performed using
+the Python module Matplotlib \cite{matplotlib_web}. Iterative development and
+continuous integration of this software architecture was largely facilitated by
+the efficient usage of a decentralized version control system (Mercurial
+\cite{mercurial_web} in this case). For reference, the corresponding code
+repository is available at \url{http://bit.ly/jgehrcke-phd-dmd-control}.
+
+
 \subsection{Overall study design}
 \label{dmdil10:overallmethod}
 
@@ -167,138 +306,6 @@ average ligand mobility within a certain cluster is easy to obtain. This enables
 meaningful comparison of clusters by those properties, especially among
 \textit{different} DMD studies.
 
-
-\subsection{Computational framework}
-
-
-\subsubsection{High performance computing requirements of one DMD study}
-
-One DMD study according to the protocol as presented in \cref{chapter:dmd},
-i.e.\ with $N = 100$ repetitions, a pulling process simulation time of
-\SI{4}{\nano\second} and a free MD simulation time of \SI{10}{\nano\second}
-implicates about \SI{1.4}{\micro\second} of simulated real time. As of these
-numbers, one DMD study requires about 12 years ($10^5$ hours) of accumulated CPU
-time using state-of-the-art hardware (such as the Intel Xeon Processor X5650).
-
-In high performance computing (HPC), computational tasks are usually abstracted as
-\enquote{jobs}, whereas a job is a sub-problem of an \enquote{embarrassingly
-parallel} problem \cite{heath1986hypercube}, for which little or no effort is
-required to separate the problem into a number of independent tasks. For
-efficient use of HPC batch schedulers for DMD, I have abstracted a DMD study
-into the following list of jobs (whereas some of the jobs named later in the
-list require completion of those listed earlier):
-
-\begin{itemize}
-\item LROM system preparation jobs (minimization, heat-up, equilibration)
-\item $N$ tMD production jobs
-\item $N$ free MD jobs (minimization, heat-up, equilibration, production)
-\item $N$ final state validation and energy minimization jobs
-\item $N$ free MD trajectory analysis jobs (MM-PBSA)
-\item $N$ free MD trajectory analysis jobs (MM-GBSA + SRED)
-\item $N$ free MD trajectory analysis jobs (geometry and hydrogen bonding
-analysis)
-\end{itemize}
-
-Depending on $N$, this yields on the order of $10^3$ computing jobs per DMD
-study. The raw data created by those jobs comprises on the order of $10^2$
-gigabytes distributed in about $10^5$ files.
-
-
-\subsubsection{Establishment of GPU computing resources}
-
-Initially, the execution of a single DMD study lasted about three weeks, using
-the \enquote{Atlas} resource pool (provisioning a large number of AMD Opteron
-6274 CPUs) in the supercomputing center of the TU Dresden (ZIH). However, this
-system was affected by various technical issues and did not reliably allow us to
-perform multiple DMD studies in parallel, or even increase the number of DMD run
-repetitions $N$. The computational capacity of the in-house computing cluster of
-the BIOTEC, TU Dresden (the \enquote{biocluster}, comprised of about 30
-machines) was insufficient for performing DMD studies.
-
-For mitigating issues related to a lack of computing resources for DMD, and
-especially for the IL-10-GAG system investigation via DMD, our research group
-became early adopter of a new HPC technology: the usage of graphics processing
-units (GPUs) for general purpose computing (\enquote{GPGPU}
-\cite{wikipedia_gpgpu}). Simply spoken, GPUs make heavy use of the so-called
-single instruction, multiple data paradigm (SIMD, see
-\cite{kirk2012programming_gpus} for further information), which matches common
-algorithms used in MD simulations very well. That is, MD simulations can take
-strong advantage of GPU hardware architectures. Compared to classical computing
-architectures, this leads to \textit{i)} a significantly higher absolute
-simulation performance (measured in nanoseconds of simulated time per day) and
-\textit{ii)} a much better performance per financial cost ratio, considering
-acquisition cost as well as energy cost. With the MD simulation framework Amber
-12 \cite{case_amber_12} and corresponding patches
-\cite{amber_12_patches}, the Amber developers were among the first to work on
-and release a solid and efficient MD implementation for GPUs (pmemd.cuda, see
-\cite{amber_gpu_2012,amber_gpu_pme_2013} for methodological details and
-validation).
-
-Correspondingly, I built up a GPU computing cluster in our research group, which
-required substantial amounts of planning and testing, because no
-enterprise-level vendors were available for this kind of hardware. Hence, this
-cluster was composed based on raw hardware and software components, eventually
-yielding the following configuration:
-
-\begin{itemize}
-\item Four dedicated compute nodes, based on low-clocked Intel central
-processing units (CPUs) on special consumer-level mainboards, placed in
-temperature-regulated server racks.
-\item A total of 15 GPU devices distributed among these machines (2 Tesla C2070,
-3 GTX 580, 2 GTX 690, 4 GTX 770, 4 GTX TITAN, all Nvidia CUDA devices
-\cite{nvidia_cuda_devices}, purchased in batches spread across 1.5 years).
-\item Linux operating systems, along with appropriate drivers and CUDA runtime
-libraries.
-\item A customized Torque \cite{torque_website} GPU job scheduling system, see
-\cite{gehrcke_torque_gpu_setup} for details.
-%\item pmemd.cuda, built
-\end{itemize}
-
-With this infrastructure at hand, I was able to perform a single DMD study
-within less than two weeks, without being dependent on \textit{external}
-resources. On top of that, from summer 2013 on I have been part of the testing
-period of the large-scale GPU computing cluster of the supercomputing center of
-the TU Dresden: as a section of their \enquote{Taurus} platform, they provide 80
-Nvidia CUDA GPU devices (Tesla K20X). All in all, with these GPU resources at
-hand, I was able to perform single DMD studies on a weekly basis, with a
-significantly increased number of DMD runs per study ($N=200$ or $300$). In
-Dresden, this would not have been possible using classical computing resources.
-
-
-\subsubsection{Software architecture}
-
-Above, it was stated that one DMD study is comprised of on the order of $10^3$
-computing jobs, and that it requires storing hundreds of gigabytes of raw data
-distributed in about $10^5$ files. These numbers suggest that the management of
-corresponding jobs and data requires a well-engineered DMD controlling system.
-The essential purpose of such system is to automatically identify errors and
-recover from those: the likelihood for a single computing machine to fail times
-the number of machines involved in a DMD study integrated over the computing
-time yields a significant probability for the study to be affected by
-\textit{one or more} technical issues. In other words, there is a guarantee
-that something will go wrong. By experience I can tell that this prediction came
-true, and manual identification of corresponding issues was a daunting task,
-which is why I iteratively developed a system architecture that enables the
-efficient conduction of DMD studies.
-
-One requirement for this management architecture was to support all involved
-hardware platforms, i.e.\ the Taurus GPUs, the Taurus CPUs (for data analysis),
-the group-internal GPU cluster, and the biocluster CPUs (for data analysis),
-whereas these platforms alone involve three different batch scheduling systems.
-As all of these platforms are based on POSIX-compliant operating systems with
-reliable and well-performing file systems attached, I abstracted the data
-structure for managing and monitoring a DMD study on top of the file system
-hierarchy, and implemented basic data creation, manipulation, and validation
-using well-established POSIX command line tools, incorporated in shell scripts.
-
-For many purposes of data validation and analysis I implemented Python
-programs based on Biopython \cite{biopython_web} and SciPy/NumPy
-\cite{scipy_numpy} whenever appropriate. Data plotting was performed using
-the Python module Matplotlib \cite{matplotlib_web}. Iterative development and
-continuous integration of this software architecture was largely facilitated by
-the efficient usage of a decentralized version control system (Mercurial
-\cite{mercurial_web} in this case). For reference, the corresponding code
-repository is available at \url{http://bit.ly/jgehrcke-phd-dmd-control}.
 
 
 \subsection{Geometrical DMD parameterization}
