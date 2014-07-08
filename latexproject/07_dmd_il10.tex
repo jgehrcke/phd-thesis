@@ -212,23 +212,23 @@ the \enquote{Atlas} resource pool (provisioning a large number of AMD Opteron
 system was affected by various technical issues and did not reliably allow us to
 perform multiple DMD studies in parallel, or even increase the number of DMD run
 repetitions $N$. The computational capacity of the in-house computing cluster of
-the BIOTEC, TU Dresden (the
-\enquote{biocluster}, comprised of about 30 machines) was insufficient for
-performing DMD studies.
+the BIOTEC, TU Dresden (the \enquote{biocluster}, comprised of about 30
+machines) was insufficient for performing DMD studies.
 
 For mitigating issues related to a lack of computing resources for DMD, and
-especially for the IL-10-GAG system investigation via DMD, I decided to become
-early adopter of a new HPC technology and use of graphics processing units
-(GPUs) for general purpose computing (\enquote{GPGPU} \cite{wikipedia_gpgpu}).
-Simply spoken, GPUs make heavy use of the so-called single instruction, multiple
-data paradigm (SIMD, see \cite{kirk2012programming_gpus} for further
-information), which matches common algorithms used in MD simulations very well.
-That is, MD simulations can take strong advantage of GPU hardware architectures.
-Compared to classical computing architectures, this leads to \textit{i)} a
-significantly higher absolute simulation performance (measured in nanoseconds of
-simulated time per day) and \textit{ii)} a much better performance per financial
-cost ratio, considering acquisition cost as well as energy cost. With the MD
-simulation framework Amber 12 \cite{case_amber_12} and corresponding patches
+especially for the IL-10-GAG system investigation via DMD, our research group
+became early adopter of a new HPC technology: the usage of graphics processing
+units (GPUs) for general purpose computing (\enquote{GPGPU}
+\cite{wikipedia_gpgpu}). Simply spoken, GPUs make heavy use of the so-called
+single instruction, multiple data paradigm (SIMD, see
+\cite{kirk2012programming_gpus} for further information), which matches common
+algorithms used in MD simulations very well. That is, MD simulations can take
+strong advantage of GPU hardware architectures. Compared to classical computing
+architectures, this leads to \textit{i)} a significantly higher absolute
+simulation performance (measured in nanoseconds of simulated time per day) and
+\textit{ii)} a much better performance per financial cost ratio, considering
+acquisition cost as well as energy cost. With the MD simulation framework Amber
+12 \cite{case_amber_12} and corresponding patches
 \cite{amber_12_patches}, the Amber developers were among the first to work on
 and release a solid and efficient MD implementation for GPUs (pmemd.cuda, see
 \cite{amber_gpu_2012,amber_gpu_pme_2013} for methodological details and
