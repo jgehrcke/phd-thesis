@@ -449,24 +449,24 @@ Ideally, different behavior of different GAG types is manifests itself in the
 docking solution clustering, and especially in the single-run quantities
 evaluated on a per-cluster basis. The characterization of most populated
 clusters for two different DMD studies differing \textit{only} in the GAG type
-should be discussed by means of an example. In one study, a heparin
-hexasaccharide (dp6) was used, in another study a chondroitin-4-sulfate (CS4)
+should be discussed by means of an example. In one study, a heparin (HP)
+hexasaccharide was used, in another study a chondroitin-4-sulfate (CS4)
 hexasaccharide was used. The heparin study yielded a single prominent cluster,
-the CS4 study yielded two similar clusters. The placement of the clusters
-relative to IL-10 was similar, and the quantitative evaluation of both clusters
-yielded similar results (see \cref{tab:dmdil10:round1_different_gag_types}):
-among the three clusters, the ligand movement relative to the receptor as well
-as the MM-PBSA free energy of binding estimate are indistinguishable,
-considering the cluster-internal fluctuations represented by the standard
-deviations. Just the cluster density indicates that the docking solutions
-obtained for heparin show a little more spatial consistency than the solutions
-obtained for CS4.
+the CS4 study yielded two almost equally populated clusters. The placement of
+the clusters relative to IL-10 was similar, and the quantitative evaluation of
+both clusters yielded similar results (see
+\cref{tab:dmdil10:round1_different_gag_types}): among the three clusters, the
+ligand movement relative to the receptor as well as the MM-PBSA free energy of
+binding estimate are indistinguishable, considering the cluster-internal
+fluctuations represented by the standard deviations. Just the cluster density
+indicates that the docking solutions obtained for HP show a little more spatial
+consistency than the solutions obtained for CS4.
 
-The important conclusion to be drawn from this and comparable observations (data
-not shown) is that the IL-10-GAG system does not easily allow for a binary
-(\enquote{black-white}) distinction of different GAG types via DMD with respect
-to their role for IL-10 function modulation.
-
+The important conclusion to be drawn from this (and analogous observations) is
+that the IL-10-GAG system does not easily allow for a binary distinction of
+different GAG types via DMD with respect to their interaction \enquote{mode}.
+Likewise, if there is binding specificity for a certain GAG type, it remained
+undetectable with the kind of data acquisition and analysis performed so far.
 
 \subsubsection{Ensemble-derived hydrogen bonding information}
 
@@ -490,44 +490,44 @@ As explained in the \enquote{extraction of ensemble properties} part of
 \cref{dmd:dataanalysis}, a DMD study is able to yield reliable information
 about the importance of single receptor amino acids for ligand binding, via
 e.g.\ hydrogen bonding (H-bond) analysis of the MD trajectory data.
-Surprisingly, \textit{all} of the DMD studies performed in the first stage of
-studies returned the same clear and unequivocal result --- that R107 of IL-10
-plays a major role in IL-10-GAG interaction.
-\Cref{fig:dmdil10:hp_hexa_vs_ha_hexa_hbond} shows ensemble-derived H-bond
-information for two independently performed DMD studies differing in the GAG
-type: one was performed with a heparin hexasaccharide, the other with a
-hyaluronan hexasaccharide. For each free MD trajectory in these two DMD studies
-we determined the normalized occupancy of H-bond donor atoms in each receptor
-residue, and ranked the results by the mean normalized occupancy. We accumulated
-all donors within single residues, for instance an arginine can donate up to
-three hydrogens at the same time (the maximum normalized occupancy in this case
-would be 3). \Cref{fig:dmdil10:hp_hexa_vs_ha_hexa_hbond} shows the top six
-residues for both studies, including box plot representations of the
-corresponding distributions. In both cases, R107 is ranked first by mean (not
-shown) as well as median. In case of HP dp6, we measured a mean R107 occupancy
-of about 1.7, i.e.\ throughout the entire DMD study this residue donated (on
-average) almost \textit{two} hydrogen atoms to H-bonds. This number alone is a
-strong indicator for the relevance of this residue in protein-GAG interaction.
-However, the essential observation is that R107's hydrogen bonding properties
-qualitatively stand out compared to all other amino acids: the H-bond occupancy
-distributions of all other residues have their maximum near 0, and a decay
-towards higher occupancies, yielding a median close to 0, in both cases shown
-(HP dp6 and HA dp6). The occupancy distribution of R107, however, has a median
-clearly far from 0 (in case of HP dp6, the distribution has its global maximum
-at about 1.5). We conclude that most of the molecular surface of R107 is
-solvent-exposed, and significantly more accessible for interaction with
-functional groups of GAGs than the other residues.
+Surprisingly, all of the DMD studies performed in the first stage of studies
+returned the same clear and unequivocal result --- that R107 of IL-10 plays a
+major role in IL-10-GAG interaction. \Cref{fig:dmdil10:hp_hexa_vs_ha_hexa_hbond}
+shows ensemble-derived H-bond information for two independently performed DMD
+studies differing in the GAG type: one was performed with a HP dp6, the other
+with a HA dp6. For each free MD trajectory in these two DMD studies the
+normalized occupancy of H-bond donor atoms in each receptor residue was
+determined, and the results were ranked by the mean normalized occupancy. All
+donors within single residues were accumulated; for instance an arginine can
+donate up to three hydrogens at the same time (the maximum normalized occupancy
+in this case would be 3). \Cref{fig:dmdil10:hp_hexa_vs_ha_hexa_hbond} shows the
+top six H-bond-donating residues for both studies, including box plot
+representations of the corresponding distributions. In both cases, R107 is
+ranked first by mean (not shown) as well as median. In case of HP dp6, a mean
+R107 occupancy of about 1.7 was measured, i.e.\ throughout the entire DMD study
+this residue donated (on average) almost \textit{two} hydrogen atoms to H-bonds.
+This number alone is a strong indicator for the relevance of this residue in
+protein-GAG interaction. However, the essential observation is that R107's
+hydrogen bonding properties qualitatively stand out compared to all other amino
+acids: the H-bond occupancy distributions of all other residues have their
+maximum near 0, and a decay towards higher occupancies, yielding a median close
+to 0, in both cases shown (HP dp6 and HA dp6). The occupancy distribution of
+R107, however, has a median clearly far from 0 (in case of HP dp6, the
+distribution has its global maximum at about 1.5). It can be concluded that most
+of the molecular surface of R107 is solvent-exposed, and significantly more
+accessible for interaction with functional groups of GAGs than the other
+residues.
 
 Obviously, hyaluronan has significantly less functional groups available that
 might act as H-bond acceptors than heparin. Quantitatively, this difference is
-clearly reflected in the mean of the H-bond occupancy distributions, with about
-1.7 for HP dp6 and about 0.7 for HA dp6 (data not shown). For all different GAG
-types and lengths investigated in the first stage of IL-10-GAG DMD studies (such
-as CS4 dp4, CS6 dp4, HA dp4, HP dp4, data not shown), R107 clearly stands out by
-the qualitative criteria described in the paragraph above. We conclude that R107
-significantly stands out compared to all other residues and supposedly plays a
-particularly important role in IL-10- GAG recognition.
-
+clearly reflected in the mean value of the H-bond occupancy distributions, with
+about 1.7 for HP dp6 and about 0.7 measured for HA dp6. For all different GAG
+types and lengths investigated in the first stage of IL-10-GAG DMD studies (CS4
+dp4, CS6 dp4, HA dp4, HP dp4, figures not shown for all GAG types), R107 showed
+distinct behavior by the qualitative criteria described in the paragraph above.
+A clear conclusion is that R107 significantly stands out compared to all other
+residues and supposedly plays a particularly important role in IL-10- GAG
+recognition.
 
 \subsubsection{Ensemble-derived single-residue energy decomposition}
 
@@ -538,44 +538,44 @@ particularly important role in IL-10- GAG recognition.
 \label{fig:dmdil10:SRED_hpdp6}
 \end{figure}
 
-We have observed the ensemble-merged MM-GBSA single-residue energy decomposition
+I have observed the ensemble-merged MM-GBSA single-residue energy decomposition
 (SRED, as explained in the \enquote{extraction of ensemble properties} part of
 \cref{dmd:dataanalysis}) data to yield results generally consistent with those
 of the hydrogen bonding analysis. Most importantly, the SRED data also points
 out the importance of R107 for IL-10-GAG recognition.
 \Cref{fig:dmdil10:SRED_hpdp6} shows the six top-ranked IL-10 residues according
-to SRED performed on a DMD study with a heparin hexasaccharide. In this case,
-the DMD study was comprised of $N=200$ DMD runs, and the SRED data of the top
-\SI{40}{\percent} of the DMD runs according to the MM-PBSA free energy of
-binding estimate has been merged, yielding about 80 DMD runs contributing to the
-data shown. The error bars represent the standard error of the mean, and we can
-conclude that --- considering the statistical error --- the residues on ranks
-two to five are not distinguishable, ranging in the interval between
-\SI{-6}{\kilo\calory\per\mol} and \SI{-8}{\kilo\calory\per\mol}. R107, however,
-has a special role, with a significantly stronger mean interaction energy of
-about \SI{-13.5 +- 0.5}{\kilo\calory\per\mol}. Note that the absolute values of
-these energies as well as the inter-residue energy distance have no real
-meaning. However, relative distances with proper consideration of the
-statistical errors yield resilient information.
+to SRED performed on a DMD study with a HP dp6. In this case, the DMD study was
+comprised of $N=200$ DMD runs, and the SRED data of the top \SI{40}{\percent} of
+the DMD runs according to the MM-PBSA free energy of binding estimate has been
+merged, yielding about 80 DMD runs contributing to the data shown. The error
+bars represent the standard error of the mean, and one can conclude that ---
+considering the statistical error --- the residues on ranks two to five are not
+distinguishable, ranging in the interval between q\SI{-6}{\kilo\calory\per\mol}
+and \SI{-8}{\kilo\calory\per\mol}. R107, however, has a special role, with a
+significantly stronger mean interaction energy of about \SI{-13.5 +-
+0.5}{\kilo\calory\per\mol}. Note that the absolute values of these energies as
+well as the inter-residue energy distance are not meaningful. The relative
+distances, however, yield resilient information (with proper consideration of
+the statistical errors).
 
-As in case of hydrogen bonding data, the other DMD studies with different GAG
-types and lengths also revealed R107 as having the strongest interaction with
-the GAG, leaving all other residues far behind (data not shown). Further
-insights were derived from other IL-10-GAG DMD studies. For instance, a DMD
-study with a hyaluronan hexasaccharide led to the same qualitative SRED results,
-in the sense that R107 stood out. However, the corresponding mean interaction
-energy was determined as \SI{-3.8 +- 0.3}{\kilo\calory\per\mol}, which is about
-\SI{70}{\percent} weaker than in case of the heparin hexasaccharide study
-discussed in the paragraph above. Again, qualitatively this drop is expected as
-of the missing sulfate groups in HA compared to HP, and in compliance with the
-hydrogen bonding data discussed in the previous section. In general, we can
-conclude that both, SRED and hydrogen bonding analysis are able to identify R107
-as especially important, whereas the hydrogen bonding analysis is
-computationally less complex than hydrogen bonding analysis. Another interesting
-observation we have made is that inclusion of IL-10's N-terminus does not
-significantly influence the outcome of SRED as well as hydrogen bonding data, in
-line with the conclusions drawn in the \enquote{Impact of N-terminal residues
-and modest geometry changes} part above.
+As in case of hydrogen bonding data, other DMD studies in the first stage of
+studies, with different GAG types and lengths, also revealed R107 as having the
+strongest interaction with the GAG, leaving all other residues far behind (data
+not shown). Further insights were derived from SRED data obtained from the
+IL-10-GAG DMD studies in the first stage. For instance, one DMD study with a HA
+dp6 used as ligand led to the same qualitative SRED results as discussed in the
+paragraph above, in the sense that R107 stood out. However, the corresponding
+mean interaction energy was determined as \SI{-3.8 +-0.3}{\kilo\calory\per\mol},
+which is about \SI{70}{\percent} weaker than in case of the HP dp6 study
+described above. Again, qualitatively this drop is expected as of the missing
+sulfate groups in HA compared to HP, and in compliance with the hydrogen bonding
+data discussed in the previous section. In general, it can be concluded that
+both, SRED and hydrogen bonding analysis are able to identify R107 as especially
+important, whereas the hydrogen bonding analysis is computationally less complex
+than SRED. Another interesting observation made is that inclusion of IL-10's
+N-terminus does not significantly influence the outcome of SRED as well as
+hydrogen bonding data, in line with the conclusions drawn in the
+\enquote{Impact of N-terminal residues and modest geometry changes} part above.
 
 
 
