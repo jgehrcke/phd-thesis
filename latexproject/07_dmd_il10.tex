@@ -595,11 +595,52 @@ part above.
 
 
 
-\subsubsection{R107A mutation}
+\subsubsection{Mutating IL-10's R107 to alanine}
 
-\hl{Note (TODO):}
-If there is not enough content here, do not make this a (sub)section.
-Most important result: No other residue could take the role of R107.
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{gfx/dmdil10/round1_il10_hbond_hpdp4_normal_vs_r107a.png}
+\caption[]{Most important residues of IL-10 for GAG-interaction, as identified
+by ensemble-derived hydrogen bonding information from two independently
+performed DMD studies using a HP dp4 ligand, and differing only in the IL-10
+sequence at position 107. Top: canonical human IL-10 sequence. Bottom: R107A
+mutation. The box plot representation is made from $N=100$ samples per box,
+whereas each sample is the number of hydrogen bond donors integrated and
+normalized over the data production period of one free MD trajectory, for the
+residue specified in the abscissa label. The residues are sorted by the
+\textit{mean} (not shown), the red bars indicate the \textit{median} (close to
+zero if not visible).}
+\label{fig:dmdil10:hpdp4_normal_vs_R107A}
+\end{figure}
+
+Up to here, various observations have been made, independently suggesting that
+R107 has an important role in IL-10-GAG interaction. For further characterizing
+the impact of this residue, a DMD study was performed with an R107A mutation of
+the IL-10 sequence while keeping all other parameters equivalent to another
+study performed before, both using a HP dp4 molecule as ligand. The most
+concrete observation from this comparison stems from hydrogen bonding and SRED
+analysis. No other amino acid residue was able to compensate the loss of the
+polar and hydrogen bonding properties of R107, not even its neighboring
+arginines: with the R107A mutation, the hydrogen bond occupancy of the
+non-mutated residues did almost not change, as shown in
+\cref{fig:dmdil10:hpdp4_normal_vs_R107A}. The box plot representations of the
+hydrogen bonding occupancy of R104, R106, and K119 indicate similar behavior in
+both studies. Furthermore, the box plot representation of the hydrogen bonding
+occupancy of R107 in the non-mutated IL-10 finds no resemblance in the DMD study
+with the mutant protein. The SRED analysis for the non-mutated system yielded an
+interaction energy of
+\SI{-13.5 +- 0.8}{\kilo\calory\per\mol} for R107, leaving all other residues far
+behind, and R106 was assigned an energy of \SI{-5.5 +-
+0.8}{\kilo\calory\per\mol}. In contrast, the SRED analysis for the mutated
+system ranked R106 first, with an interaction energy of \SI{-8 +-
+1.0}{\kilo\calory\per\mol}, indicating a weak compensation effect, in the sense
+that R106 becomes slightly more important for GAG-binding in case of the R107A
+mutation. However, also the SRED analysis reveals that the qualitative nature of
+the interaction between R107 and the tested GAG molecules can not be reproduced
+by any other amino acid in that region, supporting the picture in which R107
+takes a \textit{unique} role for IL-10-GAG interaction. All in all, these
+observations further corroborate the importance of R107 for IL-10-GAG
+interaction.
 
 
 \subsection{2nd stage of DMD studies}
@@ -613,6 +654,13 @@ without observable caveats.
 Show picture of R107 specifically marked in the structure, together with
 crystal sulfates, discuss possible binding poses involving these crystal
 sulfates.
+
+
+Note which residues appear over and over in top rankings: R107, 106, 104,
+compare with binding region prediction in chapter X. Is there an additional hot
+candidate? K119? Is there one listed in the prediction that does not appear
+to be THAT important?
+
 
 
 \subsection{Conclusions}
