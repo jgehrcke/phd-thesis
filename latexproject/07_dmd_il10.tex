@@ -307,9 +307,12 @@ meaningful comparison of clusters by those properties, especially among
 \textit{different} DMD studies.
 
 
+\section{Results and discussion}
+
+\subsection{1st stage of DMD studies}
 
 \subsubsection{Geometrical DMD parameterization}
-\label{dmdil10:method_geom_setup}
+\label{dmdil10:method_geom_setup_1st}
 
 \begin{figure}
 \centering
@@ -336,14 +339,11 @@ made by Coulomb potential analysis (see \cref{bspred:il10}) and performed in
 compliance with the guidelines formulated in \cref{dmd:lrom_preparation}. The
 C-alpha atom of M154 was selected as core atom. The tMD target distance was set
 to \SI{17.7}{\angstrom}, yielding a quite large spherical surface for proper
-putative binding site sampling. If relevant, deviations from this geometrical
-setup in the first or second stage of DMD studies are described in the results
-and discussion part.
+putative binding site sampling.
 
-
-\section{Results and discussion}
-
-\subsection{1st stage of DMD studies}
+% If relevant, deviations from this geometrical
+%setup in the first or second stage of DMD studies are described in the results
+%and discussion part.
 
 \subsubsection{DMD result consistency}
 
@@ -396,7 +396,7 @@ of data created by the DMD method.
 In one of the early studies, the five N-terminal residues of IL-10 (see
 \ref{dmdil10:overallmethod}) were included, and the geometrical parameterization
 of DMD was varied compared to the setup described in
-\ref{dmdil10:method_geom_setup}: the C-alpha of M154 was kept as core atom, but
+\ref{dmdil10:method_geom_setup_1st}: the C-alpha of M154 was kept as core atom, but
 the focus point was changed slightly within the anticipated binding region,
 resulting in a different orientation of the yellow axis shown in
 \cref{fig:dmdil10:dmd_geometry_round1}, and in a tMD target distance of
@@ -645,21 +645,64 @@ interaction.
 
 \subsection{2nd stage of DMD studies}
 
-\hl{Note (TODO):}
+
+\subsubsection{Optimized DMD parameterization}
+\label{dmdil10:method_setup_2nd}
+
+In the second stage of IL10-GAG DMD studies, we chose the geometrical
+parameterization based on the docking solution clustering results obtained in the
+first stage.
+
+- explain geom. param.
+
+- list studies explicitly performed (CS-4 dp6, CS-6 dp6, HA dp4, HA dp6, HP dp4, HP dp6) and their number of DMD runs
+
 N=200 and N=300 for much clearer clustering and reduction of target displacement
 length to 25 Angstroms and pulling process simulation time to 3 ns instead of 4
 without observable caveats.
 
+than in the first stage, whereas  visualizes the geometrical DMD
+parameterization used for most of the DMD studies in the first stage. The manual
+selection of core atom and focus point was based on the binding site prediction
+made by Coulomb potential analysis (see \cref{bspred:il10}) and performed in
+compliance with the guidelines formulated in
+\cref{dmd:lrom_preparation}. The C-alpha atom of M154 was selected as core atom.
+The tMD target distance was set to \SI{17.7}{\angstrom}, yielding a quite large
+spherical surface for proper putative binding site sampling.
+
+
+\subsubsection{SRED and hydrogen bonding results}
+
+one largish figure containing all SRED result graphs
+
 \hl{Note (TODO):}
-Show picture of R107 specifically marked in the structure, together with
-crystal sulfates, discuss possible binding poses involving these crystal
-sulfates.
+
+\subsubsection{Docking solution clustering}
+
+Look at most populated clusters. Any conclusions?
+
+Compare cluster positions to those residues that appear over and over again in
+top rankings. Is there a correspondence?
+
+Note that ensemble-derived results are more trustable than the clusters, if in
+doubt.
 
 
 Note which residues appear over and over in top rankings: R107, 106, 104,
 compare with binding region prediction in chapter X. Is there an additional hot
 candidate? K119? Is there one listed in the prediction that does not appear
 to be THAT important?
+
+
+
+
+\hl{Note (TODO):}
+Show picture of R107 specifically marked in the structure, together with
+crystal sulfates, discuss possible binding poses involving these crystal
+sulfates. Nee, mach das später, bei bringing it all together.
+
+
+
 
 
 
