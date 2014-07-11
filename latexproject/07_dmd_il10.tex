@@ -649,35 +649,43 @@ interaction.
 \subsubsection{Optimized DMD parameterization}
 \label{dmdil10:method_setup_2nd}
 
-In the second stage of IL10-GAG DMD studies, we chose the geometrical
-parameterization based on the docking solution clustering results obtained in the
-first stage.
+In the second stage of IL-10-GAG DMD studies, the geometrical parameterization
+was chosen based on the docking solution clustering results obtained in the
+first stage. There, the most populated clusters of docking solutions were often
+located consistently, positioned very similar to the clusters shown in
+\cref{fig:dmdil10:hp_hexa_vs_tetra_clusters_position_match}. Likewise, it was
+the goal to align the DMD focus point towards this agglomeration of DMD docking
+solutions, in order to focus the sampling onto that region, following the
+paradigm of the iterative method for obtaining convergence. A representative
+docking solution from these clusters was selected, followed by determination of
+the new focus point based on the central atom of this representative. The
+C-alpha atom of M154 was kept as core atom, yielding a tMD target distance of
+\SI{20.5}{\angstrom}.
 
-- explain geom. param.
-
-- list studies explicitly performed (CS-4 dp6, CS-6 dp6, HA dp4, HA dp6, HP dp4, HP dp6) and their number of DMD runs
-
-N=200 and N=300 for much clearer clustering and reduction of target displacement
-length to 25 Angstroms and pulling process simulation time to 3 ns instead of 4
-without observable caveats.
-
-than in the first stage, whereas  visualizes the geometrical DMD
-parameterization used for most of the DMD studies in the first stage. The manual
-selection of core atom and focus point was based on the binding site prediction
-made by Coulomb potential analysis (see \cref{bspred:il10}) and performed in
-compliance with the guidelines formulated in
-\cref{dmd:lrom_preparation}. The C-alpha atom of M154 was selected as core atom.
-The tMD target distance was set to \SI{17.7}{\angstrom}, yielding a quite large
-spherical surface for proper putative binding site sampling.
+Another optimization implemented in the second stage of DMD studies was
+decrementing the target displacement length for the LROM setup. It was shortened
+from \SI{30}{\angstrom} to \SI{25}{\angstrom}, effectivelz decreasing the system
+size to be simulated during the tMD simulations. The number of DMD runs per
+study was mostly set to $N=200$ or $N=300$. Furthermore, the pulling process
+simulation time was decreased from \SI{4}{\nano\second} to \SI{3}{\nano\second}.
+Overall, 98 DMD runs were completed for CS-4 dp6, 200 runs for CS-6 dp6, 198
+runs for HA dp4, 278 runs for HA dp6, 194 runs for HP dp4, and 298 runs for HP
+dp6.
 
 
 \subsubsection{SRED and hydrogen bonding results}
 
 one largish figure containing all SRED result graphs
+N=200 and N=300 for much clearer clustering and reduction of target displacement
+length to 25 Angstroms and pulling process simulation time to 3 ns instead of 4
+without observable caveats.
 
 \hl{Note (TODO):}
 
 \subsubsection{Docking solution clustering}
+N=200 and N=300 for much clearer clustering and reduction of target displacement
+length to 25 Angstroms and pulling process simulation time to 3 ns instead of 4
+without observable caveats.
 
 Look at most populated clusters. Any conclusions?
 
