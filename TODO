@@ -1,10 +1,4 @@
 Technical / layout:
-- add a page like Sergey's page 5/200:
-The research in this thesis has been carried out at the Structural Bioinformatics Group
-headed by Dr. María Teresa Pisabarro at the Biotechnology Center (BIOTEC) of
-Technical University of Dresden. The research carried out in this thesis has been supported by the Klaus Tschira Foundation
-+ plus logos
-
 - Fix (./02_structure_biology_il10.texLuaTeX warning (ext4): destination with the same
  identifier (name{page.4}) has been already used, duplicate ignored
 <to be read again>
