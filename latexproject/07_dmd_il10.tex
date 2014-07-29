@@ -709,8 +709,8 @@ An important observation is that the set of the top six residues obtained from
 SRED in the second stage of studies is the same for all sulfated GAG types
 (i.e.\ for HP, CS4 and CS6): R107, R106, R104, K119, T6, N10. This is another
 evidence for the convergence of the DMD method and its subsequent data analysis.
-Additionally, this expresses that the resides ranked two to six -- while their
-internal ranking might be unclear -- have not been identified as important by
+Additionally, this expresses that the resides ranked two to six --- while their
+internal ranking might be unclear --- have not been identified as important by
 coincidence (noise), but arguably actually contribute more to GAG binding than
 other residues not listed in the top six. When the set of top six residues
 identified for the sulfated GAG types is compared to the binding region
@@ -729,7 +729,7 @@ ligand, whereas in reality it is not the terminus.
 Regarding the DMD method itself, one can conclude that the reduction of the
 target displacement length to \SI{25}{\angstrom} and the reduction of pulling
 process simulation time to \SI{3}{\nano\second} did not lead to observable
-caveats -- in fact, the results described so far from the second stage of DMD
+caveats --- in fact, the results described so far from the second stage of DMD
 studies are in compliance with those DMD results obtained in the first stage of
 studies.
 
@@ -737,29 +737,43 @@ studies.
 \subsubsection{Docking solution clustering}
 
 
+\Cref{fig:dmdil10:2nd_stage_all_clusters} shows the most populated docking
+solution clusters for all second stage DMD studies. In all cases, the clustering
+was performed with $N_{min}$ (the minimal number of clusters that must be found)
+set to 1, and $M_{min}$ (the minimal number of members within each cluster) set
+to 5, i.e.\ the clustering results are comparable (see \cref{chapter:clustering}
+for details). There are a couple of important observations to be made from these
+data. First of all, there are two principally different GAG binding orientations
+found, both heavily involving R107. In the perspective shown in
+\cref{fig:dmdil10:2nd_stage_all_clusters}, one principal binding pose is
+oriented from the bottom left to the upper right, with the GAG being placed in
+the groove below R107. This is true for CS4 dp4, for both HA scenarios, and for
+HP dp6. The other qualitatively different pose is oriented from the top left to
+the bottom right, with the GAG placed above R107, and squeezed between R107 and
+K119 (green an cyan in the figure, respectively). This is true for the HP dp4
+scenario. The CS6 dp6 cluster is bent in a way that it can be considered a
+combination of both principal binding poses.
+
+
+
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{gfx/dmdil10/2ndstage_allclusters_04.jpg}
 \caption[]{
-Merged single-residue energy decomposition (SRED) data for six independently
-performedBLa bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla top \SI{40}{\percent} of the DMD runs ranked by
-MM-PBSA $\Delta G$ were merged into the data points shown. The error bars
-represent the standard error of the mean. }
+Most populated docking solution clusters of all second stage DMD studies,
+obtained with a consistent approach. The studies differ only in the GAG type and
+length (as defined in the panel headings). The GAG structures within each
+cluster are shown with carbon atoms in magenta. The IL-10 structure (PDB ID
+2ILK) is shown in gray surface representation. The surface of the reproducibly
+obtained top six set of residues according to the ensemble-derived SRED analysis
+is colorized: R107 in green, R106 in light green, R104 in yellow, K119 in
+cyan, N10 in red, and T6 in light red.}
 \label{fig:dmdil10:2nd_stage_all_clusters}
 \end{figure}
 
 
-
 There is a difference between dp4 and dp6
 
-In all cases, the docking solutionclustering was performed with $N_{min}$ (the
-minimal number of clusters that must be found) set to 1, and $M_{min}$ (the
-minimal number of members within each cluster) set to 5.
 
 HP dp4 \SI{2.2}{\angstrom}
 HP dp6 \SI{2.6}{\angstrom}

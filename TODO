@@ -11,6 +11,10 @@ l.1 \chapter
 
 
 Content-wise:
+
+- correct figures w.r.t CS-4 / CS4. I think most of the time I used CS4, so
+I should change all CS-4 occurrences.
+
 - abbreviations list?
 
 - explain degree of polymerization (dpX) in words in the introduction, not
