@@ -666,8 +666,8 @@ of the target displacement length for the LROM setup. It was shortened from
 \SI{30}{\angstrom} to \SI{25}{\angstrom}, effectively decreasing the system size
 and therefore the computational effort for performing the tMD simulations.
 Furthermore, the tMD simulation time was decreased from \SI{4}{\nano\second} to
-\SI{3}{\nano\second}. Overall, 98 DMD runs were completed for CS-4 dp6, 200 runs
-for CS-6 dp6, 198 runs for HA dp4, 278 runs for HA dp6, 194 runs for HP dp4, and
+\SI{3}{\nano\second}. Overall, 98 DMD runs were completed for CS4 dp6, 200 runs
+for CS6 dp6, 198 runs for HA dp4, 278 runs for HA dp6, 194 runs for HP dp4, and
 298 runs for HP dp6.
 
 
@@ -681,7 +681,7 @@ for CS-6 dp6, 198 runs for HA dp4, 278 runs for HA dp6, 194 runs for HP dp4, and
 Merged single-residue energy decomposition (SRED) data for six independently
 performed DMD studies differing only in the type of ligand, as indicated in the
 right bottom corner of each plot. The data shown stems from 98 DMD runs
-completed for CS-4 dp6, 200 runs for CS-6 dp6, 198 runs for HA dp4, 278 runs for
+completed for CS4 dp6, 200 runs for CS6 dp6, 198 runs for HA dp4, 278 runs for
 HA dp6, 194 runs for HP dp4, and 298 runs for HP dp6. The SRED data of the top
 \SI{40}{\percent} of the DMD runs ranked by MM-PBSA $\Delta G$ were merged into
 the data points shown. The error bars represent the standard error of the mean.
@@ -707,7 +707,7 @@ qualitatively the same behavior.
 
 An important observation is that the set of the top six residues obtained from
 SRED in the second stage of studies is the same for all sulfated GAG types
-(i.e.\ for HP, CS-4 and CS-6): R107, R106, R104, K119, T6, N10. This is another
+(i.e.\ for HP, CS4 and CS6): R107, R106, R104, K119, T6, N10. This is another
 evidence for the convergence of the DMD method and its subsequent data analysis.
 Additionally, this expresses that the resides ranked two to six -- while their
 internal ranking might be unclear -- have not been identified as important by
@@ -734,11 +734,42 @@ studies are in compliance with those DMD results obtained in the first stage of
 studies.
 
 
-\hl{Note (TODO):}
-
 \subsubsection{Docking solution clustering}
 
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{gfx/dmdil10/2ndstage_allclusters_04.jpg}
+\caption[]{
+Merged single-residue energy decomposition (SRED) data for six independently
+performedBLa bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+bla bla bla bla bla bla bla bla top \SI{40}{\percent} of the DMD runs ranked by
+MM-PBSA $\Delta G$ were merged into the data points shown. The error bars
+represent the standard error of the mean. }
+\label{fig:dmdil10:2nd_stage_all_clusters}
+\end{figure}
+
+
+
 There is a difference between dp4 and dp6
+
+In all cases, the docking solutionclustering was performed with $N_{min}$ (the
+minimal number of clusters that must be found) set to 1, and $M_{min}$ (the
+minimal number of members within each cluster) set to 5.
+
+HP dp4 \SI{2.2}{\angstrom}
+HP dp6 \SI{2.6}{\angstrom}
+HA dp4 \SI{3.0}{\angstrom}
+HA dp6 \SI{2.6}{\angstrom}
+CS4 dp6 \SI{3.4}{\angstrom}
+CS6 dp6 \SI{2.7}{\angstrom}
+
+
+
 
  significant? reliable?
 
