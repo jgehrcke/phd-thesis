@@ -746,13 +746,14 @@ for details). There are a couple of important observations to be made from these
 data. First of all, there are two principally different GAG binding orientations
 found, both heavily involving R107. In the perspective shown in
 \cref{fig:dmdil10:2nd_stage_all_clusters}, one principal binding pose is
-oriented from the bottom left to the upper right, with the GAG being placed in
-the groove below R107. This is true for CS4 dp4, for both HA scenarios, and for
-HP dp6. The other qualitatively different pose is oriented from the top left to
-the bottom right, with the GAG placed above R107, and squeezed between R107 and
-K119 (green an cyan in the figure, respectively). This is true for the HP dp4
-scenario. The CS6 dp6 cluster is bent in a way that it can be considered a
-combination of both principal binding poses.
+oriented from the bottom left to the upper right, with the GAG being placed in a
+IL-10 surface groove below R107. This is true for CS4 dp4, for both HA
+scenarios, and for HP dp6. The other qualitatively different pose is oriented
+from the top left to the bottom right, with the GAG placed above R107, and
+squeezed between R107 and K119 (shown in green and cyan in the figure,
+respectively). This is true for the HP dp4 scenario. The structures in the CS6
+dp6 cluster are bent in a way that they can be considered a combination of both
+principal binding poses.
 
 \begin{figure}
 \centering
@@ -778,33 +779,34 @@ se} a contradiction, since the SRED data represent a large ensemble of docking
 solutions, while clustering explicitly selects a small fraction of the ensemble,
 under the assumption that this fraction represents the most probable state.
 However, since the clustering method introduces assumptions and approximations
-on top of the DMD approach --- which increases the overall uncertainty --- it is
-realistic to consider the SRED ensemble data as being more reliable than the
-clustering result. Therefore, as of a lack of support from the SRED data, none
-of both principal binding orientations discussed above must be excluded for
-both, HP dp4 and dp6.
+on top of the DMD approach --- which increases the overall uncertainty --- the
+SRED ensemble data is more reliable than the clustering result. Therefore, as of
+a lack of support from the SRED data, none of both principal binding
+orientations discussed above must be excluded for both, HP dp4 and dp6.
 
 
 Looking at the structure ensembles shown in
-\cref{fig:dmdil10:2nd_stage_all_clusters} it makes sense that K119 is identified
-as contributing much to GAG binding: the cleft between R107 and K119 could serve
-as a trap, potentially anchoring a GAG with one positively charged amino acid
-residue from two sides simultaneously. The cleft is just wide enough for e.g.\
-heparin, as can be seen in the HP dp4 panel of
-\cref{fig:dmdil10:2nd_stage_all_clusters}.
+\cref{fig:dmdil10:2nd_stage_all_clusters} it makes sense that K119 has been
+identified (via SRED) as being a strong contributor to GAG binding: the cleft
+between R107 and K119 could serve as a trap, potentially anchoring a GAG with a
+positively charged amino acid residue from two sides simultaneously. The cleft
+is just wide enough for e.g.\ heparin, as can be seen in the HP dp4 panel of
+\cref{fig:dmdil10:2nd_stage_all_clusters}. Heparin seems to tightly fit this
+cleft, as can be inferred from the clustering data: the HP dp4 cluster (which is
+located in mentioned cleft) shows the highest structural consistency among all
+clusters shown in \cref{fig:dmdil10:2nd_stage_all_clusters}. The structural
+similarity among the structures in this cluster has been quantified with
+$\epsilon = \SI{2.2}{\angstrom}$ (this value actually encodes a density, and the
+smaller the value, the larger the density and similarity, see
+\cref{chapter:clustering} for details). This structural consistency is
+significantly larger than in the other cases (HP dp6: $\epsilon =
+\SI{2.6}{\angstrom}$, HA dp4: $\epsilon = \SI{3.0}{\angstrom}$, HA dp6:
+$\epsilon = \SI{2.6}{\angstrom}$, CS4 dp6: $\epsilon = \SI{3.4}{\angstrom}$, CS6
+dp6: $\epsilon = \SI{2.7}{\angstrom}$).
 
- There is a difference
-between dp4 and dp6 for heparin
 
 
-HP dp4 \SI{2.2}{\angstrom}
-HP dp6 \SI{2.6}{\angstrom}
-HA dp4 \SI{3.0}{\angstrom}
-HA dp6 \SI{2.6}{\angstrom}
-CS4 dp6 \SI{3.4}{\angstrom}
-CS6 dp6 \SI{2.7}{\angstrom}
-
-
+Add a figure schematically showing the two principally different binding poses?
 
 
  significant? reliable?
