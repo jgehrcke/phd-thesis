@@ -737,6 +737,23 @@ studies.
 \subsubsection{Docking solution clustering}
 
 
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{gfx/dmdil10/2ndstage_allclusters_04.jpg}
+\caption[]{
+Most populated docking solution clusters of all second stage DMD studies,
+obtained with a consistent approach. The studies differ only in the GAG type and
+length (as defined in the panel headings). The GAG structures within each
+cluster are shown with carbon atoms in magenta. The IL-10 structure (PDB ID
+2ILK) is shown in gray surface representation. The surface of the reproducibly
+obtained top six set of residues according to the ensemble-derived SRED analysis
+is colorized: R107 in green, R106 in light green, R104 in yellow, K119 in
+cyan, N10 in red, and T6 in light red.}
+\label{fig:dmdil10:2nd_stage_all_clusters}
+\end{figure}
+
+
+
 \Cref{fig:dmdil10:2nd_stage_all_clusters} shows the most populated docking
 solution clusters for all second stage DMD studies. In all cases, the clustering
 was performed with $N_{min}$ (the minimal number of clusters that must be found)
@@ -753,23 +770,24 @@ from the top left to the bottom right, with the GAG placed above R107, and
 squeezed between R107 and K119 (shown in green and cyan in the figure,
 respectively). This is true for the HP dp4 scenario. The structures in the CS6
 dp6 cluster are bent in a way that they can be considered a combination of both
-principal binding poses.
+principal binding poses. \Cref{fig:dmdil10:2nd_stage_principal_poses} visualizes
+both principally different poses schematically.
 
 \begin{figure}
 \centering
-\includegraphics[width=1.0\textwidth]{gfx/dmdil10/2ndstage_allclusters_04.jpg}
+\includegraphics[width=1.0\textwidth]{gfx/dmdil10/principal_poses_05.jpg}
 \caption[]{
-Most populated docking solution clusters of all second stage DMD studies,
-obtained with a consistent approach. The studies differ only in the GAG type and
-length (as defined in the panel headings). The GAG structures within each
-cluster are shown with carbon atoms in magenta. The IL-10 structure (PDB ID
-2ILK) is shown in gray surface representation. The surface of the reproducibly
-obtained top six set of residues according to the ensemble-derived SRED analysis
-is colorized: R107 in green, R106 in light green, R104 in yellow, K119 in
-cyan, N10 in red, and T6 in light red.}
-\label{fig:dmdil10:2nd_stage_all_clusters}
+Schematic visualization of two principally different GAG binding poses observed
+via docking ensemble clustering of all second stage DMD studies. Pose A
+(indicated in black) has the GAG placed in a IL-10 surface groove right
+\enquote{below} R107 (from the point of view shown here). Pose B (indicated in
+magenta) has the GAG placed above R107 and within the cleft between R107 and
+K119. The IL-10 structure (PDB ID 2ILK) is shown in gray surface representation.
+The surface of the four positively charged residues being most important for GAG
+binding (according to ensemble-derived SRED analysis) is colorized: R107 in
+green, R106 in light green, R104 in yellow, K119 in cyan.}
+\label{fig:dmdil10:2nd_stage_principal_poses}
 \end{figure}
-
 
 It is notable that there actually is a qualitative difference for the cluster
 poses obtained for HP dp4 and HP dp6. This is not supported by the SRED data
@@ -809,33 +827,24 @@ shown in \cref{fig:dmdil10:2nd_stage_all_clusters}.
 
 
 
-of the GAG
+
 
 
 
 Add a figure schematically showing the two principally different binding poses?
 
-
- significant? reliable?
-
 N=200 and N=300 for much clearer clustering and reduction of target displacement
 length to 25 Angstroms and pulling process simulation time to 3 ns instead of 4
 without observable caveats.
 
-Look at most populated clusters. Any conclusions?
-
 Compare cluster positions to those residues that appear over and over again in
 top rankings. Is there a correspondence?
-
-Note that ensemble-derived results are more trustable than the clusters, if in
-doubt.
 
 
 Note which residues appear over and over in top rankings: R107, 106, 104,
 compare with binding region prediction in chapter X. Is there an additional hot
 candidate? K119? Is there one listed in the prediction that does not appear
 to be THAT important?
-
 
 
 
