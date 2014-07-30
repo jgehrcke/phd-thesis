@@ -761,11 +761,11 @@ set to 1, and $M_{min}$ (the minimal number of members within each cluster) set
 to 5, i.e.\ the clustering results are comparable (see \cref{chapter:clustering}
 for details). There are a couple of important observations to be made from these
 data. First of all, there are two principally different GAG binding orientations
-found, both heavily involving R107. In the perspective shown in
+found, both heavily involving R107. From the point of view shown in
 \cref{fig:dmdil10:2nd_stage_all_clusters}, one principal binding pose is
 oriented from the bottom left to the upper right, with the GAG being placed in a
 IL-10 surface groove below R107. This is true for CS4 dp4, for both HA
-scenarios, and for HP dp6. The other qualitatively different pose is oriented
+scenarios, and for HP dp6. A second qualitatively different pose is oriented
 from the top left to the bottom right, with the GAG placed above R107, and
 squeezed between R107 and K119 (shown in green and cyan in the figure,
 respectively). This is true for the HP dp4 scenario. The structures in the CS6
@@ -775,7 +775,7 @@ both principally different poses schematically.
 
 \begin{figure}
 \centering
-\includegraphics[width=1.0\textwidth]{gfx/dmdil10/principal_poses_05.jpg}
+\includegraphics[width=1.0\textwidth]{gfx/dmdil10/principal_poses_06.jpg}
 \caption[]{
 Schematic visualization of two principally different GAG binding poses observed
 via docking ensemble clustering of all second stage DMD studies. Pose A
@@ -783,9 +783,9 @@ via docking ensemble clustering of all second stage DMD studies. Pose A
 \enquote{below} R107 (from the point of view shown here). Pose B (indicated in
 magenta) has the GAG placed above R107 and within the cleft between R107 and
 K119. The IL-10 structure (PDB ID 2ILK) is shown in gray surface representation.
-The surface of the four positively charged residues being most important for GAG
-binding (according to ensemble-derived SRED analysis) is colorized: R107 in
-green, R106 in light green, R104 in yellow, K119 in cyan.}
+The four positively charged residues being most important for GAG binding
+(according to ensemble-derived SRED analysis) are labeled and their surface is
+colorized.}
 \label{fig:dmdil10:2nd_stage_principal_poses}
 \end{figure}
 
@@ -802,36 +802,29 @@ SRED ensemble data is more reliable than the clustering result. Therefore, as of
 a lack of support from the SRED data, none of both principal binding
 orientations discussed above must be excluded for both, HP dp4 and dp6.
 
-
 Looking at the structure ensembles shown in
 \cref{fig:dmdil10:2nd_stage_all_clusters} it makes sense that K119 has been
-identified (via SRED) as being a strong contributor to GAG binding: the cleft
-between R107 and K119 could serve as a trap, potentially anchoring a GAG with a
-positively charged amino acid residue from two sides simultaneously. The cleft
-is just wide enough for e.g.\ heparin, as can be seen in the HP dp4 panel of
-\cref{fig:dmdil10:2nd_stage_all_clusters}. The clustering data can be used for
-characterizing the GAG binding properties of this cleft: the HP dp4 cluster
-(which is located in mentioned cleft) shows the highest structural consistency
-among all clusters shown in \cref{fig:dmdil10:2nd_stage_all_clusters}. The
-similarity among the structures in this cluster has been quantified with
-$\epsilon = \SI{2.2}{\angstrom}$ (this value actually encodes the
-\enquote{density-reachabiltiy}, and the smaller the value, the larger the
-similarity; see \cref{chapter:clustering} for details). This structural
-consistency is significantly larger than in the other cases (HP dp6: $\epsilon =
-\SI{2.6}{\angstrom}$, HA dp4: $\epsilon = \SI{3.0}{\angstrom}$, HA dp6:
-$\epsilon = \SI{2.6}{\angstrom}$, CS4 dp6: $\epsilon = \SI{3.4}{\angstrom}$, CS6
-dp6: $\epsilon = \SI{2.7}{\angstrom}$). Presumably, the reason for this
-comparably large structural consistency is that heparin tightly fits into this
-cleft, with less conformational freedom when compared to the other binding modes
-shown in \cref{fig:dmdil10:2nd_stage_all_clusters}.
+identified (via SRED) as being a strong contributor to GAG binding: the groove
+between R107 and K119 could serve as a trap, potentially anchoring a GAG from
+two sides simultaneously, with a positively charged amino acid residue on both
+sides. The groove is just wide enough for e.g.\ heparin, as can be seen in the
+HP dp4 panel of \cref{fig:dmdil10:2nd_stage_all_clusters}. The clustering data
+can be used for characterizing the GAG binding properties of this groove: the HP
+dp4 cluster (which is located in mentioned groove) shows the highest structural
+consistency among all clusters shown in
+\cref{fig:dmdil10:2nd_stage_all_clusters}. The similarity among the structures
+in this cluster has been quantified with $\epsilon = \SI{2.2}{\angstrom}$ (this
+value actually encodes the \enquote{density-reachabiltiy}, and the smaller the
+value, the larger the similarity; see \cref{chapter:clustering} for details).
+This structural consistency is significantly larger than in the other cases (HP
+dp6: $\epsilon = \SI{2.6}{\angstrom}$, HA dp4: $\epsilon = \SI{3.0}{\angstrom}$,
+HA dp6: $\epsilon = \SI{2.6}{\angstrom}$, CS4 dp6: $\epsilon =
+\SI{3.4}{\angstrom}$, CS6 dp6: $\epsilon = \SI{2.7}{\angstrom}$). Presumably,
+the reason for this comparably large structural consistency is that heparin
+tightly fits into this cleft, with less conformational freedom when compared to
+the other binding modes shown in \cref{fig:dmdil10:2nd_stage_all_clusters}.
 
 
-
-
-
-
-
-Add a figure schematically showing the two principally different binding poses?
 
 N=200 and N=300 for much clearer clustering and reduction of target displacement
 length to 25 Angstroms and pulling process simulation time to 3 ns instead of 4
