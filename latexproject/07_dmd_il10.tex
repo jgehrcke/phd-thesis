@@ -1,22 +1,37 @@
 \chapter{DMD applied to the IL-10-GAG system}
 
 The previous chapter presented Dynamic Molecular Docking (DMD), a novel
-molecular dynamics-based local docking method well-suited for exploring
-protein-GAG interaction. I applied DMD to the IL-10-GAG system, using the
-binding region prediction derived in \cref{chapter:bspred}. The goal was to
-further characterize the interaction of GAGs with IL-10 in that region, and to
-identify potential molecular mechanisms of IL-10-GAG interaction. This chapter
-seeks to present \textit{i)} the computational challenges, \textit{ii)} the
-methodological details, and \textit{iii)} the major outcomes of this endeavor.
+molecular dynamics-based local docking method that was shown to be well-suited
+for exploring protein-GAG interaction. Subsequently, I applied DMD to the
+IL-10-GAG system and utilized the previous achievements presented in this thesis
+--- the binding region prediction derived in \cref{chapter:bspred} and the
+clustering methodology presented in \cref{chapter:clustering}.
+
+The objective of applying DMD to the IL-10-GAG system was to discover molecular
+details about the fundamental paradigm governing IL-10-GAG interaction, limited
+to the putative IL-10-GAG binding region presented in \cref{chapter:bspred}. In
+other words, while the rational considerations made in \cref{chapter:bspred}
+lead to a certain molecular interaction model of low spatial resolution, the
+work presented in this chapter seeks to reveal further detail, based on
+extensive sampling of the dynamics of the system. This chapter presents
+\textit{i)} the computational challenges, \textit{ii)} the methodological
+details, and \textit{iii)} the major outcomes of this endeavor.
 
 Several DMD studies were performed, with varying DMD parameterization as well as
 varying molecular system setup. Conducting these studies required an increment
-of the computational resources available to us by orders of magnitude. In the
+of the computational resources available to me by orders of magnitude. In the
 course of performing these studies I continuously refined the software
 architecture for controlling the corresponding high performance computing
-resources and enriched the DMD data analysis framework, as described in this
-chapter. One of the main results of the IL-10-GAG DMD studies presented here is
-the identification of IL-10's R107 as key residue for GAG binding.
+resources and enriched the DMD data analysis framework.
+
+One of the main results of the work presented in this chapter is the
+identification of arginine 107 (in the sequence of the human IL-10) as key
+residue for GAG binding: it significantly stands out compared to all other
+residues and supposedly plays a particularly important role in IL-10-GAG
+recognition.
+
+% to further characterize the interaction of GAGs with IL-10 in that
+% region, and to identify potential molecular mechanisms of IL-10-GAG interaction.
 
 
 \section{Methods}
