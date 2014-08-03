@@ -668,19 +668,20 @@ located in the same place, positioned very similar to the clusters shown in
 \cref{fig:dmdil10:hp_hexa_vs_tetra_clusters_position_match}.  Following the
 paradigm of the iterative method for obtaining convergence, the DMD focus point
 was aligned towards this agglomeration of DMD docking solutions, in order to
-further focus the sampling onto that region: the new focus point was set onto
-the central atom of a representative docking solution from above-mentioned
+further focus the sampling of DMD onto that region: the new focus point was set
+onto the central atom of a representative docking solution from above-mentioned
 clusters. The C-alpha atom of M154 was kept as core atom, yielding a tMD target
 distance of \SI{20.5}{\angstrom}.
 
-An optimization implemented in the second stage of DMD studies was the reduction
-of the target displacement length for the LROM setup. It was shortened from
-\SI{30}{\angstrom} to \SI{25}{\angstrom}, effectively decreasing the system size
-and therefore the computational effort for performing the tMD simulations.
-Furthermore, the tMD simulation time was decreased from \SI{4}{\nano\second} to
-\SI{3}{\nano\second}. Overall, 98 DMD runs were completed for CS4 dp6, 200 runs
-for CS6 dp6, 198 runs for HA dp4, 278 runs for HA dp6, 194 runs for HP dp4, and
-298 runs for HP dp6.
+Two DMD protocol optimizations were implemented in the second stage of DMD
+studies. One is the reduction of the target displacement length for the LROM
+setup. It was shortened from \SI{30}{\angstrom} to \SI{25}{\angstrom},
+effectively decreasing the geometrical system size, i.e.\ the number of atoms to
+be time-evolved and therefore the computational effort for performing the tMD
+simulations. Furthermore, the tMD simulation time was decreased from
+\SI{4}{\nano\second} to \SI{3}{\nano\second}. With these optimizations in place,
+98 DMD runs were completed for CS4 dp6, 200 runs for CS6 dp6, 198 runs for HA
+dp4, 278 runs for HA dp6, 194 runs for HP dp4, and 298 runs for HP dp6.
 
 
 \subsubsection{SRED results}
@@ -708,35 +709,39 @@ clear separation between R107 and the residues ranked second or worse. Ranks two
 to six are not well-resolved in all cases, considering the error bars which
 represent the statistical error of the method. Quantitatively, the energetic
 contribution of single amino acid residues is shown to be much larger for
-sulfated GAGs than for HA. In these lines, the observations obtained from the
-first stage of DMD studies are reproduced.
+sulfated GAGs than for HA. In these lines, observations made during the first
+stage of DMD studies are reproduced.
 
-Another observation is that for HP as well as for HA, which have both been
-analyzed as dp4 and dp6 variants, there is no significant difference in the SRED
-result depending on the length of the GAG. That is, at least within the scope of
-the methodology used here, tetra- and hexasaccharides are identified to show
+Another insight is that for HP as well as for HA, which have both been analyzed
+as dp4 and dp6 variants, there is no significant difference in the SRED result
+depending on the length of the GAG. That is, at least within the scope of the
+methodology used here, tetra- and hexasaccharides are identified to show
 qualitatively the same behavior.
 
 An important observation is that the set of the top six residues obtained from
 SRED in the second stage of studies is the same for all sulfated GAG types
-(i.e.\ for HP, CS4 and CS6): R107, R106, R104, K119, T6, N10. This is another
-evidence for the convergence of the DMD method and its subsequent data analysis.
-Additionally, this expresses that the resides ranked two to six --- while their
-internal ranking might be unclear --- have not been identified as important by
-coincidence (noise), but arguably actually contribute more to GAG binding than
-other residues not listed in the top six. When the set of top six residues
-identified for the sulfated GAG types is compared to the binding region
-prediction made in \cref{chapter:bspred}, one notes that R102 does not appear in
-any of the top six rankings. That R102 does not appear here might be due to the
-localized nature of the DMD method, and it could be that the location bias
-introduced via the geometrical DMD parameterization does not allow R102 to be
-properly sampled by the ligand. However, since R102 is spatially so close to
-R106 and R107, I tend to conclude that R102 actually \textit{is} less important
-for GAG binding than initially assumed just based on the Coulomb potential
-distribution. A notable observation in this context is the importance of T6,
-which might actually be an artifact: in all second stage DMD studies, T6 is the
-N-terminal residue of IL-10, and therefore it is quite accessible for the
-ligand, whereas in reality it is not the terminus.
+(i.e.\ for HP dp4, HP dp6, CS4 dp6 and CS6 dp6): R107, R106, R104, K119, T6,
+N10. First of all, this is another evidence for the convergence of the DMD
+method and its subsequent data analysis. Additionally, this expresses that the
+resides ranked two to six --- while their internal ranking might be unclear ---
+have not been identified as important by coincidence (noise), but arguably
+actually contribute more to GAG binding than other residues not listed in the
+top six. When the set of top six residues identified for the sulfated GAG types
+is compared to the binding region prediction made in \cref{chapter:bspred}, one
+notes that R102 (which has been predicted to be essential part of the GAG
+binding region) does not appear in any of the top six rankings. That R102 does
+not appear here in the top six might be an effect of the localized nature of the
+DMD method, and it could be that the location bias introduced via the
+geometrical DMD parameterization does not allow R102 to be properly sampled by
+the ligand. However, since R102 is spatially so close to R106 and R107, I tend
+to conclude that R102 actually \textit{is} less important for GAG binding than
+initially assumed just based on the Coulomb potential distribution. A notable
+observation in this context is the SRED-suggested importance of T6, which might
+actually be an artifact of the specific IL-10 representation in the MD
+simulations performed here: in all second stage DMD studies, T6 was the
+N-terminal residue of IL-10 and therefore freely accessible from various
+directions. In real IL-10, however, T6 is not the terminus and therefore
+geometrically less accessible.
 
 Regarding the DMD method itself, one can conclude that the reduction of the
 target displacement length to \SI{25}{\angstrom} and the reduction of pulling
