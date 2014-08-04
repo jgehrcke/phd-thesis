@@ -345,7 +345,13 @@
 \makeatother
 % ---- Definitions for Python code highlight END ----
 
-% Declar hyphenation rules for certain words (these rules take global effect).
+% Declare hyphenation rules for certain words (these rules take global effect).
+% The \hyphenation command allows you to give explicit instructions. Provided
+% that the word will hyphenate at all (that is, it is not prevented from
+% hyphenating by any of the other restrictions above), the command will override
+% anything the hyphenation patterns might dictate. The command takes one or more
+% hyphenated words as argument — \hyphenation{ana-lysis pot-able}; note that (as
+% here, for analysis) you can use the command to overrule TeX’s choice of
+% hyphenation
 \hyphenation{he-xa-sac-cha-ride}
-
 
