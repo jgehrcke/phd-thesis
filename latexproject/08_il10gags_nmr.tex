@@ -29,58 +29,47 @@ thesis so far.
 %molecular recognition principles governing the IL-10-GAG system. This chapter
 %presents the studies and outcomes of this collaborative effort.
 
-\section{Heparin structure in dependence of the presence of IL-10}
+\section{HP dp4 structure in dependence of IL-10 presence}
 
-\subsection{Background: NOESY forinter-atomic distance determination}
+\subsection{Background: NOESY for inter-atomic distance determination}
 
 In essence, the spins of atomic nuclei that are spatially close to each other
-(closer than about \SI{5}{\angstrom}) undergo a significant dipole-dipole
+(closer than about \SI{5}{\angstrom}) may undergo a significant dipole-dipole
 interaction, leading to the measurable effect of nuclear spin polarization
 transfer from one nuclear spin population to another. In other words, after
 excitation, two dipolar-coupled spins do not relax independently, which is
-called the nuclear Overhauser Effect (NOE). In two-dimensional nuclear
-Overhauser effect spectroscopy (NOESY) experiment, this correlation effect
-manifests itself in form of off-diagonal resonance peaks. The intensity of such
-a so-called cross peak is proportional to the cross-relaxation rate constant for
-the spin system. Due to the dipolar nature of the spin-spin interaction the rate
-constant is proportional to the inverse sixth power of the distance between the
-two spins \cite{neuhaus2000_noe}.
-
-epends inversely on the distance, hence
-the restrain
-
- via cross-relaxation
-
-
-Nuclear Overhauser cross relaxation
-
-wikipedia
-
-In NMR spectroscopy, the Solomon equations describe the dipolar relaxation process of a system consisting of two spins.
-
- for transferring magnetization from one spin to the other
-
- between nuclei which are physically close to each other regardless of whether there is a bond between them
-
- the NOE occurs through space, not through chemical bonds.
-
-ROESY, Rotational Frame Nuclear Overhauser Effect Spectroscopy, spin-locking the magnetization to prevent it from going to zero, applied for molecules for which regular NOESY is not applicable
+called the nuclear Overhauser effect (NOE). In two-dimensional nuclear
+Overhauser effect spectroscopy (NOESY) experiments, this correlation effect
+manifests itself in form of off-diagonal resonance peaks. In first order
+approximation (or \enquote{isolated two-spin approximation}), the intensity of
+such a so-called cross peak is proportional to the cross-relaxation rate
+constant for the two-spin system. Due to the dipolar nature of the spin-spin
+interaction, this rate constant is proportional to the inverse sixth power of
+the distance between the two spins \cite{neuhaus2000_noe}. Likewise, the main
+usage of the nuclear Overhauser effect in NMR spectroscopy for biological
+questions is the detection of distances between pairs of protons. Eventually and
+under ideal conditions, NOESY can be used for collecting sufficient geometrical
+information about a certain molecule for determining a three-dimensional
+structure of that molecule. In practice, depending on the environmental
+conditions and on the type of molecules investigated, there are various sources
+of error that can prevent NOE cross peaks from building up, or that
+significantly invalidate the assumption of a linear dependence between the peak
+intensity and the relaxation rate constant \cite{palmer_online_nmr_relaxation},
+affecting at least the spatial resolution of the data, or even the ability to
+obtain meaningful NOE data at all.
 
 
- The inter-atomic distances derived from the observed NOE can often help to confirm a precise molecular conformation, i.e. the three-dimensional structure of a molecule. In 2002, Kurt Wüthrich was awarded the Nobel Prize in Chemistry for demonstrating that the NOE could be exploited using two-dimensional NMR spectroscopy to determine the three-dimensional structures of biological macromolecules in solution.[8]
+\subsection{Methods}
 
-transfer of nuclear spin polarization from one nuclear spin population to another via cross-relaxation
+Our collaborator G. Künze performed NOESY experiments for measuring
+heparin-internal hydrogen-hydrogen distances for a heparin tetrasaccharide (HP
+dp4) in solution, in two different conditions: once with presence of \hl{murine}
+IL-10, and once without presence of IL-10. Ideally, the geometry information in
+this data can be used for creating HP dp4 structure models for what we call the
+\enquote{bound} and \enquote{unbound} state (with and without IL-10,
+respectively).
 
-spin–lattice relaxation.
-
-
- The name spin-lattice relaxation refers to the process in which the spins give the energy they obtained from the RF pulse back to the surrounding lattice, thereby restoring their equilibrium state. The same process occurs after the spin energy has been altered by a change of the surrounding static magnetic field (e.g. prepolarization by or insertion into high magnetic field) or if the nonequilibrium state has been achieved by other means (e.g. hyperpolarization by optical pumping).
-
-
- once with and once without presence of
-\hl{murine} IL-10. The geometry information in this data can be used for
-creating HP dp4 structure models for what we call the \enquote{bound} and
-\enquote{unbound} state. Creating structure models from this data is an
+The creation structure models from the NOESY-derived distance data is an
 optimization problem with the goal of finding the heparin structure fulfilling
 the experimentally obtained distance constraints as good as possible. We have
 approached this optimization problem with simulated annealing molecular dynamics
@@ -91,12 +80,6 @@ describe and discuss the evaluation of distance data. For particular method
 details and further discussion we kindly refer the reader to the manuscript
 corresponding to this study which, \hl{at the time of writing this thesis, has
 been submitted for publication.}
-
-\subsection{Methods}
-
-Our collaborator G. Künze performed nuclear Overhauser effect spectroscopy
-(NOESY) for measuring heparin-internal hydrogen-hydrogen distances for a
-heparin tetrasaccharide (HP dp4) in solution.
 
 
 HP dp4-internal ${}^1$H-${}^1$H distances were calculated
