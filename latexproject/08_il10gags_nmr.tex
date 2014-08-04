@@ -66,29 +66,30 @@ data at all.
 experiments for measuring GAG-internal hydrogen-hydrogen (${}^1$H-${}^1$H) NOE
 cross peaks of heparin tetrasaccharide (HP dp4) molecules in solution, in two
 different conditions: once under presence of \hl{(murine)} IL-10 in the very
-same solution, and once without presence of IL-10. The NMR protocol details of
-these experiments have been published in \cite{kuenze_gehrcke_2014}. The
-motivation of these experiments was to use the geometry information encoded in
-the obtained NOESY data for creating two HP dp4 structure models, one for what
-we call the \enquote{bound} state, and one for the \enquote{unbound} state (with
+same solution, and once without presence of IL-10. The protocol details of these
+experiments have been published in \cite{kuenze_gehrcke_2014}. The aim of these
+experiments was to extract and use the geometry information encoded in the
+resulting NOESY data, for creating two HP dp4 structure models: one for what we
+call the \enquote{bound} state, and one for the \enquote{unbound} state (with
 and without IL-10, respectively).
 
 The creation of structure models from the NOESY-derived distance data can be
 considered an optimization problem --- with the goal of finding the heparin
 structure fulfilling the experimentally obtained cartesian distance constraints
 as good as possible. I have approached this optimization problem with simulated
-annealing molecular dynamics simulations, which is one of the earliest methods
-used in this scenario \cite{nilges_sim_annealing_noe_1988}.
+annealing molecular dynamics simulations, which is one of the most obvious
+methods to be applied in this scenario \cite{nilges_sim_annealing_noe_1988}.
 
 HP dp4-internal ${}^1$H-${}^1$H distances were calculated from experimentally
 obtained NOE intensities assuming a $1/r^6$ distance dependence between
 interacting protons, as justified in \cref{nmr:noesy_background}. The
 calibration was based on the H2-H4 and H3-H5 proton pairs of the GlcNS,6S ring
-with a known distance of \SI{2.55}{\angstrom} in the ${}^4$C${}_1$ chair
-conformation. A tolerance interval of $\pm \SI{0.3}{\angstrom}$, $\pm
-\SI{0.6}{\angstrom}$ and $\pm \SI{1.0}{\angstrom}$ was used for measured
-distances $< \SI{2.0}{\angstrom}$, between \num{2.0} and $\SI{4.0}{\angstrom}$,
-and $> \SI{4.0}{\angstrom}$, respectively.
+(atom nomenclature according to IUPAC rules)with a known distance of
+\SI{2.55}{\angstrom} in the ${}^4$C${}_1$ chair conformation. A tolerance
+interval of $\pm \SI{0.3}{\angstrom}$, $\pm \SI{0.6}{\angstrom}$ and $\pm
+\SI{1.0}{\angstrom}$ was used for measured distances $< \SI{2.0}{\angstrom}$,
+between \num{2.0} and $\SI{4.0}{\angstrom}$, and $> \SI{4.0}{\angstrom}$,
+respectively.
 
 The experimentally obtained distance restraints were used for GAG structure
 determination using MD simulations employing Amber 12 \cite{case_amber_12}. Atom
