@@ -15,11 +15,11 @@ In an ongoing effort, G. Künze from Prof. D. Huster's laboratory at the
 Universität Leipzig investigates the IL-10-GAG system with NMR methods. In this
 chapter, I describe how I post-processed his nuclear Overhauser effect
 spectroscopy data in order to derive heparin tetrasaccharide structure models
-for the free (without IL-10 in solution) and bound (with IL-10 in solution) case
-and discuss the implications of the corresponding results. This work is part of
-our collaborative publication titled \enquote{NMR characterization of the
-binding properties and conformation of glycosaminoglycans interacting with
-interleukin-10} in the journal \textit{Glycobiology} \cite{kuenze_gehrcke_2014}.
+for the free state (without IL-10 in solution) and bound state (with IL-10 in
+solution) and discuss the implications of the corresponding results. This work
+is part of our collaborative publication titled \enquote{NMR characterization of
+the binding properties and conformation of glycosaminoglycans interacting with
+interleukin-10} in the \textit{Glycobiology} journal \cite{kuenze_gehrcke_2014}.
 Additionally, in this chapter I summarize further insights derived from G.
 Künze's data and discuss them in the context of the conclusions drawn in this
 thesis so far.
@@ -31,15 +31,60 @@ thesis so far.
 
 \section{Heparin structure in dependence of the presence of IL-10}
 
-Our collaborators performed nuclear Overhauser effect Spectroscopy for measuring
-heparin-internal hydrogen-hydrogen distances for a heparin tetrasaccharide (HP
-dp4) in solution, once with and once without presence of IL-10. The geometry
-information in this data can be used for creating HP dp4 structure models for
-what we call the \enquote{bound} and \enquote{unbound} state. Creating structure
-models from this data is an optimization problem with the goal of finding the
-heparin structure fulfilling the experimentally obtained distance constraints as
-good as possible. We have approached this optimization problem with simulated
-annealing molecular dynamics simulations.
+\subsection{Background: NOESY forinter-atomic distance determination}
+
+In essence, the spins of atomic nuclei that are spatially close to each other
+(closer than about \SI{5}{\angstrom}) undergo a significant dipole-dipole
+interaction, leading to the measurable effect of nuclear spin polarization
+transfer from one nuclear spin population to another. In other words, after
+excitation, two dipolar-coupled spins do not relax independently, which is
+called the nuclear Overhauser Effect (NOE). In two-dimensional nuclear
+Overhauser effect spectroscopy (NOESY) experiment, this correlation effect
+manifests itself in form of off-diagonal resonance peaks. The intensity of such
+a so-called cross peak is proportional to the cross-relaxation rate constant for
+the spin system. Due to the dipolar nature of the spin-spin interaction the rate
+constant is proportional to the inverse sixth power of the distance between the
+two spins \cite{neuhaus2000_noe}.
+
+epends inversely on the distance, hence
+the restrain
+
+ via cross-relaxation
+
+
+Nuclear Overhauser cross relaxation
+
+wikipedia
+
+In NMR spectroscopy, the Solomon equations describe the dipolar relaxation process of a system consisting of two spins.
+
+ for transferring magnetization from one spin to the other
+
+ between nuclei which are physically close to each other regardless of whether there is a bond between them
+
+ the NOE occurs through space, not through chemical bonds.
+
+ROESY, Rotational Frame Nuclear Overhauser Effect Spectroscopy, spin-locking the magnetization to prevent it from going to zero, applied for molecules for which regular NOESY is not applicable
+
+
+ The inter-atomic distances derived from the observed NOE can often help to confirm a precise molecular conformation, i.e. the three-dimensional structure of a molecule. In 2002, Kurt Wüthrich was awarded the Nobel Prize in Chemistry for demonstrating that the NOE could be exploited using two-dimensional NMR spectroscopy to determine the three-dimensional structures of biological macromolecules in solution.[8]
+
+transfer of nuclear spin polarization from one nuclear spin population to another via cross-relaxation
+
+spin–lattice relaxation.
+
+
+ The name spin-lattice relaxation refers to the process in which the spins give the energy they obtained from the RF pulse back to the surrounding lattice, thereby restoring their equilibrium state. The same process occurs after the spin energy has been altered by a change of the surrounding static magnetic field (e.g. prepolarization by or insertion into high magnetic field) or if the nonequilibrium state has been achieved by other means (e.g. hyperpolarization by optical pumping).
+
+
+ once with and once without presence of
+\hl{murine} IL-10. The geometry information in this data can be used for
+creating HP dp4 structure models for what we call the \enquote{bound} and
+\enquote{unbound} state. Creating structure models from this data is an
+optimization problem with the goal of finding the heparin structure fulfilling
+the experimentally obtained distance constraints as good as possible. We have
+approached this optimization problem with simulated annealing molecular dynamics
+simulations.
 
 The following parts skip details regarding the NMR experiments and rather
 describe and discuss the evaluation of distance data. For particular method
@@ -48,6 +93,11 @@ corresponding to this study which, \hl{at the time of writing this thesis, has
 been submitted for publication.}
 
 \subsection{Methods}
+
+Our collaborator G. Künze performed nuclear Overhauser effect spectroscopy
+(NOESY) for measuring heparin-internal hydrogen-hydrogen distances for a
+heparin tetrasaccharide (HP dp4) in solution.
+
 
 HP dp4-internal ${}^1$H-${}^1$H distances were calculated
 from experimentally obtained NOE intensities assuming a $1/r^6$ distance
