@@ -29,9 +29,10 @@ thesis so far.
 %molecular recognition principles governing the IL-10-GAG system. This chapter
 %presents the studies and outcomes of this collaborative effort.
 
-\section{HP dp4 structure in dependence of IL-10 presence}
+\section{Heparin structure calculation for the bound and unbound state}
 
 \subsection{Background: NOESY for inter-atomic distance determination}
+\label{nmr:noesy_background}
 
 In essence, the spins of atomic nuclei that are spatially close to each other
 (closer than about \SI{5}{\angstrom}) may undergo a significant dipole-dipole
@@ -50,60 +51,57 @@ usage of the nuclear Overhauser effect in NMR spectroscopy for biological
 questions is the detection of distances between pairs of protons. Eventually and
 under ideal conditions, NOESY can be used for collecting sufficient geometrical
 information about a certain molecule for determining a three-dimensional
-structure of that molecule. In practice, depending on the environmental
-conditions and on the type of molecules investigated, there are various sources
-of error that can prevent NOE cross peaks from building up, or that
-significantly invalidate the assumption of a linear dependence between the peak
-intensity and the relaxation rate constant \cite{palmer_online_nmr_relaxation},
-affecting at least the spatial resolution of the data, or even the ability to
-obtain meaningful NOE data at all.
+structure of that molecule (obviously, this requires knowledge about the
+chemical configuration of that molecule as well as a mapping between cross peaks
+and atom pairs). In practice, depending on the environmental conditions and on
+the type of molecules investigated, there are various sources of error that can
+prevent NOE cross peaks from building up, or that significantly invalidate the
+assumption of a linear dependence between the peak intensity and the relaxation
+rate constant \cite{palmer_online_nmr_relaxation}, affecting at least the
+spatial resolution of the data, or even the ability to obtain meaningful NOE
+data at all.
 
 
-\subsection{Methods}
-
-Our collaborator G. Künze performed NOESY experiments for measuring
-heparin-internal hydrogen-hydrogen distances for a heparin tetrasaccharide (HP
-dp4) in solution, in two different conditions: once with presence of \hl{murine}
-IL-10, and once without presence of IL-10. Ideally, the geometry information in
-this data can be used for creating HP dp4 structure models for what we call the
-\enquote{bound} and \enquote{unbound} state (with and without IL-10,
-respectively).
+\subsection{Methods} G. Künze performed NOESY experiments for
+measuring heparin-internal hydrogen-hydrogen (${}^1$H-${}^1$H) distances for
+heparin tetrasaccharide (HP dp4) molecules in solution, in two different
+conditions: once under presence of \hl{(murine)} IL-10 in the very same
+solution, and once without presence of IL-10. The NMR protocol details of these
+experiments have been published in \cite{kuenze_gehrcke_2014}. In principle, the
+geometry information encoded in the obtained NOESY data can be used for creating
+two HP dp4 structure models, one for what we call the \enquote{bound} state, and
+one for the \enquote{unbound} state (with and without IL-10, respectively).
 
 The creation structure models from the NOESY-derived distance data is an
 optimization problem with the goal of finding the heparin structure fulfilling
-the experimentally obtained distance constraints as good as possible. We have
+the experimentally obtained distance constraints as good as possible. I have
 approached this optimization problem with simulated annealing molecular dynamics
 simulations.
 
-The following parts skip details regarding the NMR experiments and rather
-describe and discuss the evaluation of distance data. For particular method
-details and further discussion we kindly refer the reader to the manuscript
-corresponding to this study which, \hl{at the time of writing this thesis, has
-been submitted for publication.}
+HP dp4-internal ${}^1$H-${}^1$H distances were calculated from experimentally
+obtained NOE intensities assuming a $1/r^6$ distance dependence between
+interacting protons, as justified in \cref{nmr:noesy_background}. The
+calibration was based on the H2-H4 and H3-H5 proton pairs of the GlcNS,6S ring
+with a known distance of \SI{2.55}{\angstrom} in the ${}^4$C${}_1$ chair
+conformation. A tolerance interval of $\pm \SI{0.3}{\angstrom}$, $\pm
+\SI{0.6}{\angstrom}$ and $\pm \SI{1.0}{\angstrom}$ was used for measured
+distances $< \SI{2.0}{\angstrom}$, between \num{2.0} and $\SI{4.0}{\angstrom}$,
+and $> \SI{4.0}{\angstrom}$, respectively.
 
-
-HP dp4-internal ${}^1$H-${}^1$H distances were calculated
-from experimentally obtained NOE intensities assuming a $1/r^6$ distance
-dependence between interacting protons. Calibration was based on the H2-H4 and
-H3-H5 proton pairs of the GlcNS,6S ring with a known distance of
-\SI{2.55}{\angstrom} in the ${}^4$C${}_1$ chair conformation. A tolerance
-interval of $\pm \SI{0.3}{\angstrom}$, $\pm \SI{0.6}{\angstrom}$ and $\pm
-\SI{1.0}{\angstrom}$ was used for measured distances $< \SI{2.0}{\angstrom}$,
-between \num{2.0} and $\SI{4.0}{\angstrom}$, and $> \SI{4.0}{\angstrom}$,
-respectively.
-
-The experimentally obtained  distance restraints were used for GAG structure
+The experimentally obtained distance restraints were used for GAG structure
 determination using MD simulations employing Amber 12 \cite{case_amber_12}. Atom
 types of the GLYCAM 06g force field \cite{kirschner_glycam06:_2008} were used to
 build the heparin tetrasaccharide $\Delta$UA,2S-GlcNS,6S-IdoA,2S-GlcNS,6S,
-referred to as rings A, B, C, D, respectively. Sulfate partial charges were
-obtained from RESP calculations for methylsulfate at the 6-31(d)G level of
-theory. The first structure optimization stage was a simulated annealing
-protocol using a simple implicit solvent model with a 1/r distance dependency of
-the dielectric constant. The protocol contained the following steps: \textit{i)}
-steepest descent and conjugate gradient minimization without restraints,
-\textit{ii)} 100 ps MD with tight coupling to a \SI{600}{\kelvin} heat bath and
-gradual activation of NMR distance restraints, \textit{iii)}
+referred to as rings A, B, C, D, respectively (the GAGs used for the experiments
+were prepared by enzymatic digestion, so the non-reducing terminal uronic acid
+became unsaturated and is therefore labeled $\Delta$UA,2 here). Sulfate partial
+charges were obtained from RESP calculations for methylsulfate at the 6-31(d)G
+level of theory. The first structure optimization stage was a simulated
+annealing protocol using a simple implicit solvent model with a 1/r distance
+dependency of the dielectric constant. The protocol contained the following
+steps: \textit{i)} steepest descent and conjugate gradient minimization without
+restraints, \textit{ii)} 100 ps MD with tight coupling to a \SI{600}{\kelvin}
+heat bath and gradual activation of NMR distance restraints, \textit{iii)}
 \SI{300}{\pico\second} MD with restraints, gradual temperature change from
 \SI{600}{\kelvin} to \SI{10}{\kelvin}, and normal coupling to heat bath,
 \textit{iv)} short MD with gradual cooling to \SI{0}{\kelvin} and tight coupling
