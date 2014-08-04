@@ -62,21 +62,22 @@ spatial resolution of the data, or even the ability to obtain meaningful NOE
 data at all.
 
 
-\subsection{Methods} G. Künze performed NOESY experiments for
-measuring heparin-internal hydrogen-hydrogen (${}^1$H-${}^1$H) distances for
-heparin tetrasaccharide (HP dp4) molecules in solution, in two different
-conditions: once under presence of \hl{(murine)} IL-10 in the very same
-solution, and once without presence of IL-10. The NMR protocol details of these
-experiments have been published in \cite{kuenze_gehrcke_2014}. In principle, the
-geometry information encoded in the obtained NOESY data can be used for creating
-two HP dp4 structure models, one for what we call the \enquote{bound} state, and
-one for the \enquote{unbound} state (with and without IL-10, respectively).
+\subsection{Methods} G. Künze carried out nuclear Overhauser effect spectroscopy
+experiments for measuring GAG-internal hydrogen-hydrogen (${}^1$H-${}^1$H) NOE
+cross peaks of heparin tetrasaccharide (HP dp4) molecules in solution, in two
+different conditions: once under presence of \hl{(murine)} IL-10 in the very
+same solution, and once without presence of IL-10. The NMR protocol details of
+these experiments have been published in \cite{kuenze_gehrcke_2014}. The
+motivation of these experiments was to use the geometry information encoded in
+the obtained NOESY data for creating two HP dp4 structure models, one for what
+we call the \enquote{bound} state, and one for the \enquote{unbound} state (with
+and without IL-10, respectively).
 
-The creation structure models from the NOESY-derived distance data is an
-optimization problem with the goal of finding the heparin structure fulfilling
-the experimentally obtained distance constraints as good as possible. I have
-approached this optimization problem with simulated annealing molecular dynamics
-simulations.
+The creation of structure models from the NOESY-derived distance data can be
+considered an optimization problem --- with the goal of finding the heparin
+structure fulfilling the experimentally obtained distance constraints as good as
+possible. I have approached this optimization problem with simulated annealing
+molecular dynamics simulations.
 
 HP dp4-internal ${}^1$H-${}^1$H distances were calculated from experimentally
 obtained NOE intensities assuming a $1/r^6$ distance dependence between
