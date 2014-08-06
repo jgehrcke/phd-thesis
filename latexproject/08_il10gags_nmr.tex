@@ -77,19 +77,20 @@ The creation of structure models from the NOESY-derived distance data can be
 considered an optimization problem --- with the goal of finding the heparin
 structure fulfilling the experimentally obtained cartesian distance constraints
 as good as possible. I have approached this optimization problem with simulated
-annealing molecular dynamics simulations, which is one of the most obvious
-methods to be applied in this scenario \cite{nilges_sim_annealing_noe_1988}.
+annealing molecular dynamics simulations, which is a classical method applicable
+in this scenario \cite{nilges_sim_annealing_noe_1988}.
 
 HP dp4-internal ${}^1$H-${}^1$H distances were calculated from experimentally
 obtained NOE intensities assuming a $1/r^6$ distance dependence between
 interacting protons, as justified in \cref{nmr:noesy_background}. The
 calibration was based on the H2-H4 and H3-H5 proton pairs of the GlcNS,6S ring
-(atom nomenclature according to IUPAC rules)with a known distance of
+(atom nomenclature according to IUPAC rules) with a known distance of
 \SI{2.55}{\angstrom} in the ${}^4$C${}_1$ chair conformation. A tolerance
 interval of $\pm \SI{0.3}{\angstrom}$, $\pm \SI{0.6}{\angstrom}$ and $\pm
-\SI{1.0}{\angstrom}$ was used for measured distances $< \SI{2.0}{\angstrom}$,
-between \num{2.0} and $\SI{4.0}{\angstrom}$, and $> \SI{4.0}{\angstrom}$,
-respectively.
+\SI{1.0}{\angstrom}$ was specified for measured distances $<
+\SI{2.0}{\angstrom}$, between \num{2.0} and $\SI{4.0}{\angstrom}$, and $>
+\SI{4.0}{\angstrom}$, respectively. The corresponding raw distance data is
+enlisted in the supplementary material of \cite{kuenze_gehrcke_2014}.
 
 The experimentally obtained distance restraints were used for GAG structure
 determination using MD simulations employing Amber 12 \cite{case_amber_12}. Atom
@@ -339,3 +340,8 @@ More discussion.
 % leave this for publication.}
 
 %\lipsum[1-5]
+
+
+Discussion: usually, ... requires full relaxation matrix calculations (\cite{foster_mulloy_1993,mikhailov_hp_tetra_1996}), which also requires more data
+to be obtained from the NMR experiments... nevertheless, the analysis as we performed it usually has enough accuracy for obtaining useful results bla bla
+\cite{jones_noe_2011}.
