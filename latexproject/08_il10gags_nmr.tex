@@ -253,7 +253,10 @@ structures for the unbound (left) and bound (right) case. The violation, i.e.\
 the deviation from the NOE-derived proton-proton distance tolerance interval, is
 given with its mean value $\pm$ standard deviation (built from the entire
 ensemble with 100 structures). Violations with a mean value and standard
-deviation smaller than \SI{0.000}{\angstrom} are not listed.}
+deviation smaller than \SI{0.000}{\angstrom} are not listed. H61 is H6-proS and
+H62 is H6-proR, according to the considerations made in
+\cite{nishida_rotameric_nmr_1988}. The other hydrogens are named in compliance
+to IUPAC nomenclature.}
 \label{tab:nmr:restraint_viols_free}
 \end{table}
 
@@ -262,21 +265,28 @@ Structural models of HP dp4 were created by performing simulated annealing MD
 simulations including NOE-based hydrogen pair distance restraints, for the
 unbound HP dp4 and for HP dp4 in the presence of IL-10. In the unbound case, 42
 H-H distance restraints were applied during the simulations (visualized in
-\cref{fig:nmr:hp_dashed_lines_distances}). About half of them show a minor
-deviation from the tolerance interval, see \cref{tab:nmr:restraint_viols_free}.
-The ensemble has a structural diversity of \SI{0.37}{\angstrom}
-(\cref{fig:nmr:hp_ensembles_representatives}a). In the bound state, we
-restrained the distance of 41 hydrogen pairs, as visualized in
+\cref{fig:nmr:hp_dashed_lines_distances}). In the ensemble of optimized
+structures, about half of the restrained hydrogen pairs show a minor deviation
+from their corresponding distance restraint tolerance interval, as listed in
+\cref{tab:nmr:restraint_viols_free}. That is, the geometrical data obtained via
+NMR measurements is largely in compliance with the potentials defined by the
+GLYCAM force field. The ensemble has a structural diversity of
+\SI{0.37}{\angstrom} (\cref{fig:nmr:hp_ensembles_representatives}a), i.e.\ it is
+well-converged, meaning that the applied simulated annealing optimization
+procedure was sufficient for the kind of data used in this study. In the bound
+state, the distance of 41 hydrogen pairs was restrained, as visualized in
 \cref{fig:nmr:hp_dashed_lines_distances}. About a fourth of them show a minor
-deviation from the tolerance interval, also listed in
-\cref{tab:nmr:restraint_viols_free}. The resulting ensemble has a structural
-diversity of \SI{0.43}{\angstrom}
-(\cref{fig:nmr:hp_ensembles_representatives}b). During the structure calculation
-the NOE distance restraints involving hydrogens of ring A other than H1 were not
-applied (as of the inaccurate parameterization of the GLYCAM force field for the
-4,5-unsaturated acid ring). Since the unsaturated uronic acid ring plays no
-functional role for the biology of heparin, the structural details of this ring
-are not discussed here --- an approach which has also been taken in
+deviation from the tolerance interval, as listed in
+\cref{tab:nmr:restraint_viols_free}. The resulting ensemble is also
+well-converged, with a structural diversity of \SI{0.43}{\angstrom}
+(\cref{fig:nmr:hp_ensembles_representatives}b).
+
+During the MD simulations, the NOE distance restraints involving hydrogens of
+ring A other than H1 were not applied (as of the inaccurate parameterization of
+the GLYCAM force field for the 4,5-unsaturated acid ring). Since the unsaturated
+uronic acid ring plays no functional role for the biology of heparin, the
+structural details of this ring are not discussed here --- an approach which has
+also been taken in
 \cite{jin_heparin_2009}. Hence, functional groups of ring A are not shown in
 \cref{fig:nmr:hp_ensembles_representatives}.
 
