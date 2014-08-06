@@ -286,16 +286,43 @@ ring A other than H1 were not applied (as of the inaccurate parameterization of
 the GLYCAM force field for the 4,5-unsaturated acid ring). Since the unsaturated
 uronic acid ring plays no functional role for the biology of heparin, the
 structural details of this ring are not discussed here --- an approach which has
-also been taken in
-\cite{jin_heparin_2009}. Hence, functional groups of ring A are not shown in
-\cref{fig:nmr:hp_ensembles_representatives}.
+also been taken by Jin et al. \cite{jin_heparin_2009}. Hence, functional groups
+of ring A are not shown in \cref{fig:nmr:hp_ensembles_representatives}.
 
-The difference in the GAG backbone structure for the bound and unbound case was
-quantified by evaluating the distribution of glycosidic linkage torsional angles
-in both ensembles (\cref{fig:nmr:hp_glyco_dihedral_distributions}). A
+Overall, the NOE distance data and MD simulations have led to valid heparin
+structure models. In both, the bound and unbound case, the ensemble
+representatives have their rings in valid conformations, namely ring B in
+${}^4$C${}_1$, ring C in ${}^2$S${}_\mathrm{O}$, and ring D in ${}^4$C${}_1$
+conformation. Also the distribution of glycosidic linkage torsional angles is in
+a valid range of values, as observed in free heparin microsecond MD simulations
+and in bound and unbound heparin structures found in the PDB. The overall
+conformation observed in the heparin structure models is consistent with the
+helical structure of the heparin dodecasaccharide previously obtained via NMR
+and modeling \cite{foster_mulloy_1993}
+
+
+One of the major observations to be made from the two heparin structure
+ensembles is that there is a slight difference in the overall GAG backbone
+structure between the bound and unbound cases, as can be inferred from the
+structure alignment shown in \cref{fig:nmr:hp_ensembles_representatives}c. The
+generated structure models let us conclude that the bound heparin is less bent
+than its free form. This small but significant difference was further quantified
+by evaluating the distribution of glycosidic linkage torsional angles in both
+structure ensembles, see \cref{fig:nmr:hp_glyco_dihedral_distributions}. A
 significant change in the Φ distribution of linkage A→B, a shift in the Ψ
 distribution of linkage B→C, and a significant shift in the Φ distribution of
-linkage C→D was observed.
+linkage C→D can be observed. Although the reliability of single certain distance
+restraints derived from NOE data may surely be questioned, the pure existence of
+a difference in shown glycosidic linkage torsional angle distributions must be
+considered meaningful, since the raw NOE data for the two cases was obtained in
+a highly consistent and reproducible manner. It should be noted that the
+seemingly small backbone structure difference between the bound and unbound
+cases should not be interpreted in terms of IL-10-GAG interaction affinity: even
+in the high affinity complex comprised of bFGF and a heparin tetrasaccharide
+\cite{faham_heparin_1996,mikhailov_hp_tetra_1996} the backbone differences
+between bound and unbound GAG are rather small.
+
+
 
 \begin{figure}
 \begin{adjustwidth}{-2cm}{-2cm}
@@ -334,27 +361,9 @@ simulations, in comparison for the bound and unbound state.
 \label{fig:nmr:hp_sulfate_orientations}
 \end{figure}
 
-The NOE distance data and MD simulations have led to proper heparin structure
-models. In both, the bound and unbound case, the ensemble representatives have
-their rings in valid conformations, namely ring B in ${}^4$C${}_1$, ring C in
-${}^2$S${}_O$, and ring D in ${}^4$C${}_1$ conformation. Also the distribution
-of glycosidic linkage torsional angles is in a valid range of values, as
-observed in free heparin microsecond MD simulations (data not shown) and in
-bound and unbound heparin structures found in the PDB.
 
-The generated structure models let us conclude that the bound heparin structure
-is less bent than its free form. The small but significant difference observed
-in the backbone structure of the bound and unbound ensembles is reflected by
-their glycosidic linkage torsional angle distributions. However, although
-glycosidic bond angles between the free and bound state do vary between
-\SI{10}{\degree} and \SI{30}{\degree} for linkages A→B and C→D, the overall
-tetrasaccharide conformation is maintained and is consistent with the helical
-structure of the heparin dodecasaccharide previously observed by NMR and
-modelling \cite{foster_mulloy_1993}. Also in the high affinity complex between
-bFGF and a heparin tetrasaccharide
-\cite{faham_heparin_1996,mikhailov_hp_tetra_1996} the backbone differences
-relative to the unbound GAG are rather small and provide no indication about the
-interaction strength. Furthermore, according to our heparin structure models,
+
+Furthermore, according to our heparin structure models,
 the orientation of most functional groups of rings B, C, and D is conserved
 among the bound and unbound MD ensembles. Notable exceptions are the positions
 of the 6-O-sulfate groups of ring B and D. In ring B the 6-O-sulfate is only in
