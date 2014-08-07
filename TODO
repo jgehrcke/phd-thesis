@@ -27,16 +27,19 @@ IL-10
 GAG
 
 
+- in intro, refer to IUPAC for GAG nomenclature
+
 - explain degree of polymerization (dpX) in words in the introduction, not
-(only) in the abbrev list.
+  (only) in the abbrev list.
 
 - intro: introduce N-terminus, used in chapter 7.1.
 
-- in NMR MD section, write more about why simulated annealing simulations, and give some
-references for similar work, and more literature in general about NMR MD restraint methods
+- in NMR MD section, write more about why simulated annealing simulations, and
+  give some references for similar work, and more literature in general about
+  NMR MD restraint methods
 
-- in clustering section: point out somehow that this topic is often neglected
-by others (in published docking work)?
+- in clustering section: point out somehow that this topic is often neglected by
+  others (in published docking work)?
 
 - in intro: also introduce force fields, i.e. FF99SB and GLYCAM06.
 
