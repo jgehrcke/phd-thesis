@@ -65,12 +65,12 @@ data at all.
 \subsection{Methods} \label{nmr:methdos} G. Künze carried out nuclear Overhauser
 effect spectroscopy experiments for measuring GAG-internal hydrogen-hydrogen
 (${}^1$H-${}^1$H) NOE cross peaks of heparin tetrasaccharide (HP dp4) molecules
-in solution, in two different conditions: under presence of \hl{(murine)} IL-10
-in the very same solution, and without presence of IL-10. The protocol details
-of these experiments have been published in \cite{kuenze_gehrcke_2014}. The aim
-of these experiments was to extract and use the geometry information encoded in
-the resulting NOESY data, for creating two HP dp4 structure models: one for what
-we call the \enquote{bound} state, and one for the \enquote{unbound} state (with
+in solution, in two different conditions: under presence of murine IL-10 in the
+very same solution, and without presence of IL-10. The protocol details of these
+experiments have been published in \cite{kuenze_gehrcke_2014}. The aim of these
+experiments was to extract and use the geometry information encoded in the
+resulting NOESY data, for creating two HP dp4 structure models: one for what we
+call the \enquote{bound} state, and one for the \enquote{unbound} state (with
 and without IL-10, respectively).
 
 The creation of structure models from the NOESY-derived distance data can be
@@ -310,6 +310,21 @@ conformation observed in the heparin structure models is consistent with one of
 the earliest heparin structure models previously obtained via NMR and modeling
 \cite{foster_mulloy_1993}.
 
+\begin{figure}
+\begin{adjustwidth}{-1cm}{-1cm}
+\centering
+\includegraphics[width=1.1\textwidth]{gfx/nmr/glycolinkage_dihedrals_bound_vs_free_3panels_03.pdf}
+\caption[]{
+Glycosidic linkage torsional angle distributions of heparin structure model
+ensembles obtained from simulated annealing simulations involving NMR distance
+restraints. Data comparing the bound and unbound state is shown individually for
+each linkage in the heparin tetrasaccharide, namely for linkages A
+\rightarrow B, B \rightarrow C, and C \rightarrow D.
+}
+\label{fig:nmr:hp_glyco_dihedral_distributions}
+\end{adjustwidth}
+\end{figure}
+
 One of the major observations to be made from the two heparin structure
 ensembles is that there is a slight difference in the overall GAG backbone
 structure between the bound and unbound cases, as can be inferred from the
@@ -333,36 +348,42 @@ between bound and unbound GAG are rather small. The conclusion to be made from
 these data is that IL-10-HP interaction has a measurable impact on the HP
 structure.
 
-
 \begin{figure}
-\begin{adjustwidth}{-1cm}{-1cm}
 \centering
-\includegraphics[width=1.1\textwidth]{gfx/nmr/glycolinkage_dihedrals_bound_vs_free_3panels_03.pdf}
+\includegraphics[width=\textwidth]{gfx/nmr/SI_figure_6O_sulfate_dihedrals_B_D_01.png}
 \caption[]{
-Glycosidic linkage torsional angle distributions of heparin structure model
-ensembles obtained from simulated annealing simulations involving NMR distance
-restraints. Data comparing the bound and unbound state is shown individually for
-each linkage in the heparin tetrasaccharide, namely for linkages A
-\rightarrow B, B \rightarrow C, and C \rightarrow D.
-}
-\label{fig:nmr:hp_glyco_dihedral_distributions}
-\end{adjustwidth}
+Distribution of 6-O-sulfate orientations in heparin tetrasaccharide structure
+models obtained from obtained from simulated annealing simulations involving NMR
+distance restraints, in comparison for the bound and unbound state.}
+\label{fig:nmr:hp_sulfate_orientations}
 \end{figure}
+
 
 Apart from the glycosidic linkage angular distributions, also the orientation of
 the sulfate groups in the structure ensembles was investigated via the
-evaluation of dihedral angles. In case of  four of the six sulfate groups, the
+evaluation of dihedral angles. In case of four of the six sulfate groups, the
 orientation does not differ significantly between the bound and unbound state.
-The orientation of the 6-O-sulfates of the rings B and D, however, was observed
-to be affected by the presence of IL-10 (see
-\cref{fig:nmr:hp_sulfate_orientations}). The 6-O-sulfate of ring B showed a
-slight shift in the rotamer distribution between unbound and bound state,
-whereas in the bound state there is a \SI{10}{\degree} deviation from the ideal
-rotation angle of \SI{-60}{\degree}. The 6-O-sulfate of ring D only populated a
-small fraction of the \textit{gauche-trans} conformer (\SI{60}{\degree}) in the
-presence of IL-10. The meaning of these observations is further discussed in
+That is, according to our heparin structure ensembles, the orientation of most
+functional groups of rings B, C, and D is conserved among the bound and unbound
+ensembles. Notable exceptions are the 6-O-sulfate groups of ring B and D, which
+were observed to be affected by the presence of IL-10 (see
+\cref{fig:nmr:hp_sulfate_orientations}). In ring B, the 6-O-sulfate has
+converged purely towards the \textit{gauche-gauche} rotamer state in both cases,
+but there is a slight shift between the rotamer distributions of the unbound and
+bound state: in the bound state the 6-O-sulfate of ring B deviates by about
+\SI{10}{\degree} from the ideal rotation angle of \SI{-60}{\degree}.
+For the 6-O-sulfate of ring D there is a larger difference between the two
+cases. It only populated the \textit{gauche-gauche} rotamer state in the unbound
+case, and showed a significant additional population of the
+\textit{gauche-trans} conformer (\SI{60}{\degree}) in the bound case. The
+meaning of these observations is further discussed in
 \cref{nmr:further_insights}, together with the corresponding direct NMR
 measurements.
+
+%
+%\SI{-10}{\degree} of the rotamer distribution in the bound heparin structure. In
+%ring C an additional fraction of the \textit {gauche-trans} conformer in the
+%presence of IL-10 is observed.
 
 %3J couplings between H5 and H6 protons%
 % Further information on the conformation of 6-O-sulfate side
@@ -376,25 +397,7 @@ performed it usually has enough accuracy for obtaining useful results bla bla
 \cite{jones_noe_2011}.
 
 
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{gfx/nmr/SI_figure_6O_sulfate_dihedrals_B_D_01.png}
-\caption[]{
-Distribution of 6-O-sulfate orientations in heparin tetrasaccharide structure
-models obtained from obtained from simulated annealing simulations involving NMR
-distance restraints, in comparison for the bound and unbound state.}
-\label{fig:nmr:hp_sulfate_orientations}
-\end{figure}
 
-
-Furthermore, according to our heparin structure models,
-the orientation of most functional groups of rings B, C, and D is conserved
-among the bound and unbound MD ensembles. Notable exceptions are the positions
-of the 6-O-sulfate groups of ring B and D. In ring B the 6-O-sulfate is only in
-\textit{gauche-gauche}, but there is a slight shift by about \SI{-10}{\degree}
-of the rotamer distribution in the bound heparin structure. In ring C an
-additional fraction of the \textit {gauche-trans} conformer in the presence of
-IL-10 is observed.
 
 \hl{Note (TODO):}
 \hl{Discuss what this HEPARIN STRUCTURE now brings us for clarifying atomic
@@ -469,4 +472,6 @@ More discussion.
 
 %\lipsum[1-5]
 
+
+\section{Conclusions}
 
