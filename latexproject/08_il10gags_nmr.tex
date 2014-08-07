@@ -420,40 +420,73 @@ between the protons H5 and H6 of the monosaccharides comprising the heparin
 molecule --- in the unbound state. Using the Karplus approach
 \cite{haasnoot_karplus_1980,nishida_rotameric_nmr_1988}, the C5-C6 bond of both
 GlcNS,6S rings (B and D) was determined to be in \textit{gauche-gauche} state
-with a probability of \SI{70}{\percent}, and to be in  \textit{gauche-trans}
-state with a probability of \SI{30}{\percent}. This is similar to the ratio
+with a probability of \SI{70}{\percent}, and in  \textit{gauche-trans} state
+with a probability of \SI{30}{\percent}. This is in compliance to the ratio
 observed for other glucopyranoses \cite{nishida_rotameric_nmr_1988}.
-Unfortunately, an precise measurement of H5-H6 couplings for the bound case
-(with IL-10 in solution) was impeded by peak broadening. Hence, not direct
-comparison between the bound and unbound cases is possible using this method.
-Notably, the observation of the 6-O-sulfate being mostly in
-\textit{gauche-gauche} orientation when interpreting the heparin structure
-ensemble of the unbound case is \textit{contradicting} the direct NMR
-measurement just described. The contradiction suggests that the sulfate rotamer
-distribution as yielded by the MD structure optimization protocol is
-over-sensitive to small variations in single distance restraints and that the
-interpretation of the ${}^{3}$J coupling data should take precedence, in line
-with the error discussion made ad the end of \cref{nmr:results_discussion}.
+Unfortunately, a precise comparative measurement of the H5-H6 couplings for the
+bound case (with IL-10 in solution) was prevented by peak broadening. Hence, no
+direct comparison between the bound and unbound cases is possible. Notably, the
+observation of the 6-O-sulfate being only in \textit{gauche-gauche} orientation
+when interpreting the heparin structure ensemble of the unbound case is
+\textit{contradicting} the direct NMR measurement just described. The
+contradiction suggests that the sulfate rotamer distribution as yielded by the
+MD structure optimization protocol is over-sensitive to small variations in
+single distance restraints and that the interpretation of the ${}^{3}$J coupling
+data should take precedence, in line with the error discussion made ad the end
+of \cref{nmr:results_discussion}.
 
-Further information for distinguishing different GAG types was obtained from
-measurements of the initial growth rate of the saturation transfer difference
-amplification factor. The growth rate was used to estimate binding affinities of
-different GAG types when interacting with IL-10 \cite{kuenze_gehrcke_2014}.
-Essentially, the highest binding affinity to IL-10 was observed for a HP dp6
+With respect to the conformational state distribution of the non-terminal
+IdoA,2S (ring C), the direct NMR measurement also is more expressive than the
+static structure models alone: according to our ${}^{3}$J coupling measurements,
+the ${}^1$C${}_4$:${}^2$S${}_\mathrm{O}$ ratio is about 1.4 in the unbound state
+and about 0.5 in presence of IL-10. That is, the ${}^{3}$J coupling measurements
+definitely indicate a simultaneous presence of both chair and skew-boat
+conformers. In contrast to that, in the NOE-derived HP dp4 structure models, the
+IdoA,2S ring C has shown a clear preference towards the ${}^2$S${}_\mathrm{O}$
+conformation. This discrepancy is to be expected when evaluating a
+multi-conformer NOE cross peak intensity in terms of a Cartesian distance: while
+all conformers contribute to the NOE intensity, the NOE measurement effectively
+picks out the shortest of all distances, as of the $r^{-6}$-dependency of the
+signal (with $r$ being the proton-protin distance). In this case, the H2-H5 NOE
+cross peak is dominated by the ${}^2$S${}_\mathrm{O}$ conformation which
+according to the HP model of Mulloy et al. \cite{foster_mulloy_1993} yields an
+expected H2-H5 distance of about \SI{2.4}{\angstrom}, whereas the H2-H5 distance
+in case of the ${}^1$C${}_4$ conformation is expected to be \SI{4.0}{\angstrom}.
+Considering these numbers, the chair contributes 17 times less to the H2-H5 NOE
+cross peak intensity than the skew-boat conformation. Correspondingly, the
+NOE-derived distance as used in the structure optimization protocol does not
+properly reflect the conformational equilibrium and expectedly, but incorrectly,
+drives the IdoA,2S rings towards the ${}^2$S${}_\mathrm{O}$ conformation. The
+more reliable ${}^{3}$J coupling data reveals an equilibrium between
+${}^1$C${}_4$ and ${}^2$S${}_\mathrm{O}$ conformations, i.e.\ most likely the
+interaction between the HP oligosaccharides used in the NMR experiments and
+IL-10 does not lead to a conformational selection, in contrast to the FGF2-HP
+complex \cite{faham_heparin_1996}.
+
+
+Further information for distinguishing different GAG types was derived from NMR
+measurements performed by G. Künze. Measurements of the initial growth rate of
+the saturation transfer difference amplification factor were used to estimate
+binding affinities of different GAG types when interacting with IL-10.
+Essentially, the highest binding affinity to IL-10 was observed for a HP dp10
 molecule. HA dp6, on the other hand, did not not exhibit a measurable binding
 affinity. This underlines the importance of sulfate groups for protein-GAG
 interaction in general, and suggests that also the IL-10-GAG system is no
 exception in this regard. These data are in compliance with the SRED and
-hydrogen bonding data obtained by applying DMD to the IL-10-GAG system (see see
+hydrogen bonding data obtained by applying DMD to the IL-10-GAG system (see
 \cref{dmdil10:resultsdiscussion}), where the IL-10-HA interaction strength was quantified to be significantly weaker than for IL-10-HP.
 
 
 
-binding affinities were determined and KD values in
-the low millimolar to micromolar range were obtained. For octasaccharides or longer GAGs, a
-cooperative binding behavior was observed, which could indicate simultaneous
-interaction with both dimer subunits of IL-
-10. Finally, structural information about the bound GAG was
+
+The supposedly most interesting observation made by G. Künze, which has also
+been published in our collaborative work \cite{kuenze_gehrcke_2014}, is a
+cooperative binding behavior for octasaccharides and longer GAGs, which could
+indicate simultaneous interaction between a single GAG molecule and both dimer
+sub-units of IL-10.
+
+
+Finally, structural information about the bound GAG was
 exemplarily obtained for a heparin tetrasaccharide fragment
 (ΔUA,2S-GlcNS,6S-IdoA,2S-GlcNS,6S) using transferred
 NOESY experiments, proton–proton scalar couplings and
@@ -462,6 +495,19 @@ is only slightly changed in the presence of IL-10
 and the conformational equilibrium between 1C4 chair and
 2So skew-boat structure of the internal iduronic acid residue
 is preserved.
+
+
+
+
+The obtained
+$\mathrm{K}_{\mathrm{D}}$ values were in the millimolar to micromolar range.
+
+
+binding affinities were determined and KD values in
+the low  range were obtained.
+
+
+
 
 
 
@@ -518,6 +564,8 @@ More discussion.
 
 %\lipsum[1-5]
 
+
+Add STD figure? Heparin colored by STD....
 
 \section{Conclusions}
 Post-processing of G. Künze's NOE data yielded HP dp4 structure models, which
