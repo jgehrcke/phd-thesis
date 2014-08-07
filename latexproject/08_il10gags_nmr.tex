@@ -77,8 +77,8 @@ The creation of structure models from the NOESY-derived distance data can be
 considered an optimization problem --- with the goal of finding the heparin
 structure fulfilling the experimentally obtained cartesian distance constraints
 as good as possible. I have approached this optimization problem with simulated
-annealing molecular dynamics simulations, which is a classical method applicable
-in this scenario \cite{nilges_sim_annealing_noe_1988}.
+annealing molecular dynamics simulations, a classical minimization method
+applicable in this scenario \cite{nilges_sim_annealing_noe_1988}.
 
 HP dp4-internal ${}^1$H-${}^1$H distances were calculated from experimentally
 obtained NOE intensities assuming a $1/r^6$ distance dependence between
@@ -93,29 +93,35 @@ interval of $\pm \SI{0.3}{\angstrom}$, $\pm \SI{0.6}{\angstrom}$ and $\pm
 enlisted in the supplementary material of \cite{kuenze_gehrcke_2014}.
 
 The experimentally obtained distance restraints were subsequently used for GAG
-structure determination using MD simulations employing the NMR restraint
-functionality implemented in the PMEMD module of Amber 12 \cite{case_amber_12}.
-Atom types of the GLYCAM 06g force field \cite{kirschner_glycam06:_2008} were
-used to build the heparin tetrasaccharide IdoA,2S-GlcNS,6S-IdoA,2S-GlcNS,6S,
-referred to as rings A, B, C, D, respectively. Sulfate partial charges, which
-are not provided within GLYCAM, were obtained from RESP calculations for
-methylsulfate at the 6-31(d)G level of theory --- in consistence with the other
-parts of the force field. The heparin molecules used in the NMR experiments were
-prepared by enzymatic digestion, so the non-reducing terminal uronic acid became
-unsaturated. Since GLYCAM does not contain proper parameters for 4,5-unsaturated
-uronic acid, we modeled the non-reducing terminal acid as IdoA,2S and NOE
-signals involving hydrogens of ring A other than H1 were not applied as
-restraints in the simulations. Generally, the structure generation was performed
-in a two-step protocol, first by structure optimization in implicit solvent, and
-subsequent refinement in explicit solvent. The two stages were repeated many
-times, yielding an ensemble of structure models.
+structure determination using MD simulated annealing simulations employing the
+NMR distance restraint functionality implemented in the PMEMD module of Amber 12
+\cite{case_amber_12}. Atom types of the GLYCAM 06g force field
+\cite{kirschner_glycam06:_2008} were used to build the heparin tetrasaccharide
+IdoA,2S-GlcNS,6S-IdoA,2S-GlcNS,6S, referred to as rings A, B, C, D,
+respectively. Sulfate partial charges, which are not provided within GLYCAM,
+were obtained from RESP calculations for methylsulfate at the 6-31(d)G level of
+theory --- in consistence with the other parts of the force field. The heparin
+molecules used in the NMR experiments were prepared by enzymatic digestion, so
+the non-reducing terminal uronic acid became unsaturated. Since GLYCAM does not
+contain proper parameters for 4,5-unsaturated uronic acid, the non-reducing
+terminal acid was modeled as IdoA,2S and NOE signals involving hydrogens of ring
+A other than H1 were not applied as restraints in the simulations. Generally,
+the structure generation was performed in a custom two-step protocol, first by
+structure optimization in \textit{implicit} solvent, and subsequent refinement
+in \textit{explicit} solvent. The two stages were repeated many times, yielding
+an ensemble of structure models. In various test runs, the simulate annealing
+protocol details were iteratively adjusted and improved in order to obtain
+convergence in the solution to the optimization problem.
 
 The first structure optimization stage was a simulated annealing protocol using
 a simple implicit solvent model with a $1/r$ distance dependency of the
-dielectric constant. The protocol contained the following steps: \textit{i)}
-steepest descent and conjugate gradient minimization without restraints,
-\textit{ii)} 100 ps MD with tight coupling to a \SI{600}{\kelvin} heat bath and
-gradual activation of NMR distance restraints, \textit{iii)}
+dielectric constant. The goal of this stage was to quickly guide the heparin
+conformation by the distance restraints, without introducing degrees of freedom
+for explicit water molecules, which would generate noise and impede the
+convergence of the minimization process. The protocol contained the following
+steps: \textit{i)} steepest descent and conjugate gradient minimization without
+restraints, \textit{ii)} 100 ps MD with tight coupling to a \SI{600}{\kelvin}
+heat bath and gradual activation of NMR distance restraints, \textit{iii)}
 \SI{300}{\pico\second} MD with restraints, gradual temperature change from
 \SI{600}{\kelvin} to \SI{10}{\kelvin}, and normal coupling to heat bath,
 \textit{iv)} short MD with gradual cooling to \SI{0}{\kelvin} and tight coupling
@@ -124,11 +130,14 @@ to heat bath. The MD time step for this protocol was set to
 boundary conditions in TIP3P explicit solvent (with at least \SI{8}{\angstrom}
 from all solute atoms to the box boundary), with Na+ ions for system
 neutralization, using SHAKE, and with an MD time step of \SI{2}{\femto\second}.
-The following steps were performed: \textit{i)} solvent minimization with
-constrained solute, \textit{ii)} \SI{20}{\pico\second} heat up MD to
-\SI{300}{\kelvin} in NVT ensemble with strong positional restraints on solute
-atoms, \textit{iii)} \SI{200}{\pico\second} equilibration MD in NPT with weak
-positional restraints on solute atoms and NMR distance restraints, \textit{iv)}
+The goal of this stage was to incorporate the electrostatic repulsion among the
+charged groups in the heparin molecule as realistic as possible using classical
+molecular mechanics force fields. The following steps were performed:
+\textit{i)} solvent minimization with constrained solute, \textit{ii)}
+\SI{20}{\pico\second} heat up MD to \SI{300}{\kelvin} in NVT ensemble with
+strong positional restraints on solute atoms, \textit{iii)}
+\SI{200}{\pico\second} equilibration MD in NPT with weak positional restraints
+on solute atoms and NMR distance restraints, \textit{iv)}
 \SI{200}{\pico\second} MD in NPT with NMR distance restraints and a gradual
 cooling to \SI{250}{\kelvin}, \textit{v)} \SI{400}{\pico\second} MD in NPT with
 NMR distance restraints and a gradual cooling to \SI{0}{\kelvin}. Beyond the
