@@ -62,16 +62,16 @@ spatial resolution of the data, or even the ability to obtain meaningful NOE
 data at all.
 
 
-\subsection{Methods} G. Künze carried out nuclear Overhauser effect spectroscopy
-experiments for measuring GAG-internal hydrogen-hydrogen (${}^1$H-${}^1$H) NOE
-cross peaks of heparin tetrasaccharide (HP dp4) molecules in solution, in two
-different conditions: once under presence of \hl{(murine)} IL-10 in the very
-same solution, and once without presence of IL-10. The protocol details of these
-experiments have been published in \cite{kuenze_gehrcke_2014}. The aim of these
-experiments was to extract and use the geometry information encoded in the
-resulting NOESY data, for creating two HP dp4 structure models: one for what we
-call the \enquote{bound} state, and one for the \enquote{unbound} state (with
-and without IL-10, respectively).
+\subsection{Methods} \label{nmr:methdos} G. Künze carried out nuclear Overhauser
+effect spectroscopy experiments for measuring GAG-internal hydrogen-hydrogen
+(${}^1$H-${}^1$H) NOE cross peaks of heparin tetrasaccharide (HP dp4) molecules
+in solution, in two different conditions: once under presence of \hl{(murine)}
+IL-10 in the very same solution, and once without presence of IL-10. The
+protocol details of these experiments have been published in
+\cite{kuenze_gehrcke_2014}. The aim of these experiments was to extract and use
+the geometry information encoded in the resulting NOESY data, for creating two
+HP dp4 structure models: one for what we call the \enquote{bound} state, and one
+for the \enquote{unbound} state (with and without IL-10, respectively).
 
 The creation of structure models from the NOESY-derived distance data can be
 considered an optimization problem --- with the goal of finding the heparin
@@ -140,10 +140,10 @@ random seeds. All optimized structures were aligned to each other. Structure
 alignment was based on all ring atoms of rings B, C, D, and all glycosidic
 linkage oxygens. The root mean square distance (RMSD) among these atoms was
 calculated to obtain the structural distance between any two given structures.
-The structural diversity within the ensemble was quantified by calculating the
-mean pairwise structural distance among all aligned structures. The structure
-having the lowest mean structural distance to all other structures in the
-ensemble was selected as the representative of the ensemble.
+The \textit{structural diversity} within the ensemble was quantified by
+calculating the mean pairwise structural distance among all aligned structures.
+The structure having the lowest mean structural distance to all other structures
+in the ensemble was selected as the representative of the ensemble.
 
 For structure characterization, the distribution of various dihedral angles was
 evaluated for all structures in an ensemble. For analyzing the GAG backbone
@@ -270,11 +270,12 @@ structures, about half of the restrained hydrogen pairs show a minor deviation
 from their corresponding distance restraint tolerance interval, as listed in
 \cref{tab:nmr:restraint_viols_free}. That is, the geometrical data obtained via
 NMR measurements is largely in compliance with the potentials defined by the
-GLYCAM force field. The ensemble has a structural diversity of
-\SI{0.37}{\angstrom} (\cref{fig:nmr:hp_ensembles_representatives}a), i.e.\ it is
-well-converged, meaning that the applied simulated annealing optimization
-procedure was sufficient for the kind of data used in this study. In the bound
-state, the distance of 41 hydrogen pairs was restrained, as visualized in
+GLYCAM force field. The ensemble has a structural diversity (defined in
+\cref{nmr:methdos}) of \SI{0.37}{\angstrom}
+(\cref{fig:nmr:hp_ensembles_representatives}a), i.e.\ it is well-converged,
+meaning that the applied simulated annealing optimization procedure was
+sufficient for the kind of data used in this study. In the bound state, the
+distance of 41 hydrogen pairs was restrained, as visualized in
 \cref{fig:nmr:hp_dashed_lines_distances}. About a fourth of them show a minor
 deviation from the tolerance interval, as listed in
 \cref{tab:nmr:restraint_viols_free}. The resulting ensemble is also
