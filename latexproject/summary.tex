@@ -39,28 +39,28 @@ yielded indications for GAGs being able to modulate IL-10's biological function
 present in the ECM. This gives rise to the assumption that IL-10-GAG interaction
 is of biological significance, and that understanding the impact of GAGs on
 IL-10 biology is important --- from the basic research point of view, but also
-for the development of therapeutic approaches. A promising approach for
-obtaining knowledge about the nature of IL-10-GAG interaction is the
-investigation of this system on the structural level, i.e.\ the identification
-and characterization of the molecular interaction mechanisms that govern the
-IL-10-GAG system.
+for the development of therapeutic approaches.
 
-In this PhD project it was my goal to reveal structural and molecular details
-about IL-10-GAG interaction with theoretical and computational means, and with
-the help of experiments performed by collaborators. In the course of the
-project, three methods were developed for the \textit{in silico} investigation
-of protein-GAG complexes and subsequently applied them to the IL-10-GAG system.
+A promising approach for obtaining knowledge about the nature of IL-10-GAG
+interaction is the investigation of this system on the structural level, i.e.\
+the identification and characterization of the molecular interaction mechanisms
+that govern the IL-10-GAG system. In this PhD project it was my goal to reveal
+structural and molecular details about IL-10-GAG interaction with theoretical
+and computational means, and with the help of experiments performed by
+collaborators. In the course of the project, three methods were developed for
+the \textit{in silico} investigation of protein-GAG complexes and subsequently
+applied to the IL-10-GAG system.
 
 I proposed and validated a systematic approach for predicting GAG binding
 regions on a given protein, based on the numerical simulation and analysis of
-the Coulomb potential of the protein. One major advantage of this method is its
-intrinsic ability to assess the reliability of the resulting prediction. In case
-of IL-10, the application of this method lead to the observation that its
-Coulomb attraction for GAGs is significantly weaker than in case of exemplary
-protein-GAG systems (such as FGF2-heparin). Still, a distinct IL-10-GAG binding
-region centered on the residues R102, R104, R106, R107 of the human IL-10
-monomer was identified, and this region can be assumed to play a major role in
-IL-10-GAG interaction, as described in \cref{chapter:bspred}.
+the Coulomb potential of the protein. One advantage of this method is its
+intrinsic ability to provide clues about the reliability of the resulting
+prediction. Application of this approach to IL-10 lead to the observation that
+its Coulomb attraction for GAGs is significantly weaker than in case of
+exemplary protein-GAG systems (such as FGF2-heparin). Still, a distinct
+IL-10-GAG binding region centered on the residues R102, R104, R106, R107 of the
+human IL-10 monomer was identified, and this region can be assumed to play a
+major role in IL-10-GAG interaction, as described in \cref{chapter:bspred}.
 
 Molecular docking methods are often used to generate a binding mode prediction
 for a given receptor-ligand system. In \cref{chapter:clustering}, I clarify the
@@ -79,23 +79,23 @@ respect to protein-GAG systems, we (a colleague of mine and I) developed a
 molecular dynamics-based docking method with less radical approximations than
 usually applied in classical docking. The goal was to make the computational
 model properly account for the special physical properties of GAGs, and to
-especially include the effects of flexibility and solvation. We named the method
-Dynamic Molecular Docking (DMD), and successfully published its concept together
-with a validation study \cite{dmd_samsonov_gehrcke_2014}. The following
-application of DMD in a variety of studies required enormous amounts of
-computational resources. For tackling this challenge, I established a graphics
-processing unit-based high performance computing (HPC) environment in our
-research group and developed a software framework for reliably performing DMD
-studies on this hardware, as well as on other HPC resources of the TU Dresden.
+include the effects of flexibility and solvation. We named the method Dynamic
+Molecular Docking (DMD), and successfully published its concept together with a
+validation study \cite{dmd_samsonov_gehrcke_2014}. The following application of
+DMD in a variety of studies required enormous amounts of computational
+resources. For tackling this challenge, I established a graphics processing
+unit-based high performance computing (HPC) environment in our research group
+and developed a software framework for reliably performing DMD studies on this
+hardware, as well as on other HPC resources of the TU Dresden.
 
 The subsequent investigation of the IL-10-GAG system via DMD was focused on the
 IL-10-GAG binding region predicted earlier, and made heavy usage of the
-optimized clustering approach. An important result of this endeavor is that
-IL-10's amino acid residue R107 significantly stands out compared to all other
-residues and supposedly plays a particularly important role in IL-10-GAG
+optimized clustering approach named before. An important result of this endeavor
+is that IL-10's amino acid residue R107 significantly stands out compared to all
+other residues and supposedly plays a particularly important role in IL-10-GAG
 recognition.
 
-Furthermore, the collaboration with the NMR laboratory of Prof. Daniel Huster at
+The collaboration with the NMR laboratory of Prof. Daniel Huster at the
 University Leipzig was fruitful: I post-processed nuclear Overhauser effect data
 and obtained GAG structure models, which revealed that IL-10-heparin interaction
 has a measurable impact on the backbone structure of the heparin molecule. These
@@ -105,10 +105,9 @@ results were published in \cite{kuenze_gehrcke_2014}.
 prediction, lead to models that might explain the role of IL-10-GAG interaction
 in IL-10 biology...}.
 
-In conclusion, valuable information for deepening the understanding of the
-molecular mechanism governing IL-10-GAG interaction have been derived. These
-observations pave the further way towards unraveling GAG-mediated bioactivity of
-IL-10, which may then be specifically exploited, for instance in artificial
-extracellular matrices for improved wound healing. Furthermore, various methods
-have been developed which are generically applicable for the investigation of
-protein-GAG systems.
+In conclusion, a set of methods has been developed which is generically
+applicable for the investigation of protein-GAG systems. Regarding the IL-10-GAG
+system, valuable structural insights for increasing the understanding about is
+molecular mechanims were derived. These observations pave the way towards
+unraveling GAG-mediated bioactivity of IL-10, which may then be specifically
+exploited, for instance in artificial ECMs for improved wound healing.
