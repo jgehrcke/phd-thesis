@@ -7,6 +7,9 @@ l.1 \chapter
           {Structure and biology of the IL-10 system} [4] [5] [6]) [7]
 
 
+
+- remove general abbreviations list from main.tex (distribute to first occurrences)?
+
 - change "fig." to "figure"?
 
 
@@ -24,15 +27,6 @@ later, latest in NMR, this becomes important.
 
 - correct figures w.r.t CS-4 / CS4. I think most of the time I used CS4, so
 I should change all CS-4 occurrences.
-
-- abbreviations list?
-PDB
-MD
-NOE
-NMR
-IL-10
-GAG
-ECM
 
 
 - in intro, refer to IUPAC for GAG nomenclature
