@@ -4,11 +4,93 @@
 \section{Glycosaminoglycans (GAGs)}
 \label{background:gags}
 
-whereas each repeating unit
-consists of an amino sugar and a uronic acid.
+Carbohydrates are ubiquitous building blocks found in all forms of life. As
+implicated by their name, they are made of carbon, hydrogen and oxygen. Despite
+this rather small set of atom types, an enormous variety of carbohydrates exist.
+The origin of major parts of this diversity is of combinatorial nature:
+carbohydrates usually occur as polysaccharides made of many monosaccharides,
+whereas different types of monosaccharides exist. They are distinguishable by
+their chemical configuration, and usually there are two stereoisomers for each
+of those, leading to a broad spectrum of different \enquote{sugars} whose
+nomenclature and chemistry is described in detail in reference books
+\cite{carbohydrate_chemistry_robyt_1998,carbohydrate_chemistry_royal_2000}.
 
-from wikipedia:
-Pyranose is a collective term for carbohydrates that have a chemical structure that includes a six-membered ring consisting of five carbon atoms and one oxygen atom. The name derives from its similarity to the oxygen heterocycle pyran, but the pyranose ring does not have double bonds. A pyranose in which the anomeric OH at C(l) has been converted into an OR group is called a pyranoside.
+Glycosaminoglycans (GAGs), reviewed in
+\cite{essentials_glycobiology_gags_chapter_2009}, are a special class of
+carbohydrates. They are unbranched linear saccharide chains, ideally comprised
+of a repeating disaccharide unit, whereas each unit is made of two pyranose
+monosaccharides (a pyranose is a six-membered ring consisting of five carbon
+atoms and one oxygen atom):
+
+\begin{itemize}
+\item one is an amino sugar (or \enquote{hexosamine}), either a
+D-N-acetylglucosamine (GlcN) or a D-N-acetylgalactosamine (GalN)
+\item the other is a uronic saccharide (or \enquote{hexuronic acid}), either a
+D-glucuronic acid (GlcA) or its C5-epimer L-iduronic acid (IdoA), or, in seldom
+cases, a D-galactose (Gal).
+\end{itemize}
+
+A special feature of GAGs is that they are often sulfated at various positions,
+leading to a number of possible sulfation patterns per repeating disaccharide
+unit. An arbitrary combination of basic disaccharide unit and sulfation pattern
+implies that the heterogeneity among GAGs is enormous. Still, physiologically
+occurring GAGs are usually roughly categorized into a couple major GAG types.
+Some of those are listed in \cref{tab:bg:gagtypes}, together with their common
+disaccharide unit in proper IUPAC nomenclature, and their charge per
+disaccharide.
+
+
+\begin{table}
+\scriptsize
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{lll}
+\midrule
+GAG type & main disaccharide & charge/\si{elementarycharge} \\
+\midrule
+Heparin (HP) & L-IdoA2S-$\alpha$(1$\rightarrow$4)-D-GlcNS6S-$\alpha$(1$\rightarrow$4) & -4 \\
+Chondroitin-4-sulfate (CS4) & D-GlcA-$\beta$(1$\rightarrow$3)-D-GalN4S-$\beta$(1$\rightarrow$4) & -2 \\
+Hyaluronan (HA) & D-GlcA-$\beta$(1$\rightarrow$4)-D-GlcN-$\alpha$(1$\rightarrow$4) & -1 \\
+\midrule
+\end{tabular}
+\caption{
+Characterization of most populated clusters by single-run quantity cluster
+statistics for two different DMD studies differing only in the GAG type. In one
+study, a HP dp6 was used as ligand, in the other study a CS4 dp6 was used. The
+HP study yielded a single prominent cluster, the CS4 study yielded two similar
+clusters. $\epsilon$ is the spatial density of docking solutions according to
+\cref{clustering_param_opt}. $m$ is the mobility of the ligand relative to the
+receptor, as defined in \cref{dmd:dataanalysis}. Here, $\Delta G$ is the free
+energy of binding estimate as provided by the MM-PBSA method
+(\cref{methods:mmpbsa_mmgbsa}). The standard deviations shown are derived from
+the cluster-internal variations.}
+\label{tab:bg:gagtypes}
+\end{table}
+
+
+
+Furthermore, the naturally occurring sulfation of GAGs is tremendous, with up to
+three sulfate groups per disaccharide unit. With the carboxyl group in the
+hexuronic acid, each repeating disaccharide unit carries one negative charge at
+physiological pH anyway. Considering sulfation, this charge may grow up to -4,
+results in heparin being the biological macromolecule with the largest charge
+density known \cite{capila_linhardt_hep_prot_2002}.
+
+
+There are other variants with established names, such as Chondroitin-6-sulfate (CS6), which is the same as CS4, but sulfated at the C6 position of the galactosamine instead of in the fourth position.
+
+
+Still,
+
+
+ resulting in another differentiating feature apart from differences in disaccharide composition. The fact that this sulfation pattern can vary within any given type of GAG, implies that the heterogeneity of GAGs is enormous.
+
+
+
+Additional consequence of these sulfate additions, is the highly negative charge of glycosaminoglycans. Together with the carboxyl group of the hexuronic acids, this
+
+
+Most glycosaminoglycans can be found in large quantities in specific cell structures called proteoglycans. These large structures consist of a linear core protein with many glycosaminoglycans covalently linked to it. Each glycosaminoglycan is linked to the core protein via a Gal-Gal-Xyl sugar linker, where the xylose (Xyl) is attached to a serine residue of the core protein and the glycosaminoglycan is linked to the galactose (Gal) residue. Also proteoglycans are highly diverse; variations occur both in the type of core protein and in type, size and number of glycosaminoglycans.
 
 
 
@@ -39,6 +121,8 @@ with and regulate a large number of proteins \cite{handel_2005}.
 
 Introduce abbreviations (HP, HA, CS4, CS6, dpX, etc.)
 
+
+degree of polymerization
 
 
 The origin and geometry of various pyranose monosaccharide conformations is
