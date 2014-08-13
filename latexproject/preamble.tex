@@ -76,6 +76,14 @@
 \usepackage{fancyvrb}
 \usepackage{float}
 
+% http://stackoverflow.com/a/8649145/145400 LaTeX won't hyphenate words with
+% dashes in them. There's a standard package that addresses that very problem,
+% called extdash. This defines new hyphen and dash commands that do not disrupt
+% hyphenation, and which can allow or prevent line breaks at the hyphen/dash. I
+% prefer to use it with the shortcuts option, so I can use, e.g., \-/ rather
+% than \Hyphdash
+\usepackage[shortcuts]{extdash}
+
 % Intelligent space after "commands".
 % http://tex.stackexchange.com/a/17873/11816
 \usepackage{xspace}
@@ -360,4 +368,3 @@
     te-tra-sac-cha-ride
     ace-tyl-glu-co-sa-mine
     }
-
