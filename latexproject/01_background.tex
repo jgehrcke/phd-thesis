@@ -4,6 +4,8 @@
 \section{Glycosaminoglycans (GAGs)}
 \label{background:gags}
 
+
+\subsubsection{Genral aspects}%The nature of GAGs}
 Carbohydrates are ubiquitous building blocks found in all forms of life. As
 implicated by their name, they are made of carbon, hydrogen and oxygen. Despite
 this rather small set of atom types, an enormous variety of carbohydrates
@@ -117,7 +119,8 @@ Molecular configuration of the repeating disaccharide unit of heparin (the one
 which occurs most frequently in natural heparin polysaccharides). The pyranose
 to the left is a 2-O-sulfated iduronic acid (IdoA2S), connected via a
 1$\rightarrow$4 glycosidic linkage to the 6-O-sulfated
-2-deoxy-2-sulfamido-α-D-N\-/acetylglucosamine (GlcNS6S).
+2-deoxy-2-sulfamido-α-D-N\-/acetylglucosamine (GlcNS6S). At physiological pH,
+the charge of this disaccharide is -4 elementary charges.
 }
 \label{fig:bg:heparin_chemstruct}
 \end{figure}
@@ -126,45 +129,33 @@ There are many more than six GAG variants with established names, such as
 Chondroitin\-/6\-/sulfate (CS6), which is the same as CS4, but sulfated at the
 C6 position of the galactosamine instead of in the fourth position. With the GAG
 types described here so far, all major characteristics of naturally occurring
-GAG molecules are covered. Other GAG types are not listed in this section
-chapter, because they are not fundamentally different from what has been
-described and therefore have not been investigated in the framework of this
-thesis.
+GAG molecules are covered. Other GAG types are not listed, because they are not
+fundamentally different from what has been described and therefore were not
+investigated in the framework of this thesis.
 
-
-\subsubsection{Approximations: length, isolation, and purity}
-
-
-Most glycosaminoglycans can be found in large quantities in specific cell structures called proteoglycans. These large structures consist of a linear core protein with many glycosaminoglycans covalently linked to it. Each glycosaminoglycan is linked to the core protein via a Gal-Gal-Xyl sugar linker, where the xylose (Xyl) is attached to a serine residue of the core protein and the glycosaminoglycan is linked to the galactose (Gal) residue. Also proteoglycans are highly diverse; variations occur both in the type of core protein and in type, size and number of glycosaminoglycans.
-
-explain DP, degree of polymerization
-
-
-
-In organisms, GAG chains usually
-appear covalently bound to a core protein, comprising a proteoglycan complex.
-To a large extent, the biological functions of proteoglycans depends on the
-interaction of its GAG chain(s) with other proteins.
+In organisms, all GAG chains except for HA  appear covalently bound to a core
+protein, comprising a so-called \textit{proteoglycan} complex
+\cite{essentials_glycobiology_gags_chapter_2009}. These large structures consist
+of a linear protein with many GAGs covalently linked to it. Each GAG is linked
+to the core protein via a special sugar linker, which itself is attached to
+(usually) a serine residue of the core protein. As of the length of the GAG
+chains, however, the biological functions of proteoglycans depend to a large
+extent only on the interaction of its GAG chain(s) with other proteins, i.e.\
+the free end of a GAG chain can be considered unaffected by the core protein.
+This is one of the fundamental assumptions applied in this thesis project: GAGs
+are treated as \textit{free} molecules.
 
 
 
-Considering the level of atomic detail aimed for ... to be observed... in this
-thesis project, GAGs are modeled as short molecules. While it is likely
-that their tremendous length and also their covalent linkage to proteoglycans
-serve have an overall impact on the biological function of GAGs, it is a
-valid and well-established approximation to not account for these facts in
-molecular modeling studies that aim for resolving the molecular mechanism of
-protein-GAG interaction in atomic detail... in a biological function and overall  treated as
-
-
-are play a critical role in many biological processes.
-Their multifarious biological activity arises from their ability to interact
-with and regulate a large number of proteins.
+%While it is likely
+%that their tremendous length and also their covalent linkage to proteoglycans
+%serve have an overall impact on the biological function of GAGs, it is a
+%valid and well-established approximation to not account for these facts in
+%molecular modeling studies that aim for resolving the molecular mechanism of
+%protein-GAG interaction in atomic detail... in a biological function and overall  treated as
 
 
 
-show GAG oligosaccharide structure in space, quote mulloy et al regarding
-oligosaccharide structure modeling from NMR etc.
 
 
 
@@ -175,6 +166,24 @@ comprehesibly classified and discussed in
 \cite{classification_pyranose_conformers_1960}. The conformational nomenclature
 used throughout this thesis follows IUPAC rules, which are well-described in
 \cite{iupac_gag_conformations_1980}.
+
+
+\subsubsection{General aspects about protein-GAG interaction}
+
+are play a critical role in many biological processes.
+Their multifarious biological activity arises from their ability to interact
+with and regulate a large number of proteins.
+
+% All the rest is from \cite{essentials_glycobiology_protgags_2009}
+More than 100 glycosaminoglycan (GAG)-binding proteins have been described in the literature, falling into the broad classes presented in Table 35.1. To a large extent, these studies have focused on protein interactions with heparin, which is a more highly sulfated, iduronic acid (IdoA)-rich form of heparan sulfate (HS; Chapter 16). This bias may reflect the commercial availability of heparin, which is frequently used for fractionation studies and heparin-Sepharose affinity chromatography. The binding of protein ligands to heparin is thought to mimic the physiological interaction of proteins with the HSs present on cell surfaces and in the extracellular matrix. In comparison, relatively few proteins are known to interact with chondroitin sulfate (CS) or keratan sulfate (KS) with comparable avidity and affinity. In some cases, CS and the related GAG dermatan sulfate (DS) may be physiologically relevant binding partners because these GAGs predominate in many tissues. Determining the physiological relevance of these interactions is a major area of research.
+
+
+
+\subsubsection{Structure of GAGs}
+
+show GAG oligosaccharide structure in space, quote mulloy et al regarding
+oligosaccharide structure modeling from NMR etc.
+
 
 
 \section{A primer on IL-10 biology}
@@ -192,7 +201,7 @@ inflammation.
 %\subsubsection{GAG structures used in \textit{in silico} experiments}
 
 
-\section{Interleukin-10 (IL-10), and its relation to GAGs}
+\section{IL-10 and its relation to GAGs}
 
 
  anti-inflammatory
@@ -213,7 +222,26 @@ regulate an immune response, for instance in the process of wound healing and
 tissue regeneration, GAGs are
 
 
-\section{In-silico methods for investigating receptor-ligand interaction}
+\section{In-silico methods for investigating protein-GAG interaction}
+
+
+\subsubsection{GAG representation approximations: length, purity}
+
+
+
+A more severe approximation applied in this thesis is the treatment of GAGs as
+\textit{short} molecules. Considering the  mostly ranging from tetra- to hexasaccharides. Considering the level of atomic detail aimed for ... to be observed... in this
+thesis project, GAGs are modeled as short molecules.
+
+
+Also, when treating GAGs as short molecules, they are represented by the ideal
+periodic repetition of the most frequently observed disaccharide unit,
+impurities or variations in the monosaccharide sequence are ignored.
+
+ir ideal periodic
+
+explain DP, degree of polymerization
+
 
 \subsection{A primer on docking methods}
 
