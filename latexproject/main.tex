@@ -1,8 +1,5 @@
 \input{preamble.tex}
 
-% http://tex.stackexchange.com/a/100377
-\makenomenclature
-
 \begin{document}
 
 % Include title page, created externally.
@@ -59,7 +56,10 @@
 
 
 % http://tex.stackexchange.com/a/100377
-\printnomenclature
+% http://www.latex-community.org/forum/viewtopic.php?f=47&t=19574
+% Mark "chapter name" for page headings.
+\markboth{\nomname}{\nomname}
+\printnomenclature[3cm]
 
 %\OnehalfSpacing
 
