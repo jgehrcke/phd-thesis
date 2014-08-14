@@ -5,7 +5,7 @@
 \label{background:gags}
 
 
-\subsubsection{Genral aspects}%The nature of GAGs}
+\subsubsection{General aspects}%The nature of GAGs}
 Carbohydrates are ubiquitous building blocks found in all forms of life. As
 implicated by their name, they are made of carbon, hydrogen and oxygen. Despite
 this rather small set of atom types, an enormous variety of carbohydrates
@@ -155,23 +155,59 @@ are treated as \textit{free} molecules.
 %protein-GAG interaction in atomic detail... in a biological function and overall  treated as
 
 
-
-
-
-
 \subsubsection{Monosaccharide conformations}
 
 The origin and geometry of various pyranose monosaccharide conformations is
-comprehesibly classified and discussed in
+comprehensibly classified and discussed in
 \cite{classification_pyranose_conformers_1960}. The conformational nomenclature
 used throughout this thesis follows IUPAC rules, which are well-described in
 \cite{iupac_gag_conformations_1980}.
 
-Most monosaccharide rings in GAGs have a clearly predominant conformation, and
-can be considered rigid, as is the case for e.g.\ N-acetyl-D-glucosamine (GlcN),
-which mainly exists as ${}^{4}\mathrm{C}_1$ chair, which was shown to be
-especially stable when the GlcN becomes sulfated
-\cite{Sattelle_glcnac_right_chair_2011}, as is the case in heparin.
+Free in solution, most monosaccharide rings in GAGs have a clearly predominant
+conformation, and their ring structure can therefore largely be considered
+\textit{rigid}, as is the case for e.g.\ D-glucuronic acid (GlcA) which resides
+in a stable ${}^{4}\mathrm{C}_1$ chair \cite{almond_jacs_2010}. Also
+N-acetyl-D-glucosamine (GlcN) mainly exists in ${}^{4}\mathrm{C}_1$
+conformation, which was shown to be especially stable when the GlcN becomes
+sulfated \cite{Sattelle_glcnac_right_chair_2011}, as is the case in heparin. The
+pyranose ring of iduronic acid (IdoA), a constituent of heparin, however, is the
+only GAG pyranose that is --- free in solution, i.e.\ without any mechanical
+stress --- in an equilibrium of multiple so-called ring puckers. C5 carboxyl
+epimerization is the the only difference of IdoA compared to GlcA, and it
+results in conformational instability. IdoA is postulated to be populated by a
+mixture of mainly three conformations: ${}^{4}\mathrm{C}_1$,
+${}^{1}\mathrm{C}_4$, and ${}^{2}\mathrm{S}_\mathrm{O}$. Obviously, this
+conformational flexibility of IdoA is a \textit{structural flexibility} which
+allows for e.g.\ different orientations of functional groups in space, as
+depicted in \cref{fig:bg:idoa_conformations}.
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{gfx/background/idoa_conformations_03.pdf}
+\caption[]{
+The three conformations (two chairs, one skew-boat) of the pyranose L-iduronic
+acid which are most populated in solution. In heparin, $\mathrm{R}_1$ is a
+sulfate group.}
+\label{fig:bg:idoa_conformations}
+\end{figure}
+
+
+The exact population ratios and exchange time scales of the conformations of
+IdoA are difficult to measure and simulate \cite{almond_jacs_2010,
+structure_gags_progess_perspectives_2010}, but they clearly depend on the IdoA
+environment. That is, a terminal IdoA behaves differently from an IdoA pyranose
+in the somewhere within a GAG chain. As shown by Sattelle et al.\, the
+population ratio also depends on sulfation, but IdoA2S still prevails in an
+equilibrium of multiple highly populated conformations. Regarding
+heparin-internal IdoA2S, Muñoz-García and co-workers summarize that it is in
+equilibrium of ${}^{2}\mathrm{S}_\mathrm{O}$ and ${}^{1}\mathrm{C}_4$, with a
+negligible content of the ${}^{4}\mathrm{C}_1$ chair.
+{\cite{conf_idoa_timeavg_restraints_2013}} The interconversion between
+${}^{2}\mathrm{S}_\mathrm{O}$ and ${}^{1}\mathrm{C}_4$ on the other hand has
+earlier been described to implicate little changes to the geometry of glycosidic
+linkages \cite{Mulloy_dyn_conf_heparin_2000}, and the overall polysaccharide
+conformation is independent on iduronic acid ring puckering
+\cite{jin_heparin_2009}.
 
 
 \subsubsection{General aspects about protein-GAG interaction}
@@ -231,9 +267,17 @@ tissue regeneration, GAGs are
 \section{In-silico methods for investigating protein-GAG interaction}
 
 
-\subsubsection{GAG representation approximations: length, purity}
+\subsubsection{GAG representation approximations: isolation, length, purity}
 
+As has been stated above, one of fundamental assumptions applied in this thesis
+project: GAGs are treated as \textit{free} molecules.
 
+%While it is likely
+%that their tremendous length and also their covalent linkage to proteoglycans
+%serve have an overall impact on the biological function of GAGs, it is a
+%valid and well-established approximation to not account for these facts in
+%molecular modeling studies that aim for resolving the molecular mechanism of
+%protein-GAG interaction in atomic detail... in a biological function and overall  treated as
 
 A more severe approximation applied in this thesis is the treatment of GAGs as
 \textit{short} molecules. Considering the  mostly ranging from tetra- to hexasaccharides. Considering the level of atomic detail aimed for ... to be observed... in this
@@ -248,6 +292,7 @@ ir ideal periodic
 
 explain DP, degree of polymerization
 
+\nomenclature{dp}{degree of polymerization}
 
 \subsection{A primer on docking methods}
 
@@ -273,7 +318,7 @@ Cite this: \cite{schlick_innovationsdynamics_2012} (volume 2, chapter 12).
 
 \lipsum[1-5]
 
-\section{Structure of IL-10 and its receptors}
+\section{Structure of the IL-10 system}
 
     - Structure description
         exists mainly as homodimer [
