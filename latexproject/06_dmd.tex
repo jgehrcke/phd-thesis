@@ -238,18 +238,17 @@ sphere that is indicated here with a dashed line.
 
 \subsubsection{Preparation of ligand-reoriented models (LROMs)}
 \label{dmd:lrom_preparation}
-An LROM contains
-the receptor as well as the ligand placed in a distal, re-oriented position. Per
-TDS complex, ten LROMs have been created, differing only in ligand orientation
-around its central atom. For a given complex, LROM creation requires the
-selection of a \textit{central ligand atom}, definition of a \textit{focus
-point} $\bm{F}$ near the surface of the receptor within the anticipated binding
-region, definition of a \textit{ligand displacement length} $s$ and selection of
-a \textit{core atom} at point $\bm{C}$ within the receptor. The distance between
-focus point and core atom defines the final distance $D$ of the tMD pulling
-process, i.e.\  $d(T) \equiv D \equiv  \lVert \bm{F}-\bm{C} \rVert$. Initially,
-at time $t_0$, the ligand is placed distal from the receptor with its central
-atom lying on the axis defined by $\bm{F}-\bm{C}$
+An LROM contains the receptor as well as the ligand placed in a distal,
+re-oriented position. Per complex, about ten LROMs are to be created, differing
+only in ligand orientation around its central atom. For a given complex, LROM
+creation requires the selection of a \textit{central ligand atom}, definition of
+a \textit{focus point} $\bm{F}$ near the surface of the receptor within the
+anticipated binding region, definition of a \textit{ligand displacement length}
+$s$ and selection of a \textit{core atom} at point $\bm{C}$ within the receptor.
+The distance between focus point and core atom defines the final distance $D$ of
+the tMD pulling process, i.e.\  $d(T) \equiv D \equiv  \lVert \bm{F}-\bm{C}
+\rVert$. Initially, at time $t_0$, the ligand is placed distal from the receptor
+with its central atom lying on the axis defined by $\bm{F}-\bm{C}$
 (\cref{fig:dmd:geometry_scheme}a). The starting coordinate for the central
 ligand atom is defined as
 
@@ -257,7 +256,7 @@ ligand atom is defined as
 \bm{L}(t_0) = \bm{F} + s \frac{\bm{F}-\bm{C}}{D}.
 \end{equation}
 
-For each TDS complex, multiple LROMs should be prepared as follows. First, the
+For a test complex, multiple LROMs should be prepared as follows. First, the
 structure of the biological unit of the protein receptor is to be taken from the
 corresponding experimental data source (3D structure from crystallography or
 NMR). The coordinates of a central atom in the ligand as found in the
@@ -549,10 +548,10 @@ weakly bound docking solutions (MM-PBSA $\Delta G >
 each receptor residue over the remaining independent DMD runs. We discarded all
 receptor residues with an average SRED-energy $\langle\Delta G_R\rangle \ge
 \SI{0}{\kilo\calory\per\mole}$ and ranked the remaining ones by $\langle\Delta
-G_R\rangle$. For each TDS complex, we extracted the resulting 10 top-ranked
+G_R\rangle$. For each test complex, we extracted the resulting 10 top-ranked
 residues, referred to as the set of \textit{anchoring residues}. For reference,
 we set up an identical MD simulation ($T=\SI{10}{\nano\second}$) of each
-experimentally determined TDS complex and used SRED to obtain a set of reference
+experimentally determined test complex and used SRED to obtain a set of reference
 anchoring residues for comparison.
 
 MM-PBSA free energy calculations as well as MM-GBSA single residue energy
