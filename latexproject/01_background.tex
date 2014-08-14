@@ -22,10 +22,14 @@ Glycosaminoglycans (GAGs), reviewed in
 carbohydrates. GAGs play a critical role in many biological processes; they are
 important for cell adhesion and cell growth, and their multifarious biological
 activity arises from their ability to interact with and regulate a large number
-of proteins \cite{handel_2005,gandhi_structure_2008}. GAGs are unbranched
-(linear) saccharide chains, comprised of a periodically repeating unit, whereas
-each unit is made of two pyranose (a six-membered ring consisting of five carbon
-atoms and one oxygen atom) monosaccharides:
+of proteins \cite{handel_2005,gandhi_structure_2008}. Likewise, both natural and
+artificial GAGs are promising tools for therapies, for instance for the design
+of new bio-materials for the use in the field of regenerative medicine
+\cite{whitelock_2014,schnabelrauch_tissues_2013,scott_gags_therapies_2013}.
+
+GAGs are unbranched (linear) saccharide chains, comprised of a periodically
+repeating unit, whereas each unit is made of two pyranose (a six-membered ring
+consisting of five carbon atoms and one oxygen atom) monosaccharides:
 
 \nomenclature{GAG}{glycosaminoglycan}
 
@@ -207,34 +211,66 @@ interconversion between ${}^{2}\mathrm{S}_\mathrm{O}$ and ${}^{1}\mathrm{C}_4$
 has earlier been described to exert only little geometrical change on glycosidic
 linkages \cite{Mulloy_dyn_conf_heparin_2000}, rendering the overall
 polysaccharide conformation independent on iduronic acid ring puckering
-\cite{jin_heparin_2009}.
+\cite{jin_heparin_2009}. Likewise, Gandhi and Mancera conclude that whilst the
+spatial orientation of the 2-O-sulfate group in IdoA2S in heparin is altered
+during conformation interconversion, no significant structural change can be
+seen in the backbone of the polysaccharide chain \cite{gandhi_structure_2008}.
 
 
 \subsubsection{General aspects about protein-GAG interaction}
 
-It is current state of knowledge studies that GAGs play a critical role in many
-biological processes \cite{handel_2005}. In many of these scenarios, GAGs
-structurally interact with proteins and therefore modulate their function.
-According to Esko and Linhardt, more than 100 GAG-binding proteins have been
-described in literature so far \cite{essentials_glycobiology_protgags_2009}. To
-a large extent, these studies were focused on protein interaction with heparin.
-Esko and Linhardt speculate that this bias may reflect the commercial
+It is state of knowledge that GAGs play a critical role in many biological
+processes \cite{handel_2005}. In many of these scenarios, GAGs directly interact
+with proteins on the molecular level and modulate their function. According to
+Esko and Linhardt, more than 100 GAG-binding proteins have been described in
+literature \cite{essentials_glycobiology_protgags_2009}. To a large extent, the
+corresponding studies were focused on protein interaction with \textit{heparin}
+only. Esko and Linhardt speculate that this bias may reflect the commercial
 availability of heparin and the fact that the interaction between proteins and
 heparin can be considered to mimic the physiological interaction of proteins
-with heparan sulfate, which is especially often present on cell surfaces and in
-the extracellular matrix. Esko and Linhardt note that relatively few proteins
-are known to interact with chondroitin sulfate or keratan sulfate with
-comparable affinity. However, in some cases especially chondroitin
-sulfate's interaction with proteins may be physiologically relevant, because CS
-is the most abundant GAG in the body \cite{gandhi_structure_2008} and available
-in many tissues \cite{essentials_glycobiology_protgags_2009}.
+with heparan sulfate, which is especially abundant on cell surfaces and in the
+extracellular matrix. Esko and Linhardt note that relatively few proteins are
+known to interact with chondroitin sulfate or keratan sulfate. However, in some
+cases, especially chondroitin sulfate's interaction with proteins may be
+physiologically relevant, because CS is the most abundant GAG in the body
+\cite{gandhi_structure_2008} and available in many tissues
+\cite{essentials_glycobiology_protgags_2009}.
 
-Several protein-GAG systems of which it is known that the interaction between
-protein and GAG has huge biological impact, have been investigated structurally,
-via crystallography and/or via NMR, in order to spatially resolve the
-arrangement of atoms in the bound state. Such studies implicate an enormous
-experimental effort and are often not successful, so that up to now the number
-of protein-GAG complex structures deposited in the PDB is still quite low.
+Several protein-GAG systems of which it is long known that the interaction
+between protein and GAG has huge biological impact have been investigated via
+structural biology methods, biochemically, and via molecular modeling approaches
+in order to understand the molecular basis of these interactions. Early and
+fundamental findings were especially made via crystallography and via NMR, by
+which the arrangement of atoms in the bound state can be spatially resolved.
+However, such experimental studies implicate an enormous experimental effort and
+are often not successful, so that up to now the number of experimentally
+obtained protein-GAG complex structures deposited in the PDB is quite low
+(\hl{NUMBER}). Still, from these well-investigated complexes, a number of
+essential observations is to be made for this thesis work.
+
+The protein-GAG complexes with experimentally resolved structures typically
+contain GAG molecules of lengths between dp4 and dp8 (\enquote{dp} stands for
+degree of polymerization, i.e.\ the number of monosaccharides). Hence, the
+typical GAG binding epitope responsible for affinity \textit{and} specificity of
+the protein-GAG interaction is rather short --- at least in these cases and a
+counter-example is yet to be discovered. Likewise, recent experimental and
+molecular modeling studies for the investigation of protein-GAG systems focused
+on using short GAGs \cite{pichert_characterization_2012, hintze_sergey_2014,
+gandhi_coombe_2008, Gandhi01102009, mancera_gandhi_jcim_2011,
+agostino_mancera_gandhi_2014}.
+
+, i.e.\ they are of the length of 5-8 dp (degree of polymerization)
+28,
+
+
+it is still
+disputable if longer GAGs presented in the extracellular matrix would interact
+with their protein targets identically to the short GAGs.
+Therefore,
+though many successful studies recently carried out for analyis of GAG/protein
+interactions focused on the short GAGs 32–38,
+
+
 
 
 
@@ -310,6 +346,26 @@ ir ideal periodic
 explain DP, degree of polymerization
 
 \nomenclature{dp}{degree of polymerization}
+
+
+
+From Sergey: Computationally, GAG containing systems are still very challenging
+to handle because of their high flexibility as it applies for saccharides in
+general 15, importance of taking into account solvent mediated interactions16,17
+and required proper treatment of electrostatics due to their charged nature
+1,18,19. For heparin, in addition, the rings of IdoU2S can adopt two pucker
+conformations (1C4 and 2S0) with comparable probability 20–23, which, therefore,
+can represent a combinatorial task for modeling periodic molecules of heparin,
+and which proper consideration is outside the scope of classical MD time scales
+and common force fields at the moment 24,25. Nevertheless, both experimental and
+computational studies show that even a single IdoU2S ring conformational change
+significantly contributes to the specificity of GAG/protein complex formation
+both structurally and thermodynamically 26,27. Moreover, it is known
+that for relatively big systems like collagen-based matrixes, where interactions
+with GAGs could be crucial for their mechanical properties 29–31, application of
+the approaches which use only short GAGs does not seem to be proper.
+
+
 
 \subsection{A primer on docking methods}
 
