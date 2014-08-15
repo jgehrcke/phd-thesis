@@ -73,6 +73,7 @@ throughout this thesis.}
 \nomenclature{HA}{hyaluronan}
 \nomenclature{CS4}{chondroitin-4-sulfate}
 \nomenclature{CS6}{chondroitin-6-sulfate}
+\nomenclature{HS}{heparan sulfate}
 
 A special feature of GAGs is that they are usually sulfated at various ring
 positions, leading to a number of possible sulfation patterns per repeating
@@ -247,8 +248,8 @@ nuclear magnetic resonance (NMR), both of which are able to spatially resolve
 the arrangement of atoms in the bound state of a protein-GAG complex. However,
 NMR and X-ray studies implicate an enormous experimental effort and are often
 not successful, so that up to now the number of experimentally obtained
-protein-GAG complex structures deposited in the PDB is still quite low
-(\hl{about 80}).
+protein-GAG complex structures deposited in the PDB is still quite low (about
+85 as of 2014).
 
 % Still, from these well-investigated complexes, a number of
 % essential observations is to be made for this thesis work.
@@ -314,13 +315,13 @@ literature-reported heparin backbone dihedral angles can be found in e.g.\
 
 
 
-\section{IL-10 biology}
+\section{Interleukin-10 (IL-10)}
 
-\subsubsection{A primer on the biological effects of IL-10}
+\subsection{A primer on the biological relevance of IL-10}
 
-The biological relevance of the cytokine interleukin-10 (IL-10) has extensively
-been reviewed in the work of Moore et al. \cite{moore_2001}. Via its ability to
-inhibit effector functions of T cells, monocytes, and macrophages, its critical
+The biological relevance of the cytokine IL-10 has extensively been reviewed in
+the work of Moore et al. \cite{moore_2001}. Via its ability to inhibit effector
+functions of T cells, monocytes, and macrophages, its critical
 \textit{in vivo} function is to limit and eventually terminate inflammatory
 responses. The prime evidence in this regard are IL-10 deficient mice which show
 exaggerated innate immune responses and rather spontaneously develop
@@ -353,16 +354,39 @@ effects forces us to think about modulation of IL-10 activity as a potential
 therapy \cite{sabat_bio_il10_review_2010}.
 
 
-\subsubsection{IL-10 and its relation to GAGs}
+\subsection{IL-10 and its biological relation to GAGs}
 
 As a regulator of inflammation, IL-10 obviously plays a major role in tissue
-repair. Roers et al. found that \cite{roers_il10mice_woundhealing_2007}
+repair. Roers et al. found in animal studies that down-regulation of IL-10
+affects the repair process and has an impact on the resulting tissue ---
+IL-10-deficient mice showed a significantly enhanced re-epithelialisation and
+skin contraction, suggesting that the local inflammatory response to tissue
+injury promotes the repair process \cite{roers_il10mice_woundhealing_2007}.
+Especially in defects and wound healing scenarios, larger concentrations of
+IL-10 are traveling the space between cells for exerting IL-10's major
+biological effects. As of the abundance of GAGs in tissue, and especially on
+cell surfaces and within the extracellular matrix (ECM), it is a valid question
+to ask how GAGs might regulate the function of IL-10 --- as of the fine balance
+that needs to be maintained in regulating an immune response, even a slight
+modulation of IL-10 function via ECM components might be of biological
+significance.
+
+The central work motivating this thesis project has been published back in 2000
+by Salek-Ardakani et al., who have shown experimentally
+\cite{salek_ardakani_2000} that
 
 
-        in closing remarks, relate to extracellular matrix
+\begin{itemize}
+\item IL-10 binds HP and HS with a $\mathrm{K}_\mathrm{D}$
+value in the nanomolar range (via affinity chromatography and surface plasmon
+resonance).
+\item soluble HP and HS inhibit IL-10-induced expression of CD16 and CD64 in a
+concentration-dependent manner (via \textit{in vitro} peripheral blood
+mononuclear cell proliferation experiments)).
+\item the presence of sulfated proteoglycans at the cell surface facilitates the
+interaction between IL-10 and its transmembrane receptors.
+\end{itemize}
 
-
-- Bio-relevant IL-10-GAG interaction? Motivated by Salek ardakini.
 
 From \textit{in vitro} experiments, IL-10 is known
 to bind GAGs and there is evidence that GAGs may modulate its biological
@@ -370,9 +394,22 @@ function \cite{salek_ardakani_2000}. So far however, no structural detail about
 IL-10-GAG interaction is known.
 
 
-Wherever IL-10 is supposed to
-regulate an immune response, for instance in the process of wound healing and
-tissue regeneration, GAGs are
+\subsection{Structure of the IL-10 system}
+
+    - Structure description
+        exists mainly as homodimer [
+            biochemistry, 1998, 37, 16943-16951, zdanov 1995]
+
+
+    - IL-10 and its receptors
+        - what is known in literature (current state of knowlege)
+            R1+IL-10 structure
+            R2 structure
+            ternary complex binding models
+            what is required for signaling? literature overview
+        - a critical review: monomer
+            minimal unit required for signaling (monomer)
+        - IL-10 + R1 + R2 structure model from IL20 ternary complex
 
 
 \section{In-silico methods for investigating protein-GAG interaction}
@@ -405,8 +442,6 @@ ir ideal periodic
 explain DP, degree of polymerization
 
 \nomenclature{dp}{degree of polymerization}
-
-
 
 From Sergey: Computationally, GAG containing systems are still very challenging
 to handle because of their high flexibility as it applies for saccharides in
@@ -450,22 +485,7 @@ Cite this: \cite{schlick_innovationsdynamics_2012} (volume 2, chapter 12).
 
 \lipsum[1-5]
 
-\section{Structure of the IL-10 system}
 
-    - Structure description
-        exists mainly as homodimer [
-            biochemistry, 1998, 37, 16943-16951, zdanov 1995]
-
-
-    - IL-10 and its receptors
-        - what is known in literature (current state of knowlege)
-            R1+IL-10 structure
-            R2 structure
-            ternary complex binding models
-            what is required for signaling? literature overview
-        - a critical review: monomer
-            minimal unit required for signaling (monomer)
-        - IL-10 + R1 + R2 structure model from IL20 ternary complex
 
 
 \section{Aim and scope of this thesis}
