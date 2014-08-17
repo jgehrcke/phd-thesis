@@ -10,16 +10,9 @@ l.1 \chapter
 
 - remove general abbreviations list from main.tex (distribute to first occurrences)?
 
-- change "fig." to "figure"?
-
 
 Content-wise:
 
-- add nomenclature section to TOC?
-
-- summary: follow maytes recommendation "finish with conclusions and an outlook sentence"
-
-- structure: change "Summary" to "Introduction and Summary" and "Introduction" to "Background" (like in Aurelies thesis)?
 
 
 - in introduction clarify differences between human and murine IL-10, because
@@ -27,12 +20,6 @@ later, latest in NMR, this becomes important.
 
 - correct figures w.r.t CS-4 / CS4. I think most of the time I used CS4, so
 I should change all CS-4 occurrences.
-
-
-- in intro, refer to IUPAC for GAG nomenclature
-
-- explain degree of polymerization (dpX) in words in the introduction, not
-  (only) in the abbrev list.
 
 - intro: introduce N-terminus, used in chapter 7.1.
 
