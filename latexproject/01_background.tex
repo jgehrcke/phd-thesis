@@ -629,57 +629,70 @@ properties of the IL-10 system by Walter \cite{bookchapter_walter_il10_2004}.
 
 \vspace{0.5cm}
 \textit{\textbf{Secondary receptor IL10-R2.}}
-IL-10R2, the secondary low affinity transmembrane receptor of IL-10 is a
+IL-10R2, the secondary low affinity transmembrane receptor of IL-10, is a
 \textit{shared} receptor among the so-called IL-10 family of cytokines: besides
 for IL-10, it serves as a receptor for IL-22, IL-26, and IFN-$\lambda$
 \cite{zdanov_review_2010}. The scientific community was so far not able to
-crystallize the entire ternary complex of the IL-10 system, i.e.\ the structure
-involving the IL-10 homodimer as well as IL-10R1 and IL-10R2 in a single
-complex. Also, so far no other ternary complex structure from the IL-10 family
-of cytokines involving IL-10R2 has been published. However, in 2010, the crystal
-structure of the extracellular domain of IL-10R2 alone was published by Yoon et
-al. \cite{il10r2_structure_2010}. It has a resolution of \SI{2.1}{\angstrom} and
-was assigned the PDB identification code 3LQM.
+crystallize the entire ternary complex of the IL-10 system. That is, despite of
+certain modeling efforts, the structure involving the IL-10 homodimer as well as
+IL-10R1 and IL-10R2 in a single complex has not been determined with all
+certainty up to now. Also, so far no other ternary complex structure from the
+IL-10 family of cytokines involving IL-10R2 has been published. However, in
+2010, the crystal structure of the extracellular domain of IL-10R2 alone was
+published by Yoon et al. \cite{il10r2_structure_2010}. It has a resolution of
+\SI{2.1}{\angstrom} and was assigned the PDB identification code 3LQM.
 
 
 \vspace{0.5cm}
 \textit{\textbf{Ternary complex (IL-10 + IL-10R1 + IL-10R2) model.}}
-Before 2012, various different models of the ternary IL-10 signaling complex
-were published, most of them based on rational positioning using the input of
-certain experimental data, and sometimes using \textit{in silico} molecular
-modeling techniques \cite{zdanov_review_2010, Josephson2001,
+Before 2012, various different (and contradictory) models of the ternary IL-10
+signaling complex were published, most of them based on rational positioning
+using the input of certain experimental data, and sometimes using \textit{in
+silico} molecular modeling techniques \cite{zdanov_review_2010, Josephson2001,
 yoon_samestructdifffct_2005, il10r2_conf_changes_2006, il10r2_structure_2010}.
 
-In 2012, the crystal structure of the ternary IL-20/IL-20R1/IL-20R2 complex was
-published by the Walter group and deposited in the PDB under the identification
-code 4DOH \cite{logsdon_il20r2compl_2012}. Hence, this is the first publicly
-known ternary complex structure in the IL-10 family of cytokines. It seems
-obvious that an alignment of IL-10 system components onto the corresponding
-molecules of the IL-20 system provides one of the most reliable models for the
-geometrical arrangement of molecules in the ternary IL-10 system. Since this has
-not been published and discussed in literature so far, I have created this
-rather simple model, using rudimentary structural alignment tools as implemented
-in PyMOL \cite{pymol}. Specifically, I have first aligned the entire ternary
-IL-20 system (4DOH) onto the IL-10/IL-10R1 complex (1J7V) via alignment of
-IL-20R1 onto IL-10R1. Both R1 molecules are structurally highly similar, with a
-C-$\alpha$ RMSd of \SI{2.2}{\angstrom}. In a second step, I have aligned the
-IL-10 homodimer (2ILK) onto IL-20 of the 4DOH system. IL-20 is structurally
-similar to a single six-helical domain of IL-10, yielding a C-$\alpha$ RMSd of
-\SI{3.3}{\angstrom}. In the third step, I have aligned IL-10R2 (3LQM) onto
-IL-20R2 of the 4DOH system. The overall geometry of IL-20R2 and IL-10R1 is
-highly similar, but due to significant differences in various loops and domain
-angles, the C-$\alpha$ RMSd after alignment of both molecules is
-\SI{6.3}{\angstrom}. The resulting model is depicted in
-\cref{fig:bg:il10_il10r1_il10r2_model}.
 
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{gfx/background/il10dimer_surface_r1cartoon_r2cartoon_front_06_small.jpg}
 \caption[]{
-blbla.
-}
+Model of the ternary IL-10 signaling complex with the IL-10 homodimer shown in
+gray surface representation, and IL-10R1 (green) and IL-10R2 (magenta) shown in
+cartoon representation. The single structures are taken from PDB entries 2ILK
+(IL-10), 1J7V (IL-10R1), and 3LQM (IL-10R2). The relative positioning of the
+three molecules is based on the recently published structure of the ternary
+IL-20/IL-20R1/IL-20R2 complex (PDB 4DOH \cite{logsdon_il20r2compl_2012}), and
+has been derived in a simple structural alignment procedure.}
 \label{fig:bg:il10_il10r1_il10r2_model}
 \end{figure}
+
+In 2012, the crystal structure of the ternary IL-20/IL-20R1/IL-20R2 complex was
+published by the Walter group and deposited in the PDB under the access code
+4DOH \cite{logsdon_il20r2compl_2012}. This is the first publicly known ternary
+complex structure in the IL-10 family of cytokines. It seems obvious that an
+alignment of IL-10 system components onto the corresponding molecules of the
+IL-20 system provides one of the most reliable models for the geometrical
+arrangement of molecules in the ternary IL-10 system. Since this has not been
+published and discussed in literature so far, I have created this rather simple
+model, using rudimentary structural alignment tools as implemented in PyMOL
+\cite{pymol}. Specifically, I have first aligned the entire ternary IL-20 system
+(4DOH) onto the IL-10/IL-10R1 complex (1J7V) via alignment of IL-20R1 onto
+IL-10R1. Both R1 molecules are structurally highly similar, with a C-$\alpha$
+RMSd of \SI{2.2}{\angstrom}. In a second step, I have aligned the IL-10
+homodimer (2ILK) onto IL-20 of the 4DOH system. IL-20 is structurally similar to
+a single six-helical domain of IL-10, yielding a C-$\alpha$ RMSd of
+\SI{3.3}{\angstrom}. Lastly, I have aligned IL-10R2 (3LQM) onto IL-20R2 of the
+4DOH system. The global geometry of IL-20R2 and IL-10R1 is very similar, but due
+to significant differences in various loops and interdomain angles, the
+C-$\alpha$ RMSd after alignment of both molecules is \SI{6.3}{\angstrom}. The
+resulting model is depicted in \cref{fig:bg:il10_il10r1_il10r2_model}. In
+summary, it contains the IL-10 homodimer structure from PDB entry 2ILK, the
+IL-10R1 structure 1J7V, and the IL-10R2 structure 3LQM. While this simple model
+should not be taken literally on the scale of single atomic contacts, the
+overall global positioning of molecules with respect to each other likely
+matches that of the naturally occurring ternary IL-10 signaling complex.
+Therefore, it can serve to give an impression whether GAG molecules could
+possibly interfere with receptor binding or not.
 
 
 \section{In-silico methods for investigating protein-GAG interaction}
