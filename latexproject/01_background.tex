@@ -778,51 +778,41 @@ IL-10-GAG system is one.
 
 %\subsubsection{GAG structures used in \textit{in silico} experiments}
 
-\subsubsection{GAG representation approximations: isolation, length, purity}
+\subsubsection{Approximations in GAG representation: isolation, length, purity}
 
-As has been stated in \cref{background:gags}, one of fundamental assumptions
-applied in this thesis project is that GAGs are treated as \textit{free}
-molecules.
+As has been stated in \cref{background:gags}, one of the fundamental assumptions
+applied in this thesis project is that GAGs can be treated as \textit{free}
+molecules. A more severe approximation applied in this and other projects is the
+treatment of GAGs as \textit{short} molecules (mostly as tetra- or
+hexasaccharides). This approximation is supported by, as stated above, the fact
+that most protein-GAG complexes in the PDB contain only short GAG fragments, and
+that tetra- or hexasaccharide fragments are long enough for exerting a certain
+amount of specificity --- for pure combinatorial reasons. Also, considering the
+level of atomic detail that should be observed in this and comparable projects,
+a representation of GAGs as polymeric molecules would introduce a hindering
+amount of complexity. That said, it is a common approximation for the
+\textit{in silico} investigation of protein-GAG systems to represent GAGs as
+short oligosaccharides.
 
-%While it is likely
-%that their tremendous length and also their covalent linkage to proteoglycans
-%serve have an overall impact on the biological function of GAGs, it is a
-%valid and well-established approximation to not account for these facts in
-%molecular modeling studies that aim for resolving the molecular mechanism of
-%protein-GAG interaction in atomic detail... in a biological function and overall  treated as
+At the same time, one should stress that their tremendous length and also their
+covalent linkage to proteoglycans most likely have an overall biological
+purpose. However, in molecular modeling studies aiming for resolving the
+molecular mechanism of protein-GAG interaction it is not helpful to account for
+these effects.
 
-A more severe approximation applied in this thesis is the treatment of GAGs as
-\textit{short} molecules. Considering the  mostly ranging from tetra- to hexasaccharides. Considering the level of atomic detail aimed for ... to be observed... in this
-thesis project, GAGs are modeled as short molecules.
+Another notable approximation usually applied in \textit{in silico}
+investigation of protein-GAG systems affects the atomic details of the GAG: when
+treating GAGs as short molecules, they are usually represented by the ideal
+periodic repetition of the most frequently observed disaccharide unit.
+Impurities or variations in the monosaccharide sequence are ignored.
 
-
-Also, when treating GAGs as short molecules, they are represented by the ideal
-periodic repetition of the most frequently observed disaccharide unit,
-impurities or variations in the monosaccharide sequence are ignored.
-
-ir ideal periodic
-
-explain DP, degree of polymerization
-
-
-
-From Sergey: Computationally, GAG containing systems are still very challenging
-to handle because of their high flexibility as it applies for saccharides in
-general 15, importance of taking into account solvent mediated interactions16,17
-and required proper treatment of electrostatics due to their charged nature
-1,18,19. For heparin, in addition, the rings of IdoU2S can adopt two pucker
-conformations (1C4 and 2S0) with comparable probability 20–23, which, therefore,
-can represent a combinatorial task for modeling periodic molecules of heparin,
-and which proper consideration is outside the scope of classical MD time scales
-and common force fields at the moment 24,25. Nevertheless, both experimental and
-computational studies show that even a single IdoU2S ring conformational change
-significantly contributes to the specificity of GAG/protein complex formation
-both structurally and thermodynamically 26,27. Moreover, it is known
-that for relatively big systems like collagen-based matrixes, where interactions
-with GAGs could be crucial for their mechanical properties 29–31, application of
-the approaches which use only short GAGs does not seem to be proper.
-
-
+In \textit{in silico} models, the physical properties even of short and
+perfectly periodic GAGs are still very challenging to properly represent. One
+reason is their high flexibility, i.e.\ their rather large number of degrees of
+freedom (DOFs). For heparin, the number of DOFs is even higher than for all
+other GAGs, as of the conformational flexibility of the iduronic acid (as
+described above). The details of these challenges are described in the
+corresponding chapters.
 
 \subsection{A primer on docking methods}
 
