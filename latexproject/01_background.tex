@@ -792,27 +792,25 @@ level of atomic detail that should be observed in this and comparable projects,
 a representation of GAGs as polymeric molecules would introduce a hindering
 amount of complexity. That said, it is a common approximation for the
 \textit{in silico} investigation of protein-GAG systems to represent GAGs as
-short oligosaccharides.
-
-At the same time, one should stress that their tremendous length and also their
-covalent linkage to proteoglycans most likely have an overall biological
-purpose. However, in molecular modeling studies aiming for resolving the
-molecular mechanism of protein-GAG interaction it is not helpful to account for
-these effects.
+short oligosaccharides. At the same time, one should stress that the tremendous
+length of GAGs in biological systems and also their covalent linkage to
+proteoglycans most likely have an overall biological purpose. However, in
+molecular modeling studies aiming for resolving the small-scale molecular
+details of protein-GAG interaction it is not helpful to account for these
+effects.
 
 Another notable approximation usually applied in \textit{in silico}
-investigation of protein-GAG systems affects the atomic details of the GAG: when
-treating GAGs as short molecules, they are usually represented by the ideal
+investigations of protein-GAG systems affects the atomic details of the GAG:
+when treating GAGs as short molecules, they are usually represented by the ideal
 periodic repetition of the most frequently observed disaccharide unit.
 Impurities or variations in the monosaccharide sequence are ignored.
 
 In \textit{in silico} models, the physical properties even of short and
-perfectly periodic GAGs are still very challenging to properly represent. One
-reason is their high flexibility, i.e.\ their rather large number of degrees of
-freedom (DOFs). For heparin, the number of DOFs is even higher than for all
-other GAGs, as of the conformational flexibility of the iduronic acid (as
-described above). The details of these challenges are described in the
-corresponding chapters.
+perfectly periodic GAGs are still challenging to properly represent. One reason
+is their high flexibility, i.e.\ their rather large number of degrees of freedom
+(DOFs). For heparin, the number of DOFs is even higher than for all other GAGs,
+as of the conformational flexibility of the iduronic acid (as described above).
+The details of these challenges are described in the corresponding chapters.
 
 \subsection{A primer on docking methods}
 
@@ -875,10 +873,10 @@ modeled using classical Newton mechanics, which is why the concept is also
 called the molecular mechanics (MM) approach. Each atom is treated as a point
 mass with certain parameters and exposed to a set of classical potentials. The
 atom coordinates of this set of atoms are then \textit{time-evolved} via
-numerical integration the classical equations of motion. The movement of the
-atoms is simulation for a certain amount of time, and valuable data can be
+numerical integration of the classical equations of motion. The movement of the
+atoms is simulated for a certain amount of time, and valuable data can be
 extracted from the resulting trajectory. The modeled system is usually coupled
-to an external heat bath of constant temperature, and barostat is applied in
+to an external heat bath of constant temperature, and a barostat is applied in
 order to simulate a certain pressure. Often, periodic boundary conditions are
 applied in order to represent the behavior of an infinitely large system via
 simulation of a single unit cell. The MD approach has a long-standing history in
@@ -905,37 +903,27 @@ van der Waals radii, atomic point charges, bond force constants, bond angle
 force constants, and bond torsion force constants) together fully defines the
 forces exerted on single atoms, and is therefore called \enquote{force field},
 for historical reasons. For proteins, DNA, and carbohydrates the analytical form
-of the potentials used is usually the same as described above, so the actual
+of the potentials used is usually the one as described above. Hence, the actual
 challenge in developing proper force fields for certain molecular systems is to
-map their physical characteristics onto the MM parameters. For many types of
-bio-molecules it can be said that this task has largely been fulfilled by the
+map their real physical characteristics onto the MM parameters. For many types
+of bio-molecules it can be said that this task has largely been fulfilled by the
 scientific community: the classical physical properties of proteins for instance
 can reliably be simulated using the so-called FF99SB force field
-\cite{ff99sbvalidation_2009}in the Amber suite. For this project of major
-relevance is also the fact that carbohydrates can quite reliably be modeled
-thanks to the huge efforts of Kirschner et al., using the GLYCAM force field
-\cite{kirschner_glycam06:_2008}.
+\cite{ff99sbvalidation_2009}. Of major relevance for this project is  the fact
+that carbohydrates can quite reliably be modeled thanks to the huge efforts of
+Kirschner et al., using the GLYCAM force field \cite{kirschner_glycam06:_2008}.
+Furthermore, solvent molecules and ions can be represented in explicit form in
+MD simulations.
 
-
+The computational complexity of MD simulations is rather large. However, given a
+proper force field and system setup, the resulting data is almost always
+physically meaningful.
 
 
 \subsubsection{End-point free energy methods (\enquote{MM-PB(GB)SA})}
 % This label is required in DMD chapter.
 \label{methods:mmpbsa_mmgbsa}
 
-
+\hl{TODO: Write a small section.}
 Cite this: \cite{schlick_innovationsdynamics_2012} (volume 2, chapter 12).
-
 \lipsum[1-5]
-
-
-
-
-
-
-\lipsum[1-5]
-
-
-
-
-
