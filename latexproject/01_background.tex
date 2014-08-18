@@ -816,25 +816,26 @@ corresponding chapters.
 
 \subsection{A primer on docking methods}
 
-Molecular \enquote{docking} is a method for predicting the stable binding mode
-of a given receptor-ligand system. That is, molecular docking aims to solve an
+Molecular \enquote{docking} is a method for predicting a stable binding mode of
+a given receptor-ligand system. That is, molecular docking aims to solve an
 optimization problem, in which the optimal binding configuration between two
-molecules is searched for. Hence, the two main ingredients required for any
+molecules is searched for. The two main ingredients required for any classical
 docking method are a so-called scoring function (which is nothing else than a
 multi-dimensional potential), and a search algorithm, which attempts to sample a
 certain conformational space (whose dimensionality is determined by the degrees
 of freedom of the system) in order to find the optimal binding configuration.
-Molecular docking methods are usually developed with the goal to be
-computationally efficient, i.e.\ a number of severe approximations is usually
-implemented in docking methods. Among others, the following approximations are
-common among classical docking methods:
+\textit{Classical} molecular docking methods are developed with the goal to be
+computationally efficient, and for reaching this goal a number of severe
+approximations is usually implemented in such methods. Among others, the
+following approximations are common among classical docking methods:
 
 \begin{itemize}
 \item Solvent is either ignored or considered only implicitly.
 \item The larger of both molecules, usually called receptor, is often treated
-statically, i.e.\ it has zero degrees of freedom.
-\item Flexibility in the ligand molecule is often only approximated: bond
-lenghts are fixed, and certain torsion angles are also kept fixed.
+statically, i.e.\ it has zero degrees of freedom, or is only partly treated as
+pseudo-flexible.
+\item Flexibility in the ligand molecule is often approximated: bond lengths are
+fixed, and certain torsion angles are kept fixed.
 \end{itemize}
 
 Plenty of classical molecular docking methods have been developed for various
@@ -853,8 +854,9 @@ Likewise, a problematic side effect of the severe approximations usually made in
 classical docking methods is their tendency to suggest false positives as good
 binders.
 
-In previous studies, AutoDock 3 (AD3) \cite{Morris1998} has been shown to be
-able to produce reasonable docking results for protein-GAG systems
+So far, no docking method has been specifically developed for protein-GAG
+systems. In previous studies, AutoDock 3 (AD3) \cite{Morris1998} has been shown
+to be able to produce reasonable docking results for protein-GAG systems
 \cite{japan_docking_ad3_clustering, samsonov_docking_2011}. However, these were
 \textit{local} docking studies with the docking search space limited to only a
 small part of the receptor protein --- a previously \textit{known} binding site.
