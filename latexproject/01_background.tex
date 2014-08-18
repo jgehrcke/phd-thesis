@@ -816,14 +816,55 @@ corresponding chapters.
 
 \subsection{A primer on docking methods}
 
+Molecular \enquote{docking} is a method for predicting the stable binding mode
+of a given receptor-ligand system. That is, molecular docking aims to solve an
+optimization problem, in which the optimal binding configuration between two
+molecules is searched for. Hence, the two main ingredients required for any
+docking method are a so-called scoring function (which is nothing else than a
+multi-dimensional potential), and a search algorithm, which attempts to sample a
+certain conformational space (whose dimensionality is determined by the degrees
+of freedom of the system) in order to find the optimal binding configuration.
+Molecular docking methods are usually developed with the goal to be
+computationally efficient, i.e.\ a number of severe approximations is usually
+implemented in docking methods. Among others, the following approximations are
+common among classical docking methods:
 
-    - Methods applied in literature: a mini review
-        AutoDock3 stands out, just by experience, not by concept
-    - Problems of different complexity: local vs. global docking.
-    - (AutoDock 3 protein-GAG blind docking validation study,
-        Method, results, discussion, conclusion)
+\begin{itemize}
+\item Solvent is either ignored or considered only implicitly.
+\item The larger of both molecules, usually called receptor, is often treated
+statically, i.e.\ it has zero degrees of freedom.
+\item Flexibility in the ligand molecule is often only approximated: bond
+lenghts are fixed, and certain torsion angles are also kept fixed.
+\end{itemize}
 
-\lipsum[1-5]
+Plenty of classical molecular docking methods have been developed for various
+types of molecular systems. What most of them have in common is their heuristic
+approach for yielding low computational resource requirements: the scoring
+function of these approaches is kept simple, with only a couple of free
+parameters. Sometimes these parameters have, on purpose, no physical meaning.
+The parameters are then tuned to a training data set until convergence is
+achieved. That is, if such a docking method is applied to a molecular system
+from the training data set, success is almost guaranteed. However, if it is
+applied to a molecular system not inside the training data set, the validity of
+the resulting data strongly depends on the similarity of that system to the
+training data set. As this similarity is difficult to quantify, the systematical
+error contained in classical docking results is often impossible to determine.
+Likewise, a problematic side effect of the severe approximations usually made in
+classical docking methods is their tendency to suggest false positives as good
+binders.
+
+In previous studies, AutoDock 3 (AD3) \cite{Morris1998} has been shown to be
+able to produce reasonable docking results for protein-GAG systems
+\cite{japan_docking_ad3_clustering, samsonov_docking_2011}. However, these were
+\textit{local} docking studies with the docking search space limited to only a
+small part of the receptor protein --- a previously \textit{known} binding site.
+With respect to IL-10, no GAG binding information is available which would allow
+for such an \textit{a priori} reduction of the search space volume. In
+principal, docking approaches could also be applied in such a scenario, which
+could then be called \textit{global} or \textit{blind} docking. However,
+compared to local docking, these conditions impose incomparably high challenges
+with respect to scoring and sampling, and the validity of the resulting data
+becomes even less unsure.
 
 \subsection{A primer on molecular dynamics simulations}
 
