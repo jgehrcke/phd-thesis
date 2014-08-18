@@ -870,7 +870,54 @@ becomes even less unsure.
 
 \subsection{A primer on molecular dynamics simulations}
 
-\lipsum[1-5]
+In molecular dynamics (MD) simulations, a set of atoms (an N-body system) is
+modeled using classical Newton mechanics, which is why the concept is also
+called the molecular mechanics (MM) approach. Each atom is treated as a point
+mass with certain parameters and exposed to a set of classical potentials. The
+atom coordinates of this set of atoms are then \textit{time-evolved} via
+numerical integration the classical equations of motion. The movement of the
+atoms is simulation for a certain amount of time, and valuable data can be
+extracted from the resulting trajectory. The modeled system is usually coupled
+to an external heat bath of constant temperature, and barostat is applied in
+order to simulate a certain pressure. Often, periodic boundary conditions are
+applied in order to represent the behavior of an infinitely large system via
+simulation of a single unit cell. The MD approach has a long-standing history in
+the simulation of the dynamics of biological molecules, as reviewed and
+described in many details in standard literature
+\cite{mccammon1988dynamics}.
+
+The \enquote{bonded} potentials included in today's standard MD methods as
+implemented for instance in the Amber suite \cite{original_amber_1981,
+amber_overview_2013} are harmonic bonded potentials (for bond lengths between
+two connected atoms, bond angles between three connected atoms, and bond torsion
+angles between four connected atoms). The \enquote{non-bonded} potentials are
+the Coulomb point charge potential and a 6-12 Lennard-Jones potential for
+approximating the van der Waals interaction. Since non-bonded interactions
+quickly decay towards zero, but would still require a pair-wise sum over all
+atoms in the system, usually a so-called non-bonded cutoff distance is
+implemented, beyond which non-bonded interactions are ignored (in case of the
+6-12 potential), or modeled more efficiently (via the Ewald sum method in case
+of electrostatic interactions).
+
+The analytical form of the applied potentials and the set of parameters used in
+the simulation for describing the molecular system (comprised of atomic mass,
+van der Waals radii, atomic point charges, bond force constants, bond angle
+force constants, and bond torsion force constants) together fully defines the
+forces exerted on single atoms, and is therefore called \enquote{force field},
+for historical reasons. For proteins, DNA, and carbohydrates the analytical form
+of the potentials used is usually the same as described above, so the actual
+challenge in developing proper force fields for certain molecular systems is to
+map their physical characteristics onto the MM parameters. For many types of
+bio-molecules it can be said that this task has largely been fulfilled by the
+scientific community: the classical physical properties of proteins for instance
+can reliably be simulated using the so-called FF99SB force field
+\cite{ff99sbvalidation_2009}in the Amber suite. For this project of major
+relevance is also the fact that carbohydrates can quite reliably be modeled
+thanks to the huge efforts of Kirschner et al., using the GLYCAM force field
+\cite{kirschner_glycam06:_2008}.
+
+
+
 
 \subsubsection{End-point free energy methods (\enquote{MM-PB(GB)SA})}
 % This label is required in DMD chapter.
