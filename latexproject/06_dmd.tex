@@ -419,25 +419,25 @@ ligand or atoms/amino acid residues in the protein receptor.
 \subsubsection{Merge the data: extraction of ensemble properties}
 
 It was stressed before that an essential concept of DMD is the creation and
-analysis of an entire \textit{ensemble} of docking solutions. In fact, the
+analysis of an \textit{ensemble} of docking solutions. In fact, the
 characterization of single docking solutions does not necessarily yield
 trustable or even meaningful insights about the protein-ligand system under
 investigation. The ensemble properties, however, are assumed to be
 \textit{converged}, i.e.\ an independent repetition of the same DMD study would
 yield different individual docking solutions, but ensemble properties of the
-same kind. As of the validity of the underlying model, a converged result of MD
-simulations is usually \textit{reliable} and \textit{meaningful}. Therefore, we
-seek to extract ensemble properties of a DMD study. \textit{Static}
-coordinate-based docking solution ensemble evaluation by means of clustering has
-been discussed before in \cref{chapter:clustering}. Here, an additional approach
-is described for extracting \textit{dynamic} DMD study ensemble properties that
-are likely to provide essential insights about the molecular system under
-investigation.
+same kind. As of the quality of the underlying model (all-atomic MD simulation
+using MM force fields), a converged result of MD simulations is usually
+\textit{meaningful} and can be relied upon. Therefore, we seek to extract
+ensemble properties of a DMD study. \textit{Static} coordinate-based docking
+solution ensemble evaluation by means of clustering has been discussed before in
+\cref{chapter:clustering}. Here, an additional approach is described for
+extracting \textit{dynamic} DMD study ensemble properties that are likely to
+provide essential insights about the molecular system under investigation.
 
 Two of the single docking solution analysis types listed above are qualified for
-\textit{merging} their results among (nearly) \textit{all} docking solutions:
-hydrogen bonding occupancy analysis and single-residue energy decomposition. The
-idea behind such data merge operation is to find those residues in the protein
+\textit{merging} their results among (nearly) all docking solutions: hydrogen
+bonding occupancy analysis and single-residue energy decomposition. The idea
+behind such data merge operation is to find those residues in the protein
 receptor that are most important for ligand binding, whereas the entire DMD
 study provides the corresponding data, rendering the outcome significant and
 trustable. Essentially, the merge operation is comprised of \textit{filtering}
@@ -446,7 +446,7 @@ for single residues in the protein receptor. The filtering step makes sure that
 no invalid (e.g.\ unbound) solutions contribute to the final result. The
 averaging operation merges the ensemble data, enriched with statistics: it
 usually makes sense to track standard deviation and standard error of the mean
-in order to decide whether the merge provides valid data or not. The result of
+in order to check the quality of the data provided by the merge. The result of
 the merge is an \textit{ensemble-derived quantity} for each protein residue.
 Obviously, the average of a certain quantity measured for a \textit{diverse} set
 of docking solutions does not provide a meaningful absolute value. The merge
