@@ -1,10 +1,16 @@
 % Copyright 2014 Jan-Philip Gehrcke
 % http://gehrcke.de
 
+% Designed for direct PDF creation with LuaLaTeX. For build instructions, see
+% build.sh.
+
 % Old habits die hard. All the same, there are commands, classes and
 % packages which are outdated and superseded. nag provides routines to
 % warn the user about the use of those.
 \RequirePackage[l2tabu, orthodox]{nag}
+
+% Use memoir document class. Awesome, powerful. Comprehensible (and huge) docs.
+% http://texdoc.net/texmf-dist/doc/latex/memoir/memman.pdf
 \documentclass[a4paper,12pt,onecolumn,twoside,openright]{memoir}
 
 % Use Linux Libertine font. A quote from Michael Sharpe: "The free font Linux
@@ -44,6 +50,7 @@
 % Dummy paragraphs. Use e.g. \lipsum[1-5] for adding 5 dummy paragraphs.
 \usepackage{lipsum}
 
+% Enhanced support for graphics.
 \usepackage{graphicx}
 
 % Highlight text via \hl{}.
@@ -64,14 +71,11 @@
 %\DisemulatePackage{ccaption}
 \usepackage[margin=5pt,font=small,labelfont=bf]{caption}
 
-% Configure footnotes: counter reset every page etc.
-%\usepackage[perpage,hang,splitrule]{footmisc}
-
-% Babel man­ages cul­tur­ally-de­ter­mined ty­po­graph­i­cal (and other) rules, and
+% Babel manages culturally-de­ter­mined ty­po­graph­i­cal (and other) rules, and
 % hy­phen­ation pat­terns for a wide range of lan­guages.
 \usepackage[english]{babel}
 
-% Csquotes pro­vides ad­vanced fa­cil­i­ties for in­line and dis­play quo­ta­tions.
+% Csquotes pro­vides ad­vanced fa­cil­i­ties for in­line and display quo­ta­tions.
 \usepackage[babel]{csquotes}
 
 % From the Pygments LatexFormatter docs:
