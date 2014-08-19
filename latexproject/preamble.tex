@@ -1,6 +1,9 @@
 % Copyright 2014 Jan-Philip Gehrcke
+% http://gehrcke.de
 
-% http://www.howtotex.com/packages/the-nag-package-warns-you-for-incorrect-latex-usage/
+% Old habits die hard. All the same, there are commands, classes and
+% packages which are outdated and superseded. nag provides routines to
+% warn the user about the use of those.
 \RequirePackage[l2tabu, orthodox]{nag}
 \documentclass[a4paper,12pt,onecolumn,twoside,openright]{memoir}
 
@@ -27,6 +30,7 @@
 \usepackage{libertine}
 
 % Improve typography. Must be loaded after any font.
+% http://tex.stackexchange.com/a/586
 \usepackage{microtype}
 
 % Properly typeset units, and numbers with units.
@@ -61,9 +65,13 @@
 \usepackage[margin=5pt,font=small,labelfont=bf]{caption}
 
 % Configure footnotes: counter reset every page etc.
-\usepackage[perpage,hang,splitrule]{footmisc}
+%\usepackage[perpage,hang,splitrule]{footmisc}
 
+% Babel man­ages cul­tur­ally-de­ter­mined ty­po­graph­i­cal (and other) rules, and
+% hy­phen­ation pat­terns for a wide range of lan­guages.
 \usepackage[english]{babel}
+
+% Csquotes pro­vides ad­vanced fa­cil­i­ties for in­line and dis­play quo­ta­tions.
 \usepackage[babel]{csquotes}
 
 % From the Pygments LatexFormatter docs:
@@ -92,7 +100,9 @@
 % http://tex.stackexchange.com/a/17873/11816
 \usepackage{xspace}
 
-% Hyperref provides PDF links etc. Should be included as late as possible.
+% Hyperref provides PDF features such as links (and much more, automatically).
+% Should be included as late as possible.
+% Is configured further below.
 \usepackage{hyperref}
 
 % See: Which packages should be loaded after hyperref instead of before?
@@ -216,6 +226,8 @@
   \end{tabular}
 }
 
+% Include definitions required for Python code syntax highlighting,
+% automatically created by Pygments.
 \include{python-syntax-highlighting}
 
 % Declare hyphenation rules for certain words (these rules take global effect).
