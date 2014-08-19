@@ -15,23 +15,8 @@ Content-wise:
 
 - check chapter page headings
 
-
-- in introduction clarify differences between human and murine IL-10, because
-later, latest in NMR, this becomes important.
-
 - correct figures w.r.t CS-4 / CS4. I think most of the time I used CS4, so
 I should change all CS-4 occurrences.
-
-- intro: introduce N-terminus, used in chapter 7.1.
-
-- in NMR MD section, write more about why simulated annealing simulations, and
-  give some references for similar work, and more literature in general about
-  NMR MD restraint methods
-
-- in clustering section: point out somehow that this topic is often neglected by
-  others (in published docking work)?
-
-- in intro: also introduce force fields, i.e. FF99SB and GLYCAM06.
 
 - in estatic discussion: read
 http://books.google.de/books?id=5ZtR-sl4DgYC&dq=end+point+free+energy+methods&source=gbs_navlinks_s
@@ -42,9 +27,3 @@ in protein-dna complexes
 http://books.google.de/books?id=5ZtR-sl4DgYC&dq=end+point+free+energy+methods&source=gbs_navlinks_s
 volume 2 chapter 12,  end-point free energy methods
 compare potential with that of DNA?
-
-
-Mayte first correction TODO:
-- write summary (up to three pages, according to promotionsordnung)
-- better introduce each chapter, with clarifying MY contribution.
-- clarify I WE etc
