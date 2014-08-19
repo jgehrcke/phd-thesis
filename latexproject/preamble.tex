@@ -68,6 +68,9 @@
 
 \usepackage{color}
 \usepackage{fancyvrb}
+
+% Allows definition of new float environments.
+% 'listing' is defined later in this file, for presenting source code.
 \usepackage{float}
 
 % Nomenclature package, in this case for an Abbreviations listing.
@@ -114,7 +117,6 @@
     urlcolor=sepia
 }
 
-%\renewcommand{\unspace}{\relax}
 % For styles, see
 % ftp://ftp.rrzn.uni-hannover.de/pub/mirror/tex-archive/macros/latex/contrib/biblatex-contrib/
 \usepackage[
@@ -136,20 +138,9 @@
     ]{biblatex}
 
 \addbibresource{literature.bib}
-%\bibliography{literature}
-%{\small\bibliography{literature.bib}}
-
-
-% Footnote layout config
-%\addtolength{\footskip}{0.5cm}
-%\setlength{\footnotemargin}{0.2cm}
-%\setlength{\footnotesep}{0.4cm}
-%\makeatletter
-%\let\splitfootnoterule=\pagefootnoterule
-%\makeatother
-
 
 % *************** Memoir page layout options ***************
+% Goldener Schnitt yo!
 \settypeblocksize{*}{\lxvchars}{1.618}
 % First field: space between top page border and text.
 \setulmargins{5cm}{*}{*}
@@ -186,41 +177,10 @@
 \maxtocdepth{subsection}
 
 
-% % ********** Commands for epigraphs **********
-% \setlength{\epigraphwidth}{0.57\textwidth}
-% \setlength{\epigraphrule}{0pt}
-% \setlength{\beforeepigraphskip}{1\baselineskip}
-% \setlength{\afterepigraphskip}{2\baselineskip}
-
-% \newcommand{\epitext}{\sffamily\itshape}
-% \newcommand{\epiauthor}{\sffamily\scshape ---~}
-% \newcommand{\epititle}{\sffamily\itshape}
-% \newcommand{\epidate}{\sffamily\scshape}
-% \newcommand{\episkip}{\medskip}
-
-% % temporal margin change
-% % usage: \begin{changemargin}{-1cm}{-1cm}
-% \newenvironment{changemargin}[2]{%
-%  \begin{list}{}{%
-%   \setlength{\topsep}{0pt}%
-%   \setlength{\leftmargin}{#1}%
-%   \setlength{\rightmargin}{#2}%
-%   \setlength{\listparindent}{\parindent}%
-%   \setlength{\itemindent}{\parindent}%
-%   \setlength{\parsep}{\parskip}%
-%  }%
-% \item[]}{\end{list}}
-
-% special hyphenation
-% \hyphenation{na-no-par-ti-cles pe-rio-di-ci-ty T-pe-rio-di-ci-ty Lange-vin}
-% \setlength{\emergencystretch}{1em}
-
 % URL font style
 % http://tex.stackexchange.com/a/109750/11816
 \urlstyle{same}
 
-% Define Angstrom command.
-%\newcommand{\angstrom}{\textup{\AA}\xspace}
 % http://tex.stackexchange.com/a/24282/11816
 \sisetup{
     per-mode=symbol,
@@ -230,6 +190,7 @@
     }
 \DeclareSIUnit\calory{cal}
 
+
 % Set smaller font size in bibliography.
 \renewcommand*{\bibfont}{\small}
 
@@ -237,12 +198,13 @@
 \newcommand{\specialcell}[2][c]{%
   \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 
-% A new float type 'listing' for presenting
-% sourcecode.
+
+% A new float type 'listing' for presenting sourcecode.
 \newfloat{listing}{tbph}{lop}[chapter]
 \floatname{listing}{Listing}
 
-% Date/Signature field
+
+% Define environment for a date/signature field.
 % http://tex.stackexchange.com/a/35943
 \newcommand{\namesigdate}[2][5cm]{%
   \begin{tabular}{@{}p{#1}@{}}
@@ -253,8 +215,8 @@
 }
 
 
-% ---- Definitions for Python code highlight BEGIN ----
-% $ pygmentize -f latex -S default
+% ---- Definitions for Python code syntax highlighting BEGIN ----
+% created with `$ pygmentize -f latex -S default`
 \makeatletter
 \def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
     \let\PY@ul=\relax \let\PY@tc=\relax%
@@ -265,7 +227,6 @@
 \def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
     \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
 \def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
-
 \expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
 \expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
 \expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
@@ -326,7 +287,6 @@
 \expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
 \expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
 \expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
-
 \def\PYZbs{\char`\\}
 \def\PYZus{\char`\_}
 \def\PYZob{\char`\{}
