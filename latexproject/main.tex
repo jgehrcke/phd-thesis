@@ -2,15 +2,20 @@
 
 \begin{document}
 
-% Include title page, created externally.
+% Include PDF pages created externally (title page etc).
 % http://tu-dresden.de/die_tu_dresden/fakultaeten/fakultaet_mathematik_und_naturwissenschaften/deckblatt_dissertation
-
 % Disable hyperref links for these pages, to prevent page identifier collision.
 % http://tex.stackexchange.com/a/18927/11816
+% Page identifier collision still happens, without affecting final document.
+% Relevant error message:
+% [3]LuaTeX warning (ext4): destinat ion with the same identifier (name{page.4})
+% has been already used, duplicate ignored
 \hypersetup{pageanchor=false}
 \includepdf{pdf_pages_for_inclusion/titlepage_01.pdf}
+
 % Start on recto page.
 \cleardoublepage
+
 \includepdf{pdf_pages_for_inclusion/logopage_01.pdf}
 \hypersetup{pageanchor=true}
 
@@ -21,10 +26,12 @@
 
 \include{summary}
 
+% IIRC, the adjustwidth env is defined by memoir.
 \begin{adjustwidth}{-1.5cm}{-1.5em}
 \tableofcontents
 \end{adjustwidth}
 
+% Mainmatter changes page numbering etc, see memoir docs.
 \mainmatter
 \pagestyle{Ruled}
 \makeoddhead{Ruled}{}{}{\small\sffamily\bfseries\rightmark}
@@ -47,6 +54,7 @@
 \end{adjustwidth}
 
 
+% Some abbreviations, maybe put them into the document later.
 \nomenclature{PDB}{RCSB Protein Data Bank}
 \nomenclature{MD}{molecular dynamics}
 \nomenclature{NOE}{nuclear Overhauser effect}
@@ -57,8 +65,12 @@
 
 % http://tex.stackexchange.com/a/100377
 % http://www.latex-community.org/forum/viewtopic.php?f=47&t=19574
-% Mark "chapter name" for page headings.
+% Define "chapter name" for page headings, set it to current nomenclature name
+% (nomname is defined by nomencl package, and can ge changed).
 \markboth{\nomname}{\nomname}
+
+% Print the nomencl list, with a certain spacing between abbreviation and
+% explanation.
 \printnomenclature[3cm]
 
 %\OnehalfSpacing
@@ -67,15 +79,5 @@
 \appendixpage
 %\addappheadtotoc
 \include{appendix}
-
-%\normalfont
-%\clearpage
-%\input{symbols.tex}
-%\clearpage
-%\listoffigures
-%\clearpage
-%\listoftables
-%\footnotesize
-%\printindex
 
 \end{document}
