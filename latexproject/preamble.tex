@@ -3,7 +3,6 @@
 % http://www.howtotex.com/packages/the-nag-package-warns-you-for-incorrect-latex-usage/
 \RequirePackage[l2tabu, orthodox]{nag}
 \documentclass[a4paper,12pt,onecolumn,twoside,openright]{memoir}
-%\documentclass[draft,a4paper,12pt,onecolumn,twoside,openright]{memoir}
 
 % Use Linux Libertine font. A quote from Michael Sharpe: "The free font Linux
 % Libertine is one particular target — it is of nearly the same x-height as
@@ -23,12 +22,11 @@
 % no-math option, followed by \usepackage{libertine} or
 % \setmainfont{Linux Libertine O}, see
 % http://tex.stackexchange.com/q/97299/11816
-
 \usepackage[libertine]{newtxmath}
 \usepackage[no-math]{fontspec}
 \usepackage{libertine}
 
-% Properly typeset numbers with units.
+% Properly typeset units, and numbers with units.
 \usepackage{siunitx}
 
 % This is likely already loaded by some other package.
@@ -61,7 +59,6 @@
 \usepackage{pdfpages}
 
 \usepackage{url}
-% \usepackage{geometry}  % Should be loaded after hyperref!
 
 % captions (for figures etc)
 %\DisemulatePackage{ccaption}
@@ -75,6 +72,10 @@
 \usepackage{color}
 \usepackage{fancyvrb}
 \usepackage{float}
+
+% ftp://ftp.tu-chemnitz.de/pub/tex/macros/latex/contrib/nomencl/nomencl.pdf
+% http://tex.stackexchange.com/a/100377
+\usepackage[intoc]{nomencl}
 
 % http://stackoverflow.com/a/8649145/145400 LaTeX won't hyphenate words with
 % dashes in them. There's a standard package that addresses that very problem,
@@ -105,8 +106,6 @@
 % noabbrev option for non-abbreviated names.
 \usepackage[noabbrev]{cleveref}
 
-% http://tex.stackexchange.com/a/100377
-\usepackage[intoc]{nomencl}
 
 \definecolor{sepia}{cmyk}{0, 0.83, 1, 0.70}
 \hypersetup{
