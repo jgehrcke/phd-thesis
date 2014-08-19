@@ -1,7 +1,7 @@
 % Copyright 2014 Jan-Philip Gehrcke
 % http://gehrcke.de
 
-% Designed for direct PDF creation with LuaLaTeX. For build instructions, see
+% Designed for direct PDF creation with LuaLaTeX. For build instructions see
 % build.sh.
 
 % Old habits die hard. All the same, there are commands, classes and
@@ -55,9 +55,6 @@
 
 % Highlight text via \hl{}.
 \usepackage{soul}
-
-% From my master thesis, will I use those?
-\usepackage{booktabs}
 
 % For SRED table in DMD chapter. TODO: Convert to not require that package.
 \usepackage{threeparttable}
@@ -176,7 +173,7 @@
 \checkandfixthelayout
 
 
-% *************** Chapter and section and head style ***************
+% *************** Memoir chapter and section and head style ***************
 %\chapterstyle{southall}
 %\chapterstyle{veelo}
 %\chapterstyle{bianchi}
@@ -186,7 +183,7 @@
 % \setsubsubsecheadstyle{\normalfont\sffamily\bfseries}
 % \setparaheadstyle{\normalfont\sffamily}
 
-% *************** Table of contents style ***************
+% *************** Memoir table of contents style ***************
 %\settocdepth{section}
 \setsecnumdepth{subsection}
 \maxsecnumdepth{subsection}
@@ -197,6 +194,8 @@
 % http://tex.stackexchange.com/a/109750/11816
 \urlstyle{same}
 
+
+% Some configuration for SiUnitX.
 % http://tex.stackexchange.com/a/24282/11816
 \sisetup{
     per-mode=symbol,
@@ -209,6 +208,7 @@
 
 % Set smaller font size in bibliography.
 \renewcommand*{\bibfont}{\small}
+
 
 % http://tex.stackexchange.com/a/19678
 \newcommand{\specialcell}[2][c]{%
@@ -230,9 +230,11 @@
   \end{tabular}
 }
 
+
 % Include definitions required for Python code syntax highlighting,
 % automatically created by Pygments.
 \include{python-syntax-highlighting}
+
 
 % Declare hyphenation rules for certain words (these rules take global effect).
 % The \hyphenation command allows you to give explicit instructions. Provided
@@ -249,6 +251,7 @@
     te-tra-sac-cha-ride
     ace-tyl-glu-co-sa-mine
     }
+
 
 % http://tex.stackexchange.com/a/100377
 \makenomenclature
