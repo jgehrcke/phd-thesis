@@ -26,28 +26,24 @@
 \usepackage[no-math]{fontspec}
 \usepackage{libertine}
 
+% Improve typography. Must be loaded after any font.
+\usepackage{microtype}
+
 % Properly typeset units, and numbers with units.
 \usepackage{siunitx}
 
-% This is likely already loaded by some other package.
 \usepackage{amsmath}
 
 % Bold math symbols.
 \usepackage{bm}
 
-% Improve typography. Must be loaded after any font.
-\usepackage{microtype}
-
-% Dummy paragraphs.
+% Dummy paragraphs. Use e.g. \lipsum[1-5] for adding 5 dummy paragraphs.
 \usepackage{lipsum}
 
 \usepackage{graphicx}
 
 % Highlight text via \hl{}.
 \usepackage{soul}
-
-% Temporary margin change.
-%\usepackage[strict]{changepage}
 
 % From my master thesis, will I use those?
 \usepackage{booktabs}
@@ -69,10 +65,12 @@
 
 \usepackage[english]{babel}
 \usepackage[babel]{csquotes}
+
 \usepackage{color}
 \usepackage{fancyvrb}
 \usepackage{float}
 
+% Nomenclature package, in this case for an Abbreviations listing.
 % ftp://ftp.tu-chemnitz.de/pub/tex/macros/latex/contrib/nomencl/nomencl.pdf
 % http://tex.stackexchange.com/a/100377
 \usepackage[intoc]{nomencl}
@@ -89,10 +87,6 @@
 % http://tex.stackexchange.com/a/17873/11816
 \usepackage{xspace}
 
-% Add bibliography to ToC.
-% http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
-%\usepackage[nottoc]{tocbibind}
-
 % Hyperref provides PDF links etc. Should be included as late as possible.
 \usepackage{hyperref}
 
@@ -103,7 +97,7 @@
 % cross-references, instead of \ref or \eqref, a word is placed in front of the
 % reference according to the type of reference: fig. for figures, eq. for
 % equations.
-% noabbrev option for non-abbreviated names.
+% `noabbrev` option for non-abbreviated names ("figure" instead of "fig.").
 \usepackage[noabbrev]{cleveref}
 
 
