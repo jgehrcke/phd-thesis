@@ -9,20 +9,19 @@
 % Das hier ist sowohl die interne als auch die externe Kurzfassung.
 
 
-Glycosaminoglycans (GAGs) are a class of linear polysaccharides, built of
-periodically occurring disaccharide units. GAGs are ubiquitous in the
-extracellular matrix (ECM), where they exhibit multifarious biological
-activities. This diversity arises from --- among others --- their ability to
-interact with and regulate a large number of proteins, such as cytokines,
-chemokines, and growth factors. As of the huge variety in their chemical
-configuration, GAGs are further sub-classified into different types of GAGs
-(heparin, for instance, is one of these sub-classes). Hence, GAGs are a
-\textit{diverse} class of molecules, which surely contributes to the broadness
-of their spectrum of biological functions. Through varying arrangements of
-sulfate groups and different types of monosaccharides, individual GAG molecules
-can establish highly specific atomic contacts to certain proteins. One of the
-best-studied examples is antithrombin-heparin, whose biologically relevant
-interaction requires a specific pentasaccharide sequence
+Glycosaminoglycans (GAGs) are linear polysaccharides, periodocally built of
+disaccharide units. GAGs are ubiquitous in the extracellular matrix (ECM), where
+they exhibit multifarious biological activities. This diversity arises from ---
+among others --- their ability to interact with and regulate a large number of
+proteins, such as cytokines, chemokines, and growth factors. As of the huge
+variety in their chemical configuration, GAGs are further sub-classified into
+different types (heparin, for instance, is one of these sub-classes). Hence,
+GAGs are a \textit{diverse} class of molecules, which surely contributes to the
+broadness of their spectrum of biological functions. Through varying
+arrangements of sulfate groups and different types of saccharide units,
+individual GAG molecules can establish specific atomic contacts to proteins. One
+of the best-studied examples is antithrombin-heparin, whose biologically
+relevant interaction requires a specific pentasaccharide sequence
 \cite{antithrombin-thrombin-heparin-2004}. It is valid to assume, however, that
 various proteins are yet to be discovered whose biological function is in some
 way affected by GAGs. In other cases, and this is true for the cytokine
@@ -30,52 +29,53 @@ interleukin-10 (IL-10), there are already experimental clues for a biologically
 relevant protein-GAG interaction, but the details are still obscure and the
 fundamental molecular interaction mechanism has still not been clarified.
 
-IL-10 has been shown to bind certain GAGs \cite{salek_ardakani_2000}. So far,
-however, no structural detail about IL-10-GAG interaction is known.
-Function-wise, IL-10 is mainly considered to be immunosuppressive and therefore
-anti-inflammatory, but it in fact has the pleiotropic ability to influence the
-immune system in both directions, i.e.\ it constitutes a complex regulation
-system on its own. Therefore, the role of GAGs in this system is potentially
-substantial, but is yet to be clarified. \textit{In vitro} experiments have
-yielded indications for GAGs being able to modulate IL-10's biological function
+IL-10 has been shown to bind GAGs \cite{salek_ardakani_2000}. So far, however,
+no structural detail about IL-10-GAG interaction is known. Function-wise, IL-10
+is mainly considered to be immunosuppressive and therefore anti-inflammatory,
+but it in fact has the pleiotropic ability to influence the immune system in
+both directions, i.e.\ it constitutes a complex regulation system on its own.
+Therefore, the role of GAGs in this system is potentially substantial, but is
+yet to be clarified. \textit{In vitro} experiments have yielded indications for
+GAGs being able to modulate IL-10's biological function
 \cite{salek_ardakani_2000}, and obviously IL-10 and GAGs are simultaneously
 present in the ECM. This gives rise to the assumption that IL-10-GAG interaction
 is of biological significance, and that understanding the impact of GAGs on
 IL-10 biology is important --- from the basic research point of view, but also
-for the development of therapeutic approaches.
+for the development of therapies.
 
 A promising approach for obtaining knowledge about the nature of IL-10-GAG
-interaction is the investigation of this system on the structural level, i.e.\
-the identification and characterization of the molecular interaction mechanisms
-that govern the IL-10-GAG system. In this PhD project it was my goal to reveal
+interaction is its investigation on the structural level, i.e.\ the
+identification and characterization of the molecular interaction mechanisms that
+govern the IL-10-GAG system. In this PhD project it was my goal to reveal
 structural and molecular details about IL-10-GAG interaction with theoretical
 and computational means, and with the help of experiments performed by
-collaborators. In the course of the project, three methods were developed for
-the \textit{in silico} investigation of protein-GAG complexes and subsequently
-applied to the IL-10-GAG system.
+collaborators in the framework of the Collaborative Research Centre DFG
+Transregio 67. For achieving this, I developed three methods for the
+\textit{in silico} investigation of protein-GAG systems in general and
+subsequently applied them to the IL-10-GAG system. Parts of that work have been
+published in scientfic journals, as outlined further below.
 
 I proposed and validated a systematic approach for predicting GAG binding
 regions on a given protein, based on the numerical simulation and analysis of
-the Coulomb potential of the protein. One advantage of this method is its
-intrinsic ability to provide clues about the reliability of the resulting
-prediction. Application of this approach to IL-10 lead to the observation that
-its Coulomb attraction for GAGs is significantly weaker than in case of
-exemplary protein-GAG systems (such as FGF2-heparin). Still, a distinct
-IL-10-GAG binding region centered on the residues R102, R104, R106, R107 of the
-human IL-10 monomer was identified, and this region can be assumed to play a
-major role in IL-10-GAG interaction, as described in \cref{chapter:bspred}.
+its Coulomb potential. One advantage of this method is its intrinsic ability to
+provide clues about the reliability of the resulting prediction. Application of
+this approach to IL-10 lead to the observation that its Coulomb attraction for
+GAGs is significantly weaker than in case of exemplary protein-GAG systems (such
+as FGF2-heparin). Still, a distinct IL-10-GAG binding region centered on the
+residues R102, R104, R106, R107 of the human IL-10 sequence was identified. This
+region can be assumed to play a major role in IL-10-GAG interaction, as
+described in \cref{chapter:bspred}.
 
 Molecular docking methods are often used to generate a binding mode prediction
 for a given receptor-ligand system. In \cref{chapter:clustering}, I clarify the
 importance of data clustering as an essential step for post-processing an
-ensemble of docking solutions. In the course of the PhD project, I developed a
+ensemble of docking solutions. In the course of the project, I developed a
 clustering methodology optimized for GAG molecules. It allows for a reproducible
 analysis, enabling systematic comparisons among different docking studies. This
-clustering approach has become standard procedure in the Pisabarro research
-group. It has so far been used in a variety of published studies (e.g.
-\cite{franz_cathepsin_2013}), and also played an important role in the
-investigation of the IL-10-GAG system, as described in \cref{chapter:dmdil10} of
-this thesis.
+clustering approach has become standard procedure in our research group. It was
+applied in a variety of published studies (e.g. \cite{franz_cathepsin_2013}),
+and I also used this method for studying IL-10-GAG interaction, as described in
+\cref{chapter:dmdil10} of this thesis.
 
 Motivated by the shortcomings of classical docking approaches, especially with
 respect to protein-GAG systems, we (a colleague of mine and I) developed a
@@ -108,7 +108,7 @@ to IL-10 might affect its biological function.
 
 In conclusion, a set of methods has been developed which is generically
 applicable for the investigation of protein-GAG systems. Regarding the IL-10-GAG
-system, valuable structural insights for increasing the understanding about is
+system, valuable structural insights for increasing the understanding about its
 molecular mechanims were derived. These observations pave the way towards
 unraveling GAG-mediated bioactivity of IL-10, which may then be specifically
 exploited, for instance in artificial ECMs for improved wound healing.
