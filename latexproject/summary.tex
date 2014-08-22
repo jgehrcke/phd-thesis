@@ -9,19 +9,19 @@
 % Das hier ist sowohl die interne als auch die externe Kurzfassung.
 
 
-Glycosaminoglycans (GAGs) are linear polysaccharides, periodocally built of
-disaccharide units. GAGs are ubiquitous in the extracellular matrix (ECM), where
-they exhibit multifarious biological activities. This diversity arises from ---
-among others --- their ability to interact with and regulate a large number of
-proteins, such as cytokines, chemokines, and growth factors. As of the huge
-variety in their chemical configuration, GAGs are further sub-classified into
-different types (heparin, for instance, is one of these sub-classes). Hence,
-GAGs are a \textit{diverse} class of molecules, which surely contributes to the
-broadness of their spectrum of biological functions. Through varying
-arrangements of sulfate groups and different types of saccharide units,
-individual GAG molecules can establish specific atomic contacts to proteins. One
-of the best-studied examples is antithrombin-heparin, whose biologically
-relevant interaction requires a specific pentasaccharide sequence
+Glycosaminoglycans (GAGs) are linear polysaccharides, built of periodically
+occurring disaccharide units. GAGs are ubiquitous in the extracellular matrix
+(ECM), where they exhibit multifarious biological activities. This diversity
+arises from --- among others --- their ability to interact with and regulate a
+large number of proteins, such as cytokines, chemokines, and growth factors. As
+of the huge variety in their chemical configuration, GAGs are further
+sub-classified into different types (heparin, for instance, is one of these
+sub-classes). Hence, GAGs are a \textit{diverse} class of molecules, which
+surely contributes to the broadness of their spectrum of biological functions.
+Through varying arrangements of sulfate groups and different types of saccharide
+units, individual GAG molecules can establish specific atomic contacts to
+proteins. One of the best-studied examples is antithrombin-heparin, whose
+biologically relevant interaction requires a specific pentasaccharide sequence
 \cite{antithrombin-thrombin-heparin-2004}. It is valid to assume, however, that
 various proteins are yet to be discovered whose biological function is in some
 way affected by GAGs. In other cases, and this is true for the cytokine
@@ -54,7 +54,7 @@ collaborators in the framework of the Collaborative Research Centre DFG
 Transregio 67. For achieving this, I developed three methods for the
 \textit{in silico} investigation of protein-GAG systems in general and
 subsequently applied them to the IL-10-GAG system. Parts of that work have been
-published in scientfic journals, as outlined further below.
+published in scientific journals, as outlined further below.
 
 I proposed and validated a systematic approach for predicting GAG binding
 regions on a given protein, based on the numerical simulation and analysis of
@@ -75,26 +75,24 @@ It allows for a reproducible analysis, enabling systematic comparisons among
 different docking studies. This clustering approach has become standard
 procedure in our research group. It was applied in a variety of published
 studies \cite{franz_cathepsin_2013, hintze_sergey_2014, Samsonov_rings_cr_2013,
-SalbachHirsch20137653, vanderSmissen2013}, and this method also was essential
-for studying IL-10-GAG interaction, as described in \cref{chapter:dmdil10} of
-this thesis.
+SalbachHirsch20137653, vanderSmissen2013}, and was essential for studying
+IL-10-GAG interaction, as described in \cref{chapter:dmdil10}.
 
 Motivated by the shortcomings of classical docking approaches, especially with
 respect to protein-GAG systems, I worked on the development of a molecular
 dynamics-based docking method with less radical approximations than usually
 applied in classical docking. The goal was to make the computational model
 properly account for the special physical properties of GAGs, and to include the
-effects of receptor flexibility and solvation, which are frequently ignored in
-other methods. We named the method Dynamic Molecular Docking (DMD), and
-successfully published its concept together with a validation study in the
-\textit{Journal of Chemical Information and Modeling}
-\cite{dmd_samsonov_gehrcke_2014}.
+effects of receptor flexibility and solvation, which are frequently ignored. The
+novel methodology was named Dynamic Molecular Docking (DMD), and its concept was
+published in the \textit{Journal of Chemical Information and Modeling}
+\cite{dmd_samsonov_gehrcke_2014}, together with a validation study.
 
 The subsequent application of DMD in a variety of studies required enormous
 amounts of computational resources. For tackling this challenge, I established a
-graphics processing unit-based high performance computing (HPC) environment in
-our research group and developed a software framework for reliably performing
-DMD studies on this hardware, as well as on other HPC resources of the TU
+graphics processing unit-based high-performance computing environment in our
+research group and developed a software framework for reliably performing DMD
+studies on this hardware, as well as on other computing resources of the TU
 Dresden. The investigation of the IL-10-GAG system via DMD was focused on the
 IL-10-GAG binding region predicted earlier, and made heavy usage of the
 optimized clustering approach named above. An important result of this endeavor
@@ -107,11 +105,11 @@ interaction has a measurable impact on the backbone structure of the heparin
 molecule. These results were published in \textit{Glycobiology}
 \cite{kuenze_gehrcke_2014}. In \cref{together}, I propose two different
 scenarios about how GAG-binding to IL-10 might affect its biological function,
-based on the findings made in this thesis project,
+based on the findings made in this thesis project.
 
-In conclusion, a set of methods has been developed which is generically
+In conclusion, a set of methods has been developed, all of which are generically
 applicable for the investigation of protein-GAG systems. Regarding the IL-10-GAG
 system, valuable structural insights for increasing the understanding about its
-molecular mechanims were derived. These observations pave the way towards
+molecular mechanisms were derived. These observations pave the way towards
 unraveling GAG-mediated bioactivity of IL-10, which may then be specifically
 exploited, for instance in artificial ECMs for improved wound healing.
