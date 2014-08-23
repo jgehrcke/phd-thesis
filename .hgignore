@@ -3,9 +3,20 @@ syntax: glob
 
 MScthesis/*
 figure_creation/*
+litstuff/*
+correction_milestones/*
+
+main.pdf
+
+*sublime*
+*.bak
+*.nlo
+*.nlg
+*.nls
+*.xml
+*.orig
 
 *.bcf
-
 *.aux
 *.glo
 *.idx
