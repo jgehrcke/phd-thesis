@@ -375,7 +375,7 @@ one would want DMD to return a very similar binding pose prediction in both
 cases, as it is unlikely for these two GAG molecules to behave fundamentally
 different. As motivated in \cref{relevance_of_clustering}, comparison of the
 position of the most populated clusters in both cases is a way to (in)validate
-this assumption. Note that comparison of both clusters, and with that,
+this assumption. Note that comparison of both clusters and, with that,
 comparison of both DMD studies with respect to the distribution of docking
 solutions, is only possible because great care was taken of making both
 clustering results comparable via the clustering parameter optimization
@@ -411,12 +411,12 @@ of data created by the DMD method.
 %NOTE: when changing this heading, also change the "quote" in the section
 % \subsubsection{Ensemble-derived single-residue energy decomposition} below.
 
-In one of the early studies, the five N-terminal residues of IL-10 (see
-\ref{dmdil10:overallmethod}) were included, and the geometrical parameterization
-of DMD was varied compared to the setup described in
-\ref{dmdil10:method_geom_setup_1st}: the C-alpha of M154 was kept as core atom, but
-the focus point was changed slightly within the anticipated binding region,
-resulting in a different orientation of the yellow axis shown in
+In one of the early studies, the five N-terminal residues of IL-10 (not resolved
+in its crystal structure, see \ref{dmdil10:overallmethod}) were included, and
+the geometrical parameterization of DMD was varied compared to the setup
+described in \ref{dmdil10:method_geom_setup_1st}: the C-alpha of M154 was kept
+as core atom, but the focus point was changed slightly within the anticipated
+binding region, resulting in a different orientation of the yellow axis shown in
 \cref{fig:dmdil10:dmd_geometry_round1}, and in a tMD target distance of
 \SI{20.5}{\angstrom} instead of \SI{17.7}{\angstrom}. The rest of the system and
 protocol setup was equivalent to another DMD study (both incorporated a heparin
@@ -426,10 +426,10 @@ the final distribution of docking solutions was not affected by the changes: the
 location of the most populated clusters of both DMD studies matched. It can be
 concluded that the main data obtained from a DMD study are rather insensitive
 with respect to modest changes in the geometrical parameterization of DMD, and
-that the presence of the five N-terminal residues does not significantly affect
-the DMD binding pose prediction, i.e.\ the assumption from here on is that the
-flexible part of IL-10's N-terminus can be neglected for investigating the main
-mechanism of IL-10-GAG interaction.
+that the five N-terminal residues do not significantly affect the DMD binding
+pose prediction, i.e.\ the assumption from here on is that the flexible part of
+IL-10's N-terminus can be neglected for investigating the main mechanism of
+IL-10-GAG interaction.
 
 
 % (the
@@ -465,19 +465,18 @@ the cluster-internal variations.}
 \label{tab:dmdil10:round1_different_gag_types}
 \end{table}
 
-Ideally, different behavior of different GAG types is manifests itself in the
+Ideally, different behavior of different GAG types manifests itself in the
 docking solution clustering, and especially in the single-run quantities
 evaluated on a per-cluster basis. The characterization of most populated
 clusters for two different DMD studies differing only in the GAG type should be
-discussed by means of an example. In one study, a heparin (HP) hexasaccharide
-was used, in another study a chondroitin-4-sulfate (CS4) hexasaccharide was
-used. The heparin study yielded a single prominent cluster, the CS4 study
-yielded two almost equally populated clusters. The placement of all clusters
-relative to IL-10 was similar, and the quantitative evaluation of the clusters
-yielded similar results (see
-\cref{tab:dmdil10:round1_different_gag_types}): among the three clusters, the
-ligand movement relative to the receptor as well as the MM-PBSA free energy of
-binding estimate are indistinguishable, considering the cluster-internal
+discussed by means of an example. In one study, a heparin hexasaccharide was
+used, and a chondroitin-4-sulfate hexasaccharide was used in another study. The
+HP study yielded a single prominent cluster, the CS4 study yielded two almost
+equally populated clusters. The placement of all clusters relative to IL-10 was
+similar, and the quantitative evaluation of the clusters yielded similar results
+(see \cref{tab:dmdil10:round1_different_gag_types}): among the three clusters,
+the ligand movement relative to the receptor as well as the MM-PBSA free energy
+of binding estimate are indistinguishable, considering the cluster-internal
 fluctuations represented by the standard deviations. Just the cluster density
 indicates that the docking solutions obtained for HP show more spatial
 consistency than the solutions obtained for CS4.
@@ -498,13 +497,13 @@ kind of data acquisition and analysis performed so far.
 \includegraphics[width=1.0\textwidth]{gfx/dmdil10/round1_il10_hbond_hadp6_vs_hpdp6.pdf}
 \caption[]{Most important residues of IL-10 for GAG-interaction, as identified
 by DMD ensemble-derived hydrogen bonding information, from two independently
-performed DMD studies differing \textit{only} in the GAG type (top: heparin
+performed DMD studies differing only in the GAG type (top: heparin
 hexasaccharide, bottom: hyaluronan hexasaccharide). The box plot representation
 is made from  $N=100$ samples per box, whereas each sample is the number of
 hydrogen bond donors integrated and normalized over the data production period
-of one free MD trajectory, for the residue specified in the abscissa label.
-The residues are sorted by the \textit{mean} (not shown), the red bars indicate
-the \textit{median} (close to zero if not visible).}
+of one free MD trajectory for the residue specified in the abscissa label. The
+residues are sorted by the \textit{mean} (not shown), the red bars indicate the
+\textit{median} (close to zero if not visible).}
 \label{fig:dmdil10:hp_hexa_vs_ha_hexa_hbond}
 \end{figure}
 
@@ -528,29 +527,29 @@ top six H-bond-donating residues for both studies, including box plot
 representations of the corresponding distributions. In both cases, R107 is
 ranked first by mean as well as median. In case of HP dp6, a mean R107 occupancy
 of about 1.7 was measured, i.e.\ throughout the entire DMD study this residue
-donated (on average) almost \textit{two} hydrogen atoms to different hydrogen
-bond formations. This number alone is a strong indicator for the relevance of
-this residue in protein-GAG interaction. However, the essential observation is
-that R107's hydrogen bonding properties qualitatively stand out compared to the
-other amino acid in IL-10: the H-bond occupancy distributions of all other
-residues have their maximum near 0, and a decay towards higher occupancies,
-yielding a median close to 0, in both cases shown (HP dp6 and HA dp6). The
-occupancy distribution of R107, however, has a median clearly far from 0. In
-case of HP dp6, the distribution has its global maximum at about 1.5. It can be
-concluded that most of the molecular surface of R107 is solvent-exposed, and
-significantly more accessible for interaction with functional groups of GAGs
-than the other residues.
+donated (on average) almost two hydrogen atoms to different hydrogen bond
+formations. This number alone is a strong indicator for the relevance of this
+residue in protein-GAG interaction. However, the essential observation is that
+R107's hydrogen bonding properties qualitatively stand out compared to the other
+amino acid in IL-10: the H-bond occupancy distributions of all other residues
+have their maximum near 0, and a decay towards higher occupancies, yielding a
+median close to 0, in both cases shown (HP dp6 and HA dp6). The occupancy
+distribution of R107, however, has a median clearly far from 0. In case of HP
+dp6, the distribution has its global maximum at about 1.5. It can be concluded
+that most of the molecular surface of R107 is solvent-exposed, and significantly
+more accessible for interaction with functional groups of GAGs than the other
+residues.
 
-Hyaluronan has significantly less functional groups (carboxyls and sulfates)
-available that might act as H-bond acceptors than heparin. Quantitatively, this
-difference is clearly reflected in the mean value of the H-bond occupancy
-distributions, with about 1.7 for HP dp6 and about 0.7 measured for HA dp6. For
-all different GAG types and lengths investigated in the first stage of IL-10-GAG
-DMD studies (CS4 dp4, CS6 dp4, HA dp4, HP dp4, figures not shown for all GAG
-types), R107 showed distinct behavior by the quantitative and qualitative
-criteria described in the paragraph above. A clear conclusion is that R107
-significantly stands out compared to all other residues and supposedly plays a
-particularly important role in IL-10- GAG recognition.
+Compared to heparin, hyaluronan has significantly fewer functional groups
+available that might act as H-bond acceptors (carboxyls and sulfates).
+Quantitatively, this difference is clearly reflected in the mean value of the
+H-bond occupancy distributions, with about 1.7 for HP dp6 and about 0.7 measured
+for HA dp6. For all different GAG types and lengths investigated in the first
+stage of IL-10-GAG DMD studies (CS4 dp4, CS6 dp4, HA dp4, HP dp4, figures not
+shown for all GAG types), R107 showed distinct behavior by the quantitative and
+qualitative criteria described in the paragraph above. A clear conclusion is
+that R107 significantly stands out compared to all other residues and supposedly
+plays a particularly important role in IL-10- GAG recognition.
 
 \subsubsection{Ensemble-derived single-residue energy decomposition}
 
