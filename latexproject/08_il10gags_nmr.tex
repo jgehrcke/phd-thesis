@@ -16,16 +16,16 @@ nieto_conf_selection_heparin_2011}.
 
 In an ongoing effort, G. Künze from Prof. D. Huster's laboratory at the
 Universität Leipzig investigates the IL-10-GAG system with NMR methods. In this
-chapter, I describe how I post-processed his nuclear Overhauser effect
-spectroscopy data in order to derive heparin tetrasaccharide structure models
-for the free state (without IL-10 in solution) and bound state (with IL-10 in
-solution) and discuss the implications of the corresponding results. This work
-is part of our collaborative publication titled \enquote{NMR characterization of
-the binding properties and conformation of glycosaminoglycans interacting with
-interleukin-10} in the \textit{Glycobiology} journal \cite{kuenze_gehrcke_2014}.
-Additionally, in this chapter I summarize further insights derived from G.
-Künze's data and discuss them in the context of the conclusions drawn in this
-thesis so far.
+chapter, I describe how I derived structure models of heparin tetrasaccharides
+using data obtained by G. Künze. I present two structure model ensembles, one
+for the free state (without IL-10 in solution) and one for bound state (with
+IL-10 in solution), and discuss their implications. This work is part of our
+collaborative publication titled \enquote{NMR characterization of the binding
+properties and conformation of glycosaminoglycans interacting with
+interleukin-10} which has been published in the \textit{Glycobiology} journal
+\cite{kuenze_gehrcke_2014}. Additionally, in this chapter I summarize further
+insights derived from G. Künze's data and discuss them in the context of the
+conclusions drawn in this thesis so far.
 
 %The combination of insights gained via \textit{in silico} methods and
 %experimentally obtained data has led to an improved understanding of the
@@ -68,16 +68,17 @@ of the data or introduce systematic deviations when interpreting cross peak
 intensities in terms of distances.
 
 
-\subsection{Methods} \label{nmr:methdos} G. Künze carried out nuclear Overhauser
-effect spectroscopy experiments for measuring GAG-internal hydrogen-hydrogen
-(${}^1$H-${}^1$H) NOE cross peaks of heparin tetrasaccharide (HP dp4) molecules
-in solution, in two different conditions: under presence of murine IL-10 in the
-very same solution, and without presence of IL-10. The protocol details of these
-experiments have been published in \cite{kuenze_gehrcke_2014}. The aim of these
-experiments was to extract and use the geometry information encoded in the
-resulting NOESY data, for creating two HP dp4 structure models: one for what we
-call the \enquote{bound} state, and one for the \enquote{unbound} state (with
-and without IL-10, respectively).
+\subsection{Methods} \label{nmr:methdos} G. Künze (Huster laboratory,
+Universität Leipzig) carried out nuclear Overhauser effect spectroscopy
+experiments for measuring GAG-internal hydrogen-hydrogen (${}^1$H-${}^1$H) NOE
+cross peaks of heparin tetrasaccharide (HP dp4) molecules in solution, in two
+different conditions: under presence of murine IL-10 in the very same solution,
+and without presence of IL-10. The protocol details of these experiments have
+been published in \cite{kuenze_gehrcke_2014}. The aim of these experiments was
+to extract and use the geometry information encoded in the resulting NOESY data,
+for creating two HP dp4 structure models: one for what we call the
+\enquote{bound} state, and one for the \enquote{unbound} state (with and without
+IL-10, respectively).
 
 The creation of structure models from the NOESY-derived distance data can be
 considered an optimization problem --- with the goal of finding the heparin
@@ -110,14 +111,14 @@ theory --- in consistence with the other parts of the force field. The heparin
 molecules used in the NMR experiments were prepared by enzymatic digestion, so
 the non-reducing terminal uronic acid became unsaturated. Since GLYCAM does not
 contain proper parameters for 4,5-unsaturated uronic acid, the non-reducing
-terminal acid was modeled as IdoA(2S) and NOE signals involving hydrogens of ring
-A other than H1 were not applied as restraints in the simulations. Generally,
-the structure generation was performed in a custom two-step protocol, first by
-structure optimization in \textit{implicit} solvent, and subsequent refinement
-in \textit{explicit} solvent. The two stages were repeated many times, yielding
-an ensemble of structure models. In various test runs, the simulate annealing
-protocol details were iteratively adjusted and improved in order to obtain
-convergence in the solution to the optimization problem.
+terminal acid was modeled as IdoA(2S) and NOE signals involving hydrogens of
+ring A other than H1 were not applied as restraints in the simulations.
+Generally, the structure generation was performed in a custom two-step protocol,
+first by structure optimization in \textit{implicit} solvent, and subsequent
+refinement in \textit{explicit} solvent. The two stages were repeated many
+times, yielding an ensemble of structure models. In various test runs, the
+simulated annealing protocol details were iteratively adjusted and improved in
+order to obtain convergence in the solution to the optimization problem.
 
 The first structure optimization stage was a simulated annealing protocol using
 a simple implicit solvent model with a $1/r$ distance dependency of the
