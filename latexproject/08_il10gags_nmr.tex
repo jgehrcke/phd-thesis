@@ -123,7 +123,7 @@ order to obtain convergence in the solution to the optimization problem.
 The first structure optimization stage was a simulated annealing protocol using
 a simple implicit solvent model with a $1/r$ distance dependency of the
 dielectric constant. The goal of this stage was to quickly guide the heparin
-conformation by the distance restraints, without introducing degrees of freedom
+conformation by the distance restraints without introducing degrees of freedom
 for explicit water molecules, which would generate noise and impede the
 convergence of the minimization process. The protocol contained the following
 steps: \textit{i)} steepest descent and conjugate gradient minimization without
@@ -135,11 +135,11 @@ heat bath and gradual activation of NMR distance restraints, \textit{iii)}
 to heat bath. The MD time step for this protocol was set to
 \SI{1}{\femto\second}. The second optimization stage was performed with periodic
 boundary conditions in TIP3P explicit solvent (with at least \SI{8}{\angstrom}
-from all solute atoms to the box boundary), with Na+ ions for system
+from all solute atoms to the box boundary), with Na$^{+}$ ions for system
 neutralization, using SHAKE, and with an MD time step of \SI{2}{\femto\second}.
 The goal of this stage was to incorporate the electrostatic repulsion among the
-charged groups in the heparin molecule as realistic as possible using classical
-molecular mechanics force fields. The following steps were performed:
+charged groups in the heparin molecule as realistic as possible (using classical
+molecular mechanics force fields). The following steps were performed:
 \textit{i)} solvent minimization with constrained solute, \textit{ii)}
 \SI{20}{\pico\second} heat up MD to \SI{300}{\kelvin} in NVT ensemble with
 strong positional restraints on solute atoms, \textit{iii)}
