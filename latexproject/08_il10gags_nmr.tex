@@ -187,21 +187,27 @@ nitrogen, sulfur, and hydrogen, respectively.
 \label{fig:nmr:hp_dashed_lines_distances}
 \end{figure}
 
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{gfx/nmr/Figure_07_bound_vs_free_three_panels_05.png}
-\caption[]{
-Heparin structure models obtained from NOE data and simulated annealing
-simulations. (a) structure model ensemble for the unbound case (ring identifiers
-in capital letters). (b) structure model ensemble for the bound case. (c) the
-representative structure for both, the unbound (carbons in magenta) and bound
-(carbons in green) ensembles, aligned on ring B. The ensemble representatives
-are shown in thick sticks. Functional groups of ring A and hydrogens are not
-shown for clarity. Atoms are colored by type (oxygen: red, nitrogen: blue,
-sulfur: yellow).
-}
-\label{fig:nmr:hp_ensembles_representatives}
-\end{figure}
+
+Structural models of HP dp4 were created by performing simulated annealing MD
+simulations including NOE-based hydrogen pair distance restraints, for the
+unbound HP dp4 and for HP dp4 in the presence of IL-10. In the unbound case, 42
+H-H distance restraints were applied during the simulations (visualized in
+\cref{fig:nmr:hp_dashed_lines_distances}). In the ensemble of optimized
+structures, about half of the restrained hydrogen pairs show a minor deviation
+from their corresponding distance restraint tolerance interval, as listed in
+\cref{tab:nmr:restraint_viols_free}. That is, the geometrical data obtained via
+NMR measurements is largely in compliance with the potentials defined by the
+GLYCAM force field. The ensemble has a structural diversity (defined in
+\cref{nmr:methdos}) of \SI{0.37}{\angstrom}
+(see \cref{fig:nmr:hp_ensembles_representatives}a), i.e.\ it is well-converged,
+meaning that the applied simulated annealing optimization procedure was
+sufficiently tuned for the kind of data used in this study. In the bound state,
+the distance of 41 hydrogen pairs was restrained, as visualized in
+\cref{fig:nmr:hp_dashed_lines_distances}. About a fourth of them show a minor
+deviation from the tolerance interval, as listed in
+\cref{tab:nmr:restraint_viols_free}. The resulting ensemble is also
+well-converged, with a structural diversity of \SI{0.43}{\angstrom}, as
+visualized in \cref{fig:nmr:hp_ensembles_representatives}b.
 
 
 % Two tables side by side, same caption
@@ -211,7 +217,7 @@ sulfur: yellow).
 %\centering
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{llc}
-\multicolumn{3}{c}{Unbound case} \\
+\multicolumn{3}{c}{Unbound} \\
 \midrule
 proton 1  & proton 2 & violation (\si{\angstrom}) \\
 \midrule
@@ -243,7 +249,7 @@ A H1 & B H3 & 0.236 $\pm$ 0.057 \\
 \end{tabular}
 \quad
 \begin{tabular}{llc}
-\multicolumn{3}{c}{Bound case} \\
+\multicolumn{3}{c}{Bound} \\
 \midrule
 proton 1  & proton 2 & violation (\si{\angstrom}) \\
 \midrule
@@ -277,28 +283,6 @@ to IUPAC nomenclature.}
 \label{tab:nmr:restraint_viols_free}
 \end{table}
 
-
-Structural models of HP dp4 were created by performing simulated annealing MD
-simulations including NOE-based hydrogen pair distance restraints, for the
-unbound HP dp4 and for HP dp4 in the presence of IL-10. In the unbound case, 42
-H-H distance restraints were applied during the simulations (visualized in
-\cref{fig:nmr:hp_dashed_lines_distances}). In the ensemble of optimized
-structures, about half of the restrained hydrogen pairs show a minor deviation
-from their corresponding distance restraint tolerance interval, as listed in
-\cref{tab:nmr:restraint_viols_free}. That is, the geometrical data obtained via
-NMR measurements is largely in compliance with the potentials defined by the
-GLYCAM force field. The ensemble has a structural diversity (defined in
-\cref{nmr:methdos}) of \SI{0.37}{\angstrom}
-(see \cref{fig:nmr:hp_ensembles_representatives}a), i.e.\ it is well-converged,
-meaning that the applied simulated annealing optimization procedure was
-sufficiently tuned for the kind of data used in this study. In the bound state,
-the distance of 41 hydrogen pairs was restrained, as visualized in
-\cref{fig:nmr:hp_dashed_lines_distances}. About a fourth of them show a minor
-deviation from the tolerance interval, as listed in
-\cref{tab:nmr:restraint_viols_free}. The resulting ensemble is also
-well-converged, with a structural diversity of \SI{0.43}{\angstrom}, as
-visualized in \cref{fig:nmr:hp_ensembles_representatives}b.
-
 During the MD simulations, the NOE distance restraints involving hydrogens of
 ring A other than H1 were not applied (as of the inaccurate parameterization of
 the GLYCAM force field for the 4,5-unsaturated acid ring). Since the unsaturated
@@ -306,6 +290,22 @@ uronic acid ring plays no functional role for the biology of heparin, the
 structural details of this ring are not discussed here --- an approach which has
 also been taken by Jin et al. \cite{jin_heparin_2009}. Hence, functional groups
 of ring A are not shown in \cref{fig:nmr:hp_ensembles_representatives}.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{gfx/nmr/Figure_07_bound_vs_free_three_panels_05.png}
+\caption[]{
+Heparin structure models obtained from NOE data and simulated annealing
+simulations. (a) structure model ensemble for the unbound case (ring identifiers
+in capital letters). (b) structure model ensemble for the bound case. (c) the
+representative structure for both, the unbound (carbons in magenta) and bound
+(carbons in green) ensembles, aligned on ring B. The ensemble representatives
+are shown in thick sticks. Functional groups of ring A and hydrogens are not
+shown for clarity. Atoms are colored by type (oxygen: red, nitrogen: blue,
+sulfur: yellow).
+}
+\label{fig:nmr:hp_ensembles_representatives}
+\end{figure}
 
 Overall, the NOE distance data and MD simulations have led to valid heparin
 structure models. In both, the bound and unbound case, the ensemble
