@@ -707,7 +707,7 @@ level of atomic detail that should be observed in this and comparable projects,
 a representation of GAGs as polymeric molecules would introduce a hindering
 amount of complexity. That said, it is a common approximation for the
 \textit{in silico} investigation of protein-GAG systems to represent GAGs as
-short oligosaccharides. At the same time, one should stress that the tremendous
+short oligosaccharides. At the same time, one should stress that the large
 length of GAGs in biological systems and also their covalent linkage to
 proteoglycans most likely have an overall biological purpose. However, in
 molecular modeling studies aiming for resolving the small-scale molecular
@@ -718,7 +718,7 @@ Another notable approximation usually applied in \textit{in silico}
 investigations of protein-GAG systems affects the atomic details of the GAG:
 when treating GAGs as short molecules, they are usually represented by the ideal
 periodic repetition of the most frequently observed disaccharide unit.
-Impurities or variations in the monosaccharide sequence are ignored.
+Variations in the monosaccharide sequence are ignored.
 
 In \textit{in silico} models, the physical properties even of short and
 perfectly periodic GAGs are still challenging to properly represent. One reason
@@ -731,7 +731,7 @@ The details of these challenges are described in the corresponding chapters.
 
 Molecular \enquote{docking} is a method for predicting a stable binding mode of
 a given receptor-ligand system. That is, molecular docking aims to solve an
-optimization problem, in which the optimal binding configuration between two
+optimization problem in which the optimal binding configuration between two
 molecules is searched for. The two main ingredients required for any classical
 docking method are a so-called scoring function (which is nothing else than a
 multi-dimensional potential), and a search algorithm, which attempts to sample a
@@ -759,8 +759,8 @@ parameters. Sometimes these parameters have, on purpose, no physical meaning.
 The parameters are then tuned to a training data set until convergence is
 achieved. That is, if such a docking method is applied to a molecular system
 from the training data set, success is almost guaranteed. However, if it is
-applied to a molecular system not inside the training data set, the validity of
-the resulting data strongly depends on the similarity of that system to the
+applied to a molecular system not included the training data set, the validity
+of the resulting data strongly depends on the similarity of that system to the
 training data set. As this similarity is difficult to quantify, the systematical
 error contained in classical docking results is often impossible to determine.
 Likewise, a problematic side effect of the severe approximations usually made in
@@ -772,42 +772,46 @@ systems. In previous studies, AutoDock 3 (AD3) \cite{Morris1998} has been shown
 to be able to produce reasonable docking results for protein-GAG systems
 \cite{japan_docking_ad3_clustering, samsonov_docking_2011}. However, these were
 \textit{local} docking studies with the docking search space limited to only a
-small part of the receptor protein --- a previously \textit{known} binding site.
-With respect to IL-10, no GAG binding information is available which would allow
-for such an \textit{a priori} reduction of the search space volume. In
-principal, docking approaches could also be applied in such a scenario, which
-could then be called \textit{global} or \textit{blind} docking. However,
-compared to local docking, these conditions impose incomparably high challenges
-with respect to scoring and sampling, and the validity of the resulting data
-becomes even less sure.
+small part of the receptor protein --- a previously known binding site. With
+respect to IL-10, no GAG binding information is available which would allow for
+such an \textit{a priori} reduction of the search space volume. In principal,
+docking approaches could also be applied in such a scenario, which could then be
+called \textit{global} or \textit{blind} docking. However, compared to local
+docking, these conditions impose incomparably high challenges with respect to
+scoring and sampling, and the validity of the resulting data becomes even more
+questionable.
 
 \subsection{A primer on molecular dynamics simulations}
 
-In molecular dynamics (MD) simulations, a set of atoms (an N-body system) is
-modeled using classical Newton mechanics, which is why the concept is also
-called the molecular mechanics (MM) approach. Each atom is treated as a point
-mass with certain parameters and exposed to a set of classical potentials. The
-atom coordinates of this set of atoms are then \textit{time-evolved} via
-numerical integration of the classical equations of motion. The movement of the
-atoms is simulated for a certain amount of time, and valuable data can be
-extracted from the resulting trajectory. The modeled system is usually coupled
-to an external heat bath of constant temperature, and a barostat is applied in
-order to simulate a certain pressure. Often, periodic boundary conditions are
-applied in order to represent the behavior of an infinitely large system via
-simulation of a single unit cell. The MD approach has a long-standing history in
-the simulation of the dynamics of biological molecules, as reviewed and
-described in many details in standard literature
+\nomenclature{MM}{molecular mechanics}
+\nomenclature{MD}{molecular dynamics}
+
+In molecular mechanics (MM) methods, a set of atoms (an N-body system) is
+modeled using classical Newton mechanics. Each atom is treated as a point mass
+with certain parameters and exposed to a set of classical potentials. In this
+description, the energy of a molecule can be modeled as a function of its atom
+coordinates, i.e.\ of its conformation. In a so-called molecular dynamics (MD)
+simulation, the atom coordinates are \textit{time-evolved} via numerical
+integration of the classical equations of motion. The movement of the atoms is
+simulated for a certain amount of time, and valuable data can be extracted from
+the resulting trajectory. The modeled system is usually coupled to an external
+heat bath of constant temperature, and a barostat is applied in order to
+simulate a certain pressure. Often, periodic boundary conditions are applied in
+order to represent the behavior of an infinitely large system via simulation of
+a single unit cell. The MD approach has a long-standing history in the
+simulation of the dynamics of biological molecules, as reviewed and described in
+many details in standard literature
 \cite{mccammon1988dynamics}.
 
 The \enquote{bonded} potentials included in today's standard MD methods as
 implemented for instance in the Amber suite \cite{original_amber_1981,
-amber_overview_2013} are harmonic bonded potentials (for bond lengths between
-two connected atoms, bond angles between three connected atoms, and bond torsion
-angles between four connected atoms). The \enquote{non-bonded} potentials are
-the Coulomb point charge potential and a 6-12 Lennard-Jones potential for
-approximating the van der Waals interaction. Since non-bonded interactions
-quickly decay towards zero, but would still require a pair-wise sum over all
-atoms in the system, usually a so-called non-bonded cutoff distance is
+amber_overview_2013} are approximated as harmonic potentials (for bond lengths
+between two connected atoms, bond angles between three connected atoms) or as
+Fourier series (torsion angle in four connected atoms). The \enquote{non-bonded}
+potentials are the Coulomb point charge potential and a 6-12 Lennard-Jones
+potential for approximating the van der Waals interaction. Since non-bonded
+interactions quickly decay towards zero, but would still require a pair-wise sum
+over all atoms in the system, usually a so-called non-bonded cutoff distance is
 implemented, beyond which non-bonded interactions are ignored (in case of the
 6-12 potential), or modeled more efficiently (via the Ewald sum method in case
 of electrostatic interactions).
@@ -820,19 +824,21 @@ forces exerted on single atoms, and is therefore called \enquote{force field},
 for historical reasons. For proteins, DNA, and carbohydrates the analytical form
 of the potentials used is usually the one as described above. Hence, the actual
 challenge in developing proper force fields for certain molecular systems is to
-map their real physical characteristics onto the MM parameters. For many types
-of bio-molecules it can be said that this task has largely been fulfilled by the
-scientific community: the classical physical properties of proteins for instance
-can reliably be simulated using the so-called FF99SB force field
+map their real physical characteristics onto the MM parameters. The central idea
+of MM approaches is that these parameters are valid for groups of atoms and
+transferable to other molecules. For many types of bio-molecules it can be said
+that this task has largely been fulfilled by the scientific community: the
+classical physical properties of proteins for instance can reliably be simulated
+using for instance the so-called FF99SB force field
 \cite{ff99sbvalidation_2009}. Of major relevance for this project is  the fact
-that carbohydrates can quite reliably be modeled thanks to the huge efforts of
-Kirschner et al., using the GLYCAM force field \cite{kirschner_glycam06:_2008}.
+that carbohydrates can quite reliably be modeled using the GLYCAM force field,
+thanks to the efforts of Kirschner et al. \cite{kirschner_glycam06:_2008}.
 Furthermore, solvent molecules and ions can be represented in explicit form in
 MD simulations.
 
-The computational complexity of MD simulations is rather large. However, given a
-proper force field and system setup, the resulting data is almost always
-physically meaningful.
+The computational complexity of MD simulations is rather large, especially
+compared to classical docking approaches. However, given a proper force field
+and system setup, the resulting data usually is physically meaningful.
 
 
 \subsubsection{End-point free energy methods (\enquote{MM-PB(GB)SA})}
