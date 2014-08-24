@@ -33,8 +33,12 @@
 
 % Mainmatter changes page numbering etc, see memoir docs.
 \mainmatter
+
 \pagestyle{Ruled}
-\makeoddhead{Ruled}{}{}{\small\sffamily\bfseries\rightmark}
+%\makeevenhead{Ruled}{\leftmark}{}{} % small caps
+\makeevenhead{Ruled}{\small\sffamily\bfseries\leftmark}{}{} % small caps
+%\makeoddhead{Ruled}{}{}{\small\sffamily\bfseries\rightmark}
+\makeoddhead{Ruled}{}{}{\small\sffamily\rightmark}
 \include{01_background}
 \include{02_aims}
 %\include{02_structure_biology_il10}
@@ -47,12 +51,17 @@
 \include{09_bringing_all_together}
 \include{10_conclusions}
 %\include{11_outlook}
+%\cleardoublepage
+%\backmatter
 
-\backmatter
+\cleardoublepage
+
 %\SingleSpacing
 \begin{adjustwidth}{-1.5cm}{-1.5em}
 \printbibliography
 \end{adjustwidth}
+
+\cleardoublepage
 
 % http://tex.stackexchange.com/a/100377
 % http://www.latex-community.org/forum/viewtopic.php?f=47&t=19574
