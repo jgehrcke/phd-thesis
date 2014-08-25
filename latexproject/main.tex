@@ -26,17 +26,18 @@
 
 \include{summary}
 \cleardoublepage
-% IIRC, the adjustwidth env is defined by memoir.
-\begin{adjustwidth}{-1.6cm}{-1.6em}
+% The adjustwidth env is defined by memoir, starred version automatically
+% distinguishes recto and verso pages.
+\begin{adjustwidth*}{-1.2cm}{-1.8em}
 \tableofcontents
-\end{adjustwidth}
+\end{adjustwidth*}
 
 % Mainmatter changes page numbering etc, see memoir docs.
 \mainmatter
 
 \pagestyle{Ruled}
-%\makeevenhead{Ruled}{\leftmark}{}{} % small caps
-\makeevenhead{Ruled}{\small\sffamily\bfseries\leftmark}{}{} % small caps
+%\makeevenhead{Ruled}{\leftmark}{}{}
+\makeevenhead{Ruled}{\small\sffamily\bfseries\leftmark}{}{}
 %\makeoddhead{Ruled}{}{}{\small\sffamily\bfseries\rightmark}
 \makeoddhead{Ruled}{}{}{\small\sffamily\rightmark}
 \include{01_background}
@@ -53,9 +54,9 @@
 
 %\SingleSpacing
 \markboth{\nomname}{}
-\begin{adjustwidth}{-1.7cm}{-1.7em}
+\begin{adjustwidth*}{-1.2cm}{-1.9em}
 \printbibliography
-\end{adjustwidth}
+\end{adjustwidth*}
 
 \cleardoublepage
 
