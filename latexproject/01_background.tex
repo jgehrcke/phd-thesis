@@ -850,29 +850,29 @@ and system setup, the resulting data usually is physically meaningful.
 The so-called MM-PBSA and MM-GBSA methods, reviewed in
 \cite{schlick_innovationsdynamics_mmpbsa_2012}, combine molecular mechanics and
 continuum solvent models for finding an estimate for the free energy of binding
-$\Delta G$ for a given protein-ligand complex. These methods are called
+$\Delta G$ for a given receptor-ligand complex. These methods are called
 \enquote{end-point} free energy methods, because only the bound and the unbound
-states of a system are taken into consideration for deriving $\Delta G$ ---
-proper sampling of the thermodynamical path between both states is not
-performed. Therefore, such methods offer a compromise among calculation speed
-and accuracy. Since their first published usage around year 2000
-\cite{srinivasan_mmpbsa_1998, kollmann_massova_mmpbsa_2000}, MM-PB(GB)SA methods
-have widely been applied as a reliable tool for estimating the $\Delta \Delta G$
-differences among any two given complexes \cite{mmgbsa_application_2010,
-mmpbsa_hiv_2011}, also for protein-GAG systems \cite{mancera_mmpbsa_gags_2009}.
+states of a system are taken into consideration for deriving $\Delta G$ --- the
+thermodynamical path connecting both states is not sampled. Therefore, such
+methods offer a compromise between calculation speed and accuracy. Since their
+first published usage around year 2000 \cite{srinivasan_mmpbsa_1998,
+kollmann_massova_mmpbsa_2000}, MM-PB(GB)SA methods have widely been applied as a
+reliable tool for estimating the $\Delta \Delta G$ differences among any two
+given complexes \cite{mmgbsa_application_2010, mmpbsa_hiv_2011}, also for
+protein-GAG systems \cite{mancera_mmpbsa_gags_2009}.
 
 In general, these methods post-process an ensemble of representative
-protein-ligand coordinate snapshots from a molecular dynamics simulation
+receptor-ligand coordinate snapshots from a molecular dynamics simulation
 trajectory. Each snapshot corresponds to a system state, having a certain
 energy. Part of that energy can be modeled by the MM approach, which accounts
 for the internal bonded energy of the molecular system (bond, angle, torsion
 potentials), and for the internal non-bonded energy of the system (van der Waals
 and Coulomb energy between all atoms, without distance cutoff), yielding the MM
 energy $E_{MM}$. This is also called the gas-phase energy, because solvent is
-not considered in $E_{MM}$; only solute atoms contribute to that term. The
-energy of the solute within the solvent is usually modeled by the sum of two
-contributions: the polar solvation free energy $G_{solv,polar}$, which accounts
-for the electrostatic interaction between solvent and solute, and the non-polar
+not considered; only solute atoms contribute to $E_{MM}$. The energy of the
+solute within the solvent is usually modeled by the sum of two contributions:
+the polar solvation free energy $G_{solv,polar}$, which accounts for the
+electrostatic interaction between solvent and solute, and the non-polar
 solvation free energy $G_{solv,non-polar}$, which accounts for the energy
 required for cavity formation for the solute within the solvent.
 $G_{solv,non-polar}$ is usually approximated as being linearly dependent on the
@@ -881,23 +881,23 @@ implemented with a Poisson Boltzmann (PB) model (in which the solute and solvent
 are both treated as continuous, and the PB equation is solved numerically) or
 with a Generalized Born (GB) model (in which the solute is treated as a set of
 spheres, and $G_{solv,polar}$ is obtained via summation of analytical GB terms).
-Hence, the name MM-PB(GB)SA reflects the methods used for energy determination.
+Hence, the name MM-PB(GB)SA reflects the mixture of methods used for energy
+determination.
 
 The total free energy $G$ of a dynamic system can then be modeled by summing the
 terms described so far and by averaging over system state samples obtained from
-the MD simulation (which is the same as time-averaging):
+an MD simulation (which is the same as time-averaging):
 
 \begin{equation}
 \label{eqn:mmpbsa_g}
 G = \langle E_{MM} \rangle + \langle G_{solv,polar} \rangle + \langle G_{solv,non-polar} \rangle
 \end{equation}
 
-Given the availability of the corresponding MD samples, that energy can be
-obtained for the bound state, i.e.\ for the receptor-ligand complex (named
-$G_{complex}$), and also for the unbound state, i.e.\ for the receptor and for
-the ligand alone, yielding $G_{receptor}$ and $G_{ligand}$, respectively. From
-these numbers, a free energy of binding estimate --- often called $\Delta G$ in
-literature --- can be derived:
+That energy can be obtained for the bound state, i.e.\ for the receptor-ligand
+complex (named $G_{complex}$), and also for the unbound state, i.e.\ for the
+receptor and for the ligand alone, yielding $G_{receptor}$ and $G_{ligand}$,
+respectively. From these numbers, a free energy of binding estimate --- often
+called $\Delta G$ in literature --- can be derived:
 
 \begin{equation}
 \Delta G = G_{complex} - G_{receptor} - G_{ligand}
@@ -915,8 +915,8 @@ A commonly used approximation also applied in this thesis is to obtain the
 system samples for the bound and unbound cases from a single MD simulation of
 the bound state. This is a valid approximation as long as the interacting
 molecules do not perform significant structural changes upon binding. At the
-same time, this is a useful tool for reducing noise in the resulting data, and
-for keeping the computational efforts in a reasonable regime.
+same time, it is useful for reducing noise in the resulting data, and for
+keeping the computational efforts in a reasonable regime.
 
 An extension of the MM-GBSA method is the single-residue energy decomposition
 (SRED). Ignoring entropy loss upon binding, all energy terms within the MM-GBSA
@@ -934,7 +934,7 @@ arbitrary and unknown amount compared to reality, i.e.\ the sign of the energy
 has no meaning, just as the case of zero energy has no special meaning. For this
 reason, the above-mentioned formalisms yield $\Delta G$ estimates with absolute
 values that are not meaningful in real-world units, and are not to be taken
-literally. Therefore, reasonable application of MM-PB(GB)SA is always based on
+literally. Therefore, a reasonable application of MM-PB(GB)SA is always based on
 evaluation of $\Delta \Delta G$ values. That is, only the impact of molecular or
 conformational differences among \textit{similar} systems can be assessed.
 
