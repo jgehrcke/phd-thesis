@@ -845,8 +845,47 @@ and system setup, the resulting data usually is physically meaningful.
 
 
 \subsubsection{End-point free energy methods (\enquote{MM-PB(GB)SA})}
-% This label is required in DMD chapter.
 \label{methods:mmpbsa_mmgbsa}
+
+The so-called MM-PBSA and MM-GBSA methods combine molecular mechanics and
+continuum solvent models for finding an estimate $\DeltaG$ for the free energy
+of binding for a given protein-ligand complex. This class of methods has first
+been used around year 2000 \cite{kollmann_massova_mmpbsa_2000} and has since
+then widely been applied as a reliable tool for estimating the energetical
+differences among any two given systems \cite{mmgbsa_application_2010,
+mmpbsa_hiv_2011}, also for protein-GAG systems \cite{mancera_mmpbsa_gags_2009}.
+
+In general, these methods post-process an ensemble of representative
+protein-ligand coordinate snapshots from a molecular dynamics simulation
+trajectory. Each snapshot corresponds to a system state, having a certain
+energy. Part of that energy can be modeled by the MM approach, which accounts
+for the internal energy of the molecular system (bond, angle, torsion
+potentials), and for the non-bonded energy of the system (van der Waals and
+Coulomb energy between all atoms, without distance cutoff), yielding the MM
+energy $E_{MM}$. Solvent is not considered in $E_{MM}$, only solute atoms
+contribute to that term. The energy of the solute within the solvent is usually
+modeled by two contributions, the polar solvation energy $E_{solv,polar}$ (which
+accounts for the electrostatic interaction between solvent and solute) and the
+non-polar solvation $E_{solv,non-polar}$, which accounts for the free energy
+required for cavity formation for the solute within the solvent.
+$E_{solv,non-polar}$ is usually approximated as being linearly dependent on the
+surface-accessible surface area of the solute. $E_{solv,polar}$ is either
+implemented with a Poisson Boltzmann (PB) model (in which the solute and solvent
+are both treated as continuous, and the PB equation is solved numerically) or
+with a Generalized Born (GB) model (in which the solute is treated as a set of
+spheres, and $E_{solv,polar}$ is found based on rather simple analytical GB
+terms).
+
+
+
+
+ The binding
+affinity estimate is considered to be the diffe
+
+
+no absolute numbers!
+
+
 
 \hl{TODO: Write a small section.}
 Cite this: \cite{schlick_innovationsdynamics_2012} (volume 2, chapter 12).
