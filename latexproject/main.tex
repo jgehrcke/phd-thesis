@@ -56,16 +56,16 @@
 \include{09_bringing_all_together}
 \include{10_conclusions}
 
-%\backmatter
+\backmatter
 
-%\SingleSpacing
-%\markboth{Bibliography}{}
-\begin{adjustwidth*}{-1.2cm}{-1.9em}
+%\begin{adjustwidth*}{-1.0cm}{-1.5em}
+% adjustwidth and printbibliography together are buggy, unfortunately.
+% Font size modification is a way to save some space.
+\renewcommand*{\bibfont}{\footnotesize}
 \printbibliography
-\end{adjustwidth*}
+%\end{adjustwidth*}
 
 \cleardoublepage
-
 % http://tex.stackexchange.com/a/100377
 % http://www.latex-community.org/forum/viewtopic.php?f=47&t=19574
 % Define "chapter name" for page headings, set it to current nomenclature name
