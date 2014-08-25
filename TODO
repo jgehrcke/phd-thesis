@@ -9,10 +9,6 @@ l.1 \chapter
 
 - add list of publications to thesis?
 
-- change Nomenclature to Abbreviations?
-
-- remove general abbreviations list from main.tex (distribute to first occurrences)?
-
 - fix year in online url citations. looks weird right now.
 
 Content-wise:
@@ -22,12 +18,3 @@ Content-wise:
 - correct figures w.r.t CS-4 / CS4. I think most of the time I used CS4, so
 I should change all CS-4 occurrences.
 
-- in estatic discussion: read
-http://books.google.de/books?id=5ZtR-sl4DgYC&dq=end+point+free+energy+methods&source=gbs_navlinks_s
-volume 2 chapter 3, opposites attract: shape and electrostatic complemantatrity
-in protein-dna complexes
-
-- MMPB/GBSA read
-http://books.google.de/books?id=5ZtR-sl4DgYC&dq=end+point+free+energy+methods&source=gbs_navlinks_s
-volume 2 chapter 12,  end-point free energy methods
-compare potential with that of DNA?
