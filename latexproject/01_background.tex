@@ -856,8 +856,8 @@ states of a system are taken into consideration for deriving $\Delta G$ ---
 proper sampling of the thermodynamical path between both states is not
 performed. Therefore, such methods offer a compromise among calculation speed
 and accuracy. Since their first published usage around year 2000
-\cite{srinivasan_mmpbsa_1998, kollmann_massova_mmpbsa_2000}, MM-PB(GB)SA
-have widely been applied as a reliable tool for estimating the $\Delta G$
+\cite{srinivasan_mmpbsa_1998, kollmann_massova_mmpbsa_2000}, MM-PB(GB)SA methods
+have widely been applied as a reliable tool for estimating the $\Delta \Delta G$
 differences among any two given complexes \cite{mmgbsa_application_2010,
 mmpbsa_hiv_2011}, also for protein-GAG systems \cite{mancera_mmpbsa_gags_2009}.
 
@@ -869,10 +869,10 @@ for the internal bonded energy of the molecular system (bond, angle, torsion
 potentials), and for the internal non-bonded energy of the system (van der Waals
 and Coulomb energy between all atoms, without distance cutoff), yielding the MM
 energy $E_{MM}$. This is also called the gas-phase energy, because solvent is
-not considered in $E_{MM}$, only solute atoms contribute to that term. The
-energy of the solute within the solvent is usually modeled by two contributions,
-the polar solvation free energy $G_{solv,polar}$ (which accounts for the
-electrostatic interaction between solvent and solute) and the non-polar
+not considered in $E_{MM}$; only solute atoms contribute to that term. The
+energy of the solute within the solvent is usually modeled by the sum of two
+contributions: the polar solvation free energy $G_{solv,polar}$, which accounts
+for the electrostatic interaction between solvent and solute, and the non-polar
 solvation free energy $G_{solv,non-polar}$, which accounts for the energy
 required for cavity formation for the solute within the solvent.
 $G_{solv,non-polar}$ is usually approximated as being linearly dependent on the
@@ -880,13 +880,12 @@ surface-accessible surface area (SA) of the solute. $G_{solv,polar}$ is either
 implemented with a Poisson Boltzmann (PB) model (in which the solute and solvent
 are both treated as continuous, and the PB equation is solved numerically) or
 with a Generalized Born (GB) model (in which the solute is treated as a set of
-spheres, and $G_{solv,polar}$ is obtained via summation of simple analytical GB
-terms). Hence, the name MM-PB(GB)SA reflects the methods used for energy
-determination.
+spheres, and $G_{solv,polar}$ is obtained via summation of analytical GB terms).
+Hence, the name MM-PB(GB)SA reflects the methods used for energy determination.
 
 The total free energy $G$ of a dynamic system can then be modeled by summing the
-terms described so far and by averaging over the different states sampled in the
-MD trajectory:
+terms described so far and by averaging over system state samples obtained from
+the MD simulation (which is the same as time-averaging):
 
 \begin{equation}
 \label{eqn:mmpbsa_g}
@@ -907,17 +906,16 @@ literature --- can be derived:
 An important energy summand that is missing in \cref{eqn:mmpbsa_g} is $-TS$,
 with $T$ being the temperature and $S$ being the entropy of the system. In
 literature, it is often argued that the entropy term can and should be neglected
-when comparing similar molecular systems: first of all, the methods for
-estimating the loss of entropy upon binding based on MD simulations are rather
-weak. Secondly, this loss can be assumed to be similar for comparable binding
-modes. Therefore, often the best option for now is to neglect that term
-\cite{ryde_mmpbsa_2006, homeyer_gohlke_2012}.
+when comparing similar molecular systems \cite{ryde_mmpbsa_2006,
+homeyer_gohlke_2012}: first of all, the methods for estimating the loss of
+entropy upon binding based on MD simulations are rather weak. Secondly, this
+loss can be assumed to be similar for comparable binding modes.
 
 A commonly used approximation also applied in this thesis is to obtain the
 system samples for the bound and unbound cases from a single MD simulation of
 the bound state. This is a valid approximation as long as the interacting
 molecules do not perform significant structural changes upon binding. At the
-same time this is a useful tool for reducing noise in the resulting data, and
+same time, this is a useful tool for reducing noise in the resulting data, and
 for keeping the computational efforts in a reasonable regime.
 
 An extension of the MM-GBSA method is the single-residue energy decomposition
@@ -931,5 +929,14 @@ are most important for receptor-ligand interaction. This kind of decomposition
 is not possible in the MM-PBSA approach, since $G_{solv,polar}$ is not
 decomposable on a per-atom basis in the PB formalism.
 
+In molecular mechanics models, the absolute energy of a system is offset by an
+arbitrary and unknown amount compared to reality, i.e.\ the sign of the energy
+has no meaning, just as the case of zero energy has no special meaning. For this
+reason, the above-mentioned formalisms yield $\Delta G$ estimates with absolute
+values that are not meaningful in real-world units, and are not to be taken
+literally. Therefore, reasonable application of MM-PB(GB)SA is always based on
+evaluation of $\Delta \Delta G$ values. That is, only the impact of molecular or
+conformational differences among \textit{similar} systems can be assessed.
+
 The MM-PBSA, MM-GBSA, and MM-GBSA SRED methods are implemented by special
-applications contained in the AmberTools suite \cite{mmpbsa_py_2012}.
+software tools contained in the AmberTools suite \cite{mmpbsa_py_2012}.
