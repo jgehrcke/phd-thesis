@@ -847,21 +847,27 @@ and system setup, the resulting data usually is physically meaningful.
 \subsubsection{End-point free energy methods (\enquote{MM-PB(GB)SA})}
 \label{methods:mmpbsa_mmgbsa}
 
-The so-called MM-PBSA and MM-GBSA methods combine molecular mechanics and
-continuum solvent models for finding an estimate $\DeltaG$ for the free energy
-of binding for a given protein-ligand complex. This class of methods has first
-been used around year 2000 \cite{kollmann_massova_mmpbsa_2000} and has since
-then widely been applied as a reliable tool for estimating the energetical
-differences among any two given systems \cite{mmgbsa_application_2010,
+The so-called MM-PBSA and MM-GBSA methods, reviewed in
+\cite{schlick_innovationsdynamics_mmpbsa_2012}, combine molecular mechanics and
+continuum solvent models for finding an estimate for the free energy of binding
+$\Delta G$ for a given protein-ligand complex. These methods are called
+\enquote{end-point} free energy methods, because only the bound and the unbound
+states of a system are taken into consideration for deriving the estimate free
+energy of binding --- proper sampling of the thermodynamical path between both
+states is not performed. Therefore, such methods offer a compromise of
+calculation speed and accuracy. The use of MM-PB(GB)SA methods has first been
+published around year 2000 \cite{kollmann_massova_mmpbsa_2000}. They have since
+then widely been applied as a reliable tool for estimating the $\Delta G$
+differences among any two given complexes \cite{mmgbsa_application_2010,
 mmpbsa_hiv_2011}, also for protein-GAG systems \cite{mancera_mmpbsa_gags_2009}.
 
 In general, these methods post-process an ensemble of representative
 protein-ligand coordinate snapshots from a molecular dynamics simulation
 trajectory. Each snapshot corresponds to a system state, having a certain
 energy. Part of that energy can be modeled by the MM approach, which accounts
-for the internal energy of the molecular system (bond, angle, torsion
-potentials), and for the non-bonded energy of the system (van der Waals and
-Coulomb energy between all atoms, without distance cutoff), yielding the MM
+for the internal bonded energy of the molecular system (bond, angle, torsion
+potentials), and for the internal non-bonded energy of the system (van der Waals
+and Coulomb energy between all atoms, without distance cutoff), yielding the MM
 energy $E_{MM}$. This is also called the gas-phase energy, because solvent is
 not considered in $E_{MM}$, only solute atoms contribute to that term. The
 energy of the solute within the solvent is usually modeled by two contributions,
@@ -888,11 +894,11 @@ G = \langle E_{MM} \rangle + \langle G_{solv,polar} \rangle + \langle G_{solv,no
 \end{equation}
 
 Given the availability of the corresponding MD samples, that energy can be
-obtained for the bound state, i.e.\ for the receptor-ligand complex (then called
+obtained for the bound state, i.e.\ for the receptor-ligand complex (named
 $G_{complex}$), and also for the unbound state, i.e.\ for the receptor and for
 the ligand alone, yielding $G_{receptor}$ and $G_{ligand}$, respectively. From
-these numbers, a free energy of binding estimate, often called $\Delta G$, can
-be derived:
+these numbers, a free energy of binding estimate --- often called $\Delta G$ in
+literature --- can be derived:
 
 \begin{equation}
 \Delta G = G_{complex} - G_{receptor} - G_{ligand}
@@ -900,35 +906,10 @@ be derived:
 
 An important energy summand that is missing in \cref{eqn:mmpbsa_g} is $-TS$,
 with $T$ being the temperature and $S$ being the entropy of the system. In
-literature, this is usually listed, $E$ is called \textit{free energy} $G$, and
-then it is argued that the entropy term can and should be neglected when
-comparing similar molecular systems: the methods for estimating the loss of
-entropy upon binding based on MD simulations are rather weak, and can be assumed
-to be similar for comparable binding modes, so often the best option for now is
-to neglect that term \cite{ryde_mmpbsa_2006, homeyer_gohlke_2012}.
+literature, it is often argued that the entropy term can and should be neglected
+when comparing similar molecular systems: first of all, the methods for
+estimating the loss of entropy upon binding based on MD simulations are rather
+weak. Secondly, this loss can be assumed to be similar for comparable binding
+modes. Therefore, often the best option for now is to neglect that term
+\cite{ryde_mmpbsa_2006, homeyer_gohlke_2012}.
 
-homeyer_gohlke_2012
-
- of
- called
-the free energy G of the
-
-
-
-system, with an additional entropy , with  entropy neglected
-
- and by adding and
-by averaging
-
-
- The binding
-affinity estimate is considered to be the diffe
-
-
-no absolute numbers!
-
-
-
-\hl{TODO: Write a small section.}
-Cite this: \cite{schlick_innovationsdynamics_2012} (volume 2, chapter 12).
-\lipsum[1-5]
