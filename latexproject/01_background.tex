@@ -913,3 +913,23 @@ weak. Secondly, this loss can be assumed to be similar for comparable binding
 modes. Therefore, often the best option for now is to neglect that term
 \cite{ryde_mmpbsa_2006, homeyer_gohlke_2012}.
 
+A commonly used approximation also applied in this thesis is to obtain the
+system samples for the bound and unbound cases from a single MD simulation of
+the bound state. This is a valid approximation as long as the interacting
+molecules do not perform significant structural changes upon binding. At the
+same time this is a useful tool for reducing noise in the resulting data, and
+for keeping the computational efforts in a reasonable regime.
+
+An extension of the MM-GBSA method is the single-residue energy decomposition
+(SRED). Ignoring entropy loss upon binding, all energy terms within the MM-GBSA
+approach are decomposable on a per-atom basis, i.e. the energy contribution of
+single receptor or ligand atoms to the overall $\Delta G$ can easily be
+determined. Likewise, atoms can be grouped into amino acid residues, and the
+contribution of single residues to the overall free energy of binding estimate
+can be obtained. This is a useful tool for pinpointing those atomic groups which
+are most important for receptor-ligand interaction. This kind of decomposition
+is not possible in the MM-PBSA approach, since $G_{solv,polar}$ is not
+decomposable on a per-atom basis in the PB formalism.
+
+The MM-PBSA, MM-GBSA, and MM-GBSA SRED methods are implemented by special
+applications contained in the AmberTools suite \cite{mmpbsa_py_2012}.
