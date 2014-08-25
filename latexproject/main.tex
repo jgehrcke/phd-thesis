@@ -25,9 +25,9 @@
 \frontmatter
 
 \include{summary}
-
+\cleardoublepage
 % IIRC, the adjustwidth env is defined by memoir.
-\begin{adjustwidth}{-1.5cm}{-1.5em}
+\begin{adjustwidth}{-1.6cm}{-1.6em}
 \tableofcontents
 \end{adjustwidth}
 
@@ -41,8 +41,6 @@
 \makeoddhead{Ruled}{}{}{\small\sffamily\rightmark}
 \include{01_background}
 \include{02_aims}
-%\include{02_structure_biology_il10}
-%\include{03_insilico_protein_gag_docking}
 \include{04_protein_gag_binding_site_prediction}
 \include{05_interpreting_docking_results}
 \include{06_dmd}
@@ -50,14 +48,12 @@
 \include{08_il10gags_nmr}
 \include{09_bringing_all_together}
 \include{10_conclusions}
-%\include{11_outlook}
-%\cleardoublepage
+
 %\backmatter
 
-%\cleardoublepage
-
 %\SingleSpacing
-\begin{adjustwidth}{-1.5cm}{-1.5em}
+\markboth{\nomname}{}
+\begin{adjustwidth}{-1.7cm}{-1.7em}
 \printbibliography
 \end{adjustwidth}
 
@@ -72,8 +68,6 @@
 % Print the nomencl list, with a certain spacing between abbreviation and
 % explanation.
 \printnomenclature[3cm]
-
-%\OnehalfSpacing
 
 \appendix
 \appendixpage
