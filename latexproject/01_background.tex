@@ -862,21 +862,63 @@ energy. Part of that energy can be modeled by the MM approach, which accounts
 for the internal energy of the molecular system (bond, angle, torsion
 potentials), and for the non-bonded energy of the system (van der Waals and
 Coulomb energy between all atoms, without distance cutoff), yielding the MM
-energy $E_{MM}$. Solvent is not considered in $E_{MM}$, only solute atoms
-contribute to that term. The energy of the solute within the solvent is usually
-modeled by two contributions, the polar solvation energy $E_{solv,polar}$ (which
-accounts for the electrostatic interaction between solvent and solute) and the
-non-polar solvation $E_{solv,non-polar}$, which accounts for the free energy
+energy $E_{MM}$. This is also called the gas-phase energy, because solvent is
+not considered in $E_{MM}$, only solute atoms contribute to that term. The
+energy of the solute within the solvent is usually modeled by two contributions,
+the polar solvation free energy $G_{solv,polar}$ (which accounts for the
+electrostatic interaction between solvent and solute) and the non-polar
+solvation free energy $G_{solv,non-polar}$, which accounts for the energy
 required for cavity formation for the solute within the solvent.
-$E_{solv,non-polar}$ is usually approximated as being linearly dependent on the
-surface-accessible surface area of the solute. $E_{solv,polar}$ is either
+$G_{solv,non-polar}$ is usually approximated as being linearly dependent on the
+surface-accessible surface area (SA) of the solute. $G_{solv,polar}$ is either
 implemented with a Poisson Boltzmann (PB) model (in which the solute and solvent
 are both treated as continuous, and the PB equation is solved numerically) or
 with a Generalized Born (GB) model (in which the solute is treated as a set of
-spheres, and $E_{solv,polar}$ is found based on rather simple analytical GB
-terms).
+spheres, and $G_{solv,polar}$ is obtained via summation of simple analytical GB
+terms). Hence, the name MM-PB(GB)SA reflects the methods used for energy
+determination.
+
+The total free energy $G$ of a dynamic system can then be modeled by summing the
+terms described so far and by averaging over the different states sampled in the
+MD trajectory:
+
+\begin{equation}
+\label{eqn:mmpbsa_g}
+G = \langle E_{MM} \rangle + \langle G_{solv,polar} \rangle + \langle G_{solv,non-polar} \rangle
+\end{equation}
+
+Given the availability of the corresponding MD samples, that energy can be
+obtained for the bound state, i.e.\ for the receptor-ligand complex (then called
+$G_{complex}$), and also for the unbound state, i.e.\ for the receptor and for
+the ligand alone, yielding $G_{receptor}$ and $G_{ligand}$, respectively. From
+these numbers, a free energy of binding estimate, often called $\Delta G$, can
+be derived:
+
+\begin{equation}
+\Delta G = G_{complex} - G_{receptor} - G_{ligand}
+\end{equation}
+
+An important energy summand that is missing in \cref{eqn:mmpbsa_g} is $-TS$,
+with $T$ being the temperature and $S$ being the entropy of the system. In
+literature, this is usually listed, $E$ is called \textit{free energy} $G$, and
+then it is argued that the entropy term can and should be neglected when
+comparing similar molecular systems: the methods for estimating the loss of
+entropy upon binding based on MD simulations are rather weak, and can be assumed
+to be similar for comparable binding modes, so often the best option for now is
+to neglect that term \cite{ryde_mmpbsa_2006, homeyer_gohlke_2012}.
+
+homeyer_gohlke_2012
+
+ of
+ called
+the free energy G of the
 
 
+
+system, with an additional entropy , with  entropy neglected
+
+ and by adding and
+by averaging
 
 
  The binding
