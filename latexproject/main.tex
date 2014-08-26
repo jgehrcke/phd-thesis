@@ -1,5 +1,4 @@
 \input{preamble.tex}
-
 \begin{document}
 
 % Include PDF pages created externally (title page etc).
@@ -19,22 +18,22 @@
 \includepdf{pdf_pages_for_inclusion/logopage_01.pdf}
 \hypersetup{pageanchor=true}
 
+
 % The \frontmatter declaration sets the folios to be printed in lowercase roman
 % numerals, starts the page numbering from i, and prohibits any numbering of
 % sectional divisions. Caption, equations, etc., will be numbered continuously.
 \frontmatter
-
 \include{summary}
 \cleardoublepage
 % The adjustwidth env is defined by memoir, starred version automatically
 % distinguishes recto and verso pages.
-\begin{adjustwidth*}{-1.2cm}{-1.8em}
+%\begin{adjustwidth*}{-1.2cm}{-1.8em}
 \tableofcontents
-\end{adjustwidth*}
+%\end{adjustwidth*}
+
 
 % Mainmatter changes page numbering etc, see memoir docs.
 \mainmatter
-
 \pagestyle{Ruled}
 %\makeevenhead{Ruled}{\leftmark}{}{}
 \makeevenhead{Ruled}{\small\sffamily\bfseries\leftmark}{}{}
@@ -45,37 +44,32 @@
 \include{04_protein_gag_binding_site_prediction}
 \include{05_interpreting_docking_results}
 \include{06_dmd}
-
 % http://tex.stackexchange.com/a/17072/11816
 % I want to achieve the break between dmdil10 and nmr, but have to put this here
 % in order to obtain this. Do not know why.
 \addtocontents{toc}{\protect\newpage}
-
 \include{07_dmd_il10}
 \include{08_il10gags_nmr}
 \include{09_bringing_all_together}
 \include{10_conclusions}
 
-\backmatter
 
+\backmatter
 %\begin{adjustwidth*}{-1.0cm}{-1.5em}
 % adjustwidth and printbibliography together are buggy, unfortunately.
 % Font size modification is a way to save some space.
 \renewcommand*{\bibfont}{\footnotesize}
 \printbibliography
 %\end{adjustwidth*}
-
 \cleardoublepage
 % http://tex.stackexchange.com/a/100377
 % http://www.latex-community.org/forum/viewtopic.php?f=47&t=19574
 % Define "chapter name" for page headings, set it to current nomenclature name
 % (nomname is defined by nomencl package, and can ge changed).
 \markboth{\nomname}{\nomname}
-
 % Print the nomencl list, with a certain spacing between abbreviation and
 % explanation.
 \printnomenclature[3cm]
-
 %\appendix
 %\appendixpage
 %\addappheadtotoc
