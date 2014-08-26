@@ -258,8 +258,16 @@
     gly-co-sa-mi-no-gly-cans
     }
 
+% In a chapter caption it is not good to use the extdash dash,
+% otherwise: Package hyperref Warning: Token not allowed in a PDF string
+% Try this one: IL\hyph 10\hyph GAG
+\def\hyph{-\penalty0\hskip0pt\relax}
+
+
 % Change name of nomenclature from default to ...
 \renewcommand{\nomname}{List of abbreviations}
 
 % http://tex.stackexchange.com/a/100377
 \makenomenclature
+
+
