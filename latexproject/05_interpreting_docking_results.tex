@@ -496,7 +496,7 @@ discovery. The corresponding code is shown in Listing \ref{listing:dbscan}.
             \PY{k}{if} \PY{n}{objs\PYZus{}visited}\PY{p}{[}\PY{n}{member\PYZus{}index}\PY{p}{]}\PY{p}{:}
                 \PY{k}{continue}
             \PY{n}{objs\PYZus{}visited}\PY{p}{[}\PY{n}{member\PYZus{}index}\PY{p}{]} \PY{o}{=} \PY{n+nb+bp}{True}
-            \PY{k}{if} \PY{n}{neighborhood\PYZus{}size}\PY{p}{[}\PY{n}{objidx}\PY{p}{]} \PY{o}{\PYZlt{}} \PY{n}{minpoints}\PY{p}{:}
+            \PY{k}{if} \PY{n}{neighborhood\PYZus{}size}\PY{p}{[}\PY{n}{member_index}\PY{p}{]} \PY{o}{\PYZlt{}} \PY{n}{minpoints}\PY{p}{:}
                 \PY{k}{continue}
             \PY{c}{\PYZsh{} Object with current `member\PYZus{}index` is core point.}
             \PY{c}{\PYZsh{} Add full neighborhood to `clustermember\PYZus{}indices`.}
