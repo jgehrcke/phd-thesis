@@ -40,7 +40,7 @@ def dbscan(distmat, epsilon, minpoints):
             if objs_visited[member_index]:
                 continue
             objs_visited[member_index] = True
-            if neighborhood_size[objidx] < minpoints:
+            if neighborhood_size[member_index] < minpoints:
                 continue
             # Object with current `member_index` is core point.
             # Add full neighborhood to `clustermember_indices`.
