@@ -35,6 +35,8 @@
 \usepackage[no-math]{fontspec}
 \usepackage{libertine}
 
+
+
 % Improve typography. Must be loaded after any font.
 % http://tex.stackexchange.com/a/586
 \usepackage{microtype}
@@ -104,7 +106,29 @@
 % Hyperref provides PDF features such as links (and much more, automatically).
 % Should be included as late as possible.
 % Is configured further below.
-\usepackage{hyperref}
+%\usepackage{hyperref}
+
+
+\usepackage[pdftex, pdfa, linktoc=none]{hyperref}
+
+
+\pdfminorversion 4
+\immediate\pdfobj stream attr{/N 3}  file{eciRGB_v2.icc}
+\pdfcatalog{%
+/OutputIntents [ <<
+/Type /OutputIntent
+/S/GTS_PDFA1
+/DestOutputProfile \the\pdflastobj\space 0 R
+/OutputConditionIdentifier (eciRGB v2)
+/Info(eciRGB v2)
+>> ]
+}
+
+
+
+
+\usepackage{hyperxmp}
+
 
 % See: Which packages should be loaded after hyperref instead of before?
 % http://tex.stackexchange.com/q/1863
@@ -130,7 +154,14 @@
     %citecolor=sepia,
     %urlcolor=sepia
     %allcolors=black
-    hidelinks=true
+    hidelinks=true,
+    pdflang={en},
+    bookmarksopen=true,
+    bookmarksopenlevel=3,
+    hypertexnames=false,
+    linktocpage=true,
+    plainpages=false,
+    breaklinks
 }
 
 % For styles, see
